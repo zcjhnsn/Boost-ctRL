@@ -22,4 +22,13 @@ class NewsViewController: UITableViewController {
 	}
 	
 	
+	
 }
+
+class NewsCell: UITableViewCell {
+	
+	@IBOutlet weak var headlineLabel: UILabel!
+	
+	
+}
+
