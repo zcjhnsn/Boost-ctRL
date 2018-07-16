@@ -10,7 +10,9 @@ target 'Boost ctRL' do
 pod 'Firebase'
 pod 'Firebase/Database'
 pod 'ACTabScrollView', :git => 'https://github.com/azurechen/ACTabScrollView.git'
-
+pod 'SwiftyJSON'
+pod 'Alamofire'
+pod 'EVReflection/Alamofire'
 
 end
 
