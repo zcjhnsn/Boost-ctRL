@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TeamsContentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TeamsContentViewController: UIViewController {
 	
 	@IBOutlet weak var tableView: UITableView!
 	
@@ -21,7 +21,10 @@ class TeamsContentViewController: UIViewController, UITableViewDelegate, UITable
 			}
 		}
 	}
+	
 	var teamArray: [Team] = []
+	
+	var headerTitle: String = ""
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -31,8 +34,15 @@ class TeamsContentViewController: UIViewController, UITableViewDelegate, UITable
 		tableView.estimatedRowHeight = 44
 		tableView.delegate = self
 		tableView.dataSource = self
+		tableView.separatorStyle = .none
 	}
-	
+}
+
+/////////////////////////////////////////////
+
+// MARK: Table View Delegate Methods
+
+extension TeamsContentViewController: UITableViewDelegate, UITableViewDataSource {
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return 1
 	}
@@ -46,21 +56,33 @@ class TeamsContentViewController: UIViewController, UITableViewDelegate, UITable
 		
 		// set the cell
 		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! TeamsContentTableViewCell
+		
+		// Team Logo
 		cell.teamLogo.image = UIImage(named: "logo-\(team.id)")
 		cell.teamLogo.layer.cornerRadius = 4
+		
+		// Team Label
 		cell.teamNameLabel.text = team.name.uppercased()
 		cell.teamNameLabel.textColor = UIColor.white
+		
+		// Player One Label
 		cell.player1Label.text = String(describing: team.player1)
 		cell.player1Label.textColor = UIColor.white
+		
+		// Player Two Label
 		cell.player2Label.text = String(describing: team.player2)
 		cell.player2Label.textColor = UIColor.white
+		
+		// Player Three Label
 		cell.player3Label.text = String(describing: team.player3)
 		cell.player3Label.textColor = UIColor.white
-		cell.backgroundColor = team.backgroundColor
 		
+		// Cell Background color
+		cell.teamColorBackground.backgroundColor = team.backgroundColor
 		
 		return cell
 	}
+	
 	
 	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		return 48
@@ -71,18 +93,23 @@ class TeamsContentViewController: UIViewController, UITableViewDelegate, UITable
 	}
 	
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		
 		let view = UIView()
 		view.backgroundColor = UIColor(red: 61.0 / 255, green: 66.0 / 255, blue: 77.0 / 255, alpha: 1.0)
 		
 		let label = UILabel()
 		
-		label.text = "Season 6"
+		// Set label text based on TeamCategory
+		label.text = self.headerTitle
 		label.textColor = UIColor.white
+		
+		// Set font
 		if #available(iOS 8.2, *) {
 			label.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.thin)
 		} else {
 			label.font = UIFont.systemFont(ofSize: 17)
 		}
+		
 		label.sizeToFit()
 		label.frame.origin = CGPoint(x: 18, y: 13)
 		
@@ -90,8 +117,11 @@ class TeamsContentViewController: UIViewController, UITableViewDelegate, UITable
 		
 		return view
 	}
-	
 }
+
+/////////////////////////////////////////////
+
+// MARK: TeamsContent Table View Cell
 
 class TeamsContentTableViewCell: UITableViewCell {
 	
@@ -101,9 +131,12 @@ class TeamsContentTableViewCell: UITableViewCell {
 	@IBOutlet weak var player1Label: UILabel!
 	@IBOutlet weak var player2Label: UILabel!
 	@IBOutlet weak var player3Label: UILabel!
+	@IBOutlet weak var teamColorBackground: UIView!
 	
 	
 	override func awakeFromNib() {
 		self.selectionStyle = .none
 	}
 }
+
+

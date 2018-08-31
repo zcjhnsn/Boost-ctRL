@@ -37,6 +37,18 @@ class TeamsViewController: UIViewController, ACTabScrollViewDelegate, ACTabScrol
 			let vc = storyboard.instantiateViewController(withIdentifier: "TeamsContentViewController") as! TeamsContentViewController
 			vc.category = category
 			
+			if category == .rlcs_NA {
+				vc.headerTitle = "North America | Championship Series"
+			} else if category == .rlcs_EU {
+				vc.headerTitle = "Europe | Championship Series"
+			} else if category == .rlcs_OCE {
+				vc.headerTitle = "Oceania | Championship Series"
+			} else if category == .rlrs_NA {
+				vc.headerTitle = "North America | Rival Series"
+			} else if category == .rlrs_EU {
+				vc.headerTitle = "Europe | Rival Series"
+			}
+			
 			addChildViewController(vc) // don't forget, it's very important
 			contentViews.append(vc.view)
 		}
@@ -69,7 +81,8 @@ class TeamsViewController: UIViewController, ACTabScrollViewDelegate, ACTabScrol
 	func tabScrollView(_ tabScrollView: ACTabScrollView, tabViewForPageAtIndex index: Int) -> UIView {
 		// create a label
 		let label = UILabel()
-		label.text = String(describing: TeamCategory.allValues()[index]).uppercased()
+		
+		label.text = String(describing: TeamCategory.allValues()[index]).uppercased().replacingOccurrences(of: "_", with: " ")
 		if #available(iOS 8.2, *) {
 			label.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.thin)
 		} else {
