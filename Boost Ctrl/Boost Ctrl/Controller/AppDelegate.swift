@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +17,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
+		FirebaseApp.configure()
+		
 		return true
+	}
+	
+	func loadMatchesArray() -> [[Match]] {
+		var matchesArray = [
+			[Match](),
+			[Match](),
+			[Match]()
+		]
+		
+		let matchDB = Database.database().reference().child("matches")
+		
+		matchDB.observe(.childAdded) {
+			(snapshot) in
+			
+			let snapshotValue = snapshot.value as! Dictionary<String, String>
+			
+			let match = Match()
+			
+			match.region = snapshotValue["region"]!
+			match.week = match.setWeek(weekID: snapshotValue["week"]!)
+			match.teamOneID = snapshotValue["teamOneID"]!
+			match.teamTwoID = snapshotValue["teamTwoID"]!
+			match.oneScore = snapshotValue["oneScore"]!
+			match.twoScore = snapshotValue["twoScore"]!
+			
+			matchesArray[Int(match.region)!].append(match)
+		}
+		
+		return matchesArray
 	}
 
 	func applicationWillResignActive(_ application: UIApplication) {

@@ -69,7 +69,8 @@ class StandingsViewController: UIViewController, ACTabScrollViewDelegate, ACTabS
 	func tabScrollView(_ tabScrollView: ACTabScrollView, tabViewForPageAtIndex index: Int) -> UIView {
 		// create a label
 		let label = UILabel()
-		label.text = String(describing: TeamCategory.allValues()[index]).uppercased()
+		
+		label.text = String(describing: TeamCategory.allValues()[index]).uppercased().replacingOccurrences(of: "_", with: " ")
 		if #available(iOS 8.2, *) {
 			label.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.thin)
 		} else {

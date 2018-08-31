@@ -31,8 +31,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AaE-pX-lfZ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="183"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uzl-ym-Izb">
-                                        <rect key="frame" x="94" y="71" width="187" height="41"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uzl-ym-Izb">
+                                        <rect key="frame" x="94" y="71" width="183" height="41"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BOOST CT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bb6-4i-K6t">
                                                 <rect key="frame" x="0.0" y="0.0" width="152" height="41"/>
@@ -70,7 +70,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.25098039215686274" green="0.29411764705882354" blue="0.41176470588235292" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="qEy-6g-e0n" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="89c-UY-Xsm"/>
                             <constraint firstAttribute="trailing" secondItem="qEy-6g-e0n" secondAttribute="trailing" id="DTW-TG-k2N"/>

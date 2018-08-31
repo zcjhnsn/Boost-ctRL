@@ -7,27 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		078D006C20F8878E0069476E /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078D006B20F8878E0069476E /* Match.swift */; };
 		078D006E20F888130069476E /* StandingsContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078D006D20F888130069476E /* StandingsContentViewController.swift */; };
+		078D007020FE71A70069476E /* NewsContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078D006F20FE71A70069476E /* NewsContentViewController.swift */; };
+		078D007420FE76B50069476E /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078D007320FE76B50069476E /* News.swift */; };
+		078D007620FED6530069476E /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078D007520FED6530069476E /* Match.swift */; };
+		07C5897421012F7800B0EE62 /* MatchesContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C5897321012F7800B0EE62 /* MatchesContentViewController.swift */; };
 		07E3C8C420E55A1C00F2A16A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C8C320E55A1C00F2A16A /* AppDelegate.swift */; };
 		07E3C8C620E55A1C00F2A16A /* TeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C8C520E55A1C00F2A16A /* TeamsViewController.swift */; };
 		07E3C8C820E55A1C00F2A16A /* MatchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C8C720E55A1C00F2A16A /* MatchesViewController.swift */; };
 		07E3C8CB20E55A1C00F2A16A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07E3C8C920E55A1C00F2A16A /* Main.storyboard */; };
 		07E3C8CD20E55A1F00F2A16A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07E3C8CC20E55A1F00F2A16A /* Assets.xcassets */; };
 		07E3C8D020E55A1F00F2A16A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07E3C8CE20E55A1F00F2A16A /* LaunchScreen.storyboard */; };
-		07E3C8D820EDAB2D00F2A16A /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C8D720EDAB2C00F2A16A /* NewsViewController.swift */; };
 		07E3C8DA20EDABE000F2A16A /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C8D920EDABE000F2A16A /* InfoViewController.swift */; };
 		07E3C8DC20EDB2F700F2A16A /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C8DB20EDB2F700F2A16A /* TabBarViewController.swift */; };
 		07E3C8DE20EDF80200F2A16A /* StandingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C8DD20EDF80200F2A16A /* StandingsViewController.swift */; };
 		07E3C8E320EE82BF00F2A16A /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C8E220EE82BF00F2A16A /* Team.swift */; };
-		07E3C90B20F40C7500F2A16A /* GoogleService-Info-2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07E3C90A20F40C7500F2A16A /* GoogleService-Info-2.plist */; };
+		07E3C90B20F40C7500F2A16A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07E3C90A20F40C7500F2A16A /* GoogleService-Info.plist */; };
 		07E3C90D20F66CE500F2A16A /* TeamsContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C90C20F66CE500F2A16A /* TeamsContentViewController.swift */; };
 		B0989107184D5DC75F3F62D3 /* Pods_Boost_ctRL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0540C0DC5C8A9BD802BE84 /* Pods_Boost_ctRL.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		078D006B20F8878E0069476E /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		078D006D20F888130069476E /* StandingsContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingsContentViewController.swift; sourceTree = "<group>"; };
+		078D006F20FE71A70069476E /* NewsContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsContentViewController.swift; sourceTree = "<group>"; };
+		078D007320FE76B50069476E /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		078D007520FED6530069476E /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
+		07C5897321012F7800B0EE62 /* MatchesContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesContentViewController.swift; sourceTree = "<group>"; };
 		07E3C8C020E55A1C00F2A16A /* Boost ctRL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Boost ctRL.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07E3C8C320E55A1C00F2A16A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07E3C8C520E55A1C00F2A16A /* TeamsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsViewController.swift; sourceTree = "<group>"; };
@@ -36,12 +41,11 @@
 		07E3C8CC20E55A1F00F2A16A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		07E3C8CF20E55A1F00F2A16A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		07E3C8D120E55A1F00F2A16A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		07E3C8D720EDAB2C00F2A16A /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		07E3C8D920EDABE000F2A16A /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		07E3C8DB20EDB2F700F2A16A /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		07E3C8DD20EDF80200F2A16A /* StandingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingsViewController.swift; sourceTree = "<group>"; };
 		07E3C8E220EE82BF00F2A16A /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
-		07E3C90A20F40C7500F2A16A /* GoogleService-Info-2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-2.plist"; sourceTree = "<group>"; };
+		07E3C90A20F40C7500F2A16A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		07E3C90C20F66CE500F2A16A /* TeamsContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsContentViewController.swift; sourceTree = "<group>"; };
 		3D0540C0DC5C8A9BD802BE84 /* Pods_Boost_ctRL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Boost_ctRL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B87BFB3DADFD267394B00D1E /* Pods-Boost ctRL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boost ctRL.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Boost ctRL/Pods-Boost ctRL.debug.xcconfig"; sourceTree = "<group>"; };
@@ -86,7 +90,7 @@
 				07E3C8DF20EE827A00F2A16A /* View */,
 				07E3C8CC20E55A1F00F2A16A /* Assets.xcassets */,
 				07E3C8D120E55A1F00F2A16A /* Info.plist */,
-				07E3C90A20F40C7500F2A16A /* GoogleService-Info-2.plist */,
+				07E3C90A20F40C7500F2A16A /* GoogleService-Info.plist */,
 			);
 			path = "Boost ctRL";
 			sourceTree = "<group>";
@@ -104,13 +108,14 @@
 			isa = PBXGroup;
 			children = (
 				07E3C8C320E55A1C00F2A16A /* AppDelegate.swift */,
-				07E3C8C520E55A1C00F2A16A /* TeamsViewController.swift */,
-				07E3C90C20F66CE500F2A16A /* TeamsContentViewController.swift */,
+				07E3C8D920EDABE000F2A16A /* InfoViewController.swift */,
 				07E3C8C720E55A1C00F2A16A /* MatchesViewController.swift */,
-				07E3C8D720EDAB2C00F2A16A /* NewsViewController.swift */,
+				07C5897321012F7800B0EE62 /* MatchesContentViewController.swift */,
+				078D006F20FE71A70069476E /* NewsContentViewController.swift */,
 				07E3C8DD20EDF80200F2A16A /* StandingsViewController.swift */,
 				078D006D20F888130069476E /* StandingsContentViewController.swift */,
-				07E3C8D920EDABE000F2A16A /* InfoViewController.swift */,
+				07E3C8C520E55A1C00F2A16A /* TeamsViewController.swift */,
+				07E3C90C20F66CE500F2A16A /* TeamsContentViewController.swift */,
 				07E3C8DB20EDB2F700F2A16A /* TabBarViewController.swift */,
 			);
 			path = Controller;
@@ -120,7 +125,8 @@
 			isa = PBXGroup;
 			children = (
 				07E3C8E220EE82BF00F2A16A /* Team.swift */,
-				078D006B20F8878E0069476E /* Match.swift */,
+				078D007320FE76B50069476E /* News.swift */,
+				078D007520FED6530069476E /* Match.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -204,7 +210,7 @@
 			files = (
 				07E3C8D020E55A1F00F2A16A /* LaunchScreen.storyboard in Resources */,
 				07E3C8CD20E55A1F00F2A16A /* Assets.xcassets in Resources */,
-				07E3C90B20F40C7500F2A16A /* GoogleService-Info-2.plist in Resources */,
+				07E3C90B20F40C7500F2A16A /* GoogleService-Info.plist in Resources */,
 				07E3C8CB20E55A1C00F2A16A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -271,13 +277,15 @@
 				07E3C8C820E55A1C00F2A16A /* MatchesViewController.swift in Sources */,
 				07E3C8C420E55A1C00F2A16A /* AppDelegate.swift in Sources */,
 				07E3C8C620E55A1C00F2A16A /* TeamsViewController.swift in Sources */,
-				07E3C8D820EDAB2D00F2A16A /* NewsViewController.swift in Sources */,
+				078D007020FE71A70069476E /* NewsContentViewController.swift in Sources */,
+				078D007420FE76B50069476E /* News.swift in Sources */,
 				07E3C90D20F66CE500F2A16A /* TeamsContentViewController.swift in Sources */,
 				07E3C8E320EE82BF00F2A16A /* Team.swift in Sources */,
 				07E3C8DE20EDF80200F2A16A /* StandingsViewController.swift in Sources */,
+				07C5897421012F7800B0EE62 /* MatchesContentViewController.swift in Sources */,
 				07E3C8DC20EDB2F700F2A16A /* TabBarViewController.swift in Sources */,
-				078D006C20F8878E0069476E /* Match.swift in Sources */,
 				07E3C8DA20EDABE000F2A16A /* InfoViewController.swift in Sources */,
+				078D007620FED6530069476E /* Match.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
