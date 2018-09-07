@@ -11,6 +11,7 @@
 		078D007020FE71A70069476E /* NewsContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078D006F20FE71A70069476E /* NewsContentViewController.swift */; };
 		078D007420FE76B50069476E /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078D007320FE76B50069476E /* News.swift */; };
 		078D007620FED6530069476E /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078D007520FED6530069476E /* Match.swift */; };
+		07A7332F213B17E10012EE31 /* Standing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A7332E213B17E10012EE31 /* Standing.swift */; };
 		07C5897421012F7800B0EE62 /* MatchesContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C5897321012F7800B0EE62 /* MatchesContentViewController.swift */; };
 		07E3C8C420E55A1C00F2A16A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C8C320E55A1C00F2A16A /* AppDelegate.swift */; };
 		07E3C8C620E55A1C00F2A16A /* TeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C8C520E55A1C00F2A16A /* TeamsViewController.swift */; };
@@ -32,6 +33,7 @@
 		078D006F20FE71A70069476E /* NewsContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsContentViewController.swift; sourceTree = "<group>"; };
 		078D007320FE76B50069476E /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		078D007520FED6530069476E /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
+		07A7332E213B17E10012EE31 /* Standing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Standing.swift; sourceTree = "<group>"; };
 		07C5897321012F7800B0EE62 /* MatchesContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesContentViewController.swift; sourceTree = "<group>"; };
 		07E3C8C020E55A1C00F2A16A /* Boost ctRL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Boost ctRL.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07E3C8C320E55A1C00F2A16A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				07E3C8E220EE82BF00F2A16A /* Team.swift */,
 				078D007320FE76B50069476E /* News.swift */,
 				078D007520FED6530069476E /* Match.swift */,
+				07A7332E213B17E10012EE31 /* Standing.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				07E3C8C420E55A1C00F2A16A /* AppDelegate.swift in Sources */,
 				07E3C8C620E55A1C00F2A16A /* TeamsViewController.swift in Sources */,
 				078D007020FE71A70069476E /* NewsContentViewController.swift in Sources */,
+				07A7332F213B17E10012EE31 /* Standing.swift in Sources */,
 				078D007420FE76B50069476E /* News.swift in Sources */,
 				07E3C90D20F66CE500F2A16A /* TeamsContentViewController.swift in Sources */,
 				07E3C8E320EE82BF00F2A16A /* Team.swift in Sources */,

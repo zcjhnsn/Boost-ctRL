@@ -31,16 +31,35 @@ class Teams {
 		
 		
 		Team(id: 21, category: .rlcs_OCE, name: "Cheifs", player1: "Kamii", player2: "Drippay", player3: "Torsos", standing: "1", win: "0", loss: "0", winPercentage: "80.8", backgroundColor: UIColor(red: 4.0/255, green: 40.0/255, blue: 67.0/255, alpha: 1)),
-		Team(id: 22, category: .rlcs_OCE, name: "Tainted Minds", player1: "CJCJ", player2: "Kamii", player3: "julz", standing: "2", win: "0", loss: "0", winPercentage: "50.0", backgroundColor: UIColor(red: 102.0/255, green: 156.0/255, blue: 49.0/255, alpha: 1)),
-		
+		Team(id: 22, category: .rlcs_OCE, name: "Tainted Minds", player1: "CJCJ", player2: "shadey", player3: "Express", standing: "2", win: "0", loss: "0", winPercentage: "50.0", backgroundColor: UIColor(red: 102.0/255, green: 156.0/255, blue: 49.0/255, alpha: 1)),
+		Team(id: 23, category: .rlcs_OCE, name: "Ground Zero", player1: "CJM", player2: "Lim", player3: "Walcott", standing: "3", win: "0", loss: "0", winPercentage: "0.0", backgroundColor: UIColor(red: 56.0/255, green: 63.0/255, blue: 77.0/255, alpha: 1)),
+		Team(id: 24, category: .rlcs_OCE, name: "ORDER", player1: "Dumbo", player2: "Julz", player3: "ZeN", standing: "4", win: "0", loss: "0", winPercentage: "0.0", backgroundColor: UIColor(red: 252.0/255, green: 33.0/255, blue: 79.0/255, alpha: 1)),
+		Team(id: 25, category: .rlcs_OCE, name: "Legacy", player1: "cyrix", player2: "Daze", player3: "Siki", standing: "5", win: "0", loss: "0", winPercentage: "0.0", backgroundColor: UIColor(red: 169.0/255, green: 205.0/255, blue: 79.0/255, alpha: 1)),
+		Team(id: 26, category: .rlcs_OCE, name: "Justice", player1: "SSteve", player2: "Whiss", player3: "Yeatzy", standing: "6", win: "0", loss: "0", winPercentage: "0.0", backgroundColor: UIColor(red: 33.0/255, green: 137.0/255, blue: 138.0/255, alpha: 1)),
+		Team(id: 27, category: .rlcs_OCE, name: "Chimpwits", player1: "Decka", player2: "Requiem", player3: "Delusion", standing: "7", win: "0", loss: "0", winPercentage: "0.0", backgroundColor: UIColor(red: 64.0/255, green: 76.0/255, blue: 104.0/255, alpha: 1)),
+		Team(id: 28, category: .rlcs_OCE, name: "Avant", player1: "Vive", player2: "Bango", player3: "SnarfSnarf", standing: "8", win: "0", loss: "0", winPercentage: "0.0", backgroundColor: UIColor(red: 3.0/255, green: 65.0/255, blue: 140.0/255, alpha: 1)),
 		
 		Team(id: 31, category: .rlrs_NA, name: "Applesauce", player1: "Hato", player2: "Zolhay", player3: "EPICJohnny", standing: "1", win: "0", loss: "0", winPercentage: "37.0", backgroundColor: UIColor(red: 166.0/255, green: 227.0/255, blue: 253.0/255, alpha: 1)),
 		Team(id: 32, category: .rlrs_NA, name: "Magicians", player1: "Rapid", player2: "Halcyon", player3: "Vince", standing: "2", win: "0", loss: "0", winPercentage: "60.0", backgroundColor: UIColor(red: 25.0/255, green: 17.0/255, blue: 12.0/255, alpha: 1)),
+		Team(id: 33, category: .rlrs_NA, name: "Manhattan", player1: "ayjacks", player2: "Tmon", player3: "Malakiss", standing: "3", win: "0", loss: "0", winPercentage: "0.0", backgroundColor: UIColor(red: 64.0/255, green: 76.0/255, blue: 104.0/255, alpha: 1)),
+		Team(id: 34, category: .rlrs_NA, name: "Splyce", player1: "Karma", player2: "JWismont", player3: "DudeWithTheNose", standing: "4", win: "0", loss: "0", winPercentage: "0.0", backgroundColor: UIColor(red: 151.0/255, green: 119.0/255, blue: 0, alpha: 1)),
+		Team(id: 35, category: .rlrs_NA, name: "Bread", player1: "Satthew", player2: "Sypical", player3: "AxB", standing: "5", win: "0", loss: "0", winPercentage: "0.0", backgroundColor: UIColor(red: 64.0/255, green: 76.0/255, blue: 104.0/255, alpha: 1)),
+		Team(id: 36, category: .rlrs_NA, name: "The Hosses", player1: "Chrome", player2: "Timi", player3: "Insolences", standing: "6", win: "0", loss: "0", winPercentage: "0.0", backgroundColor: UIColor(red: 64.0/255, green: 76.0/255, blue: 104.0/255, alpha: 1)),
+		Team(id: 37, category: .rlrs_NA, name: "Compadres", player1: "Moses", player2: "Aeon", player3: "Astroh", standing: "7", win: "0", loss: "0", winPercentage: "0.0", backgroundColor: UIColor(red: 64.0/255, green: 76.0/255, blue: 104.0/255, alpha: 1)),
+		Team(id: 38, category: .rlrs_NA, name: "The Peeps", player1: "Arsenal", player2: "Gyro", player3: "Pirates", standing: "8", win: "0", loss: "0", winPercentage: "0.0", backgroundColor: UIColor(red: 64.0/255, green: 76.0/255, blue: 104.0/255, alpha: 1)),
 		
 		
-		Team(id: 41, category: .rlrs_EU, name: "Team Secret", player1: "Tylacto", player2: "FlamE", player3: "Freakii", standing: "1", win: "0", loss: "0", winPercentage: "66.7", backgroundColor: UIColor.black)
+		Team(id: 41, category: .rlrs_EU, name: "Team Secret", player1: "Tylacto", player2: "FlamE", player3: "Freakii", standing: "1", win: "0", loss: "0", winPercentage: "66.7", backgroundColor: UIColor.black),
+		Team(id: 42, category: .rlrs_EU, name: "exceL", player1: "Nielskoek", player2: "pwndx", player3: "Markydooda", standing: "5", win: "0", loss: "0", winPercentage: "0.0", backgroundColor: UIColor(red: 255.0/255, green: 163.0/255, blue: 6.0/255, alpha: 1)),
+		Team(id: 43, category: .rlrs_EU, name: "Triple Trouble", player1: "Tadpole", player2: "Ronaky", player3: "Speed", standing: "3", win: "0", loss: "0", winPercentage: "0.0", backgroundColor: UIColor(red: 169.0/255, green: 169.0/255, blue: 169.0/255, alpha: 1)),
+		Team(id: 44, category: .rlrs_EU, name: "Nordavind", player1: "Al Dente", player2: "Data", player3: "Godsmilla", standing: "4", win: "0", loss: "0", winPercentage: "0.0", backgroundColor: UIColor(red: 0/255, green: 15.0/255, blue: 29.0/255, alpha: 1)),
+		Team(id: 45, category: .rlrs_EU, name: "Savage!", player1: "Bluey", player2: "Deevo", player3: "Alpha54", standing: "5", win: "0", loss: "0", winPercentage: "0.0", backgroundColor: UIColor(red: 64.0/255, green: 76.0/255, blue: 104.0/255, alpha: 1)),
+		Team(id: 46, category: .rlrs_EU, name: "Method", player1: "Borito B", player2: "Kassio", player3: "Rix Ronday", standing: "6", win: "0", loss: "0", winPercentage: "0.0", backgroundColor: UIColor.black),
+		Team(id: 47, category: .rlrs_EU, name: "The Clappers", player1: "Calix", player2: "Oscillon", player3: "Petrick", standing: "7", win: "0", loss: "0", winPercentage: "0.0", backgroundColor: UIColor(red: 64.0/255, green: 76.0/255, blue: 104.0/255, alpha: 1)),
+		Team(id: 48, category: .rlrs_EU, name: "The Bricks", player1: "Friis", player2: "Didris", player3: "Shakahron", standing: "8", win: "0", loss: "0", winPercentage: "0.0", backgroundColor: UIColor(red: 64.0/255, green: 76.0/255, blue: 104.0/255, alpha: 1))
 	]
 }
+
 
 enum TeamCategory {
 	case rlcs_NA

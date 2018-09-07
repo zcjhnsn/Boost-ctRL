@@ -33,7 +33,7 @@ class StandingsViewController: UIViewController, ACTabScrollViewDelegate, ACTabS
 		tabScrollView.dataSource = self
 		
 		let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-		for category in TeamCategory.allValues() {
+		for category in StandingCategory.allValues() {
 			let vc = storyboard.instantiateViewController(withIdentifier: "StandingsContentViewController") as! StandingsContentViewController
 			vc.category = category
 			
