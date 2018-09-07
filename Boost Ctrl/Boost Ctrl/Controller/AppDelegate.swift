@@ -22,35 +22,61 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		return true
 	}
 	
-	func loadMatchesArray() -> [[Match]] {
-		var matchesArray = [
-			[Match](),
-			[Match](),
-			[Match]()
-		]
+//	func loadMatchesArray() -> [[Match]] {
+//		var matchesArray = [
+//			[Match](),
+//			[Match](),
+//			[Match]()
+//		]
+//		
+//		let matchDB = Database.database().reference().child("matches")
+//		
+//		matchDB.observe(.childAdded) {
+//			(snapshot) in
+//			
+//			let snapshotValue = snapshot.value as! Dictionary<String, String>
+//			
+//			let match = Match()
+//			
+//			match.region = snapshotValue["region"]!
+//			match.week = match.setWeek(weekID: snapshotValue["week"]!)
+//			match.teamOneID = snapshotValue["teamOneID"]!
+//			match.teamTwoID = snapshotValue["teamTwoID"]!
+//			match.oneScore = snapshotValue["oneScore"]!
+//			match.twoScore = snapshotValue["twoScore"]!
+//			
+//			matchesArray[Int(match.region)!].append(match)
+//		}
+//		
+//		return matchesArray
+//	}
+
+	func loadStandings() -> [Standing] {
+		var standingsArray = [Standing]()
 		
-		let matchDB = Database.database().reference().child("matches")
 		
-		matchDB.observe(.childAdded) {
+		let standingsDB = Database.database().reference().child("standings")
+		
+		standingsDB.observe(.childAdded) {
 			(snapshot) in
 			
 			let snapshotValue = snapshot.value as! Dictionary<String, String>
 			
-			let match = Match()
+			var standing = Standing()
 			
-			match.region = snapshotValue["region"]!
-			match.week = match.setWeek(weekID: snapshotValue["week"]!)
-			match.teamOneID = snapshotValue["teamOneID"]!
-			match.teamTwoID = snapshotValue["teamTwoID"]!
-			match.oneScore = snapshotValue["oneScore"]!
-			match.twoScore = snapshotValue["twoScore"]!
+			standing.id = snapshotValue["id"]!
+			standing.category = standing.setCategory(id: Int(standing.id)!)
+			standing.place = snapshotValue["place"]!
+			standing.win = snapshotValue["win"]!
+			standing.loss = snapshotValue["loss"]!
+			standing.wp = snapshotValue["wp"]!
 			
-			matchesArray[Int(match.region)!].append(match)
+			standingsArray.append(standing)
 		}
-		
-		return matchesArray
 	}
-
+	
+	
+	
 	func applicationWillResignActive(_ application: UIApplication) {
 		// Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
 		// Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

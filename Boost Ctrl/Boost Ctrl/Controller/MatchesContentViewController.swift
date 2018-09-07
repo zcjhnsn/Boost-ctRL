@@ -11,14 +11,14 @@ import Firebase
 
 class MatchesContentViewController: UIViewController {
 	@IBOutlet weak var tableView: UITableView!
-	
-	var category: Week? {
-		didSet {
-			for match
-		}
-	}
+//
+//	var category: Week? {
+//		didSet {
+//			for match
+//		}
+//	}
 }
 
-extension MatchesContentViewController: UITableViewDelegate, UITableViewDataSource {
-	
-}
+//extension MatchesContentViewController: UITableViewDelegate, UITableViewDataSource {
+//	
+//}

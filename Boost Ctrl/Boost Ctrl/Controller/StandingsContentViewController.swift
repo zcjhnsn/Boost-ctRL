@@ -20,8 +20,11 @@ import UIKit
 class StandingsContentViewController: UIViewController {
 	
 	@IBOutlet weak var tableView: UITableView!
+	let delegate = UIApplication.shared.delegate as! AppDelegate
 	
-	var category: TeamCategory? {
+	
+
+	var category: Standing? {
 		didSet {
 			for team in Teams.teamArray.sorted(by: { $0.standing < $1.standing }) {
 				if (team.category == category) {
@@ -30,8 +33,17 @@ class StandingsContentViewController: UIViewController {
 			}
 		}
 	}
+//	var category: TeamCategory? {
+//		didSet {
+//			for team in Teams.teamArray.sorted(by: { $0.standing < $1.standing }) {
+//				if (team.category == category) {
+//					teamArray.append(team)
+//				}
+//			}
+//		}
+//	}
 	
-	var teamArray: [Team] = []
+	var teamArray: [Standing] = self.delegate.loadStandings()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
