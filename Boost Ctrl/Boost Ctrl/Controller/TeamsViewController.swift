@@ -8,6 +8,7 @@
 
 import UIKit
 import ACTabScrollView
+import FirebaseDatabase
 
 class TeamsViewController: UIViewController, ACTabScrollViewDelegate, ACTabScrollViewDataSource {
 
@@ -15,19 +16,24 @@ class TeamsViewController: UIViewController, ACTabScrollViewDelegate, ACTabScrol
 	
 	var contentViews: [UIView] = []
 	
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		return .lightContent
+	}
+	
+	var teamInfo: [Team] = []
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		setNeedsStatusBarAppearanceUpdate()
 		// Do any additional setup after loading the view, typically from a nib.
 		// set ACTabScrollView, all the following properties are optional
-		tabScrollView.defaultPage = 1
+		tabScrollView.defaultPage = 0
 		tabScrollView.arrowIndicator = true
-		//        tabScrollView.tabSectionHeight = 40
 		tabScrollView.tabSectionBackgroundColor = UIColor(red: 40.0/255, green: 49.0/255, blue: 73.0/255, alpha: 1)
-        //        tabScrollView.contentSectionBackgroundColor = UIColor.blue
-		//        tabScrollView.tabGradient = true
+
 		tabScrollView.pagingEnabled = true
 		tabScrollView.cachedPageLimit = 3
-		
 		
 		tabScrollView.delegate = self
 		tabScrollView.dataSource = self
@@ -62,7 +68,8 @@ class TeamsViewController: UIViewController, ACTabScrollViewDelegate, ACTabScrol
 			navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
 			navigationBar.shadowImage = UIImage()
 		}
-		UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
+		
+		
 	}
 
 	// MARK: ACTabScrollViewDelegate

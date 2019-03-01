@@ -13,6 +13,7 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
+	var teamArray = [Team]()
 
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -21,61 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		return true
 	}
-	
-//	func loadMatchesArray() -> [[Match]] {
-//		var matchesArray = [
-//			[Match](),
-//			[Match](),
-//			[Match]()
-//		]
-//		
-//		let matchDB = Database.database().reference().child("matches")
-//		
-//		matchDB.observe(.childAdded) {
-//			(snapshot) in
-//			
-//			let snapshotValue = snapshot.value as! Dictionary<String, String>
-//			
-//			let match = Match()
-//			
-//			match.region = snapshotValue["region"]!
-//			match.week = match.setWeek(weekID: snapshotValue["week"]!)
-//			match.teamOneID = snapshotValue["teamOneID"]!
-//			match.teamTwoID = snapshotValue["teamTwoID"]!
-//			match.oneScore = snapshotValue["oneScore"]!
-//			match.twoScore = snapshotValue["twoScore"]!
-//			
-//			matchesArray[Int(match.region)!].append(match)
-//		}
-//		
-//		return matchesArray
-//	}
-
-	func loadStandings() -> [Standing] {
-		var standingsArray = [Standing]()
-		
-		
-		let standingsDB = Database.database().reference().child("standings")
-		
-		standingsDB.observe(.childAdded) {
-			(snapshot) in
-			
-			let snapshotValue = snapshot.value as! Dictionary<String, String>
-			
-			var standing = Standing()
-			
-			standing.id = snapshotValue["id"]!
-			standing.category = standing.setCategory(id: Int(standing.id)!)
-			standing.place = snapshotValue["place"]!
-			standing.win = snapshotValue["win"]!
-			standing.loss = snapshotValue["loss"]!
-			standing.wp = snapshotValue["wp"]!
-			
-			standingsArray.append(standing)
-		}
-	}
-	
-	
 	
 	func applicationWillResignActive(_ application: UIApplication) {
 		// Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -99,6 +45,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 	}
 
-
 }
 
+
+extension UIColor {
+	
+	// MARK: - Initialization
+	
+	convenience init?(hex: String) {var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
+		hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")
+		
+		var rgb: UInt32 = 0
+		
+		var r: CGFloat = 0.0
+		var g: CGFloat = 0.0
+		var b: CGFloat = 0.0
+		let a: CGFloat = 1.0
+		
+		guard Scanner(string: hexSanitized).scanHexInt32(&rgb) else { return nil }
+		
+		r = CGFloat((rgb & 0xFF0000) >> 16) / 255.0
+		g = CGFloat((rgb & 0x00FF00) >> 8) / 255.0
+		b = CGFloat(rgb & 0x0000FF) / 255.0
+		
+		self.init(red: r, green: g, blue: b, alpha: a)
+	}
+}

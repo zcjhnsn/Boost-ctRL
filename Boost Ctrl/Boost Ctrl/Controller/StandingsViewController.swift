@@ -27,16 +27,15 @@ class StandingsViewController: UIViewController, ACTabScrollViewDelegate, ACTabS
 		//        tabScrollView.tabGradient = true
 		tabScrollView.pagingEnabled = true
 		tabScrollView.cachedPageLimit = 3
-		
-		
+
 		tabScrollView.delegate = self
 		tabScrollView.dataSource = self
-		
+
 		let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-		for category in StandingCategory.allValues() {
+		for category in TeamCategory.allValues() {
 			let vc = storyboard.instantiateViewController(withIdentifier: "StandingsContentViewController") as! StandingsContentViewController
 			vc.category = category
-			
+
 			addChildViewController(vc) // don't forget, it's very important
 			contentViews.append(vc.view)
 		}
@@ -50,26 +49,25 @@ class StandingsViewController: UIViewController, ACTabScrollViewDelegate, ACTabS
 			navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
 			navigationBar.shadowImage = UIImage()
 		}
-		UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
-	}
+}
 	
 	// MARK: ACTabScrollViewDelegate
 	func tabScrollView(_ tabScrollView: ACTabScrollView, didChangePageTo index: Int) {
 		print(index)
 	}
-	
+
 	func tabScrollView(_ tabScrollView: ACTabScrollView, didScrollPageTo index: Int) {
 	}
-	
+
 	// MARK: ACTabScrollViewDataSource
 	func numberOfPagesInTabScrollView(_ tabScrollView: ACTabScrollView) -> Int {
 		return TeamCategory.allValues().count
 	}
-	
+
 	func tabScrollView(_ tabScrollView: ACTabScrollView, tabViewForPageAtIndex index: Int) -> UIView {
 		// create a label
 		let label = UILabel()
-		
+
 		label.text = String(describing: TeamCategory.allValues()[index]).uppercased().replacingOccurrences(of: "_", with: " ")
 		if #available(iOS 8.2, *) {
 			label.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.thin)
@@ -79,14 +77,14 @@ class StandingsViewController: UIViewController, ACTabScrollViewDelegate, ACTabS
 		// label.textColor = UIColor(red: 77.0 / 255, green: 79.0 / 255, blue: 84.0 / 255, alpha: 1)
 		label.textColor = UIColor.white
 		label.textAlignment = .center
-		
+
 		// if the size of your tab is not fixed, you can adjust the size by the following way.
 		label.sizeToFit() // resize the label to the size of content
 		label.frame.size = CGSize(width: label.frame.size.width + 28, height: label.frame.size.height + 36) // add some paddings
-		
+
 		return label
 	}
-	
+
 	func tabScrollView(_ tabScrollView: ACTabScrollView, contentViewForPageAtIndex index: Int) -> UIView {
 		return contentViews[index]
 	}
