@@ -18,7 +18,8 @@ class NewsContentViewController: UIViewController {
 	
 	@IBOutlet weak var tableView: UITableView!
 	
-	var newsArray: [News] = [News]()
+	var newsArray = [News]()
+	var teamInfo: [Team] = []
 	
 	lazy var refresher: UIRefreshControl = {
 		let refreshControl = UIRefreshControl()
@@ -33,7 +34,7 @@ class NewsContentViewController: UIViewController {
 		
 		tableView.delegate = self
 		tableView.dataSource = self
-		
+	
 		if #available(iOS 10.0, *) {
 			tableView.refreshControl = refresher
 		} else {
@@ -41,7 +42,6 @@ class NewsContentViewController: UIViewController {
 		}
 		
 		tableView.backgroundColor = UIColor(red: 40.0/255, green: 49.0/255, blue: 73.0/255, alpha: 1)
-		
 		configureTableView()
 		retrieveNews()
 		tableView.separatorStyle = .singleLine
