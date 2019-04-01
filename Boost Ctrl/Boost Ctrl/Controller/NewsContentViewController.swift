@@ -68,16 +68,26 @@ class NewsContentViewController: UIViewController {
 			
 			let snapshotValue = snapshot.value as! Dictionary<String, String>
 			
-			let headline = snapshotValue["headline"]!
-			let link = snapshotValue["link"]!
+			let headline = snapshotValue["h"]!
+			let detail = snapshotValue["d"]!
+			let categoryString = snapshotValue["c"]!
+			let link = snapshotValue["l"]!
+			let siteName = snapshotValue["s"]!
 			
 			let news = News()
 			news.headline = headline
 			news.link = link
+			news.detail = detail
+			news.category = news.setCategory(category: categoryString)
+			news.siteName = siteName
 			
-			self.newsArray.append(news)
+			self.newsArray.insert(news, at: 0)
+			//self.newsArray.append(news)
 			self.tableView.reloadData()
 		}
+		
+		//self.newsArray.reverse()
+		//self.tableView.reloadData()
 	}
 }
 
@@ -126,6 +136,10 @@ extension NewsContentViewController: CustomNewsCellDelegate {
 class CustomNewsCell: UITableViewCell {
 	
 	@IBOutlet weak var headlineLabel: UILabel!
+	@IBOutlet weak var detailLabel: UILabel!
+	@IBOutlet weak var categoryView: UIView!
+	@IBOutlet weak var categoryLabel: UILabel!
+	@IBOutlet weak var siteLabel: UILabel!
 	
 	var newsItem: News!
 	var delegate: CustomNewsCellDelegate?
@@ -133,6 +147,21 @@ class CustomNewsCell: UITableViewCell {
 	func setNews(news: News) {
 		newsItem = news
 		headlineLabel.text = news.headline
+		
+		if news.detail == "none" {
+			detailLabel.text = nil
+			detailLabel.isHidden = true
+		} else {
+			detailLabel.text = news.detail			
+		}
+		
+		siteLabel.text = news.siteName
+		
+		categoryLabel.text = String(describing: newsItem.category).replacingOccurrences(of: "_", with: " ")
+		
+		categoryView.layer.cornerRadius = 4
+		categoryView.layer.borderWidth = 1
+		categoryView.layer.borderColor = UIColor(hex: "FC214F")?.cgColor
 	}
 	
 	@IBAction func newsButtonPressed(_ sender: UIButton) {

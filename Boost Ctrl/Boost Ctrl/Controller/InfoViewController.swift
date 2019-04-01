@@ -10,6 +10,14 @@ import UIKit
 
 class InfoViewController: UIViewController  {
 	
+	@IBOutlet weak var redditButton: UIButton!
+	@IBOutlet weak var liquipediaButton: UIButton!
+	@IBOutlet weak var octaneButton: UIButton!
+	@IBOutlet weak var rocketeersButton: UIButton!
+	@IBOutlet weak var discordButton: UIButton!
+	@IBOutlet weak var twitterButton: UIButton!
+	
+	
 	// MARK: Open RL Esports subreddit in browser
 	@IBAction func redditButtonPressed(_ sender: UIButton) {
 		if let url = URL(string: "https://reddit.com/r/rocketleagueesports") {
@@ -55,11 +63,12 @@ class InfoViewController: UIViewController  {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
+		
+		redditButton.layer.cornerRadius = redditButton.frame.height / 2 - 10
+		liquipediaButton.layer.cornerRadius = liquipediaButton.frame.height / 2 - 10
+		octaneButton.layer.cornerRadius = octaneButton.frame.height / 2 - 10
+		rocketeersButton.layer.cornerRadius = rocketeersButton.frame.height / 2 - 10
+		discordButton.layer.cornerRadius = discordButton.frame.height / 2 - 10
+		twitterButton.layer.cornerRadius = twitterButton.frame.height / 2 - 10
 	}
-	
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
-	}
-	
 }

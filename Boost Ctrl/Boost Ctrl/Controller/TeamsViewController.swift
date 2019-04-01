@@ -32,9 +32,8 @@ class TeamsViewController: UIViewController, ACTabScrollViewDelegate, ACTabScrol
 		tabScrollView.arrowIndicator = true
 		tabScrollView.tabSectionBackgroundColor = UIColor(red: 40.0/255, green: 49.0/255, blue: 73.0/255, alpha: 1)
 
-		tabScrollView.pagingEnabled = true
+		//tabScrollView.pagingEnabled = true
 		tabScrollView.cachedPageLimit = 3
-		
 		tabScrollView.delegate = self
 		tabScrollView.dataSource = self
 		
@@ -53,6 +52,8 @@ class TeamsViewController: UIViewController, ACTabScrollViewDelegate, ACTabScrol
 				vc.headerTitle = "North America | Rival Series"
 			} else if category == .rlrs_EU {
 				vc.headerTitle = "Europe | Rival Series"
+			} else if category == .rlcs_SAM {
+				vc.headerTitle = "South America | Grand Series"
 			}
 			
 			addChildViewController(vc) // don't forget, it's very important
@@ -74,7 +75,6 @@ class TeamsViewController: UIViewController, ACTabScrollViewDelegate, ACTabScrol
 
 	// MARK: ACTabScrollViewDelegate
 	func tabScrollView(_ tabScrollView: ACTabScrollView, didChangePageTo index: Int) {
-		print(index)
 	}
 	
 	func tabScrollView(_ tabScrollView: ACTabScrollView, didScrollPageTo index: Int) {
