@@ -13,13 +13,6 @@ class TabBarViewController: UITabBarController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
-		self.tabBarController?.selectedIndex = 2
+		self.tabBarController?.selectedIndex = 1
 	}
-	
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
-	}
-	
-	
 }

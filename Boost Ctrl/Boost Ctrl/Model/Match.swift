@@ -8,75 +8,6 @@
 
 import UIKit
 
-struct Matches {
-	// let matchesArray = array from app delegate method
-	static var rlcsArray = [
-		[
-			Match(week: .week_1, region: 0, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .week_1, region: 0, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			 Match(week: .week_2, region: 0, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			 Match(week: .week_3, region: 0, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			 Match(week: .week_4, region: 0, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			 Match(week: .week_5, region: 0, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			 Match(week: .week_6, region: 0, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			 Match(week: .regionals, region: 0, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			 Match(week: .championship, region: 0, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			 Match(week: .promotion, region: 0, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-		 ],
-		[
-			Match(week: .week_1, region: 1, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .week_2, region: 1, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .week_3, region: 1, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .week_4, region: 1, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .week_5, region: 1, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .week_6, region: 1, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .regionals, region: 1, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .championship, region: 1, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .promotion, region: 1, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange)
-		 ],
-		[
-			Match(week: .week_1, region: 2, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .week_2, region: 2, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .week_3, region: 2, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .week_4, region: 2, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .week_5, region: 2, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .week_6, region: 2, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .regionals, region: 2, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .championship, region: 2, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .promotion, region: 2, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange)
-		]
-	]
-	
-	static var rlrsArray = [
-		[
-			Match(week: .week_1, region: 3, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .week_2, region: 3, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .week_3, region: 3, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .week_4, region: 3, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .week_5, region: 3, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .week_6, region: 3, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .regionals, region: 3, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .championship, region: 3, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .promotion, region: 3, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange)
-		],
-		[
-			Match(week: .week_1, region: 4, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .week_2, region: 4, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .week_3, region: 4, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .week_4, region: 4, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .week_5, region: 4, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .week_6, region: 4, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .regionals, region: 4, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .championship, region: 4, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange),
-			Match(week: .promotion, region: 4, teamOneID: "", teamTwoID: "", oneScore: "", twoScore: "", teamOne: "", teamTwo: "", teamOneColor: UIColor.blue, teamTwoColor: UIColor.orange)
-		]
-	]
-	
-	func getRLCS() -> [[Match]] {
-		return Matches.rlcsArray
-	}
-}
-
 enum Week {
 	case week_1
 	case week_2
@@ -89,11 +20,12 @@ enum Week {
 	case championship
 	
 	static func allValues() -> [Week] {
-		return [.week_1, .week_2, .week_3, .week_4, .week_5, .week_6, .regionals, .championship, .promotion]
+		return [.week_1, .week_2, .week_3, .week_4, .week_5, .regionals, .championship, .promotion]
 	}
 }
 
 struct Match {
+	var id: String = ""
 	var week: Week = .week_1
 	var region: Int = 0
 	var teamOneID: String = ""
@@ -124,20 +56,16 @@ struct Match {
 			return .week_5
 			
 		case 6 :
-			return .week_6
-			
-		case 7 :
 			return .regionals
-			
-		case 8 :
+
+		case 7 :
 			return .championship
 			
-		case 9 :
+		case 8 :
 			return .promotion
 			
 		default :
 			return .week_1
 		}
 	}
-	
 }
