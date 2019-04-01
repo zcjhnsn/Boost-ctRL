@@ -8,17 +8,23 @@
 
 import UIKit
 import Firebase
+import RealmSwift
+
+var teamRealm = try! Realm()
+var rlcsRealm = try! Realm()
+var rlrsRealm = try! Realm()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
-	var teamArray = [Team]()
-
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
 		FirebaseApp.configure()
+		Database.database().isPersistenceEnabled = true
+		
+		downloadDataFromFirebase()
 		
 		return true
 	}
@@ -39,6 +45,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func applicationDidBecomeActive(_ application: UIApplication) {
 		// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+		let downloader = Downloader()
+		if downloader.loadTeamsAndStandings() {
+			print("Initial Team Download Complete: ✅")
+		} else {
+			print("Returned False ‼️")
+		}
+		
+		if downloader.loadMatches() {
+			print("Initial Matches Download ✅")
+		} else {
+			print("Initial Matches Download 🔴")
+		}
 	}
 
 	func applicationWillTerminate(_ application: UIApplication) {
@@ -48,26 +66,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 
-extension UIColor {
-	
-	// MARK: - Initialization
-	
-	convenience init?(hex: String) {var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
-		hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")
-		
-		var rgb: UInt32 = 0
-		
-		var r: CGFloat = 0.0
-		var g: CGFloat = 0.0
-		var b: CGFloat = 0.0
-		let a: CGFloat = 1.0
-		
-		guard Scanner(string: hexSanitized).scanHexInt32(&rgb) else { return nil }
-		
-		r = CGFloat((rgb & 0xFF0000) >> 16) / 255.0
-		g = CGFloat((rgb & 0x00FF00) >> 8) / 255.0
-		b = CGFloat(rgb & 0x0000FF) / 255.0
-		
-		self.init(red: r, green: g, blue: b, alpha: a)
-	}
-}
+
+
+
