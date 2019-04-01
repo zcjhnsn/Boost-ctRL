@@ -8,26 +8,26 @@
 
 import UIKit
 import Firebase
+import RealmSwift
 
 class TeamsContentViewController: UIViewController {
 	
 	@IBOutlet weak var tableView: UITableView!
 	
-	var teams = Teams()
 	var category: TeamCategory?
 	var teamArray: [Team] = []
 	var headerTitle: String = ""
+	
+	var teams: Results<RealmTeam>!
+	
+	let downloader = Downloader()
 	
 	// Mark: viewDidLoad()
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		view.backgroundColor = UIColor(red: 40.0/255, green: 49.0/255, blue: 73.0/255, alpha: 1)
 		
-		showLoadingScreen()
-		if loadTeamsAndStandings() == true {
-			tableView.reloadData()
-			dismiss(animated: false, completion: nil)
-		}
+		loadData()
 		
 		tableView.backgroundColor = UIColor(red: 40.0/255, green: 49.0/255, blue: 73.0/255, alpha: 1)
 		tableView.rowHeight = UITableViewAutomaticDimension
@@ -35,54 +35,42 @@ class TeamsContentViewController: UIViewController {
 		tableView.delegate = self
 		tableView.dataSource = self
 		tableView.separatorStyle = .none
+		
+		DispatchQueue.main.async{
+			self.tableView.reloadData()
+		}
 	}
 	
-	
-	func showLoadingScreen() {
-		let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
-		
-		let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-		loadingIndicator.hidesWhenStopped = true
-		loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorView.Style.gray
-		loadingIndicator.startAnimating();
-		
-		alert.view.addSubview(loadingIndicator)
-		present(alert, animated: true, completion: nil)
+	override func viewWillAppear(_ animated: Bool) {
+		downloader.updateTeamsAndStandings()
 	}
 	
-	func loadTeamsAndStandings() -> Bool {
+	func loadData() {
 		self.teamArray.removeAll()
-
-		let standingsDB = Database.database().reference().child("standings")
-
-		standingsDB.observe(.childAdded) {
-			(snapshot) in
-
-			let snapshotValue = snapshot.value as! Dictionary<String, Any>
-
+		teams = teamRealm.objects(RealmTeam.self)
+		
+		for realmTeam in teams {
 			var team = Team()
-
-			team.id = String(snapshotValue["id"]! as! Int)
-			print(team.id)
-			team.region = snapshotValue["region"] as! Int
-			team.name = snapshotValue["name"]! as! String
+			
+			team.id = realmTeam.id
+			team.abbr = realmTeam.abbreviatedName
+			team.region = realmTeam.region
+			team.name = realmTeam.name
 			team.category = team.setCategory(region: team.region)
-			team.standing = snapshotValue["place"]! as! Int
-			team.win = String(snapshotValue["win"]! as! Int)
-			team.loss = String(snapshotValue["loss"]! as! Int)
-			team.winPercentage = snapshotValue["wp"]! as! Int
-			team.backgroundColor = UIColor(hex: snapshotValue["color"]! as! String)!
-			team.player1 = snapshotValue["p1"]! as! String
-			team.player2 = snapshotValue["p2"]! as! String
-			team.player3 = snapshotValue["p3"]! as! String
+			team.standing = realmTeam.standing
+			team.win = realmTeam.win
+			team.loss = realmTeam.loss
+			team.gameDifferential = realmTeam.gameDifferential
+			team.backgroundColor = UIColor(hex: realmTeam.backgroundColor)!
+			team.player1 = realmTeam.player1
+			team.player2 = realmTeam.player2
+			team.player3 = realmTeam.player3
 			if team.category == self.category {
 				self.teamArray.append(team)
 				self.teamArray = self.teamArray.sorted(by: {$0.standing < $1.standing})
 			}
 			self.tableView.reloadData()
 		}
-		
-		return true
 	}
 	
 	// MARK: - Navigation
@@ -122,11 +110,16 @@ extension TeamsContentViewController: UITableViewDelegate, UITableViewDataSource
 		cell.standingLabel.textColor = UIColor.white
 		
 		// Team Logo
-		if team.id == "2" {
-			cell.teamLogo.image = UIImage(named: "logo-2b")
+		let abbr = team.abbr
+		
+		if abbr == "tbd" {
+			cell.teamLogo.image = UIImage(named: "logo-null")
 		} else {
-			cell.teamLogo.image = UIImage(named: "logo-\(team.id)")
+			let urlString = "https://zacjohnson.xyz/boostctrl/logos/\(abbr).png"
+			teamArray[(indexPath as NSIndexPath).row].logo = urlString
+		cell.teamLogo.loadImageFromCacheWithUrlString(urlString: urlString)
 		}
+		
 		cell.teamLogo.layer.cornerRadius = 4
 		
 		// Team Label
@@ -138,23 +131,19 @@ extension TeamsContentViewController: UITableViewDelegate, UITableViewDataSource
 		cell.winLossLabel.textColor = UIColor.white
 
 		// Game-Diff Label
-		
-		
-		if team.winPercentage > 0 {
-			cell.gameDiffLabel.text = "(+\(team.winPercentage))"
+		if team.gameDifferential > 0 {
+			cell.gameDiffLabel.text = "(+\(team.gameDifferential))"
 			cell.gameDiffLabel.textColor = UIColor.green
-		} else if team.winPercentage < 0 {
-			cell.gameDiffLabel.text = "(\(team.winPercentage))"
+		} else if team.gameDifferential < 0 {
+			cell.gameDiffLabel.text = "(\(team.gameDifferential))"
 			cell.gameDiffLabel.textColor = UIColor.red
 		} else {
-			cell.gameDiffLabel.text = "(\(team.winPercentage))"
+			cell.gameDiffLabel.text = "(\(team.gameDifferential))"
 			cell.gameDiffLabel.textColor = UIColor.lightGray
 		}
 		
 		// Cell Background color
-		//cell.teamColorBackground.backgroundColor = team.backgroundColor
 		cell.teamColorBackground.backgroundColor = UIColor(red: 40.0/255, green: 49.0/255, blue: 73.0/255, alpha: 1)
-		//cell.teamColorBackground.backgroundColor = UIColor.black
 		
 		return cell
 	}
@@ -196,7 +185,6 @@ extension TeamsContentViewController: UITableViewDelegate, UITableViewDataSource
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let team = teamArray[indexPath.row]
-		print("Team: \(team.name)")
 	}
 }
 
