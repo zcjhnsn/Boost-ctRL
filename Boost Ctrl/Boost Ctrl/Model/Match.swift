@@ -34,6 +34,8 @@ struct Match {
 	var twoScore: String = ""
 	var teamOne: String = ""
 	var teamTwo: String = ""
+	var date: String = ""
+	var title: String = ""
 	var teamOneColor: UIColor = UIColor.blue
 	var teamTwoColor: UIColor = UIColor.red
 	

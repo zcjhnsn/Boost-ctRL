@@ -42,7 +42,7 @@ class TeamsContentViewController: UIViewController {
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
-		downloader.updateTeamsAndStandings()
+		loadData()
 	}
 	
 	func loadData() {

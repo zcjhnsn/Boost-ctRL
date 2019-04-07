@@ -24,6 +24,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		FirebaseApp.configure()
 		Database.database().isPersistenceEnabled = true
 		
+		
+		Realm.Configuration.defaultConfiguration = Realm.Configuration(
+			schemaVersion: 1,
+			migrationBlock: { migration, oldSchemaVersion in
+				if (oldSchemaVersion < 1) {
+					migration.enumerateObjects(ofType: RealmMatchRLCS.className()) { oldObject, newObject in
+						// combine name fields into a single field
+						newObject!["date"] = ""
+						newObject!["title"] = ""
+					}
+					
+					migration.enumerateObjects(ofType: RealmMatchRLRS.className(), { (oldMatch, newMatch) in
+						newMatch!["date"] = ""
+						newMatch!["title"] = ""
+					})
+				}
+		})
+
+		
+		
+		
 		downloadDataFromFirebase()
 		
 		return true
@@ -46,16 +67,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func applicationDidBecomeActive(_ application: UIApplication) {
 		// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 		let downloader = Downloader()
+		print("Aaaaaaaand we're back 🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾")
 		if downloader.loadTeamsAndStandings() {
-			print("Initial Team Download Complete: ✅")
+			print("Returning Team Download Complete: ✅")
 		} else {
 			print("Returned False ‼️")
 		}
 		
 		if downloader.loadMatches() {
-			print("Initial Matches Download ✅")
+			print("Returning Matches Download ✅")
 		} else {
-			print("Initial Matches Download 🔴")
+			print("Returning Matches Download 🔴")
 		}
 	}
 

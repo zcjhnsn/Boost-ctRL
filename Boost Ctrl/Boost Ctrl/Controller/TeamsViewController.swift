@@ -72,6 +72,12 @@ class TeamsViewController: UIViewController, ACTabScrollViewDelegate, ACTabScrol
 		
 		
 	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		let downloader = Downloader()
+
+		downloader.updateTeamsAndStandings() 
+	}
 
 	// MARK: ACTabScrollViewDelegate
 	func tabScrollView(_ tabScrollView: ACTabScrollView, didChangePageTo index: Int) {
