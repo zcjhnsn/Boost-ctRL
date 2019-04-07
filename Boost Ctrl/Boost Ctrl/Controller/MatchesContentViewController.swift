@@ -57,9 +57,6 @@ class MatchesContentViewController: UIViewController {
 		
 		matchesArray = matchesArrayRLCS
 		
-		setRLCSListener()
-		setRLRSListener()
-		
 		DispatchQueue.main.async{
 			self.tableView.reloadData()
 		}
@@ -70,6 +67,15 @@ class MatchesContentViewController: UIViewController {
 		tableView.delegate = self
 		tableView.dataSource = self
 		tableView.separatorStyle = .none
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		loadRLCSData()
+		loadRLRSData()
+	}
+	
+	override func viewDidAppear(_ animated: Bool) {
+		tableView.reloadData()
 	}
 	
 	func configureRefreshControl () {
@@ -109,8 +115,6 @@ class MatchesContentViewController: UIViewController {
 			var teamOneIndex = 0
 			var teamTwoIndex = 1
 			
-			print("Teams: \(teams)")
-			
 			if teams[0].id != realmMatch.teamOneID {
 				teamOneIndex = 1
 				teamTwoIndex = 0
@@ -132,6 +136,9 @@ class MatchesContentViewController: UIViewController {
 			match.region = realmMatch.region
 			
 			match.week = match.setWeek(weekID: realmMatch.week)
+			
+			match.date = realmMatch.date
+			match.title = realmMatch.title
 
 			if match.week == self.category! {
 				if match.region == 0 {
@@ -185,6 +192,9 @@ class MatchesContentViewController: UIViewController {
 			
 			match.week = match.setWeek(weekID: realmMatch.week)
 
+			match.date = realmMatch.date
+			match.title = realmMatch.title
+			
 			if match.week == self.category! {
 				if match.region == 3 {
 					matchesArrayRLRS[0].append(match)
@@ -196,61 +206,6 @@ class MatchesContentViewController: UIViewController {
 			self.tableView.reloadData()
 		}
 	}
-	
-	func setRLCSListener() {
-		let rlcsDB = Database.database().reference().child("matches").child("rlcs")
-		
-		rlcsDB.observe(.childChanged) { (snapshot) in
-			let snapshotValue = snapshot.value as! Dictionary<String, Any>
-			
-			var match = RealmMatchRLCS()
-			
-			match.id = snapshotValue["id"]! as! String
-			
-			match.teamOneID = String(snapshotValue["1id"]! as! Int)
-			match.teamTwoID = String(snapshotValue["2id"]! as! Int)
-			
-			match.oneScore = String(snapshotValue["1s"]! as! Int)
-			match.twoScore = String(snapshotValue["2s"]! as! Int)
-			
-			match.region = snapshotValue["r"]! as! Int
-			
-			match.week = snapshotValue["w"]! as! Int
-			
-			match.writeToRLCSRealm()
-			
-			self.loadRLCSData()
-			self.tableView.reloadData()
-		}
-	}
-	
-	func setRLRSListener() {
-		let rlrsDB = Database.database().reference().child("matches").child("rlrs")
-		
-		rlrsDB.observe(.childChanged) { (snapshot) in
-			let snapshotValue = snapshot.value as! Dictionary<String, Any>
-			
-			var match = RealmMatchRLRS()
-			
-			match.id = snapshotValue["id"]! as! String
-			
-			match.teamOneID = String(snapshotValue["1id"]! as! Int)
-			match.teamTwoID = String(snapshotValue["2id"]! as! Int)
-			
-			match.oneScore = String(snapshotValue["1s"]! as! Int)
-			match.twoScore = String(snapshotValue["2s"]! as! Int)
-			
-			match.region = snapshotValue["r"]! as! Int
-			
-			match.week = snapshotValue["w"]! as! Int
-			
-			match.writeToRLRSRealm()
-			
-			self.loadRLRSData()
-			self.tableView.reloadData()
-		}
-	}
-
 	
 	func reloadFirebaseData() {
 		loadRLCSData()
@@ -292,7 +247,7 @@ extension MatchesContentViewController: UITableViewDelegate, UITableViewDataSour
 	}
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return 60
+		return 80
 	}
 	
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -345,6 +300,13 @@ extension MatchesContentViewController: UITableViewDelegate, UITableViewDataSour
 		cell.teamOneBackground.backgroundColor = match.teamOneColor
 		cell.teamTwoBackground.backgroundColor = match.teamTwoColor
 		//cell.teamColorBackground.backgroundColor = UIColor.black
+		
+		// Top labels
+		let dateTime = match.date.mountainToLocal().components(separatedBy: "-")
+		
+		cell.dateLabel.text = dateTime[0]
+		cell.titleLabel.text = match.title
+		cell.timeLabel.text = dateTime[1]
 		
 		return cell
 	}
@@ -420,4 +382,7 @@ class MatchesContentTableViewCell: UITableViewCell {
 	@IBOutlet weak var teamTwoLabel: UILabel!
 	@IBOutlet weak var teamTwoLogo: UIImageView!
 	@IBOutlet weak var teamTwoScoreLabel: UILabel!
+	@IBOutlet weak var dateLabel: UILabel!
+	@IBOutlet weak var titleLabel: UILabel!
+	@IBOutlet weak var timeLabel: UILabel!
 }
