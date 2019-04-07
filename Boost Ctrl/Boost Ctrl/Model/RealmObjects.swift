@@ -45,6 +45,8 @@ class RealmMatchRLCS: Object {
 	@objc dynamic var teamTwoID: String = ""
 	@objc dynamic var oneScore: String = ""
 	@objc dynamic var twoScore: String = ""
+	@objc dynamic var date: String = ""
+	@objc dynamic var title: String = ""
 	
 	override static func primaryKey() -> String? {
 		return "id"
@@ -59,6 +61,8 @@ class RealmMatchRLRS: Object {
 	@objc dynamic var teamTwoID: String = ""
 	@objc dynamic var oneScore: String = ""
 	@objc dynamic var twoScore: String = ""
+	@objc dynamic var date: String = ""
+	@objc dynamic var title: String = ""
 	
 	override static func primaryKey() -> String? {
 		return "id"

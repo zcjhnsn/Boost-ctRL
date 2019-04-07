@@ -46,13 +46,16 @@ class MatchesViewController: UIViewController, ACTabScrollViewDelegate, ACTabScr
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
-		// set ACTabScrollView, all the following properties are optional
 		
 		tabViewSetup()
-		//rlrsTabViewSetup()
 		setupMatchesVCs()
-		//setupRLRS()
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		let downloader = Downloader()
+		print("Reloading Matches 💜💜💜💜💜💜💜💜💜💜💜💜💜")
+		downloader.reloadRLCSMatches()
+		downloader.reloadRLRSMatches()
 	}
 	
 	func tabViewSetup() {

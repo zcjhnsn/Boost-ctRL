@@ -27,7 +27,6 @@ class Downloader {
 		
 		standingsDB.observe(.childAdded) {
 			(snapshot) in
-			print(snapshot)
 			let snapshotValue = snapshot.value as! Dictionary<String, Any>
 			
 			var team = RealmTeam()
@@ -59,6 +58,7 @@ class Downloader {
 		let standingsDB = Database.database().reference().child("standings")
 		
 		//standingsDB.removeAllObservers()
+
 		
 		standingsDB.observe(.childChanged) { (snapshot) in
 
@@ -105,7 +105,6 @@ class Downloader {
 		print("Loading RLCS Matches ⏳")
 		
 		rlcsDB.observe(.childAdded) { (snapshot) in
-			print(snapshot)
 			let snapshotValue = snapshot.value as! Dictionary<String, Any>
 			
 			var match = RealmMatchRLCS()
@@ -122,6 +121,9 @@ class Downloader {
 			
 			match.week = snapshotValue["w"]! as! Int
 			
+			match.date = snapshotValue["d"] as! String
+			match.title = snapshotValue["t"] as! String
+			
 			match.writeToRLCSRealm()
 		}
 	}
@@ -130,7 +132,6 @@ class Downloader {
 		let rlrsDB = Database.database().reference().child("matches").child("rlrs")
 		
 		rlrsDB.observe(.childAdded) { (snapshot) in
-			print(snapshot)
 			let snapshotValue = snapshot.value as! Dictionary<String, Any>
 			
 			var match = RealmMatchRLRS()
@@ -146,6 +147,8 @@ class Downloader {
 			match.region = snapshotValue["r"]! as! Int
 			
 			match.week = snapshotValue["w"]! as! Int
+			match.date = snapshotValue["d"] as! String
+			match.title = snapshotValue["t"] as! String
 			
 			match.writeToRLRSRealm()
 		}
@@ -171,6 +174,9 @@ class Downloader {
 			
 			match.week = snapshotValue["w"]! as! Int
 			
+			match.date = snapshotValue["d"] as! String
+			match.title = snapshotValue["t"] as! String
+			
 			match.writeToRLCSRealm()
 		}
 	}
@@ -194,6 +200,9 @@ class Downloader {
 			match.region = snapshotValue["r"]! as! Int
 			
 			match.week = snapshotValue["w"]! as! Int
+			
+			match.date = snapshotValue["d"] as! String
+			match.title = snapshotValue["t"] as! String
 			
 			match.writeToRLRSRealm()
 		}

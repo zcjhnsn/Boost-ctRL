@@ -66,6 +66,20 @@ extension UIImageView {
 	}
 }
 
+extension String {
+	func mountainToLocal() -> String {
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm"
+		dateFormatter.timeZone = TimeZone(identifier: "America/Denver")
+		
+		let dt = dateFormatter.date(from: self)
+		dateFormatter.timeZone = TimeZone.current
+		dateFormatter.dateFormat = "d MMM yyyy-HH:mm zzz"
+		
+		return dateFormatter.string(from: dt ?? Date())
+	}
+}
+
 extension AppDelegate {
 	func downloadDataFromFirebase() {
 		let downloader = Downloader()
