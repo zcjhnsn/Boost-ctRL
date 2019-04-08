@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0719339C22374DCE002388C9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0719339B22374DCE002388C9 /* Extensions.swift */; };
 		0719339E22374F94002388C9 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0719339D22374F94002388C9 /* Downloader.swift */; };
-		078D006E20F888130069476E /* StandingsContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078D006D20F888130069476E /* StandingsContentViewController.swift */; };
 		078D007020FE71A70069476E /* NewsContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078D006F20FE71A70069476E /* NewsContentViewController.swift */; };
 		078D007420FE76B50069476E /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078D007320FE76B50069476E /* News.swift */; };
 		078D007620FED6530069476E /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078D007520FED6530069476E /* Match.swift */; };
@@ -23,7 +22,6 @@
 		07E3C8D020E55A1F00F2A16A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07E3C8CE20E55A1F00F2A16A /* LaunchScreen.storyboard */; };
 		07E3C8DA20EDABE000F2A16A /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C8D920EDABE000F2A16A /* InfoViewController.swift */; };
 		07E3C8DC20EDB2F700F2A16A /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C8DB20EDB2F700F2A16A /* TabBarViewController.swift */; };
-		07E3C8DE20EDF80200F2A16A /* StandingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C8DD20EDF80200F2A16A /* StandingsViewController.swift */; };
 		07E3C8E320EE82BF00F2A16A /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C8E220EE82BF00F2A16A /* Team.swift */; };
 		07E3C90B20F40C7500F2A16A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07E3C90A20F40C7500F2A16A /* GoogleService-Info.plist */; };
 		07E3C90D20F66CE500F2A16A /* TeamsContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C90C20F66CE500F2A16A /* TeamsContentViewController.swift */; };
@@ -34,7 +32,6 @@
 /* Begin PBXFileReference section */
 		0719339B22374DCE002388C9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0719339D22374F94002388C9 /* Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
-		078D006D20F888130069476E /* StandingsContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingsContentViewController.swift; sourceTree = "<group>"; };
 		078D006F20FE71A70069476E /* NewsContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsContentViewController.swift; sourceTree = "<group>"; };
 		078D007320FE76B50069476E /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		078D007520FED6530069476E /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
@@ -50,7 +47,6 @@
 		07E3C8D120E55A1F00F2A16A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07E3C8D920EDABE000F2A16A /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		07E3C8DB20EDB2F700F2A16A /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
-		07E3C8DD20EDF80200F2A16A /* StandingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingsViewController.swift; sourceTree = "<group>"; };
 		07E3C8E220EE82BF00F2A16A /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		07E3C90A20F40C7500F2A16A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		07E3C90C20F66CE500F2A16A /* TeamsContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsContentViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +77,49 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		078151CB225AFFEF002A1363 /* Matches */ = {
+			isa = PBXGroup;
+			children = (
+				07E3C8C720E55A1C00F2A16A /* MatchesViewController.swift */,
+				07C5897321012F7800B0EE62 /* MatchesContentViewController.swift */,
+			);
+			path = Matches;
+			sourceTree = "<group>";
+		};
+		078151CC225B0003002A1363 /* Teams */ = {
+			isa = PBXGroup;
+			children = (
+				07D253062200E57F0070302C /* TeamDetailViewController.swift */,
+				07E3C8C520E55A1C00F2A16A /* TeamsViewController.swift */,
+				07E3C90C20F66CE500F2A16A /* TeamsContentViewController.swift */,
+			);
+			path = Teams;
+			sourceTree = "<group>";
+		};
+		078151CD225B0043002A1363 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				07E3C8C320E55A1C00F2A16A /* AppDelegate.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		078151CE225B03C9002A1363 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				07E3C8D920EDABE000F2A16A /* InfoViewController.swift */,
+			);
+			path = Info;
+			sourceTree = "<group>";
+		};
+		078151CF225B03D2002A1363 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				078D006F20FE71A70069476E /* NewsContentViewController.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
 		07E3C8B720E55A1C00F2A16A = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +144,7 @@
 				0719339A223725FC002388C9 /* Helpers */,
 				07E3C8E120EE829600F2A16A /* Model */,
 				07E3C8E020EE828800F2A16A /* Controller */,
+				078151CD225B0043002A1363 /* Supporting Files */,
 				07E3C8DF20EE827A00F2A16A /* View */,
 				07E3C8CC20E55A1F00F2A16A /* Assets.xcassets */,
 				07E3C8D120E55A1F00F2A16A /* Info.plist */,
@@ -125,17 +165,11 @@
 		07E3C8E020EE828800F2A16A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				07E3C8C320E55A1C00F2A16A /* AppDelegate.swift */,
-				07E3C8D920EDABE000F2A16A /* InfoViewController.swift */,
-				07E3C8C720E55A1C00F2A16A /* MatchesViewController.swift */,
-				07C5897321012F7800B0EE62 /* MatchesContentViewController.swift */,
-				078D006F20FE71A70069476E /* NewsContentViewController.swift */,
-				07E3C8DD20EDF80200F2A16A /* StandingsViewController.swift */,
-				078D006D20F888130069476E /* StandingsContentViewController.swift */,
-				07D253062200E57F0070302C /* TeamDetailViewController.swift */,
-				07E3C8C520E55A1C00F2A16A /* TeamsViewController.swift */,
-				07E3C90C20F66CE500F2A16A /* TeamsContentViewController.swift */,
 				07E3C8DB20EDB2F700F2A16A /* TabBarViewController.swift */,
+				078151CE225B03C9002A1363 /* Info */,
+				078151CB225AFFEF002A1363 /* Matches */,
+				078151CF225B03D2002A1363 /* News */,
+				078151CC225B0003002A1363 /* Teams */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -295,7 +329,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				078D006E20F888130069476E /* StandingsContentViewController.swift in Sources */,
 				07E3C8C820E55A1C00F2A16A /* MatchesViewController.swift in Sources */,
 				07E3C8C420E55A1C00F2A16A /* AppDelegate.swift in Sources */,
 				07E3C8C620E55A1C00F2A16A /* TeamsViewController.swift in Sources */,
@@ -305,7 +338,6 @@
 				07F48419222DD044003A7CCF /* RealmObjects.swift in Sources */,
 				07E3C90D20F66CE500F2A16A /* TeamsContentViewController.swift in Sources */,
 				07E3C8E320EE82BF00F2A16A /* Team.swift in Sources */,
-				07E3C8DE20EDF80200F2A16A /* StandingsViewController.swift in Sources */,
 				07C5897421012F7800B0EE62 /* MatchesContentViewController.swift in Sources */,
 				07E3C8DC20EDB2F700F2A16A /* TabBarViewController.swift in Sources */,
 				0719339E22374F94002388C9 /* Downloader.swift in Sources */,

@@ -8,6 +8,9 @@
 
 import Foundation
 
+// MARK: - NewsCategory Enum
+
+// Used for red tags on the news feed
 enum NewsCategory {
 	case News
 	case Rumor
@@ -21,6 +24,10 @@ enum NewsCategory {
 		return [.News, .Rumor, .Article, .Roster_News, .Tournament, .Match_Result, .Psyonix_Official]
 	}
 }
+
+//////////////////////////////////////////////
+
+// MARK: - News item
 
 class News {
 	var headline: String = ""

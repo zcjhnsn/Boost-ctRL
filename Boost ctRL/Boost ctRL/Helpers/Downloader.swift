@@ -10,14 +10,13 @@ import Foundation
 import Firebase
 import RealmSwift
 
+// MARK: - Networking Class
+
 class Downloader {
 	
-	var teamArray = [Team]()
-	var rlcsArray = [[Match]]()
-	var rlrsArray = [[Match]]()
+	// MARK: - Initial Firebase call for Teams
 	
 	func loadTeamsAndStandings() -> Bool {
-		self.teamArray.removeAll()
 		
 		var moveOn = true
 		
@@ -48,17 +47,15 @@ class Downloader {
 			moveOn = false
 		}
 		
-		//standingsDB.removeAllObservers()
-		//updateTeamsAndStandings()
-		
 		return moveOn
 	}
 	
+	//////////////////////////////////////////////
+	
+	// MARK: - Child Changed Listener for Teams
+		
 	func updateTeamsAndStandings() {
 		let standingsDB = Database.database().reference().child("standings")
-		
-		//standingsDB.removeAllObservers()
-
 		
 		standingsDB.observe(.childChanged) { (snapshot) in
 
@@ -86,7 +83,9 @@ class Downloader {
 		print("Update teams and standings: Complete ✅")
 	}
 
-	// NOTE: When adding matches, add an observer for childChanged
+	//////////////////////////////////////////////
+	
+	// MARK: - Load matches
 	func loadMatches() -> Bool {
 		var moveOn = true
 		
@@ -98,6 +97,10 @@ class Downloader {
 		
 		return moveOn
 	}
+	
+	//////////////////////////////////////////////
+	
+	// MARK: - Initial Firebase calls for Matches
 	
 	func loadRLCS() {
 		let rlcsDB = Database.database().reference().child("matches").child("rlcs")
@@ -145,14 +148,18 @@ class Downloader {
 			match.twoScore = String(snapshotValue["2s"]! as! Int)
 			
 			match.region = snapshotValue["r"]! as! Int
-			
 			match.week = snapshotValue["w"]! as! Int
+			
 			match.date = snapshotValue["d"] as! String
 			match.title = snapshotValue["t"] as! String
 			
 			match.writeToRLRSRealm()
 		}
 	}
+	
+	//////////////////////////////////////////////
+	
+	// MARK: - Matches Child Changed Listeners
 	
 	func reloadRLCSMatches() {
 		let rlcsDB = Database.database().reference().child("matches").child("rlcs")
@@ -171,7 +178,6 @@ class Downloader {
 			match.twoScore = String(snapshotValue["2s"]! as! Int)
 			
 			match.region = snapshotValue["r"]! as! Int
-			
 			match.week = snapshotValue["w"]! as! Int
 			
 			match.date = snapshotValue["d"] as! String
@@ -198,7 +204,6 @@ class Downloader {
 			match.twoScore = String(snapshotValue["2s"]! as! Int)
 			
 			match.region = snapshotValue["r"]! as! Int
-			
 			match.week = snapshotValue["w"]! as! Int
 			
 			match.date = snapshotValue["d"] as! String
@@ -209,114 +214,3 @@ class Downloader {
 	}
 	
 }
-
-
-//func loadMatches() -> Bool {
-//	var moveOn = true
-//
-//	loadRLCS()
-//
-//	loadRLRS()
-//
-//	return moveOn
-//}
-//
-//func loadRLCS() {
-//	let rlcsDB = Database.database().reference().child("matches").child("rlcs")
-//
-//	print("Loading RLCS Matches ⏳")
-//
-//	rlcsDB.observe(.childAdded) { (snapshot) in
-//		print(snapshot)
-//		let snapshotValue = snapshot.value as! Dictionary<String, Any>
-//
-//		var match = RealmMatchRLCS()
-//
-//		match.id = snapshotValue["id"]! as! String
-//
-//		match.teamOneID = String(snapshotValue["1id"]! as! Int)
-//		match.teamTwoID = String(snapshotValue["2id"]! as! Int)
-//
-//		match.oneScore = String(snapshotValue["1s"]! as! Int)
-//		match.twoScore = String(snapshotValue["2s"]! as! Int)
-//
-//		match.region = snapshotValue["r"]! as! Int
-//
-//		match.week = snapshotValue["w"]! as! Int
-//
-//		match.writeToRLCSRealm()
-//	}
-//}
-//
-//func loadRLRS() {
-//	let rlrsDB = Database.database().reference().child("matches").child("rlrs")
-//
-//	rlrsDB.observe(.childAdded) { (snapshot) in
-//		print(snapshot)
-//		let snapshotValue = snapshot.value as! Dictionary<String, Any>
-//
-//		var match = RealmMatchRLRS()
-//
-//		match.id = snapshotValue["id"]! as! String
-//
-//		match.teamOneID = String(snapshotValue["1id"]! as! Int)
-//		match.teamTwoID = String(snapshotValue["2id"]! as! Int)
-//
-//		match.oneScore = String(snapshotValue["1s"]! as! Int)
-//		match.twoScore = String(snapshotValue["2s"]! as! Int)
-//
-//		match.region = snapshotValue["r"]! as! Int
-//
-//		match.week = snapshotValue["w"]! as! Int
-//
-//		match.writeToRLRSRealm()
-//	}
-//}
-//
-//func reloadRLCSMatches() {
-//	let rlcsDB = Database.database().reference().child("matches").child("rlcs")
-//
-//	rlcsDB.observe(.childChanged) { (snapshot) in
-//		let snapshotValue = snapshot.value as! Dictionary<String, Any>
-//
-//		var match = RealmMatchRLCS()
-//
-//		match.id = snapshotValue["id"]! as! String
-//
-//		match.teamOneID = String(snapshotValue["1id"]! as! Int)
-//		match.teamTwoID = String(snapshotValue["2id"]! as! Int)
-//
-//		match.oneScore = String(snapshotValue["1s"]! as! Int)
-//		match.twoScore = String(snapshotValue["2s"]! as! Int)
-//
-//		match.region = snapshotValue["r"]! as! Int
-//
-//		match.week = snapshotValue["w"]! as! Int
-//
-//		match.writeToRLCSRealm()
-//	}
-//}
-//
-//func reloadRLRSMatches() {
-//	let rlrsDB = Database.database().reference().child("matches").child("rlrs")
-//
-//	rlrsDB.observe(.childChanged) { (snapshot) in
-//		let snapshotValue = snapshot.value as! Dictionary<String, Any>
-//
-//		var match = RealmMatchRLRS()
-//
-//		match.id = snapshotValue["id"]! as! String
-//
-//		match.teamOneID = String(snapshotValue["1id"]! as! Int)
-//		match.teamTwoID = String(snapshotValue["2id"]! as! Int)
-//
-//		match.oneScore = String(snapshotValue["1s"]! as! Int)
-//		match.twoScore = String(snapshotValue["2s"]! as! Int)
-//
-//		match.region = snapshotValue["r"]! as! Int
-//
-//		match.week = snapshotValue["w"]! as! Int
-//
-//		match.writeToRLRSRealm()
-//	}
-//}

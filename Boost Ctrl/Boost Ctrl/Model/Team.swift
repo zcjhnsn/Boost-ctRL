@@ -9,6 +9,9 @@
 import UIKit
 import Firebase
 
+// MARK: - TeamCategory Enum
+
+// Used for ACTabScrollView tabs
 enum TeamCategory {
 	case rlcs_NA
 	case rlcs_EU
@@ -21,6 +24,10 @@ enum TeamCategory {
 		return [.rlcs_NA, .rlcs_EU, .rlcs_OCE, .rlcs_SAM, .rlrs_NA, .rlrs_EU]
 	}
 }
+
+//////////////////////////////////////////////
+
+// MARK: - Team Struct
 
 struct Team {
 	var abbr: String = ""
@@ -35,11 +42,12 @@ struct Team {
 	var win: String = ""
 	var loss: String = ""
 	var gameDifferential: Int = 0
-	var backgroundColor: UIColor = UIColor.black
 	var logo: String? = nil
 	
+	// For Match Cell
+	var backgroundColor: UIColor = UIColor.black
+	
 	func setCategory(region: Int) -> TeamCategory {
-		
 		switch(region) {
 		case 0:
 			return .rlcs_NA

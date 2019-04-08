@@ -8,9 +8,10 @@
 
 import UIKit
 
+// MARK: - UIColor Extension
+
+// Create UIColor from hexcode
 extension UIColor {
-	
-	// MARK: - Initialization
 	convenience init?(hex: String) {var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
 		hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")
 		
@@ -30,6 +31,12 @@ extension UIColor {
 		self.init(red: r, green: g, blue: b, alpha: a)
 	}
 }
+
+//////////////////////////////////////////////
+
+// MARK: - UIImageView Extension
+
+// For image caching the logos
 
 let imageCache = NSCache<AnyObject, AnyObject>()
 
@@ -66,6 +73,11 @@ extension UIImageView {
 	}
 }
 
+//////////////////////////////////////////////
+
+// MARK: - String Extension
+
+// Convert match date/time from mountain to date/time for user
 extension String {
 	func mountainToLocal() -> String {
 		let dateFormatter = DateFormatter()
@@ -80,6 +92,11 @@ extension String {
 	}
 }
 
+//////////////////////////////////////////////
+
+// MARK: - AppDelegate Extension
+
+// download data from firebase on load
 extension AppDelegate {
 	func downloadDataFromFirebase() {
 		let downloader = Downloader()

@@ -9,6 +9,7 @@
 import Foundation
 import RealmSwift
 
+// MARK: - Realm Team object
 class RealmTeam: Object {
 	@objc dynamic var id: String = ""
 	@objc dynamic var region: Int = 0
@@ -28,14 +29,9 @@ class RealmTeam: Object {
 	}
 }
 
-extension RealmTeam {
-	func writeToRealm() {
-		try! teamRealm.write {
-			teamRealm.add(self, update: true)
-		}
-	}
-}
+//////////////////////////////////////////////
 
+// MARK: - Realm RLCS Match Object
 
 class RealmMatchRLCS: Object {
 	@objc dynamic var id: String = ""
@@ -53,6 +49,10 @@ class RealmMatchRLCS: Object {
 	}
 }
 
+//////////////////////////////////////////////
+
+// MARK: - Realm RLRS Match Object
+
 class RealmMatchRLRS: Object {
 	@objc dynamic var id: String = ""
 	@objc dynamic var week: Int = 1
@@ -66,6 +66,19 @@ class RealmMatchRLRS: Object {
 	
 	override static func primaryKey() -> String? {
 		return "id"
+	}
+}
+
+//////////////////////////////////////////////
+
+// MARK: - Writing Objects to Realms
+
+
+extension RealmTeam {
+	func writeToRealm() {
+		try! teamRealm.write {
+			teamRealm.add(self, update: true)
+		}
 	}
 }
 
