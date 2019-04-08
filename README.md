@@ -1,1 +1,1 @@
-# Mission-ctRL
+# Boost-ctRL: RL Esports Companion App
