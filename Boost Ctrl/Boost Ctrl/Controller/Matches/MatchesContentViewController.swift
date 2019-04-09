@@ -108,21 +108,50 @@ class MatchesContentViewController: UIViewController {
 	}
 	
 	@objc func handleRefreshControl() {
-		self.reloadFirebaseData()
-		// Dismiss the refresh control.
-		DispatchQueue.main.async {
-			self.tableView.refreshControl?.endRefreshing()
-			self.tableView.reloadData()
-		}
+        reloadFirebaseData {
+            // Dismiss the refresh control.
+            DispatchQueue.main.async {
+                self.tableView.refreshControl?.endRefreshing()
+                self.tableView.reloadData()
+            }
+        }
 	}
 	
 	// This should refresh the tableViews with the new data but it doesn't work quite right
-	func reloadFirebaseData() {
-		loadRLCSData()
-		loadRLRSData()
-		tableView.reloadData()
-		print("Refresh RLCS Matches Download: Complete ✅" )
+	func reloadFirebaseData(completion: @escaping () -> ()) {
+        fetchDataFromFirebase { [weak self] in
+            self?.loadRLCSData()
+            self?.loadRLRSData()
+            print("Refresh RLCS Matches Download: Complete ✅" )
+            completion()
+        }
 	}
+
+    // Fetches the RLCS and RLRS matches from Firebase and completes when it's done
+    func fetchDataFromFirebase(completion: @escaping () -> ()) {
+        // TODO: I'm not sure why this is crashing on threadGroup.leave() but i'll look into it. For now the code below should work
+//        let threadGroup = DispatchGroup()
+//
+//        threadGroup.enter()
+//        Downloader().loadRLCS {
+//            threadGroup.leave()
+//        }
+//
+//        threadGroup.enter()
+//        Downloader().loadRLRS {
+//            threadGroup.leave()
+//        }
+//
+//        threadGroup.notify(queue: .main) {
+//            completion()
+//        }
+
+        Downloader().loadRLCS {
+            Downloader().loadRLRS {
+                completion()
+            }
+        }
+    }
 	
 	//////////////////////////////////////////////
 	
@@ -188,6 +217,7 @@ class MatchesContentViewController: UIViewController {
 				} else {	// SAM RLCS is 5
 					matchesArrayRLCS[3].append(match)
 				}
+                matchesArray = matchesArrayRLCS
 			}
 			
 			self.tableView.reloadData()

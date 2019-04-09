@@ -102,7 +102,7 @@ class Downloader {
 	
 	// MARK: - Initial Firebase calls for Matches
 	
-	func loadRLCS() {
+    func loadRLCS(completion: (() -> ())? = nil) {
 		let rlcsDB = Database.database().reference().child("matches").child("rlcs")
 		
 		print("Loading RLCS Matches ⏳")
@@ -128,10 +128,11 @@ class Downloader {
 			match.title = snapshotValue["t"] as! String
 			
 			match.writeToRLCSRealm()
+            completion?()
 		}
 	}
 	
-	func loadRLRS() {
+	func loadRLRS(completion: (() -> ())? = nil) {
 		let rlrsDB = Database.database().reference().child("matches").child("rlrs")
 		
 		rlrsDB.observe(.childAdded) { (snapshot) in
@@ -154,6 +155,7 @@ class Downloader {
 			match.title = snapshotValue["t"] as! String
 			
 			match.writeToRLRSRealm()
+            completion?()
 		}
 	}
 	
