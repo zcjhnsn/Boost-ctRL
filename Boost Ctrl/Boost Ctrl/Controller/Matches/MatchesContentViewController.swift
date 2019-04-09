@@ -108,11 +108,11 @@ class MatchesContentViewController: UIViewController {
 	}
 	
 	@objc func handleRefreshControl() {
-        reloadFirebaseData {
+        reloadFirebaseData { [weak self] in
             // Dismiss the refresh control.
             DispatchQueue.main.async {
-                self.tableView.refreshControl?.endRefreshing()
-                self.tableView.reloadData()
+                self?.tableView.refreshControl?.endRefreshing()
+                self?.tableView.reloadData()
             }
         }
 	}
