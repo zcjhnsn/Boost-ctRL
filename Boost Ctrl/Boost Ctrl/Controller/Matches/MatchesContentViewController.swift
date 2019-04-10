@@ -120,10 +120,22 @@ class MatchesContentViewController: UIViewController {
 	// This should refresh the tableViews with the new data but it doesn't work quite right
 	func reloadFirebaseData(completion: @escaping () -> ()) {
         fetchDataFromFirebase { [weak self] in
-            self?.loadRLCSData()
-            self?.loadRLRSData()
-            print("Refresh RLCS Matches Download: Complete ✅" )
-            completion()
+			if self?.matchesArray.count == 4 {
+				self?.loadRLCSData()
+				if let matches = self?.matchesArrayRLCS {
+					self?.matchesArray = matches
+				}
+				print("Refreshing RLCS Matches: ⏳" )
+			} else {
+				self?.loadRLRSData()
+				if let matches = self?.matchesArrayRLRS {
+					self?.matchesArray = matches
+				}
+				print("Refreshing RLRS Matches: ⏳" )
+			}
+			self?.tableView.reloadData()
+			print("Refreshing Matches: Complete ✅")
+			completion()
         }
 	}
 
@@ -217,7 +229,6 @@ class MatchesContentViewController: UIViewController {
 				} else {	// SAM RLCS is 5
 					matchesArrayRLCS[3].append(match)
 				}
-                matchesArray = matchesArrayRLCS
 			}
 			
 			self.tableView.reloadData()
@@ -273,6 +284,8 @@ class MatchesContentViewController: UIViewController {
 					matchesArrayRLRS[1].append(match)
 				}
 			}
+			
+			//matchesArray = matchesArrayRLRS
 			
 			self.tableView.reloadData()
 		}
