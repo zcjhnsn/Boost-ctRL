@@ -10,6 +10,11 @@ import Foundation
 import Firebase
 import RealmSwift
 
+enum SeriesType {
+    case championship
+    case rivals
+}
+
 class MatchesContentViewController: UIViewController {
 	
 	// MARK: - Outlets
@@ -24,6 +29,8 @@ class MatchesContentViewController: UIViewController {
 	var headerTitle: String = ""
 	
 	let downloader = Downloader()
+
+    var seriesType: SeriesType = .championship
 
 	// Week for each ACTabScrollView tab
 	var category: Week?
@@ -108,22 +115,12 @@ class MatchesContentViewController: UIViewController {
 	}
 	
 	@objc func handleRefreshControl() {
-        reloadFirebaseData { [weak self] in
+        fetchDataFromFirebase { [weak self] in
             // Dismiss the refresh control.
             DispatchQueue.main.async {
                 self?.tableView.refreshControl?.endRefreshing()
                 self?.tableView.reloadData()
             }
-        }
-	}
-	
-	// This should refresh the tableViews with the new data but it doesn't work quite right
-	func reloadFirebaseData(completion: @escaping () -> ()) {
-        fetchDataFromFirebase { [weak self] in
-            self?.loadRLCSData()
-            self?.loadRLRSData()
-            print("Refresh RLCS Matches Download: Complete ✅" )
-            completion()
         }
 	}
 
@@ -148,6 +145,13 @@ class MatchesContentViewController: UIViewController {
 
         Downloader().loadRLCS {
             Downloader().loadRLRS {
+                switch self.seriesType {
+                case .championship:
+                    self.loadRLCSData()
+                case .rivals:
+                    self.loadRLRSData()
+                }
+                print("Refresh RLCS Matches Download: Complete ✅" )
                 completion()
             }
         }
@@ -217,8 +221,10 @@ class MatchesContentViewController: UIViewController {
 				} else {	// SAM RLCS is 5
 					matchesArrayRLCS[3].append(match)
 				}
-                matchesArray = matchesArrayRLCS
 			}
+            if seriesType == .championship {
+                matchesArray = matchesArrayRLCS
+            }
 			
 			self.tableView.reloadData()
 		}
@@ -273,6 +279,9 @@ class MatchesContentViewController: UIViewController {
 					matchesArrayRLRS[1].append(match)
 				}
 			}
+            if seriesType == .rivals {
+                matchesArray = matchesArrayRLRS
+            }
 			
 			self.tableView.reloadData()
 		}
