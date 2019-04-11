@@ -221,20 +221,32 @@ class Downloader {
 
             let match = RealmMatchRLCS()
 
-            match.id = snapshotValue["id"]! as! String
+            guard let id = snapshotValue["id"] as? String,
+                let team1Id = snapshotValue["1id"] as? Int,
+                let team2id = snapshotValue["2id"] as? Int,
+                let team1Score = snapshotValue["1s"] as? Int,
+                let team2Score = snapshotValue["2s"] as? Int,
+                let region = snapshotValue["r"] as? Int,
+                let week = snapshotValue["w"] as? Int,
+                let date = snapshotValue["d"] as? String,
+                let title = snapshotValue["t"] as? String else {
+                    completion()
+                    return
+            }
 
-            match.teamOneID = String(snapshotValue["1id"]! as! Int)
-            match.teamTwoID = String(snapshotValue["2id"]! as! Int)
+            match.id = id
 
-            match.oneScore = String(snapshotValue["1s"]! as! Int)
-            match.twoScore = String(snapshotValue["2s"]! as! Int)
+            match.teamOneID = String(team1Id)
+            match.teamTwoID = String(team2id)
 
-            match.region = snapshotValue["r"]! as! Int
+            match.oneScore = String(team1Score)
+            match.twoScore = String(team2Score)
 
-            match.week = snapshotValue["w"]! as! Int
+            match.region = region
+            match.week = week
 
-            match.date = snapshotValue["d"] as! String
-            match.title = snapshotValue["t"] as! String
+            match.date = date
+            match.title = title
 
             match.writeToRLCSRealm()
             completion()
@@ -249,19 +261,32 @@ class Downloader {
 
             let match = RealmMatchRLRS()
 
-            match.id = snapshotValue["id"]! as! String
+            guard let id = snapshotValue["id"] as? String,
+                let team1Id = snapshotValue["1id"] as? Int,
+                let team2id = snapshotValue["2id"] as? Int,
+                let team1Score = snapshotValue["1s"] as? Int,
+                let team2Score = snapshotValue["2s"] as? Int,
+                let region = snapshotValue["r"] as? Int,
+                let week = snapshotValue["w"] as? Int,
+                let date = snapshotValue["d"] as? String,
+                let title = snapshotValue["t"] as? String else {
+                    completion()
+                    return
+            }
 
-            match.teamOneID = String(snapshotValue["1id"]! as! Int)
-            match.teamTwoID = String(snapshotValue["2id"]! as! Int)
+            match.id = id
 
-            match.oneScore = String(snapshotValue["1s"]! as! Int)
-            match.twoScore = String(snapshotValue["2s"]! as! Int)
+            match.teamOneID = String(team1Id)
+            match.teamTwoID = String(team2id)
 
-            match.region = snapshotValue["r"]! as! Int
-            match.week = snapshotValue["w"]! as! Int
+            match.oneScore = String(team1Score)
+            match.twoScore = String(team2Score)
 
-            match.date = snapshotValue["d"] as! String
-            match.title = snapshotValue["t"] as! String
+            match.region = region
+            match.week = week
+
+            match.date = date
+            match.title = title
 
             match.writeToRLRSRealm()
             completion()
