@@ -102,11 +102,11 @@ class Downloader {
 	
 	// MARK: - Initial Firebase calls for Matches
 	
-    func loadRLCS(completion: (() -> ())? = nil) {
+    func loadRLCS() {
 		let rlcsDB = Database.database().reference().child("matches").child("rlcs")
 		
 		print("Loading RLCS Matches ⏳")
-		
+
 		rlcsDB.observe(.childAdded) { (snapshot) in
 			let snapshotValue = snapshot.value as! Dictionary<String, Any>
 			
@@ -128,11 +128,10 @@ class Downloader {
 			match.title = snapshotValue["t"] as! String
 			
 			match.writeToRLCSRealm()
-            completion?()
 		}
 	}
 	
-	func loadRLRS(completion: (() -> ())? = nil) {
+	func loadRLRS() {
 		let rlrsDB = Database.database().reference().child("matches").child("rlrs")
 		
 		rlrsDB.observe(.childAdded) { (snapshot) in
@@ -155,7 +154,6 @@ class Downloader {
 			match.title = snapshotValue["t"] as! String
 			
 			match.writeToRLRSRealm()
-            completion?()
 		}
 	}
 	
@@ -214,5 +212,59 @@ class Downloader {
 			match.writeToRLRSRealm()
 		}
 	}
-	
+
+    static func fetchRLCSOnce(completion: @escaping () -> Void) {
+        let rlcsDB = Database.database().reference().child("matches").child("rlcs")
+
+        rlcsDB.observeSingleEvent(of: .childAdded) { (snapshot) in
+            let snapshotValue = snapshot.value as! Dictionary<String, Any>
+
+            let match = RealmMatchRLCS()
+
+            match.id = snapshotValue["id"]! as! String
+
+            match.teamOneID = String(snapshotValue["1id"]! as! Int)
+            match.teamTwoID = String(snapshotValue["2id"]! as! Int)
+
+            match.oneScore = String(snapshotValue["1s"]! as! Int)
+            match.twoScore = String(snapshotValue["2s"]! as! Int)
+
+            match.region = snapshotValue["r"]! as! Int
+
+            match.week = snapshotValue["w"]! as! Int
+
+            match.date = snapshotValue["d"] as! String
+            match.title = snapshotValue["t"] as! String
+
+            match.writeToRLCSRealm()
+            completion()
+        }
+    }
+
+    static func fetchRLRSOnce(completion: @escaping () -> Void) {
+        let rlcsDB = Database.database().reference().child("matches").child("rlrs")
+
+        rlcsDB.observeSingleEvent(of: .childAdded) { (snapshot) in
+            let snapshotValue = snapshot.value as! Dictionary<String, Any>
+
+            let match = RealmMatchRLRS()
+
+            match.id = snapshotValue["id"]! as! String
+
+            match.teamOneID = String(snapshotValue["1id"]! as! Int)
+            match.teamTwoID = String(snapshotValue["2id"]! as! Int)
+
+            match.oneScore = String(snapshotValue["1s"]! as! Int)
+            match.twoScore = String(snapshotValue["2s"]! as! Int)
+
+            match.region = snapshotValue["r"]! as! Int
+            match.week = snapshotValue["w"]! as! Int
+
+            match.date = snapshotValue["d"] as! String
+            match.title = snapshotValue["t"] as! String
+
+            match.writeToRLRSRealm()
+            completion()
+        }
+    }
 }

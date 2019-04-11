@@ -127,34 +127,41 @@ class MatchesContentViewController: UIViewController {
     // Fetches the RLCS and RLRS matches from Firebase and completes when it's done
     func fetchDataFromFirebase(completion: @escaping () -> ()) {
         // TODO: I'm not sure why this is crashing on threadGroup.leave() but i'll look into it. For now the code below should work
-//        let threadGroup = DispatchGroup()
-//
-//        threadGroup.enter()
-//        Downloader().loadRLCS {
-//            threadGroup.leave()
-//        }
-//
-//        threadGroup.enter()
-//        Downloader().loadRLRS {
-//            threadGroup.leave()
-//        }
-//
-//        threadGroup.notify(queue: .main) {
-//            completion()
-//        }
+        let threadGroup = DispatchGroup()
 
-        Downloader().loadRLCS {
-            Downloader().loadRLRS {
-                switch self.seriesType {
-                case .championship:
-                    self.loadRLCSData()
-                case .rivals:
-                    self.loadRLRSData()
-                }
-                print("Refresh RLCS Matches Download: Complete ✅" )
-                completion()
-            }
+        threadGroup.enter()
+        Downloader.fetchRLCSOnce {
+            threadGroup.leave()
         }
+
+        threadGroup.enter()
+        Downloader.fetchRLRSOnce {
+            threadGroup.leave()
+        }
+
+        threadGroup.notify(queue: .main) {
+            switch self.seriesType {
+            case .championship:
+                self.loadRLCSData()
+            case .rivals:
+                self.loadRLRSData()
+            }
+            print("Refresh RLCS Matches Download: Complete ✅" )
+            completion()
+        }
+
+//        Downloader().loadRLCS {
+//            Downloader().loadRLRS {
+//                switch self.seriesType {
+//                case .championship:
+//                    self.loadRLCSData()
+//                case .rivals:
+//                    self.loadRLRSData()
+//                }
+//                print("Refresh RLCS Matches Download: Complete ✅" )
+//                completion()
+//            }
+//        }
     }
 	
 	//////////////////////////////////////////////
