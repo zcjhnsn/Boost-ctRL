@@ -149,19 +149,6 @@ class MatchesContentViewController: UIViewController {
             print("Refresh RLCS Matches Download: Complete ✅" )
             completion()
         }
-
-//        Downloader().loadRLCS {
-//            Downloader().loadRLRS {
-//                switch self.seriesType {
-//                case .championship:
-//                    self.loadRLCSData()
-//                case .rivals:
-//                    self.loadRLRSData()
-//                }
-//                print("Refresh RLCS Matches Download: Complete ✅" )
-//                completion()
-//            }
-//        }
     }
 	
 	//////////////////////////////////////////////
