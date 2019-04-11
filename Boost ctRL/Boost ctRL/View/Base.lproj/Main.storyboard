@@ -506,29 +506,29 @@
                                             <action selector="rocketeersButtonPressed:" destination="Hvl-6v-I9D" eventType="touchUpInside" id="1A6-XH-Mbf"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Us" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="07V-cX-0uc">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect With Boost ctRL" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="07V-cX-0uc">
                                         <rect key="frame" x="0.0" y="346.5" width="359" height="61"/>
                                         <color key="backgroundColor" red="0.15686274510000001" green="0.19215686269999999" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="20"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1n-Bl-MRo">
-                                        <rect key="frame" x="0.0" y="415.5" width="359" height="61.5"/>
-                                        <color key="backgroundColor" red="0.43529411764705883" green="0.52549019607843139" blue="0.81960784313725488" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="35"/>
-                                        <state key="normal" title="DISCORD"/>
-                                        <connections>
-                                            <action selector="discordButtonPressed:" destination="Hvl-6v-I9D" eventType="touchUpInside" id="bvk-hF-b4W"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKA-Mj-G0x">
-                                        <rect key="frame" x="0.0" y="485" width="359" height="61"/>
+                                        <rect key="frame" x="0.0" y="415.5" width="359" height="61.5"/>
                                         <color key="backgroundColor" red="0.16470588235294117" green="0.63921568627450975" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="35"/>
                                         <state key="normal" title="TWITTER"/>
                                         <connections>
                                             <action selector="twitterButtonPressed:" destination="Hvl-6v-I9D" eventType="touchUpInside" id="5ML-uR-Zpi"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1n-Bl-MRo">
+                                        <rect key="frame" x="0.0" y="485" width="359" height="61"/>
+                                        <color key="backgroundColor" red="0.1529411765" green="0.68235294120000001" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="35"/>
+                                        <state key="normal" title="TIP THE DEV"/>
+                                        <connections>
+                                            <segue destination="8dB-st-NYo" kind="presentation" identifier="ToTipScreen" id="L98-Vv-bQz"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -545,17 +545,45 @@
                         <viewLayoutGuide key="safeArea" id="TOg-5A-zrL"/>
                     </view>
                     <connections>
-                        <outlet property="discordButton" destination="a1n-Bl-MRo" id="PpT-tB-h0M"/>
                         <outlet property="liquipediaButton" destination="Y7K-lk-Icn" id="K6N-Oj-p6e"/>
                         <outlet property="octaneButton" destination="Wq9-Ys-Sgh" id="Nzf-HM-IHr"/>
                         <outlet property="redditButton" destination="HwZ-My-iUI" id="uCC-o0-9QG"/>
                         <outlet property="rocketeersButton" destination="F9y-Yz-Ahu" id="pcf-bX-DWX"/>
+                        <outlet property="tipButton" destination="a1n-Bl-MRo" id="8xK-A7-Y1Z"/>
                         <outlet property="twitterButton" destination="CKA-Mj-G0x" id="llf-Ld-gl8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vM5-jc-A9u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2597" y="214"/>
+        </scene>
+        <!--Tip Table View Controller-->
+        <scene sceneID="b5m-oQ-d2A">
+            <objects>
+                <tableViewController id="8dB-st-NYo" customClass="TipTableViewController" customModule="Boost_ctRL" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hlc-kU-OR6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="JMU-vp-7WP">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JMU-vp-7WP" id="8Zj-yn-A9Z">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="8dB-st-NYo" id="cEV-YW-Wdu"/>
+                            <outlet property="delegate" destination="8dB-st-NYo" id="Oj7-rm-gqe"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZA5-0g-1dL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3574" y="214"/>
         </scene>
         <!--News-->
         <scene sceneID="gZt-IA-XfP">

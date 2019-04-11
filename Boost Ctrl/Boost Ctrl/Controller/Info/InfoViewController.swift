@@ -16,7 +16,7 @@ class InfoViewController: UIViewController  {
 	@IBOutlet weak var liquipediaButton: UIButton!
 	@IBOutlet weak var octaneButton: UIButton!
 	@IBOutlet weak var rocketeersButton: UIButton!
-	@IBOutlet weak var discordButton: UIButton!
+	@IBOutlet weak var tipButton: UIButton!
 	@IBOutlet weak var twitterButton: UIButton!
 	
 	//////////////////////////////////////////////
@@ -52,10 +52,8 @@ class InfoViewController: UIViewController  {
 	}
 	
 	// Open discord invite link in broswer
-	@IBAction func discordButtonPressed(_ sender: UIButton) {
-		if let url = URL(string: "https://discord.gg/Y2Rkzpd") {
-			UIApplication.shared.open(url, options: [:])
-		}
+	@IBAction func tipButtonPressed(_ sender: UIButton) {
+		performSegue(withIdentifier: "ToTipScreen", sender: self)
 	}
 	
 	// Open our twitter page in browser
@@ -77,7 +75,7 @@ class InfoViewController: UIViewController  {
 		liquipediaButton.layer.cornerRadius = liquipediaButton.frame.height / 2 - 10
 		octaneButton.layer.cornerRadius = octaneButton.frame.height / 2 - 10
 		rocketeersButton.layer.cornerRadius = rocketeersButton.frame.height / 2 - 10
-		discordButton.layer.cornerRadius = discordButton.frame.height / 2 - 10
+		tipButton.layer.cornerRadius = tipButton.frame.height / 2 - 10
 		twitterButton.layer.cornerRadius = twitterButton.frame.height / 2 - 10
 	}
 }
