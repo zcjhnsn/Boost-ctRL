@@ -120,6 +120,7 @@ class MatchesViewController: UIViewController, ACTabScrollViewDelegate, ACTabScr
 			contentViews.removeAll()
 			for vc in childViewControllers as! [MatchesContentViewController] {
 				vc.isRLCS = true
+                vc.seriesType = .championship
 				vc.matchesArray = vc.matchesArrayRLCS
 				vc.tableView.reloadData()
 				contentViews.append(vc.view)
@@ -128,6 +129,7 @@ class MatchesViewController: UIViewController, ACTabScrollViewDelegate, ACTabScr
 			contentViews.removeAll()
 			for vc in childViewControllers as! [MatchesContentViewController] {
 				vc.isRLCS = false
+                vc.seriesType = .rivals
 				vc.loadRLRSData()
 				vc.matchesArray = vc.matchesArrayRLRS
 				vc.tableView.reloadData()

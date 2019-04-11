@@ -102,11 +102,11 @@ class Downloader {
 	
 	// MARK: - Initial Firebase calls for Matches
 	
-	func loadRLCS() {
+    func loadRLCS() {
 		let rlcsDB = Database.database().reference().child("matches").child("rlcs")
 		
 		print("Loading RLCS Matches ⏳")
-		
+
 		rlcsDB.observe(.childAdded) { (snapshot) in
 			let snapshotValue = snapshot.value as! Dictionary<String, Any>
 			
@@ -212,5 +212,84 @@ class Downloader {
 			match.writeToRLRSRealm()
 		}
 	}
-	
+
+    static func fetchRLCSOnce(completion: @escaping () -> Void) {
+        let rlcsDB = Database.database().reference().child("matches").child("rlcs")
+
+        rlcsDB.observeSingleEvent(of: .childAdded) { (snapshot) in
+            let snapshotValue = snapshot.value as! Dictionary<String, Any>
+
+            let match = RealmMatchRLCS()
+
+            guard let id = snapshotValue["id"] as? String,
+                let team1Id = snapshotValue["1id"] as? Int,
+                let team2id = snapshotValue["2id"] as? Int,
+                let team1Score = snapshotValue["1s"] as? Int,
+                let team2Score = snapshotValue["2s"] as? Int,
+                let region = snapshotValue["r"] as? Int,
+                let week = snapshotValue["w"] as? Int,
+                let date = snapshotValue["d"] as? String,
+                let title = snapshotValue["t"] as? String else {
+                    completion()
+                    return
+            }
+
+            match.id = id
+
+            match.teamOneID = String(team1Id)
+            match.teamTwoID = String(team2id)
+
+            match.oneScore = String(team1Score)
+            match.twoScore = String(team2Score)
+
+            match.region = region
+            match.week = week
+
+            match.date = date
+            match.title = title
+
+            match.writeToRLCSRealm()
+            completion()
+        }
+    }
+
+    static func fetchRLRSOnce(completion: @escaping () -> Void) {
+        let rlcsDB = Database.database().reference().child("matches").child("rlrs")
+
+        rlcsDB.observeSingleEvent(of: .childAdded) { (snapshot) in
+            let snapshotValue = snapshot.value as! Dictionary<String, Any>
+
+            let match = RealmMatchRLRS()
+
+            guard let id = snapshotValue["id"] as? String,
+                let team1Id = snapshotValue["1id"] as? Int,
+                let team2id = snapshotValue["2id"] as? Int,
+                let team1Score = snapshotValue["1s"] as? Int,
+                let team2Score = snapshotValue["2s"] as? Int,
+                let region = snapshotValue["r"] as? Int,
+                let week = snapshotValue["w"] as? Int,
+                let date = snapshotValue["d"] as? String,
+                let title = snapshotValue["t"] as? String else {
+                    completion()
+                    return
+            }
+
+            match.id = id
+
+            match.teamOneID = String(team1Id)
+            match.teamTwoID = String(team2id)
+
+            match.oneScore = String(team1Score)
+            match.twoScore = String(team2Score)
+
+            match.region = region
+            match.week = week
+
+            match.date = date
+            match.title = title
+
+            match.writeToRLRSRealm()
+            completion()
+        }
+    }
 }

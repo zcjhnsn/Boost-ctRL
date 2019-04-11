@@ -10,6 +10,11 @@ import Foundation
 import Firebase
 import RealmSwift
 
+enum SeriesType {
+    case championship
+    case rivals
+}
+
 class MatchesContentViewController: UIViewController {
 	
 	// MARK: - Outlets
@@ -24,6 +29,8 @@ class MatchesContentViewController: UIViewController {
 	var headerTitle: String = ""
 	
 	let downloader = Downloader()
+
+    var seriesType: SeriesType = .championship
 
 	// Week for each ACTabScrollView tab
 	var category: Week?
@@ -108,21 +115,41 @@ class MatchesContentViewController: UIViewController {
 	}
 	
 	@objc func handleRefreshControl() {
-		self.reloadFirebaseData()
-		// Dismiss the refresh control.
-		DispatchQueue.main.async {
-			self.tableView.refreshControl?.endRefreshing()
-			self.tableView.reloadData()
-		}
+        fetchDataFromFirebase { [weak self] in
+            // Dismiss the refresh control.
+            DispatchQueue.main.async {
+                self?.tableView.refreshControl?.endRefreshing()
+                self?.tableView.reloadData()
+            }
+        }
 	}
-	
-	// This should refresh the tableViews with the new data but it doesn't work quite right
-	func reloadFirebaseData() {
-		loadRLCSData()
-		loadRLRSData()
-		tableView.reloadData()
-		print("Refresh RLCS Matches Download: Complete ✅" )
-	}
+
+    // Fetches the RLCS and RLRS matches from Firebase and completes when it's done
+    func fetchDataFromFirebase(completion: @escaping () -> ()) {
+        // TODO: I'm not sure why this is crashing on threadGroup.leave() but i'll look into it. For now the code below should work
+        let threadGroup = DispatchGroup()
+
+        threadGroup.enter()
+        Downloader.fetchRLCSOnce {
+            threadGroup.leave()
+        }
+
+        threadGroup.enter()
+        Downloader.fetchRLRSOnce {
+            threadGroup.leave()
+        }
+
+        threadGroup.notify(queue: .main) {
+            switch self.seriesType {
+            case .championship:
+                self.loadRLCSData()
+            case .rivals:
+                self.loadRLRSData()
+            }
+            print("Refresh RLCS Matches Download: Complete ✅" )
+            completion()
+        }
+    }
 	
 	//////////////////////////////////////////////
 	
@@ -189,6 +216,9 @@ class MatchesContentViewController: UIViewController {
 					matchesArrayRLCS[3].append(match)
 				}
 			}
+            if seriesType == .championship {
+                matchesArray = matchesArrayRLCS
+            }
 			
 			self.tableView.reloadData()
 		}
@@ -243,6 +273,9 @@ class MatchesContentViewController: UIViewController {
 					matchesArrayRLRS[1].append(match)
 				}
 			}
+            if seriesType == .rivals {
+                matchesArray = matchesArrayRLRS
+            }
 			
 			self.tableView.reloadData()
 		}
