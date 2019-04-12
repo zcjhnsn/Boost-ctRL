@@ -9,11 +9,11 @@
 import Foundation
 
 enum IAPProduct: String {
-	case bronze = "com.zacjohnson.BoostctRL.BronzeTip"
-	case silver = "com.zacjohnson.BoostctRL.Silver"
-	case gold = "com.zacjohnson.BoostctRL.Gold"
-	case platinum = "com.zacjohnson.BoostctRL.Plat"
-	case diamond = "com.zacjohnson.BoostctRL.Diamond"
+	case prospect = "com.zacjohnson.Boost_ctRL.Prospect"
+	case challenger = "com.zacjohnson.Boost_ctRL.Challenger"
+	case star = "com.zacjohnson.Boost_ctRL.Star"
 	case champion = "com.zacjohnson.BoostctRL.Champ"
 	case gc = "com.zacjohnson.BoostctRL.GC"
 }
+
+

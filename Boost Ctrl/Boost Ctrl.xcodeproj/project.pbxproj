@@ -18,6 +18,7 @@
 		07DD5878225E5EC900851D9B /* IAPProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DD5877225E5EC900851D9B /* IAPProduct.swift */; };
 		07DD587A225E625000851D9B /* IAPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DD5879225E625000851D9B /* IAPService.swift */; };
 		07DD587E225E828200851D9B /* TipTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DD587D225E828200851D9B /* TipTableViewController.swift */; };
+		07DD5880225FEC8700851D9B /* IAP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DD587F225FEC8600851D9B /* IAP.swift */; };
 		07E3C8C420E55A1C00F2A16A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C8C320E55A1C00F2A16A /* AppDelegate.swift */; };
 		07E3C8C620E55A1C00F2A16A /* TeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C8C520E55A1C00F2A16A /* TeamsViewController.swift */; };
 		07E3C8C820E55A1C00F2A16A /* MatchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C8C720E55A1C00F2A16A /* MatchesViewController.swift */; };
@@ -45,6 +46,7 @@
 		07DD5877225E5EC900851D9B /* IAPProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPProduct.swift; sourceTree = "<group>"; };
 		07DD5879225E625000851D9B /* IAPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPService.swift; sourceTree = "<group>"; };
 		07DD587D225E828200851D9B /* TipTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipTableViewController.swift; sourceTree = "<group>"; };
+		07DD587F225FEC8600851D9B /* IAP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAP.swift; sourceTree = "<group>"; };
 		07E3C8C020E55A1C00F2A16A /* Boost ctRL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Boost ctRL.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07E3C8C320E55A1C00F2A16A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07E3C8C520E55A1C00F2A16A /* TeamsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsViewController.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				07F48418222DD044003A7CCF /* RealmObjects.swift */,
 				07DD5877225E5EC900851D9B /* IAPProduct.swift */,
 				07DD5879225E625000851D9B /* IAPService.swift */,
+				07DD587F225FEC8600851D9B /* IAP.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07DD5880225FEC8700851D9B /* IAP.swift in Sources */,
 				07E3C8C820E55A1C00F2A16A /* MatchesViewController.swift in Sources */,
 				07E3C8C420E55A1C00F2A16A /* AppDelegate.swift in Sources */,
 				07E3C8C620E55A1C00F2A16A /* TeamsViewController.swift in Sources */,

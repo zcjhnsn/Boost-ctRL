@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InfoViewController: UIViewController  {
+class InfoViewController: UIViewController, TipTableViewControllerDelegate  {
 	
 	// MARK: - Outlets
 	
@@ -18,6 +18,46 @@ class InfoViewController: UIViewController  {
 	@IBOutlet weak var rocketeersButton: UIButton!
 	@IBOutlet weak var tipButton: UIButton!
 	@IBOutlet weak var twitterButton: UIButton!
+	
+	//////////////////////////////////////////////
+	
+	func overlayBlurredBackgroundView() {
+		
+		let mainWindow = UIApplication.shared.keyWindow!
+		//let blurredBackgroundView = UIVisualEffectView(frame: CGRect(x: mainWindow.frame.origin.x, y: mainWindow.frame.origin.y, width: mainWindow.frame.width, height: mainWindow.frame.height))
+		
+		let blurredBackgroundView = UIVisualEffectView()
+		blurredBackgroundView.frame = mainWindow.frame
+		
+		blurredBackgroundView.effect = UIBlurEffect(style: .dark)
+		
+		
+		tabBarController?.view.addSubview(blurredBackgroundView)
+		print("adding blur")
+	}
+	
+	func removeBlurredBackgroundView() {
+		print("removing blur")
+		if let tabBar = tabBarController {
+			for subview in tabBar.view.subviews {
+				if subview.isKind(of: UIVisualEffectView.self) {
+					subview.removeFromSuperview()
+				}
+			}
+		}
+	}
+	
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if let identifier = segue.identifier {
+			if identifier == "ToTipScreen" {
+				if let viewController = segue.destination as? TipTableViewController {
+					viewController.blurDelegate = self
+					viewController.modalPresentationStyle = .overFullScreen
+				}
+			}
+		}
+	}
 	
 	//////////////////////////////////////////////
 	
@@ -53,7 +93,10 @@ class InfoViewController: UIViewController  {
 	
 	// Open discord invite link in broswer
 	@IBAction func tipButtonPressed(_ sender: UIButton) {
-		performSegue(withIdentifier: "ToTipScreen", sender: self)
+		self.definesPresentationContext = true
+		self.providesPresentationContextTransitionStyle = true
+		print("pressed")
+		self.overlayBlurredBackgroundView()
 	}
 	
 	// Open our twitter page in browser
