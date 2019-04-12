@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InfoViewController: UIViewController  {
+class InfoViewController: UIViewController, TipTableViewControllerDelegate  {
 	
 	// MARK: - Outlets
 	
@@ -16,8 +16,48 @@ class InfoViewController: UIViewController  {
 	@IBOutlet weak var liquipediaButton: UIButton!
 	@IBOutlet weak var octaneButton: UIButton!
 	@IBOutlet weak var rocketeersButton: UIButton!
-	@IBOutlet weak var discordButton: UIButton!
+	@IBOutlet weak var tipButton: UIButton!
 	@IBOutlet weak var twitterButton: UIButton!
+	
+	//////////////////////////////////////////////
+	
+	func overlayBlurredBackgroundView() {
+		
+		let mainWindow = UIApplication.shared.keyWindow!
+		//let blurredBackgroundView = UIVisualEffectView(frame: CGRect(x: mainWindow.frame.origin.x, y: mainWindow.frame.origin.y, width: mainWindow.frame.width, height: mainWindow.frame.height))
+		
+		let blurredBackgroundView = UIVisualEffectView()
+		blurredBackgroundView.frame = mainWindow.frame
+		
+		blurredBackgroundView.effect = UIBlurEffect(style: .dark)
+		
+		
+		tabBarController?.view.addSubview(blurredBackgroundView)
+		print("adding blur")
+	}
+	
+	func removeBlurredBackgroundView() {
+		print("removing blur")
+		if let tabBar = tabBarController {
+			for subview in tabBar.view.subviews {
+				if subview.isKind(of: UIVisualEffectView.self) {
+					subview.removeFromSuperview()
+				}
+			}
+		}
+	}
+	
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if let identifier = segue.identifier {
+			if identifier == "ToTipScreen" {
+				if let viewController = segue.destination as? TipTableViewController {
+					viewController.blurDelegate = self
+					viewController.modalPresentationStyle = .overFullScreen
+				}
+			}
+		}
+	}
 	
 	//////////////////////////////////////////////
 	
@@ -52,10 +92,11 @@ class InfoViewController: UIViewController  {
 	}
 	
 	// Open discord invite link in broswer
-	@IBAction func discordButtonPressed(_ sender: UIButton) {
-		if let url = URL(string: "https://discord.gg/Y2Rkzpd") {
-			UIApplication.shared.open(url, options: [:])
-		}
+	@IBAction func tipButtonPressed(_ sender: UIButton) {
+		self.definesPresentationContext = true
+		self.providesPresentationContextTransitionStyle = true
+		print("pressed")
+		self.overlayBlurredBackgroundView()
 	}
 	
 	// Open our twitter page in browser
@@ -77,7 +118,7 @@ class InfoViewController: UIViewController  {
 		liquipediaButton.layer.cornerRadius = liquipediaButton.frame.height / 2 - 10
 		octaneButton.layer.cornerRadius = octaneButton.frame.height / 2 - 10
 		rocketeersButton.layer.cornerRadius = rocketeersButton.frame.height / 2 - 10
-		discordButton.layer.cornerRadius = discordButton.frame.height / 2 - 10
+		tipButton.layer.cornerRadius = tipButton.frame.height / 2 - 10
 		twitterButton.layer.cornerRadius = twitterButton.frame.height / 2 - 10
 	}
 }
