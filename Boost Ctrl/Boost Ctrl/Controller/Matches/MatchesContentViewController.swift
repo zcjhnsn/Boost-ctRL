@@ -333,10 +333,20 @@ extension MatchesContentViewController: UITableViewDelegate, UITableViewDataSour
 		let cell = tableView.dequeueReusableCell(withIdentifier: "matchCell") as! MatchesContentTableViewCell
 		
 		// Team Name Labels
+		
 		cell.teamOneLabel.text = match.teamOne.uppercased()
 		cell.teamTwoLabel.text = match.teamTwo.uppercased()
+		
 		cell.teamOneLabel.textColor = UIColor.white
 		cell.teamTwoLabel.textColor = UIColor.white
+		
+		if match.teamOne.count == 12 && !match.teamOne.contains(" ") {
+			cell.teamOneLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 11.5)
+		}
+		
+		if match.teamTwo.count == 12 && !match.teamTwo.contains(" ") {
+			cell.teamTwoLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 11.5)
+		}
 		
 		// Team Logos
 		let teamOneAbbr = match.teamOneID
