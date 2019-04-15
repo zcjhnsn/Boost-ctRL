@@ -24,7 +24,9 @@ class TeamsContentViewController: UIViewController {
 	var teamArray: [Team] = []
 	var headerTitle: String = ""
 	let downloader = Downloader()
+	
 	var teams: Results<RealmTeam>!
+	var notificationToken: NotificationToken? = nil
 	
 	//////////////////////////////////////////////
 	
@@ -43,6 +45,8 @@ class TeamsContentViewController: UIViewController {
 		tableView.dataSource = self
 		tableView.separatorStyle = .none
 		
+		realmListener()
+		
 		DispatchQueue.main.async{
 			self.tableView.reloadData()
 		}
@@ -52,9 +56,13 @@ class TeamsContentViewController: UIViewController {
 		loadData()
 	}
 	
+	override func viewWillDisappear(_ animated: Bool) {
+		notificationToken?.invalidate()
+	}
+	
 	//////////////////////////////////////////////
 	
-	// MARK: - Load Realm Teams
+	// MARK: - Realm
 	
 	func loadData() {
 		self.teamArray.removeAll()
@@ -82,6 +90,15 @@ class TeamsContentViewController: UIViewController {
 			}
 			self.tableView.reloadData()
 		}
+	}
+	
+	func realmListener() {
+		print("Listening")
+		notificationToken = teamRealm.observe({ (notification, realm) in
+			print("Change observed: \(notification)")
+			self.loadData()
+		})
+		
 	}
 	
 	//////////////////////////////////////////////
