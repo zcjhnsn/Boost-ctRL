@@ -20,7 +20,7 @@ class TipTableViewController: UITableViewController {
 	
 	let IAPArray = [IAP(title: "Prospect Tip", description: "We all gotta start somewhere", price: "$0.99"),
 					IAP(title: "Challenger Tip", description: "You're in the majority!", price: "$1.99"),
-					IAP(title: "Superstar Tip", description: "You're teammates *are* holding you back", price: "$2.99"),
+					IAP(title: "Superstar Tip", description: "Your teammates *are* holding you back", price: "$2.99"),
 					IAP(title: "Champion Tip", description: "Sweet, blessed purple", price: "$3.99"),
 					IAP(title: "Grand Champ Tip", description: "You're not a real GC anyway", price: "$4.99")
 	]
