@@ -31,6 +31,8 @@ class MatchesContentViewController: UIViewController {
 	let downloader = Downloader()
 
     var seriesType: SeriesType = .championship
+	
+	var notificationToken: NotificationToken? = nil
 
 	// Week for each ACTabScrollView tab
 	var category: Week?
@@ -78,6 +80,8 @@ class MatchesContentViewController: UIViewController {
 		
 		matchesArray = matchesArrayRLCS
 		
+		realmListener()
+		
 		DispatchQueue.main.async{
 			self.tableView.reloadData()
 		}
@@ -97,6 +101,10 @@ class MatchesContentViewController: UIViewController {
 	
 	override func viewDidAppear(_ animated: Bool) {
 		tableView.reloadData()
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		notificationToken?.invalidate()
 	}
 	
 	override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -279,6 +287,23 @@ class MatchesContentViewController: UIViewController {
 			
 			self.tableView.reloadData()
 		}
+	}
+	
+	func realmListener() {
+		print("Listening")
+		switch self.seriesType {
+		case .championship:
+			notificationToken = rlcsRealm.observe({ (notification, realm) in
+				print("Change observed: \(notification)")
+				self.loadRLCSData()
+			})
+		case .rivals:
+			notificationToken = rlrsRealm.observe({ (notification, realm) in
+				print("RLRS Change observed: \(notification)")
+				self.loadRLRSData()
+			})
+		}
+		
 	}
 }
 
