@@ -13,7 +13,7 @@ pod 'Firebase/Storage'
 pod 'ACTabScrollView', :git => 'https://github.com/azurechen/ACTabScrollView.git'
 pod 'SwiftyJSON'
 pod 'RealmSwift'
-
+pod 'AlertOnboarding', :git => 'https://github.com/gilthonweapps/AlertOnboarding'
 end
 
 post_install do |installer|
