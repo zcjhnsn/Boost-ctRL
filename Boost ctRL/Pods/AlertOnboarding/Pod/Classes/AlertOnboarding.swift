@@ -190,7 +190,7 @@ open class AlertOnboarding: UIView, AlertPageViewDelegate {
                     () -> Void in
                     self.background.removeFromSuperview()
                     self.removeFromSuperview()
-                    self.container.removeFromParent()
+					self.container.removeFromParentViewController()
                     self.container.view.removeFromSuperview()
                 }
         })
@@ -230,7 +230,8 @@ open class AlertOnboarding: UIView, AlertPageViewDelegate {
     //MARK: NOTIFICATIONS PROCESS ------------------------------------------
     fileprivate func interceptOrientationChange(){
         UIDevice.current.beginGeneratingDeviceOrientationNotifications()
-        NotificationCenter.default.addObserver(self, selector: #selector(AlertOnboarding.onOrientationChange), name: UIDevice.orientationDidChangeNotification, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(AlertOnboarding.onOrientationChange), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+		
     }
     
     @objc func onOrientationChange(){

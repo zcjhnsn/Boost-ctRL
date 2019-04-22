@@ -53,7 +53,7 @@ class AlertPageViewController: UIViewController, UIPageViewControllerDataSource,
         self.view.backgroundColor = UIColor.clear
         self.view.addSubview(self.pageController.view)
         self.view.addSubview(self.pageControl)
-        self.pageController.didMove(toParent: self)
+		self.pageController.didMove(toParentViewController: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -118,7 +118,7 @@ class AlertPageViewController: UIViewController, UIPageViewControllerDataSource,
         let realIndex = arrayOfAlerts.count - index - 1
         
         pageContentViewController.image.image = arrayOfAlerts[realIndex].image
-        pageContentViewController.image.layer.minificationFilter = CALayerContentsFilter.trilinear
+        pageContentViewController.image.layer.minificationFilter = kCAFilterTrilinear
         pageContentViewController.labelMainTitle.font = alertview.fontTitleLabel
         pageContentViewController.labelMainTitle.text = arrayOfAlerts[realIndex].title
         pageContentViewController.labelMainTitle.textColor = alertview.colorTitleLabel
@@ -206,7 +206,7 @@ class AlertPageViewController: UIViewController, UIPageViewControllerDataSource,
         
         didMoveToPageIndex(pageIndex: arrayOfAlerts.count-1)
         
-        self.addChild(self.pageController)
+		self.addChildViewController(self.pageController)
     }
     
     //MARK: Called after notification orientation changement
