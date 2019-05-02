@@ -12,6 +12,7 @@ class InfoViewController: UIViewController, TipTableViewControllerDelegate  {
 	
 	// MARK: - Outlets
 	
+	@IBOutlet weak var settingsButton: UIButton!
 	@IBOutlet weak var redditButton: UIButton!
 	@IBOutlet weak var liquipediaButton: UIButton!
 	@IBOutlet weak var octaneButton: UIButton!
@@ -113,7 +114,7 @@ class InfoViewController: UIViewController, TipTableViewControllerDelegate  {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
-		
+		settingsButton.layer.cornerRadius = settingsButton.frame.height / 2 - 10
 		redditButton.layer.cornerRadius = redditButton.frame.height / 2 - 10
 		liquipediaButton.layer.cornerRadius = liquipediaButton.frame.height / 2 - 10
 		octaneButton.layer.cornerRadius = octaneButton.frame.height / 2 - 10

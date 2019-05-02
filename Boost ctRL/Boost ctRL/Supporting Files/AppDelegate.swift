@@ -53,17 +53,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		})
 		
 		Messaging.messaging().delegate = self
-		
 		UNUserNotificationCenter.current().delegate = self
-		let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
 		
-		//Solicit permission from user to receive notifications
-		UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { (_, error) in
-			guard error == nil else{
-				print(error!.localizedDescription)
-				return
-			}
-		}
+		registerForPushNotifications()
 		
 		//get application instance ID
 		InstanceID.instanceID().instanceID { (result, error) in
@@ -73,8 +65,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				print("Remote instance ID token: \(result.token)")
 			}
 		}
-		
-		application.registerForRemoteNotifications()
 		
 		//////////////////////////////////////////////
 		
@@ -158,6 +148,51 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
 		completionHandler()
 	}
 	
+	func registerForPushNotifications() {
+		let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+		
+		//Solicit permission from user to receive notifications
+		UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { [weak self] granted, error in
+			let defaults = UserDefaults.standard
+			defaults.set(granted, forKey: "newsAlerts")
+			defaults.set(granted, forKey: "matchAlerts")
+			
+			print("permission granted")
+			guard granted else { return }
+			self?.getNotificationSettings()
+		}
+	}
+	
+	func getNotificationSettings() {
+		UNUserNotificationCenter.current().getNotificationSettings { settings in
+			print("Notification settings: \(settings)")
+			
+			guard settings.authorizationStatus == .authorized else { return }
+			DispatchQueue.main.async {
+				UIApplication.shared.registerForRemoteNotifications()
+			}
+			
+			Messaging.messaging().subscribe(toTopic: "news") { error in
+				
+				if let error = error {
+					print("Failed to subscribe to news topic")
+				} else {
+					print("Subscribed to news topic")
+				}
+				
+			}
+			
+			Messaging.messaging().subscribe(toTopic: "matchResults") { error in
+				
+				if let error = error {
+					print("Failed to subscribe to match results topic")
+				} else {
+					print("Subscribed to matches topic")
+				}
+			}
+		}
+	}
+	
 }
 
 extension AppDelegate: MessagingDelegate{
@@ -169,6 +204,8 @@ extension AppDelegate: MessagingDelegate{
 		NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
 		// TODO: If necessary send token to application server.
 		// Note: This callback is fired at each app startup and whenever a new token is generated.
+		let defaults = UserDefaults.standard
+		defaults.set(fcmToken, forKey: "fcmToken")
 	}
 	
 	func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {

@@ -290,16 +290,13 @@ class MatchesContentViewController: UIViewController {
 	}
 	
 	func realmListener() {
-		print("Listening")
 		switch self.seriesType {
 		case .championship:
 			notificationToken = rlcsRealm.observe({ (notification, realm) in
-				print("Change observed: \(notification)")
 				self.loadRLCSData()
 			})
 		case .rivals:
 			notificationToken = rlrsRealm.observe({ (notification, realm) in
-				print("RLRS Change observed: \(notification)")
 				self.loadRLRSData()
 			})
 		}

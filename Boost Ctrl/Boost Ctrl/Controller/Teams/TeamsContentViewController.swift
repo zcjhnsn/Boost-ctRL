@@ -95,7 +95,6 @@ class TeamsContentViewController: UIViewController {
 	func realmListener() {
 		print("Listening")
 		notificationToken = teamRealm.observe({ (notification, realm) in
-			print("Change observed: \(notification)")
 			self.loadData()
 		})
 		
