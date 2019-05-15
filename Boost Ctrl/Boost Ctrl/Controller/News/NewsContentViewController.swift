@@ -56,12 +56,11 @@ class NewsContentViewController: UIViewController {
 		tableView.separatorStyle = .singleLine
 		
 		// Show update summary if first open after update
-		if UserDefaults.standard.string(forKey: "AppVersionForUpdateSummary") == Bundle.main.releaseVersionNumberPretty {
-			
-		} else {
+		if UserDefaults.standard.string(forKey: "AppVersionForUpdateSummary") != Bundle.main.releaseVersionNumberPretty {
 			showUpdateSummary()
 			UserDefaults.standard.setValue(Bundle.main.releaseVersionNumberPretty, forKey: "AppVersionForUpdateSummary")
 		}
+			
 	}
 	
 	@objc func refreshData() {
