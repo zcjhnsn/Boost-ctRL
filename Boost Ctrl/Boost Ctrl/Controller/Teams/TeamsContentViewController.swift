@@ -146,7 +146,7 @@ extension TeamsContentViewController: UITableViewDelegate, UITableViewDataSource
 		} else {
 			let urlString = "https://zacjohnson.xyz/boostctrl/logos/\(abbr).png"
 			teamArray[(indexPath as NSIndexPath).row].logo = urlString
-		cell.teamLogo.loadImageFromCacheWithUrlString(urlString: urlString)
+			cell.teamLogo.loadImageFromCacheWithUrlString(urlString: urlString)
 		}
 		
 		cell.teamLogo.layer.cornerRadius = 4

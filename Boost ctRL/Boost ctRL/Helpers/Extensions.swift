@@ -30,6 +30,14 @@ extension UIColor {
 		
 		self.init(red: r, green: g, blue: b, alpha: a)
 	}
+	
+	// Store theme colors
+	struct ctRLTheme {
+		static var midnightBlue = UIColor(hex: "283149")!
+		static var darkBlue = UIColor(hex: "404b69")!
+		static var hotPink = UIColor(hex: "f73859")!
+		static var cloudWhite = UIColor(hex: "dbedf3")!
+	}
 }
 
 //////////////////////////////////////////////
@@ -111,6 +119,22 @@ extension AppDelegate {
 		} else {
 			print("Initial Matches Download 🔴")
 		}
+	}
+}
+
+//////////////////////////////////////////////
+
+// MARK: - Bundle Extension
+
+extension Bundle {
+	var releaseVersionNumber: String? {
+		return infoDictionary?["CFBundleShortVersionString"] as? String
+	}
+	var buildVersionNumber: String? {
+		return infoDictionary?["CFBundleVersion"] as? String
+	}
+	var releaseVersionNumberPretty: String {
+		return "\(releaseVersionNumber ?? "1.0.0")"
 	}
 }
 
