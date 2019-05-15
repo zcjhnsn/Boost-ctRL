@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import AlertOnboarding
 
 
 protocol CustomNewsCellDelegate {
@@ -53,6 +54,12 @@ class NewsContentViewController: UIViewController {
 		configureTableView()
 		retrieveNews()
 		tableView.separatorStyle = .singleLine
+		
+		// Show update summary if first open after update
+		if UserDefaults.standard.string(forKey: "AppVersionForUpdateSummary") != Bundle.main.releaseVersionNumberPretty {
+			showUpdateSummary()
+			UserDefaults.standard.setValue(Bundle.main.releaseVersionNumberPretty, forKey: "AppVersionForUpdateSummary")
+		}
 	}
 	
 	@objc func refreshData() {
@@ -60,6 +67,28 @@ class NewsContentViewController: UIViewController {
 		DispatchQueue.main.asyncAfter(deadline: deadline) {
 			self.retrieveNews()
 		}
+	}
+	
+	//////////////////////////////////////////////
+	
+	// MARK: Onboarding
+	
+	func showUpdateSummary() {
+		
+		// First, declare alerts
+		let alerts = [Alert(image: #imageLiteral(resourceName: "notificationIcon"), title: "Notifications", text: "There's not enough pings in your life. Get notified when a match starts, the final match score, and breaking news. Subscribe to notifications you want and the ones you don't 👉 Three dots > Settings"), Alert(image: #imageLiteral(resourceName: "updated"), title: "Auto-Refresh", text: "All matches and standings update in real-time without having to manually refresh the page. It's like having full boost, on demand."), Alert(image: #imageLiteral(resourceName: "coins"), title: "Contribute to development", text: "Help out with Boost ctRL's development so we can bring more features and pay for all these notifications you wanted 😉")]
+		
+		// Simply call AlertOnboarding...
+		let alertView = AlertOnboarding(arrayOfAlerts: alerts)
+		
+		alertView.colorForAlertViewBackground = UIColor.ctRLTheme.midnightBlue
+		alertView.colorButtonText = UIColor.ctRLTheme.cloudWhite
+		alertView.colorButtonBottomBackground = UIColor.ctRLTheme.darkBlue
+		alertView.colorPageIndicator = UIColor.ctRLTheme.cloudWhite
+		alertView.colorCurrentPageIndicator = UIColor.ctRLTheme.hotPink
+		
+		// ... and show it !
+		alertView.show()
 	}
 	
 	//////////////////////////////////////////////
