@@ -8,10 +8,11 @@ target 'Boost ctRL' do
   # Pods for Boost ctRL
 
 pod 'Firebase'
+pod 'Firebase/Core'
 pod 'Firebase/Database'
 pod 'Firebase/Storage'
+pod 'Firebase/Messaging'
 pod 'ACTabScrollView', :git => 'https://github.com/azurechen/ACTabScrollView.git'
-pod 'SwiftyJSON'
 pod 'RealmSwift'
 
 end
