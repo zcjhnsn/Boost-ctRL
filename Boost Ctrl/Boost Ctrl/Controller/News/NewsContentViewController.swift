@@ -105,11 +105,11 @@ class NewsContentViewController: UIViewController {
 			
 			let snapshotValue = snapshot.value as! Dictionary<String, String>
 			
-			let headline = snapshotValue["h"]!
-			let detail = snapshotValue["d"]!
-			let categoryString = snapshotValue["c"]!
-			let link = snapshotValue["l"]!
-			let siteName = snapshotValue["s"]!
+            let headline = snapshotValue["h"] ?? "No headline provided"
+            let detail = snapshotValue["d"] ?? "No details provided."
+            let categoryString = snapshotValue["c"] ?? "news"
+            let link = snapshotValue["l"] ?? "https://twitter.com/boostctrl"
+            let siteName = snapshotValue["s"] ?? "Twitter"
 			
 			let news = News()
 			news.headline = headline
