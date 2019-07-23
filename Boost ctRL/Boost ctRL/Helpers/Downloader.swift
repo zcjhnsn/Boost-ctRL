@@ -16,32 +16,52 @@ class Downloader {
 	
 	// MARK: - Initial Firebase call for Teams
 	
+    
+    /// Initial download of teams from Firebase. If any team information is missing, the team is not saved to realm.
+    ///
+    /// - Returns: Bool for completion
 	func loadTeamsAndStandings() -> Bool {
 		
 		var moveOn = true
 		
 		print("Fetching Teams... ⏳")
 		
-		let standingsDB = Database.database().reference().child("standings")
+        let standingsDB = Database.database().reference().child("standings")
 		
 		standingsDB.observe(.childAdded) {
 			(snapshot) in
 			let snapshotValue = snapshot.value as! Dictionary<String, Any>
 			
-			var team = RealmTeam()
+			let team = RealmTeam()
 			
-			team.id = String(snapshotValue["id"]! as! Int)
-			team.region = snapshotValue["r"] as! Int
-			team.name = snapshotValue["n"]! as! String
-			team.abbreviatedName = snapshotValue["a"]! as! String
-			team.standing = snapshotValue["s"]! as! Int
-			team.win = String(snapshotValue["w"]! as! Int)
-			team.loss = String(snapshotValue["l"]! as! Int)
-			team.gameDifferential = snapshotValue["gd"]! as! Int
-			team.backgroundColor = snapshotValue["c"]! as! String
-			team.player1 = snapshotValue["p1"]! as! String
-			team.player2 = snapshotValue["p2"]! as! String
-			team.player3 = snapshotValue["p3"]! as! String
+            guard let id = snapshotValue["id"] as? Int,
+                let region = snapshotValue["r"] as? Int,
+                let name = snapshotValue["n"] as? String,
+                let abbreviatedName = snapshotValue["a"] as? String,
+                let standing = snapshotValue["s"] as? Int,
+                let win = snapshotValue["w"] as? Int,
+                let loss = snapshotValue["l"] as? Int,
+                let gameDifferential = snapshotValue["gd"] as? Int,
+                let backgroundColor = snapshotValue["c"] as? String,
+                let player1 = snapshotValue["p1"] as? String,
+                let player2 = snapshotValue["p2"] as? String,
+                let player3 = snapshotValue["p3"] as? String else {
+                    return
+            }
+            
+            
+            team.id = String(id)
+            team.region = region
+            team.name = name
+            team.abbreviatedName = abbreviatedName
+            team.standing = standing
+            team.win = String(win)
+            team.loss = String(loss)
+            team.gameDifferential = gameDifferential
+            team.backgroundColor = backgroundColor
+            team.player1 = player1
+            team.player2 = player2
+            team.player3 = player3
 			
 			team.writeToRealm()
 			moveOn = false
@@ -54,6 +74,8 @@ class Downloader {
 	
 	// MARK: - Child Changed Listener for Teams
 		
+    
+    /// Listener for when team data changes. If any team information is missing, the team is not saved to realm.
 	func updateTeamsAndStandings() {
 		let standingsDB = Database.database().reference().child("standings")
 		
@@ -62,20 +84,36 @@ class Downloader {
 			print("Updating teams and standings... ⏳")
 			let snapshotValue = snapshot.value as! Dictionary<String, Any>
 			
-			var team = RealmTeam()
+			let team = RealmTeam()
+            
+            guard let id = snapshotValue["id"] as? Int,
+                let region = snapshotValue["r"] as? Int,
+                let name = snapshotValue["n"] as? String,
+                let abbreviatedName = snapshotValue["a"] as? String,
+                let standing = snapshotValue["s"] as? Int,
+                let win = snapshotValue["w"] as? Int,
+                let loss = snapshotValue["l"] as? Int,
+                let gameDifferential = snapshotValue["gd"] as? Int,
+                let backgroundColor = snapshotValue["c"] as? String,
+                let player1 = snapshotValue["p1"] as? String,
+                let player2 = snapshotValue["p2"] as? String,
+                let player3 = snapshotValue["p3"] as? String else {
+                    return
+            }
+                                 
 			
-			team.id = String(snapshotValue["id"]! as! Int)
-			team.region = snapshotValue["r"] as! Int
-			team.name = snapshotValue["n"]! as! String
-			team.abbreviatedName = snapshotValue["a"]! as! String
-			team.standing = snapshotValue["s"]! as! Int
-			team.win = String(snapshotValue["w"]! as! Int)
-			team.loss = String(snapshotValue["l"]! as! Int)
-			team.gameDifferential = snapshotValue["gd"]! as! Int
-			team.backgroundColor = snapshotValue["c"]! as! String
-			team.player1 = snapshotValue["p1"]! as! String
-			team.player2 = snapshotValue["p2"]! as! String
-			team.player3 = snapshotValue["p3"]! as! String
+            team.id = String(id)
+            team.region = region
+            team.name = name
+            team.abbreviatedName = abbreviatedName
+            team.standing = standing
+            team.win = String(win)
+            team.loss = String(loss)
+            team.gameDifferential = gameDifferential
+            team.backgroundColor = backgroundColor
+            team.player1 = player1
+            team.player2 = player2
+            team.player3 = player3
 			
 			team.writeToRealm()
 		}
@@ -86,8 +124,12 @@ class Downloader {
 	//////////////////////////////////////////////
 	
 	// MARK: - Load matches
+    
+    /// Loads match data for RLCS + RLRS
+    ///
+    /// - Returns: Bool
 	func loadMatches() -> Bool {
-		var moveOn = true
+		let moveOn = true
 		
 		loadRLCS()
 		reloadRLCSMatches()
@@ -102,6 +144,8 @@ class Downloader {
 	
 	// MARK: - Initial Firebase calls for Matches
 	
+    
+    /// Downloads RLCS match data. If any match information is missing, the match is not saved to realm.
     func loadRLCS() {
 		let rlcsDB = Database.database().reference().child("matches").child("rlcs")
 		
@@ -110,48 +154,63 @@ class Downloader {
 		rlcsDB.observe(.childAdded) { (snapshot) in
 			let snapshotValue = snapshot.value as! Dictionary<String, Any>
 			
-			var match = RealmMatchRLCS()
-			
-			match.id = snapshotValue["id"]! as! String
-			
-			match.teamOneID = String(snapshotValue["1id"]! as! Int)
-			match.teamTwoID = String(snapshotValue["2id"]! as! Int)
-			
-			match.oneScore = String(snapshotValue["1s"]! as! Int)
-			match.twoScore = String(snapshotValue["2s"]! as! Int)
-			
-			match.region = snapshotValue["r"]! as! Int
-			
-			match.week = snapshotValue["w"]! as! Int
-			
-			match.date = snapshotValue["d"] as! String
-			match.title = snapshotValue["t"] as! String
+			let match = RealmMatchRLCS()
+            
+            // If any of these don't exist, don't write to realm because it's a pain to fix
+            guard let id = snapshotValue["id"] as? String,
+                let teamOneID = snapshotValue["1id"] as? Int,
+                let teamTwoID = snapshotValue["2id"] as? Int,
+                let oneScore = snapshotValue["1s"] as? Int,
+                let twoScore = snapshotValue["2s"] as? Int,
+                let region = snapshotValue["r"] as? Int,
+                let week = snapshotValue["w"] as? Int,
+                let date = snapshotValue["d"] as? String,
+                let title = snapshotValue["t"] as? String else { return }
+            
+            match.id = id
+            match.teamOneID = String(teamOneID)
+			match.teamTwoID = String(teamTwoID)
+			match.oneScore = String(oneScore)
+			match.twoScore = String(twoScore)
+			match.region = region
+			match.week = week
+			match.date = date
+			match.title = title
 			
 			match.writeToRLCSRealm()
 		}
 	}
 	
+    
+    /// Downloads RLRS match data. If any match information is missing, the match is not saved to realm.
 	func loadRLRS() {
 		let rlrsDB = Database.database().reference().child("matches").child("rlrs")
 		
 		rlrsDB.observe(.childAdded) { (snapshot) in
 			let snapshotValue = snapshot.value as! Dictionary<String, Any>
 			
-			var match = RealmMatchRLRS()
+			let match = RealmMatchRLRS()
 			
-			match.id = snapshotValue["id"]! as! String
-			
-			match.teamOneID = String(snapshotValue["1id"]! as! Int)
-			match.teamTwoID = String(snapshotValue["2id"]! as! Int)
-			
-			match.oneScore = String(snapshotValue["1s"]! as! Int)
-			match.twoScore = String(snapshotValue["2s"]! as! Int)
-			
-			match.region = snapshotValue["r"]! as! Int
-			match.week = snapshotValue["w"]! as! Int
-			
-			match.date = snapshotValue["d"] as! String
-			match.title = snapshotValue["t"] as! String
+            // If any of these don't exist, don't write to realm because it's a pain to fix
+            guard let id = snapshotValue["id"] as? String,
+                let teamOneID = snapshotValue["1id"] as? Int,
+                let teamTwoID = snapshotValue["2id"] as? Int,
+                let oneScore = snapshotValue["1s"] as? Int,
+                let twoScore = snapshotValue["2s"] as? Int,
+                let region = snapshotValue["r"] as? Int,
+                let week = snapshotValue["w"] as? Int,
+                let date = snapshotValue["d"] as? String,
+                let title = snapshotValue["t"] as? String else { return }
+            
+            match.id = id
+            match.teamOneID = String(teamOneID)
+            match.teamTwoID = String(teamTwoID)
+            match.oneScore = String(oneScore)
+            match.twoScore = String(twoScore)
+            match.region = region
+            match.week = week
+            match.date = date
+            match.title = title
 			
 			match.writeToRLRSRealm()
 		}
@@ -161,58 +220,78 @@ class Downloader {
 	
 	// MARK: - Matches Child Changed Listeners
 	
+    /// Listener for RLCS matches. If any match information is missing, the match is not updated.
 	func reloadRLCSMatches() {
 		let rlcsDB = Database.database().reference().child("matches").child("rlcs")
 		
 		rlcsDB.observe(.childChanged) { (snapshot) in
 			let snapshotValue = snapshot.value as! Dictionary<String, Any>
 			
-			var match = RealmMatchRLCS()
+			let match = RealmMatchRLCS()
 			
-			match.id = snapshotValue["id"]! as! String
-			
-			match.teamOneID = String(snapshotValue["1id"]! as! Int)
-			match.teamTwoID = String(snapshotValue["2id"]! as! Int)
-			
-			match.oneScore = String(snapshotValue["1s"]! as! Int)
-			match.twoScore = String(snapshotValue["2s"]! as! Int)
-			
-			match.region = snapshotValue["r"]! as! Int
-			match.week = snapshotValue["w"]! as! Int
-			
-			match.date = snapshotValue["d"] as! String
-			match.title = snapshotValue["t"] as! String
-			
-			match.writeToRLCSRealm()
+            // If any of these don't exist, don't write to realm because it's a pain to fix
+            guard let id = snapshotValue["id"] as? String,
+                let teamOneID = snapshotValue["1id"] as? Int,
+                let teamTwoID = snapshotValue["2id"] as? Int,
+                let oneScore = snapshotValue["1s"] as? Int,
+                let twoScore = snapshotValue["2s"] as? Int,
+                let region = snapshotValue["r"] as? Int,
+                let week = snapshotValue["w"] as? Int,
+                let date = snapshotValue["d"] as? String,
+                let title = snapshotValue["t"] as? String else { return }
+            
+            match.id = id
+            match.teamOneID = String(teamOneID)
+            match.teamTwoID = String(teamTwoID)
+            match.oneScore = String(oneScore)
+            match.twoScore = String(twoScore)
+            match.region = region
+            match.week = week
+            match.date = date
+            match.title = title
+            
+            match.writeToRLCSRealm()
 		}
 	}
 	
+    /// Listener for RLRS matches. If any match information is missing, the match is not updated.
 	func reloadRLRSMatches() {
 		let rlrsDB = Database.database().reference().child("matches").child("rlrs")
 		
 		rlrsDB.observe(.childChanged) { (snapshot) in
 			let snapshotValue = snapshot.value as! Dictionary<String, Any>
 			
-			var match = RealmMatchRLRS()
+			let match = RealmMatchRLRS()
 			
-			match.id = snapshotValue["id"]! as! String
-			
-			match.teamOneID = String(snapshotValue["1id"]! as! Int)
-			match.teamTwoID = String(snapshotValue["2id"]! as! Int)
-			
-			match.oneScore = String(snapshotValue["1s"]! as! Int)
-			match.twoScore = String(snapshotValue["2s"]! as! Int)
-			
-			match.region = snapshotValue["r"]! as! Int
-			match.week = snapshotValue["w"]! as! Int
-			
-			match.date = snapshotValue["d"] as! String
-			match.title = snapshotValue["t"] as! String
+            // If any of these don't exist, don't write to realm because it's a pain to fix
+            guard let id = snapshotValue["id"] as? String,
+                let teamOneID = snapshotValue["1id"] as? Int,
+                let teamTwoID = snapshotValue["2id"] as? Int,
+                let oneScore = snapshotValue["1s"] as? Int,
+                let twoScore = snapshotValue["2s"] as? Int,
+                let region = snapshotValue["r"] as? Int,
+                let week = snapshotValue["w"] as? Int,
+                let date = snapshotValue["d"] as? String,
+                let title = snapshotValue["t"] as? String else { return }
+            
+            match.id = id
+            match.teamOneID = String(teamOneID)
+            match.teamTwoID = String(teamTwoID)
+            match.oneScore = String(oneScore)
+            match.twoScore = String(twoScore)
+            match.region = region
+            match.week = week
+            match.date = date
+            match.title = title
 			
 			match.writeToRLRSRealm()
 		}
 	}
 
+    
+    /// Gets RLCS matches one time
+    ///
+    /// - Parameter completion: refresh TableView data
     static func fetchRLCSOnce(completion: @escaping () -> Void) {
         let rlcsDB = Database.database().reference().child("matches").child("rlcs")
 
@@ -253,6 +332,9 @@ class Downloader {
         }
     }
 
+    /// Gets RLRS matches one time
+    ///
+    /// - Parameter completion: refresh TableView data
     static func fetchRLRSOnce(completion: @escaping () -> Void) {
         let rlcsDB = Database.database().reference().child("matches").child("rlrs")
 
