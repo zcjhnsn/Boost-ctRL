@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		071099492278D30E0062C4BE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071099482278D30E0062C4BE /* SettingsViewController.swift */; };
 		0719339C22374DCE002388C9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0719339B22374DCE002388C9 /* Extensions.swift */; };
 		0719339E22374F94002388C9 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0719339D22374F94002388C9 /* Downloader.swift */; };
+		071F740D22E6CF510034C21E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 071F740C22E6CF510034C21E /* GoogleService-Info.plist */; };
 		078D007020FE71A70069476E /* NewsContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078D006F20FE71A70069476E /* NewsContentViewController.swift */; };
 		078D007420FE76B50069476E /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078D007320FE76B50069476E /* News.swift */; };
 		078D007620FED6530069476E /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078D007520FED6530069476E /* Match.swift */; };
@@ -29,7 +30,6 @@
 		07E3C8DA20EDABE000F2A16A /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C8D920EDABE000F2A16A /* InfoViewController.swift */; };
 		07E3C8DC20EDB2F700F2A16A /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C8DB20EDB2F700F2A16A /* TabBarViewController.swift */; };
 		07E3C8E320EE82BF00F2A16A /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C8E220EE82BF00F2A16A /* Team.swift */; };
-		07E3C90B20F40C7500F2A16A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07E3C90A20F40C7500F2A16A /* GoogleService-Info.plist */; };
 		07E3C90D20F66CE500F2A16A /* TeamsContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C90C20F66CE500F2A16A /* TeamsContentViewController.swift */; };
 		07F48419222DD044003A7CCF /* RealmObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F48418222DD044003A7CCF /* RealmObjects.swift */; };
 		B0989107184D5DC75F3F62D3 /* Pods_Boost_ctRL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0540C0DC5C8A9BD802BE84 /* Pods_Boost_ctRL.framework */; };
@@ -39,6 +39,7 @@
 		071099482278D30E0062C4BE /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0719339B22374DCE002388C9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0719339D22374F94002388C9 /* Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
+		071F740C22E6CF510034C21E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		078D006F20FE71A70069476E /* NewsContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsContentViewController.swift; sourceTree = "<group>"; };
 		078D007320FE76B50069476E /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		078D007520FED6530069476E /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
@@ -61,7 +62,6 @@
 		07E3C8D920EDABE000F2A16A /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		07E3C8DB20EDB2F700F2A16A /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		07E3C8E220EE82BF00F2A16A /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
-		07E3C90A20F40C7500F2A16A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		07E3C90C20F66CE500F2A16A /* TeamsContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsContentViewController.swift; sourceTree = "<group>"; };
 		07F48418222DD044003A7CCF /* RealmObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmObjects.swift; sourceTree = "<group>"; };
 		3D0540C0DC5C8A9BD802BE84 /* Pods_Boost_ctRL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Boost_ctRL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,7 +165,7 @@
 				07E3C8DF20EE827A00F2A16A /* View */,
 				07E3C8CC20E55A1F00F2A16A /* Assets.xcassets */,
 				07E3C8D120E55A1F00F2A16A /* Info.plist */,
-				07E3C90A20F40C7500F2A16A /* GoogleService-Info.plist */,
+				071F740C22E6CF510034C21E /* GoogleService-Info.plist */,
 			);
 			path = "Boost ctRL";
 			sourceTree = "<group>";
@@ -268,7 +268,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 07E3C8BB20E55A1C00F2A16A /* Build configuration list for PBXProject "Boost Ctrl" */;
+			buildConfigurationList = 07E3C8BB20E55A1C00F2A16A /* Build configuration list for PBXProject "Boost ctRL" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -293,7 +293,7 @@
 			files = (
 				07E3C8D020E55A1F00F2A16A /* LaunchScreen.storyboard in Resources */,
 				07E3C8CD20E55A1F00F2A16A /* Assets.xcassets in Resources */,
-				07E3C90B20F40C7500F2A16A /* GoogleService-Info.plist in Resources */,
+				071F740D22E6CF510034C21E /* GoogleService-Info.plist in Resources */,
 				07E3C8CB20E55A1C00F2A16A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -553,7 +553,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		07E3C8BB20E55A1C00F2A16A /* Build configuration list for PBXProject "Boost Ctrl" */ = {
+		07E3C8BB20E55A1C00F2A16A /* Build configuration list for PBXProject "Boost ctRL" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				07E3C8D220E55A1F00F2A16A /* Debug */,

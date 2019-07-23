@@ -134,7 +134,7 @@ class MatchesContentViewController: UIViewController {
 
     // Fetches the RLCS and RLRS matches from Firebase and completes when it's done
     func fetchDataFromFirebase(completion: @escaping () -> ()) {
-        // TODO: I'm not sure why this is crashing on threadGroup.leave() but i'll look into it. For now the code below should work
+        // TODO: I'm not sure why this is crashing on threadGroup.leave() but i'll look into it. For now the code below should work - Nathan
         let threadGroup = DispatchGroup()
 
         threadGroup.enter()
