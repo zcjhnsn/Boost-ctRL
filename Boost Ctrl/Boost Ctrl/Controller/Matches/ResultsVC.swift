@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ResultsVC: UIViewController {
 	
@@ -17,7 +18,7 @@ class ResultsVC: UIViewController {
 	var match: Match?
 	var winThreshold: Int?
 	//var results = [String]()
-	var results: [String] = ["1-3", "1-2*", "4-1", "1-3"]
+	var results: [String] = [String]()
 	
 	/////////////////////////////
 	
@@ -46,11 +47,11 @@ class ResultsVC: UIViewController {
 	
 	let spacerLabel: UILabel = {
 		let label = UILabel()
+		label.usesAutoLayout()
 		label.font = .systemFont(ofSize: 20, weight: .regular)
 		label.text = "-"
 		label.textAlignment = .center
 		label.textColor = ctRLTheme.cloudWhite
-		label.usesAutoLayout()
 		label.frame.size = .init(width: 6, height: 6)
 		
 		return label
@@ -58,25 +59,28 @@ class ResultsVC: UIViewController {
 	
 	lazy var teamOneImageView: UIImageView = {
 		let imageView = UIImageView()
+		imageView.usesAutoLayout()
+		imageView.contentMode = .scaleAspectFit
+
 		if let logo = teamOneLogo {
 			imageView.image = logo
 		} else {
 			imageView.image = #imageLiteral(resourceName: "logo-null")
 		}
-		imageView.usesAutoLayout()
-		imageView.contentMode = .scaleAspectFit
+		
 		return imageView
 	}()
 	
 	lazy var teamTwoImageView: UIImageView = {
 		let imageView = UIImageView()
+		imageView.usesAutoLayout()
 		if let logo = teamTwoLogo {
 			imageView.image = logo
 		} else {
 			imageView.image = #imageLiteral(resourceName: "logo-null")
 		}
-		imageView.usesAutoLayout()
 		imageView.contentMode = .scaleAspectFit
+		
 		return imageView
 	}()
 	
@@ -96,17 +100,20 @@ class ResultsVC: UIViewController {
 	
 	var headerView: UIView = {
 		var header = UIView()
-		header.backgroundColor = ctRLTheme.darkBlue
 		header.usesAutoLayout()
+		header.backgroundColor = ctRLTheme.darkBlue
+		
 		return header
 	}()
 	
 	var tableView: UITableView = {
 		let tableView = UITableView(frame: .zero, style: .plain)
-		tableView.backgroundColor = .clear
-		tableView.backgroundView = nil
-		tableView.allowsSelection = false
 		tableView.usesAutoLayout()
+		tableView.backgroundView?.backgroundColor = ctRLTheme.midnightBlue
+		tableView.allowsSelection = false
+		tableView.separatorStyle = .singleLine
+		tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+		//tableView.isHidden = true
 		
 		return tableView
 	}()
@@ -120,15 +127,23 @@ class ResultsVC: UIViewController {
         // Do any additional setup after loading the view.
 		tableView.delegate = self
 		tableView.dataSource = self
-		tableView.backgroundView?.backgroundColor = ctRLTheme.midnightBlue
 		
 		tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
 		
-		winThreshold = 3
-		
-		configureLabels()
 		configureMainView()
 		layoutHeaderViews()
+		configureHeaderLabels()
+		
+		if let matchID = match?.id {
+			getGameResults(forMatch: matchID) {
+				self.tableView.reloadData()
+				self.tableView.isHidden = false
+				
+				self.configureHeaderLabels()
+				print(self.results)
+				print("Done downloading results!")
+			}
+		}
     }
 	
 	/////////////////////////////
@@ -148,8 +163,14 @@ class ResultsVC: UIViewController {
 		headerView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor)
 		headerView.heightAnchor.constraint(equalToConstant: 100).isActive = true
 		
+		tableView.anchor(top: headerView.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
 		
-		tableView.anchor(top: headerView.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 12, left: 0, bottom: 0, right: 0))
+		removeEmptySpaceUnderLastCell()
+	}
+	
+	
+	/// Removes white space under the last cell in a tableView. **Must** be called in `viewDidLoad`.
+	func removeEmptySpaceUnderLastCell() {
 		tableView.tableFooterView = UIView()
 		tableView.backgroundColor = .clear
 	}
@@ -193,7 +214,7 @@ class ResultsVC: UIViewController {
 	/// Configure labels displaying the series score.
 	///
 	/// Winning team is bolded.
-	func configureLabels() {
+	func configureHeaderLabels() {
 		teamOneScoreLabel.text = match?.oneScore ?? "0"
 		teamTwoScoreLabel.text = match?.twoScore ?? "0"
 		
@@ -212,6 +233,40 @@ class ResultsVC: UIViewController {
 		}
 		
 	}
+	
+	
+	/// Download game results from Firebase
+	///
+	/// - Parameters:
+	///   - matchID: id for the match
+	///   - completion: stop loading animation
+	private func getGameResults(forMatch matchID: String, completion: @escaping () -> Void) {
+		let resultsDB = Database.database().reference().child("results").child(matchID)
+		
+		resultsDB.observe(.childAdded) { (snapshot) in
+			print(snapshot.value)
+			
+			if snapshot.key == "max" {
+				if let maxWins = snapshot.value as? Int {
+					self.winThreshold = maxWins
+				} else {
+					self.winThreshold = 4
+				}
+			} else {
+				if let result = snapshot.value as? String {
+					self.results.append(result)
+				}
+			}
+			
+			completion()
+		}
+		
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		match = nil
+		results = []
+	}
 }
 
 extension ResultsVC: UITableViewDelegate {
@@ -225,26 +280,26 @@ extension ResultsVC: UITableViewDelegate {
 extension ResultsVC: UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		if results.count > 0 {
-			return results.count
+		if results.isEmpty {
+			return 1
 		}
-		
-		return 1
+	
+		return results.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
 		cell.backgroundColor = ctRLTheme.midnightBlue
-
-		guard results.count > 0 else {
-			tableView.separatorStyle = .none
+		
+		guard !results.isEmpty else {
 			cell.textLabel?.text = "Match data coming soon"
 			cell.textLabel?.textAlignment = .center
 			cell.textLabel?.font = AvenirNext.regular.size(20)
 			cell.textLabel?.textColor = ctRLTheme.cloudWhite
-			
 			return cell
 		}
+		
+		cell.textLabel?.text = ""
 		
 		var result = results[indexPath.row]
 		let wentToOvertime = result.contains("*")
