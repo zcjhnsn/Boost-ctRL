@@ -214,6 +214,8 @@ extension TeamsContentViewController: UITableViewDelegate, UITableViewDataSource
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let team = teamArray[indexPath.row]
+		print(team.name)
+		print("✅")
 	}
 }
 
