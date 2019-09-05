@@ -234,6 +234,9 @@ class ResultsVC: UIViewController {
 		
 	}
 	
+	/////////////////////////////
+	
+	// MARK: - Networking
 	
 	/// Download game results from Firebase
 	///
@@ -262,6 +265,22 @@ class ResultsVC: UIViewController {
 		}
 		
 	}
+	
+	private func logAnaylyticsEvent() {
+		guard let match = match else { return }
+		
+		let params = [
+			EventParameter.matchID : match.id,
+			EventParameter.teamOneID : match.teamOneID,
+			EventParameter.teamTwoID : match.teamTwoID
+		]
+	
+		Analytics.logEvent(EventType.results, parameters: params)
+	}
+	
+	//////////////////////////////
+	
+	// MARK: - viewWillDisappear
 	
 	override func viewWillDisappear(_ animated: Bool) {
 		match = nil
