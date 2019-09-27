@@ -70,7 +70,6 @@ class Downloader {
 		return moveOn
 	}
 	
-	//////////////////////////////////////////////
 	
 	// MARK: - Child Changed Listener for Teams
 		
@@ -121,7 +120,6 @@ class Downloader {
 		print("Update teams and standings: Complete ✅")
 	}
 
-	//////////////////////////////////////////////
 	
 	// MARK: - Load matches
     
@@ -140,7 +138,6 @@ class Downloader {
 		return moveOn
 	}
 	
-	//////////////////////////////////////////////
 	
 	// MARK: - Initial Firebase calls for Matches
 	
@@ -216,7 +213,6 @@ class Downloader {
 		}
 	}
 	
-	//////////////////////////////////////////////
 	
 	// MARK: - Matches Child Changed Listeners
 	
