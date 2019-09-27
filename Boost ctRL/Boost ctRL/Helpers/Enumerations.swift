@@ -39,6 +39,8 @@ enum EventParameter {
 	// For news
 	static let newsItemID = "news_item_id"
 	static let newsItemTitle = "news_item_title"
+	static let newsSite = "news_site"
+	static let newsCategory = "news_category"
 }
 
 enum EventType {

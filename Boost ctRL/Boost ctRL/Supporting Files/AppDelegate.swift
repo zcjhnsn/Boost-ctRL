@@ -32,11 +32,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		//////////////////////////////////////////////
 		
-		// MARK: - Ream Migrations
+		// MARK: - Realm Migrations
 		Realm.Configuration.defaultConfiguration = Realm.Configuration(
-			schemaVersion: 1,
+			schemaVersion: 2,
 			migrationBlock: { migration, oldSchemaVersion in
-				if (oldSchemaVersion < 1) {
+				if oldSchemaVersion < 1 {
 					migration.enumerateObjects(ofType: RealmMatchRLCS.className()) { oldObject, newObject in
 						// combine name fields into a single field
 						newObject!["date"] = ""
@@ -48,7 +48,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 						newMatch!["title"] = ""
 					})
 				}
-		})
+				if oldSchemaVersion < 2 {
+					print("❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️ - Deleting Realm")
+					migration.deleteData(forType: RealmMatchRLCS.className())
+					migration.deleteData(forType: RealmMatchRLRS.className())
+				}
+			}, deleteRealmIfMigrationNeeded: true
+		)
 		
 		Messaging.messaging().delegate = self
 		UNUserNotificationCenter.current().delegate = self
@@ -76,21 +82,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func applicationWillEnterForeground(_ application: UIApplication) {}
 
-	func applicationDidBecomeActive(_ application: UIApplication) {
-		let downloader = Downloader()
-		print("Aaaaaaaand we're back 🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾")
-		if downloader.loadTeamsAndStandings() {
-			print("Returning Team Download Complete: ✅")
-		} else {
-			print("Returned False ‼️")
-		}
-		
-		if downloader.loadMatches() {
-			print("Returning Matches Download ✅")
-		} else {
-			print("Returning Matches Download 🔴")
-		}
-	}
+	func applicationDidBecomeActive(_ application: UIApplication) {}
+	
+	func applicationSignificantTimeChange(_ application: UIApplication) {}
 
 	func applicationWillTerminate(_ application: UIApplication) {
 		// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
@@ -111,7 +105,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
-extension AppDelegate: UNUserNotificationCenterDelegate{
+extension AppDelegate: UNUserNotificationCenterDelegate {
+	
 	func userNotificationCenter(_ center: UNUserNotificationCenter,
 								willPresent notification: UNNotification,
 								withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
@@ -163,9 +158,8 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
 	
 	func getNotificationSettings() {
 		UNUserNotificationCenter.current().getNotificationSettings { settings in
-			print("Notification settings: \(settings)")
-			
 			guard settings.authorizationStatus == .authorized else { return }
+			
 			DispatchQueue.main.async {
 				UIApplication.shared.registerForRemoteNotifications()
 			}
@@ -173,7 +167,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
 			Messaging.messaging().subscribe(toTopic: "news") { error in
 				
 				if let error = error {
-					print("Failed to subscribe to news topic")
+					print("Failed to subscribe to news topic: \(error)")
 				} else {
 					print("Subscribed to news topic")
 				}
@@ -183,7 +177,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
 			Messaging.messaging().subscribe(toTopic: "matchResults") { error in
 				
 				if let error = error {
-					print("Failed to subscribe to match results topic")
+					print("Failed to subscribe to match results topic: \(error)")
 				} else {
 					print("Subscribed to matches topic")
 				}
@@ -193,7 +187,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
 	
 }
 
-extension AppDelegate: MessagingDelegate{
+extension AppDelegate: MessagingDelegate {
 	
 	func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
 		print("Firebase registration token: \(fcmToken)")
