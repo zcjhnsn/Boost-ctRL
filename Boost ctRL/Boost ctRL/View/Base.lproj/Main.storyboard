@@ -65,7 +65,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="TeamName" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="bDB-WX-XuR">
-                                                            <rect key="frame" x="91" y="13" width="184" height="32"/>
+                                                            <rect key="frame" x="93" y="13" width="182" height="32"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="172" id="yWI-xY-yyC"/>
                                                             </constraints>
@@ -73,10 +73,10 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmw-LU-FaN">
-                                                            <rect key="frame" x="18" y="18" width="20" height="24"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmw-LU-FaN">
+                                                            <rect key="frame" x="18" y="18" width="22" height="24"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="20" id="8HV-H3-qOb"/>
+                                                                <constraint firstAttribute="width" constant="22" id="8HV-H3-qOb"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
                                                             <nil key="textColor"/>
@@ -99,7 +99,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T0x-ja-hBK">
-                                                            <rect key="frame" x="43" y="9" width="40" height="40"/>
+                                                            <rect key="frame" x="45" y="9" width="40" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="40" id="Vff-wu-dvd"/>
                                                             </constraints>
