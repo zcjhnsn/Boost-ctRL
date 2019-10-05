@@ -33,6 +33,11 @@ class MatchesViewController: UIViewController, ACTabScrollViewDelegate, ACTabScr
 		
 		tabViewSetup()
 		setupMatchesVCs()
+		
+		if #available(iOS 13.0, *) {
+			leagueSwitch.selectedSegmentTintColor(ctRLTheme.midnightBlue)
+			leagueSwitch.unselectedSegmentTintColor(ctRLTheme.cloudWhite)
+		}
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {

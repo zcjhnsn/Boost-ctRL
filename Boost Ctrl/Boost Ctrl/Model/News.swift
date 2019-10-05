@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - NewsCategory Enum
 
-// Used for red tags on the news feed
+/// Used for red tags on the news feed
 enum NewsCategory {
 	case News
 	case Rumor
@@ -30,12 +30,31 @@ enum NewsCategory {
 // MARK: - News item
 
 class News {
+	
+	/// Headline/cell title
 	var headline: String = ""
+	
+	/// Detail/sub-headline on the cell
 	var detail: String = ""
+	
+	/// News category
 	var category: NewsCategory = .News
+	
+	/// URL for the news item
 	var link: String = ""
+	
+	/// URL domain
 	var siteName: String = ""
 	
+	
+	/// ID for the news item (`snapshot.key`)
+	var id: String = ""
+	
+	
+	/// Sets the category for the news item
+	///
+	/// - Parameter category: string description of category
+	/// - Returns: NewsCategory enum
 	func setCategory(category: String) -> NewsCategory {
 		switch category.lowercased() {
 		case "news":
