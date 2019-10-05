@@ -223,3 +223,12 @@ enum AvenirNext: String {
 	}
 }
 
+extension UISegmentedControl{
+    func selectedSegmentTintColor(_ color: UIColor) {
+		
+		self.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: color], for: .selected)
+    }
+    func unselectedSegmentTintColor(_ color: UIColor) {
+        self.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: color], for: .normal)
+    }
+}

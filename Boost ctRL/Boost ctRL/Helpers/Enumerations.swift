@@ -23,3 +23,30 @@ enum ctRLTheme {
 	/// Text color
 	static let cloudWhite = UIColor(hex: "dbedf3")!
 }
+
+
+/// Parameter names for Analytics events
+enum EventParameter {
+	// For match results
+	static let matchID = "match_id"
+	static let teamOneID = "team_one_id"
+	static let teamTwoID = "team_two_id"
+	
+	// For team pages
+	static let teamID = "team_id"
+	static let teamName = "team_name"
+	
+	// For news
+	static let newsItemID = "news_item_id"
+	static let newsItemTitle = "news_item_title"
+	static let newsSite = "news_site"
+	static let newsCategory = "news_category"
+}
+
+enum EventType {
+	static let results = "results"
+	static let news = "news"
+	static let newsNotification = "news_notification"
+	static let resultNotification = "result_notification"
+	static let team = "team"
+}
