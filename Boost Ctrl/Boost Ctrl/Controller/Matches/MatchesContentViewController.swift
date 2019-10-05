@@ -33,6 +33,8 @@ class MatchesContentViewController: UIViewController {
     var seriesType: SeriesType = .championship
 	
 	var notificationToken: NotificationToken? = nil
+	
+	lazy var slideInTransitioningDelegate = SlideInPresentationManager()
 
 	// Week for each ACTabScrollView tab
 	var category: Week?
@@ -97,6 +99,11 @@ class MatchesContentViewController: UIViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		loadRLCSData()
 		loadRLRSData()
+		
+		let selectedRow: IndexPath? = tableView.indexPathForSelectedRow
+		if let row = selectedRow {
+			tableView.deselectRow(at: row, animated: true)
+		}
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
@@ -109,6 +116,19 @@ class MatchesContentViewController: UIViewController {
 	
 	override var preferredStatusBarStyle: UIStatusBarStyle {
 		return .lightContent
+	}
+	
+	///////////////////////////////////////////////
+	
+	// MARK: - Navigation
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if let controller = segue.destination as? ResultsVC {
+			slideInTransitioningDelegate.direction = .bottom
+			
+			print("Showing blue screen 💙")
+			controller.transitioningDelegate = slideInTransitioningDelegate
+			controller.modalPresentationStyle = .custom
+		}
 	}
 	
 	//////////////////////////////////////////////
@@ -348,11 +368,29 @@ extension MatchesContentViewController: UITableViewDelegate, UITableViewDataSour
 		}
 	}
 	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		let resultsVC = storyboard.instantiateViewController(withIdentifier: "ResultsVC") as! ResultsVC
+		let cell = tableView.cellForRow(at: indexPath) as! MatchesContentTableViewCell
+		
+		slideInTransitioningDelegate.direction = .bottom
+		
+		resultsVC.match = matchesArray[indexPath.section][indexPath.row]
+		resultsVC.teamOneLogo = cell.teamOneLogo.image
+		resultsVC.teamTwoLogo = cell.teamTwoLogo.image
+		
+		resultsVC.transitioningDelegate = slideInTransitioningDelegate
+		resultsVC.modalPresentationStyle = .custom
+		self.present(resultsVC, animated: true)
+	}
+	
 	
 	func cellSetup(forMatch match: Match) -> MatchesContentTableViewCell {
 		
 		// set the cell
 		let cell = tableView.dequeueReusableCell(withIdentifier: "matchCell") as! MatchesContentTableViewCell
+		
+		cell.selectionStyle = .none
 		
 		// Team Name Labels
 		

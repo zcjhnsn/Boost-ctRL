@@ -81,11 +81,11 @@ class NewsContentViewController: UIViewController {
 		// Simply call AlertOnboarding...
 		let alertView = AlertOnboarding(arrayOfAlerts: alerts)
 		
-		alertView.colorForAlertViewBackground = UIColor.ctRLTheme.midnightBlue
-		alertView.colorButtonText = UIColor.ctRLTheme.cloudWhite
-		alertView.colorButtonBottomBackground = UIColor.ctRLTheme.darkBlue
-		alertView.colorPageIndicator = UIColor.ctRLTheme.cloudWhite
-		alertView.colorCurrentPageIndicator = UIColor.ctRLTheme.hotPink
+		alertView.colorForAlertViewBackground = ctRLTheme.midnightBlue
+		alertView.colorButtonText = ctRLTheme.cloudWhite
+		alertView.colorButtonBottomBackground = ctRLTheme.darkBlue
+		alertView.colorPageIndicator = ctRLTheme.cloudWhite
+		alertView.colorCurrentPageIndicator = ctRLTheme.hotPink
 		
 		// ... and show it !
 		alertView.show()
