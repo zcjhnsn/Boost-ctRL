@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		071099492278D30E0062C4BE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071099482278D30E0062C4BE /* SettingsViewController.swift */; };
 		0719339C22374DCE002388C9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0719339B22374DCE002388C9 /* Extensions.swift */; };
 		0719339E22374F94002388C9 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0719339D22374F94002388C9 /* Downloader.swift */; };
+		074FAA5123467FE000EDFD1E /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074FAA4F2346615600EDFD1E /* NotificationManager.swift */; };
 		078504BF231750B000FAC1E3 /* ResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078504BE231750B000FAC1E3 /* ResultsVC.swift */; };
 		078504C22317534600FAC1E3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 078504C1231752D400FAC1E3 /* GoogleService-Info.plist */; };
 		078504C6231759D800FAC1E3 /* SlideInPresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078504C5231759D800FAC1E3 /* SlideInPresentationManager.swift */; };
@@ -36,13 +37,14 @@
 		07E3C8E320EE82BF00F2A16A /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C8E220EE82BF00F2A16A /* Team.swift */; };
 		07E3C90D20F66CE500F2A16A /* TeamsContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C90C20F66CE500F2A16A /* TeamsContentViewController.swift */; };
 		07F48419222DD044003A7CCF /* RealmObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F48418222DD044003A7CCF /* RealmObjects.swift */; };
-		B0989107184D5DC75F3F62D3 /* Pods_Boost_ctRL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0540C0DC5C8A9BD802BE84 /* Pods_Boost_ctRL.framework */; };
+		FB9733F7F7ECF5579F3E3EBA /* Pods_Boost_ctRL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A1EDE952E763BC4F7542480 /* Pods_Boost_ctRL.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		071099482278D30E0062C4BE /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0719339B22374DCE002388C9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0719339D22374F94002388C9 /* Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
+		074FAA4F2346615600EDFD1E /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		078504BE231750B000FAC1E3 /* ResultsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsVC.swift; sourceTree = "<group>"; };
 		078504C1231752D400FAC1E3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		078504C5231759D800FAC1E3 /* SlideInPresentationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInPresentationManager.swift; sourceTree = "<group>"; };
@@ -72,9 +74,9 @@
 		07E3C8E220EE82BF00F2A16A /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		07E3C90C20F66CE500F2A16A /* TeamsContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsContentViewController.swift; sourceTree = "<group>"; };
 		07F48418222DD044003A7CCF /* RealmObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmObjects.swift; sourceTree = "<group>"; };
-		3D0540C0DC5C8A9BD802BE84 /* Pods_Boost_ctRL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Boost_ctRL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B87BFB3DADFD267394B00D1E /* Pods-Boost ctRL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boost ctRL.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Boost ctRL/Pods-Boost ctRL.debug.xcconfig"; sourceTree = "<group>"; };
-		CBE860C55C3F8B37AD2AB0FA /* Pods-Boost ctRL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boost ctRL.release.xcconfig"; path = "Pods/Target Support Files/Pods-Boost ctRL/Pods-Boost ctRL.release.xcconfig"; sourceTree = "<group>"; };
+		4A1EDE952E763BC4F7542480 /* Pods_Boost_ctRL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Boost_ctRL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EAD11D900E59D7C3CBEA6F7 /* Pods-Boost ctRL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boost ctRL.debug.xcconfig"; path = "Target Support Files/Pods-Boost ctRL/Pods-Boost ctRL.debug.xcconfig"; sourceTree = "<group>"; };
+		D51FB15FBDD83613471A8C1D /* Pods-Boost ctRL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boost ctRL.release.xcconfig"; path = "Target Support Files/Pods-Boost ctRL/Pods-Boost ctRL.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,8 +84,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0989107184D5DC75F3F62D3 /* Pods_Boost_ctRL.framework in Frameworks */,
 				07DD5876225E5B1B00851D9B /* StoreKit.framework in Frameworks */,
+				FB9733F7F7ECF5579F3E3EBA /* Pods_Boost_ctRL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,8 +170,8 @@
 			children = (
 				07E3C8C220E55A1C00F2A16A /* Boost ctRL */,
 				07E3C8C120E55A1C00F2A16A /* Products */,
-				FF696F6D782E23B7BF3592C1 /* Pods */,
 				1CFBE644F1950C960952EEBA /* Frameworks */,
+				DA192FA7A233AFA9074B2F3E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -229,6 +231,7 @@
 				07DD5877225E5EC900851D9B /* IAPProduct.swift */,
 				07DD5879225E625000851D9B /* IAPService.swift */,
 				07DD587F225FEC8600851D9B /* IAP.swift */,
+				074FAA4F2346615600EDFD1E /* NotificationManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -237,18 +240,18 @@
 			isa = PBXGroup;
 			children = (
 				07DD5875225E5B1B00851D9B /* StoreKit.framework */,
-				3D0540C0DC5C8A9BD802BE84 /* Pods_Boost_ctRL.framework */,
+				4A1EDE952E763BC4F7542480 /* Pods_Boost_ctRL.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		FF696F6D782E23B7BF3592C1 /* Pods */ = {
+		DA192FA7A233AFA9074B2F3E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B87BFB3DADFD267394B00D1E /* Pods-Boost ctRL.debug.xcconfig */,
-				CBE860C55C3F8B37AD2AB0FA /* Pods-Boost ctRL.release.xcconfig */,
+				4EAD11D900E59D7C3CBEA6F7 /* Pods-Boost ctRL.debug.xcconfig */,
+				D51FB15FBDD83613471A8C1D /* Pods-Boost ctRL.release.xcconfig */,
 			);
-			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,11 +261,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 07E3C8D420E55A1F00F2A16A /* Build configuration list for PBXNativeTarget "Boost ctRL" */;
 			buildPhases = (
-				6BFC32C5D339297EF709AF3E /* [CP] Check Pods Manifest.lock */,
+				6A65A4B0037BB092B414E7C2 /* [CP] Check Pods Manifest.lock */,
 				07E3C8BC20E55A1C00F2A16A /* Sources */,
 				07E3C8BD20E55A1C00F2A16A /* Frameworks */,
 				07E3C8BE20E55A1C00F2A16A /* Resources */,
-				4CECAB37A7926463D690CD53 /* [CP] Embed Pods Frameworks */,
+				982FB1480409A3A4A6578288 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -296,7 +299,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 07E3C8BB20E55A1C00F2A16A /* Build configuration list for PBXProject "Boost ctRL" */;
+			buildConfigurationList = 07E3C8BB20E55A1C00F2A16A /* Build configuration list for PBXProject "Boost Ctrl" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -329,39 +332,64 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4CECAB37A7926463D690CD53 /* [CP] Embed Pods Frameworks */ = {
+		6A65A4B0037BB092B414E7C2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Boost ctRL/Pods-Boost ctRL-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Boost ctRL/Pods-Boost ctRL-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Boost ctRL/Pods-Boost ctRL-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6BFC32C5D339297EF709AF3E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Boost ctRL-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		982FB1480409A3A4A6578288 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Boost ctRL/Pods-Boost ctRL-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ACTabScrollView/ACTabScrollView.framework",
+				"${BUILT_PRODUCTS_DIR}/AlertOnboarding/AlertOnboarding.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ACTabScrollView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlertOnboarding.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Boost ctRL/Pods-Boost ctRL-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -393,6 +421,7 @@
 				0719339E22374F94002388C9 /* Downloader.swift in Sources */,
 				0719339C22374DCE002388C9 /* Extensions.swift in Sources */,
 				07E3C8DA20EDABE000F2A16A /* InfoViewController.swift in Sources */,
+				074FAA5123467FE000EDFD1E /* NotificationManager.swift in Sources */,
 				078D007620FED6530069476E /* Match.swift in Sources */,
 				078504CC231A04E200FAC1E3 /* Enumerations.swift in Sources */,
 			);
@@ -538,12 +567,13 @@
 		};
 		07E3C8D520E55A1F00F2A16A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B87BFB3DADFD267394B00D1E /* Pods-Boost ctRL.debug.xcconfig */;
+			baseConfigurationReference = 4EAD11D900E59D7C3CBEA6F7 /* Pods-Boost ctRL.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Boost ctRL/Boost ctRL.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = V95KUS67FZ;
 				INFOPLIST_FILE = "$(SRCROOT)/Boost ctRL/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
@@ -551,6 +581,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zacjohnson.Boost-ctRL";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -561,12 +592,13 @@
 		};
 		07E3C8D620E55A1F00F2A16A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CBE860C55C3F8B37AD2AB0FA /* Pods-Boost ctRL.release.xcconfig */;
+			baseConfigurationReference = D51FB15FBDD83613471A8C1D /* Pods-Boost ctRL.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Boost ctRL/Boost ctRL.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = V95KUS67FZ;
 				INFOPLIST_FILE = "$(SRCROOT)/Boost ctRL/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
@@ -574,6 +606,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zacjohnson.Boost-ctRL";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -585,7 +618,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		07E3C8BB20E55A1C00F2A16A /* Build configuration list for PBXProject "Boost ctRL" */ = {
+		07E3C8BB20E55A1C00F2A16A /* Build configuration list for PBXProject "Boost Ctrl" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				07E3C8D220E55A1F00F2A16A /* Debug */,

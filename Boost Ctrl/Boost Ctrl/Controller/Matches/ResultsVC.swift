@@ -20,7 +20,6 @@ class ResultsVC: UIViewController {
 	//var results = [String]()
 	var results: [String] = [String]()
 	
-	/////////////////////////////
 	
 	// MARK: - UI Elements
 	
@@ -118,9 +117,9 @@ class ResultsVC: UIViewController {
 		return tableView
 	}()
 	
-	/////////////////////////////
+	 
 	
-	// MARK: - ViewDidLoad
+	// MARK: - View Lifecycle
 
     override func viewDidLoad() {
 		super.viewDidLoad()
@@ -146,10 +145,13 @@ class ResultsVC: UIViewController {
 		}
     }
 	
-	/////////////////////////////
+	override func viewWillDisappear(_ animated: Bool) {
+		match = nil
+		results = []
+	}
+	
 	
 	// MARK: - View Setup
-	
 	
 	/// Lays out the series score header view and table view
 	func configureMainView() {
@@ -234,7 +236,6 @@ class ResultsVC: UIViewController {
 		
 	}
 	
-	/////////////////////////////
 	
 	// MARK: - Networking
 	
@@ -277,26 +278,15 @@ class ResultsVC: UIViewController {
 	
 		Analytics.logEvent(EventType.results, parameters: params)
 	}
-	
-	//////////////////////////////
-	
-	// MARK: - viewWillDisappear
-	
-	override func viewWillDisappear(_ animated: Bool) {
-		match = nil
-		results = []
-	}
 }
 
-extension ResultsVC: UITableViewDelegate {
-	// MARK: TableView Delegate Methods
+
+
+// MARK: TableView Data Source + Delegate Methods
+extension ResultsVC: UITableViewDataSource, UITableViewDelegate {
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		return 50
 	}
-}
-
-// MARK: TableView Data Source Methods
-extension ResultsVC: UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		if results.isEmpty {

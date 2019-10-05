@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import RealmSwift
 import AlertOnboarding
 
 
@@ -20,11 +21,10 @@ class NewsContentViewController: UIViewController {
 	// MARK: - Outlets
 	@IBOutlet weak var tableView: UITableView!
 	
-	//////////////////////////////////////////////
 	
-	//MARK: - Class Variables
+	//MARK: - Class Variables/Views
 	var newsArray = [News]()
-	var teamInfo: [Team] = []
+	let notificationManager = NotificationManager()
 	
 	lazy var refresher: UIRefreshControl = {
 		let refreshControl = UIRefreshControl()
@@ -34,31 +34,33 @@ class NewsContentViewController: UIViewController {
 		return refreshControl
 	}()
 	
-	//////////////////////////////////////////////
 	
 	// MARK: - View Methods
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		tableView.delegate = self
-		tableView.dataSource = self
-	
-		if #available(iOS 10.0, *) {
-			tableView.refreshControl = refresher
-		} else {
-			tableView.addSubview(refresher)
-		}
-		
-		tableView.backgroundColor = UIColor(red: 40.0/255, green: 49.0/255, blue: 73.0/255, alpha: 1)
 		configureTableView()
 		retrieveNews()
-		tableView.separatorStyle = .singleLine
 		
-		// Show update summary if first open after update
-		if UserDefaults.standard.string(forKey: "AppVersionForUpdateSummary") != Bundle.main.releaseVersionNumberPretty {
-			showUpdateSummary()
-			UserDefaults.standard.setValue(Bundle.main.releaseVersionNumberPretty, forKey: "AppVersionForUpdateSummary")
+		initialSetup()
+		
+	}
+	
+	// MARK: - Initial Setup
+	
+	private func initialSetup() {
+		if let versionComponents = Bundle.main.releaseVersionNumber?.components(separatedBy: ".") {
+			let majorMinor = "\(versionComponents[0]).\(versionComponents[1])"
+			
+			// Show update summary if first open after update
+			if UserDefaults.standard.string(forKey: "AppVersionForUpdateSummary")?.contains(majorMinor) ?? true {
+				notificationManager.registerForPushNotifications()
+			} else {
+				showUpdateSummary()
+				cleanUpRealm()
+				UserDefaults.standard.setValue(Bundle.main.releaseVersionNumberPretty, forKey: "AppVersionForUpdateSummary")
+			}
 		}
 	}
 	
@@ -69,17 +71,33 @@ class NewsContentViewController: UIViewController {
 		}
 	}
 	
-	//////////////////////////////////////////////
 	
-	// MARK: Onboarding
+	private func configureTableView() {
+		tableView.delegate = self
+		tableView.dataSource = self
+		tableView.rowHeight = UITableViewAutomaticDimension
+		tableView.estimatedRowHeight = 100.0
+		tableView.backgroundColor = UIColor(red: 40.0/255, green: 49.0/255, blue: 73.0/255, alpha: 1)
+		tableView.separatorStyle = .singleLine
+		
+		if #available(iOS 10.0, *) {
+			tableView.refreshControl = refresher
+		} else {
+			tableView.addSubview(refresher)
+		}
+	}
 	
-	func showUpdateSummary() {
+	
+	// MARK: - Onboarding
+	
+	private func showUpdateSummary() {
 		
 		// First, declare alerts
-		let alerts = [Alert(image: #imageLiteral(resourceName: "notificationIcon"), title: "Notifications", text: "There's not enough pings in your life. Get notified when a match starts, the final match score, and breaking news. Subscribe to notifications you want and the ones you don't 👉 Three dots > Settings"), Alert(image: #imageLiteral(resourceName: "updated"), title: "Auto-Refresh", text: "All matches and standings update in real-time without having to manually refresh the page. It's like having full boost, on demand."), Alert(image: #imageLiteral(resourceName: "coins"), title: "Contribute to development", text: "Help out with Boost ctRL's development so we can bring more features and pay for all these notifications you wanted 😉")]
-		
+		let alerts = [Alert(image: #imageLiteral(resourceName: "notificationIcon"), title: "Notifications", text: "There's not enough pings in your life. Get notified about NA/EU final scores and breaking news. Subscribe to notifications you want and the ones you don't 👉 Three dots > Settings"), Alert(image: #imageLiteral(resourceName: "scoreboard"), title: "Game Results", text: "Sure, G2 went to game 5... But was it close? Did it go to overtime? Tap on a match to get the per-game scores."), Alert(image: #imageLiteral(resourceName: "updated"), title: "Auto-Refresh", text: "All matches and standings update in real-time without having to manually refresh the page. It's like having full boost, on demand."), Alert(image: #imageLiteral(resourceName: "coins"), title: "Contribute to development", text: "Help out with Boost ctRL's development so we can bring more features and pay for all these notifications you wanted 😉")]
+	
 		// Simply call AlertOnboarding...
 		let alertView = AlertOnboarding(arrayOfAlerts: alerts)
+		alertView.delegate = self
 		
 		alertView.colorForAlertViewBackground = ctRLTheme.midnightBlue
 		alertView.colorButtonText = ctRLTheme.cloudWhite
@@ -87,14 +105,13 @@ class NewsContentViewController: UIViewController {
 		alertView.colorPageIndicator = ctRLTheme.cloudWhite
 		alertView.colorCurrentPageIndicator = ctRLTheme.hotPink
 		
+		
 		// ... and show it !
 		alertView.show()
 	}
 	
-	//////////////////////////////////////////////
-	
 	// MARK: - Receive from Firebase
-	func retrieveNews() {
+	private func retrieveNews() {
 		
 		newsArray.removeAll()
 		self.refresher.endRefreshing()
@@ -119,16 +136,46 @@ class NewsContentViewController: UIViewController {
 			news.detail = detail
 			news.category = news.setCategory(category: categoryString)
 			news.siteName = siteName
+			news.id = snapshot.key
 			
 			self.newsArray.insert(news, at: 0)
 			self.tableView.reloadData()
 		}
 	}
+	
+	
+	// MARK: - Analytics
+	
+	
+	/// Sends data about news item tapped by user to Firebase Analytics
+	///
+	/// - Parameter news: news item
+	private func logAnalyticsEvent(for news: News) {
+		let params = [
+			EventParameter.newsItemID : news.id,
+			EventParameter.newsItemTitle : news.headline,
+			EventParameter.newsSite : news.siteName
+		]
+		
+		Analytics.logEvent(EventType.news, parameters: params)
+	}
+	
+	// MARK: - Realm Cleanup
+	
+	/// Delete matches from previous season
+	private func cleanUpRealm() {
+		let realm = try? Realm()
+		if let realm = realm {
+			try? realm.write {
+				realm.delete(realm.objects(RealmMatchRLCS.self))
+				realm.delete(realm.objects(RealmMatchRLRS.self))
+			} 
+		}
+	}
 }
 
-//////////////////////////////////////////////
 
-// MARK: Table View Delegate Methods
+// MARK: - Table View Delegate/Data Source Methods
 
 extension NewsContentViewController: UITableViewDelegate, UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -146,15 +193,13 @@ extension NewsContentViewController: UITableViewDelegate, UITableViewDataSource 
 		return cell
 	}
 	
-	func configureTableView() {
-		tableView.rowHeight = UITableViewAutomaticDimension
-		tableView.estimatedRowHeight = 100.0
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let newsItem = newsArray[indexPath.row]
+		logAnalyticsEvent(for: newsItem)
 	}
 }
 
-
-
-// MARK: CustomNewsCell Delegate Method
+// MARK: - CustomNewsCell Delegate Method
 
 extension NewsContentViewController: CustomNewsCellDelegate {
 	func didTapNewsItem(url: String) {
@@ -164,15 +209,29 @@ extension NewsContentViewController: CustomNewsCellDelegate {
 	}
 }
 
-//////////////////////////////////////////////
+// MARK: - Alert View Delegate
+extension NewsContentViewController: AlertOnboardingDelegate {
+	func alertOnboardingSkipped(_ currentStep: Int, maxStep: Int) {
+		notificationManager.registerForPushNotifications()
+	}
+	
+	func alertOnboardingCompleted() {
+		notificationManager.registerForPushNotifications()
+	}
+	
+	func alertOnboardingNext(_ nextStep: Int) {
 
-// MARK: CustomNewsCell Class
+	}
+	
+}
+
+
+// MARK: - CustomNewsCell Class
 
 class CustomNewsCell: UITableViewCell {
 	
-	//////////////////////////////////////////////
 	
-	// MARK: - Cell Outlets
+	// MARK:  Cell Outlets
 	
 	@IBOutlet weak var headlineLabel: UILabel!
 	@IBOutlet weak var detailLabel: UILabel!
@@ -180,16 +239,14 @@ class CustomNewsCell: UITableViewCell {
 	@IBOutlet weak var categoryLabel: UILabel!
 	@IBOutlet weak var siteLabel: UILabel!
 	
-	//////////////////////////////////////////////
 	
-	// MARK: - Cell Variables
+	// MARK: Cell Variables
 	
 	var newsItem: News!
 	var delegate: CustomNewsCellDelegate?
 	
-	//////////////////////////////////////////////
 	
-	// MARK: - Cell Functions
+	// MARK: Cell Functions
 	
 	func setNews(news: News) {
 		newsItem = news
@@ -211,9 +268,8 @@ class CustomNewsCell: UITableViewCell {
 		categoryView.layer.borderColor = UIColor(hex: "FC214F")?.cgColor
 	}
 	
-	//////////////////////////////////////////////
 	
-	// MARK: - Cell Actions
+	// MARK: Cell Actions
 	
 	@IBAction func newsButtonPressed(_ sender: UIButton) {
 		delegate?.didTapNewsItem(url: newsItem.link)
