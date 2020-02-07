@@ -18,12 +18,14 @@ enum Week {
 	case week_4
 	case week_5
 	case week_6
+	case week_7
+	case week_8
 	case promotion
 	case regionals
 	case championship
 	
 	static func allValues() -> [Week] {
-		return [.week_1, .week_2, .week_3, .week_4, .week_5, .regionals, .championship, .promotion]
+		return [.week_1, .week_2, .week_3, .week_4, .week_5, .week_6, week_7, week_8, .regionals, .championship, .promotion]
 	}
 }
 
@@ -59,10 +61,16 @@ struct Match {
 		case 5 :
 			return .week_5
 		case 6 :
-			return .regionals
+			return .week_6
 		case 7 :
-			return .championship
+			return .week_7
 		case 8 :
+			return .week_8
+		case 9 :
+			return .regionals
+		case 10 :
+			return .championship
+		case 11 :
 			return .promotion
 		default :
 			return .week_1
