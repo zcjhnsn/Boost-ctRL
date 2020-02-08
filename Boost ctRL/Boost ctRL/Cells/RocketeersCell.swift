@@ -80,6 +80,12 @@ class RocketeersCell: UICollectionViewCell {
 
 
 class BlankRocketeersCell: UICollectionViewCell {
+	
+	var placeholder: String? {
+		didSet {
+			title.text = placeholder
+		}
+	}
     
     fileprivate let bg: UIImageView = {
         let iv = UIImageView()

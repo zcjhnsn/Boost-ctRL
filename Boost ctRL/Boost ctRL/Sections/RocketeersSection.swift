@@ -53,7 +53,7 @@ struct RocketeersSection: Section {
 			}
 		} else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BlankRocketeersCell.defaultReuseIdentifier, for: indexPath) as! BlankRocketeersCell
-            
+			cell.placeholder = "Loading..."
             return cell
 		}
     }

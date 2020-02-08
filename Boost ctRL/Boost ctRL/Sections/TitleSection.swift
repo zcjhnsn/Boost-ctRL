@@ -8,13 +8,15 @@
 
 import UIKit
 
-struct SectionTitleSection: Section {
+struct TitleSection: Section {
 	
     let numberOfItems = 1
     private let title: String
+	private let imageString: String?
 
-    init(title: String) {
+	init(title: String, imageNamed string: String? = nil) {
         self.title = title
+		self.imageString = string
     }
 
     func layoutSection() -> NSCollectionLayoutSection {
@@ -31,6 +33,7 @@ struct SectionTitleSection: Section {
     func configureCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TitleCell.defaultReuseIdentifier, for: indexPath) as! TitleCell
 		cell.title = title
+		cell.imageString = imageString
 		cell.layer.shouldRasterize = true
 		cell.layer.rasterizationScale = UIScreen.main.scale
         return cell

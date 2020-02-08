@@ -16,6 +16,21 @@ final class TitleCell: UICollectionViewCell {
         }
     }
 	
+	var imageString: String? {
+		didSet {
+			if let text = titleLabel.text, let imageString = imageString {
+				titleLabel.text = nil
+				let fullString = NSMutableAttributedString(string: "\(text) ")
+				let imageAttachment = NSTextAttachment()
+				imageAttachment.image = UIImage(named: imageString)
+				imageAttachment.setImageHeight(height: 25)
+				let imageString = NSAttributedString(attachment: imageAttachment)
+				fullString.append(imageString)
+				titleLabel.attributedText = fullString
+			}
+		}
+	}
+	
 	var titleLabel: UILabel = {
 		var label = UILabel()
 		label.text = "Label"

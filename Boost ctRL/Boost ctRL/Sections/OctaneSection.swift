@@ -9,7 +9,7 @@
 import UIKit
 
 struct OctaneSection: Section {
-	var numberOfItems: Int = 11
+	var numberOfItems: Int = 1
 	
 	var articles: [OctaneArticle]? {
         didSet {
@@ -48,12 +48,23 @@ struct OctaneSection: Section {
 			}
 		} else {
 			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BlankOctaneCell.defaultReuseIdentifier, for: indexPath) as! BlankOctaneCell
-	
+			cell.placeholder = "Loading..."
 			return cell
 		}
     }
 	
 	func handleSelection(collectionView: UICollectionView, indexPath: IndexPath) -> String {
+		if let articles = articles {
+			var link = "https://octane.gg/news/"
+			if indexPath.row == articles.count - 1 {
+				link = "https://octane.gg"
+			} else {
+				link += articles[indexPath.row].url
+				
+			}
+			
+			return link
+		}
 		return "https://octane.gg"
 	}
 }

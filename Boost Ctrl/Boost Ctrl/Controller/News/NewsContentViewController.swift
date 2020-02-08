@@ -28,11 +28,11 @@ class NewsContentViewController: UIViewController {
 	let publicDB = CKContainer(identifier: Constants.CloudKitID).publicCloudDatabase
 	
 	var sections: [Section] = [
-		SectionTitleSection(title: "Rocketeers.gg"),
+		TitleSection(title: "Rocketeers", imageNamed: "rocketeersLogo"),
 		RocketeersSection(),
-		SectionTitleSection(title: "Octane.gg"),
+		TitleSection(title: "Octane", imageNamed: "octaneLogo"),
 		OctaneSection(),
-        SectionTitleSection(title: "Who's Live"),
+        TitleSection(title: "Who's Live ", imageNamed: "twitchLogo"),
         TwitchSection()
 	]
 	
@@ -109,13 +109,17 @@ class NewsContentViewController: UIViewController {
 			let majorMinor = "\(versionComponents[0]).\(versionComponents[1])"
 			
 			// Show update summary if first open after update
-			if UserDefaults.standard.string(forKey: "AppVersionForUpdateSummary")?.contains(majorMinor) ?? true {
+			if let version = UserDefaults.standard.string(forKey: "AppVersionForUpdateSummary"), version.contains(majorMinor) {
 				notificationManager.registerForPushNotifications()
 			} else {
 				showUpdateSummary()
 				cleanUpRealm()
 				UserDefaults.standard.setValue(Bundle.main.releaseVersionNumberPretty, forKey: "AppVersionForUpdateSummary")
 			}
+		} else {
+			showUpdateSummary()
+			cleanUpRealm()
+			UserDefaults.standard.setValue(Bundle.main.releaseVersionNumberPretty, forKey: "AppVersionForUpdateSummary")
 		}
 	}
 	
@@ -125,7 +129,7 @@ class NewsContentViewController: UIViewController {
 	private func showUpdateSummary() {
 		
 		// First, declare alerts
-		let alerts = [Alert(image: #imageLiteral(resourceName: "notificationIcon"), title: "Notifications", text: "There's not enough pings in your life. Get notified about NA/EU final scores and breaking news. Subscribe to notifications you want and the ones you don't 👉 Three dots > Settings"), Alert(image: #imageLiteral(resourceName: "scoreboard"), title: "Game Results", text: "Sure, G2 went to game 5... But was it close? Did it go to overtime? Tap on a match to get the per-game scores."), Alert(image: #imageLiteral(resourceName: "updated"), title: "Auto-Refresh", text: "All matches and standings update in real-time without having to manually refresh the page. It's like having full boost, on demand."), Alert(image: #imageLiteral(resourceName: "coins"), title: "Contribute to development", text: "Help out with Boost ctRL's development so we can bring more features and pay for all these notifications you wanted 😉")]
+		let alerts = [Alert(image: #imageLiteral(resourceName: "newspaper"), title: "Revamped News Feed", text: "Keep up on the latest news as it breaks courtesy of Rocketeers.gg and Octane.gg"),Alert(image: #imageLiteral(resourceName: "twitchLogo"), title: "Watch the Pros", text: "Don't just watch the pros on the weekend. See when the pros are live on Twitch during the week. !prime")]
 	
 		// Simply call AlertOnboarding...
 		let alertView = AlertOnboarding(arrayOfAlerts: alerts)
