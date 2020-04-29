@@ -144,7 +144,7 @@ class Downloader {
     
     /// Downloads RLCS match data. If any match information is missing, the match is not saved to realm.
     func loadRLCS() {
-		let rlcsDB = Database.database().reference().child("matches").child("rlcs8")
+		let rlcsDB = Database.database().reference().child("matches").child("rlcs9")
 		
 		print("Loading RLCS Matches ⏳")
 
@@ -181,7 +181,7 @@ class Downloader {
     
     /// Downloads RLRS match data. If any match information is missing, the match is not saved to realm.
 	func loadRLRS() {
-		let rlrsDB = Database.database().reference().child("matches").child("rlrs8")
+		let rlrsDB = Database.database().reference().child("matches").child("rlrs9")
 		
 		rlrsDB.observe(.childAdded) { (snapshot) in
 			let snapshotValue = snapshot.value as! Dictionary<String, Any>
@@ -218,7 +218,7 @@ class Downloader {
 	
     /// Listener for RLCS matches. If any match information is missing, the match is not updated.
 	func reloadRLCSMatches() {
-		let rlcsDB = Database.database().reference().child("matches").child("rlcs8")
+		let rlcsDB = Database.database().reference().child("matches").child("rlcs9")
 		
 		rlcsDB.observe(.childChanged) { (snapshot) in
 			let snapshotValue = snapshot.value as! Dictionary<String, Any>
@@ -252,7 +252,7 @@ class Downloader {
 	
     /// Listener for RLRS matches. If any match information is missing, the match is not updated.
 	func reloadRLRSMatches() {
-		let rlrsDB = Database.database().reference().child("matches").child("rlrs8")
+		let rlrsDB = Database.database().reference().child("matches").child("rlrs9")
 		
 		rlrsDB.observe(.childChanged) { (snapshot) in
 			let snapshotValue = snapshot.value as! Dictionary<String, Any>
@@ -289,7 +289,7 @@ class Downloader {
     ///
     /// - Parameter completion: refresh TableView data
     static func fetchRLCSOnce(completion: @escaping () -> Void) {
-        let rlcsDB = Database.database().reference().child("matches").child("rlcs8")
+        let rlcsDB = Database.database().reference().child("matches").child("rlcs9")
 
         rlcsDB.observeSingleEvent(of: .childAdded) { (snapshot) in
             let snapshotValue = snapshot.value as! Dictionary<String, Any>
@@ -332,7 +332,7 @@ class Downloader {
     ///
     /// - Parameter completion: refresh TableView data
     static func fetchRLRSOnce(completion: @escaping () -> Void) {
-        let rlcsDB = Database.database().reference().child("matches").child("rlrs8")
+        let rlcsDB = Database.database().reference().child("matches").child("rlrs9")
 
         rlcsDB.observeSingleEvent(of: .childAdded) { (snapshot) in
             let snapshotValue = snapshot.value as! Dictionary<String, Any>

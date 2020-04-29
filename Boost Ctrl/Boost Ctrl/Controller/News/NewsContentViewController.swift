@@ -7,32 +7,62 @@
 //
 
 import UIKit
+import CloudKit
 import Firebase
 import RealmSwift
 import AlertOnboarding
 
-
-protocol CustomNewsCellDelegate {
-	func didTapNewsItem(url: String)
-}
-
 class NewsContentViewController: UIViewController {
-	
-	// MARK: - Outlets
-	@IBOutlet weak var tableView: UITableView!
 	
 	
 	//MARK: - Class Variables/Views
-	var newsArray = [News]()
 	let notificationManager = NotificationManager()
 	
-	lazy var refresher: UIRefreshControl = {
-		let refreshControl = UIRefreshControl()
-		refreshControl.tintColor = .white
-		refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+	var rocketeersArticles = [RocketeersArticle]()
+    var octaneArticles = [OctaneArticle]()
+    var players = [Player]()
+    static var isDirty = true
+    var settings = Settings()
+    var livePlayers = [Streamer]()
+	
+	let publicDB = CKContainer(identifier: Constants.CloudKitID).publicCloudDatabase
+	
+	var sections: [Section] = [
+		TitleSection(title: "Rocketeers", imageNamed: "rocketeersLogo"),
+		RocketeersSection(),
+		TitleSection(title: "Octane", imageNamed: "octaneLogo"),
+		OctaneSection(),
+        TitleSection(title: "Who's Live ", imageNamed: "twitchLogo"),
+        TwitchSection()
+	]
+	
+	lazy var collectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
+		collectionView.backgroundColor = ctRLTheme.midnightBlue
+		collectionView.showsVerticalScrollIndicator = false
+		collectionView.isPrefetchingEnabled = false
+        collectionView.dataSource = self
+        collectionView.delegate = self
 		
-		return refreshControl
-	}()
+		collectionView.register(TitleCell.self, forCellWithReuseIdentifier: TitleCell.defaultReuseIdentifier)
+		collectionView.register(RocketeersCell.self, forCellWithReuseIdentifier: RocketeersCell.defaultReuseIdentifier)
+		collectionView.register(BlankRocketeersCell.self, forCellWithReuseIdentifier: BlankRocketeersCell.defaultReuseIdentifier)
+		collectionView.register(OctaneCell.self, forCellWithReuseIdentifier: OctaneCell.defaultReuseIdentifier)
+		collectionView.register(BlankOctaneCell.self, forCellWithReuseIdentifier: BlankOctaneCell.defaultReuseIdentifier)
+		collectionView.register(TwitchCell.self, forCellWithReuseIdentifier: TwitchCell.defaultReuseIdentifier)
+		
+		collectionView.usesAutoLayout()
+        
+        return collectionView
+    }()
+	
+	lazy var collectionViewLayout: UICollectionViewLayout = {
+        var sections = self.sections
+        let layout = UICollectionViewCompositionalLayout { (sectionIndex, environment) -> NSCollectionLayoutSection? in
+            return sections[sectionIndex].layoutSection()
+        }
+        return layout
+    }()
 	
 	
 	// MARK: - View Methods
@@ -40,11 +70,36 @@ class NewsContentViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		configureTableView()
-		retrieveNews()
-		
 		initialSetup()
+		setupCollectionView()
+		view.backgroundColor = ctRLTheme.midnightBlue
+        
+        DispatchQueue.global().async {
+            self.getRocketeersArticles()
+            self.getOctaneArticles()
+        }
+        
+        getPlayers()
+	}
+	
+	override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if #available(iOS 13.0, *) {
+            // Workaround for incorrect initial offset by `.groupPagingCentered`
+            collectionView.reloadData()
+        }
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if #available(iOS 13.0, *) {
+            // Workaround for incorrect initial offset by `.groupPagingCentered`
+        }
+    }
+	
+	func setupCollectionView() {
+		view.addSubview(collectionView)
 		
+		collectionView.fillSuperview()
 	}
 	
 	// MARK: - Initial Setup
@@ -54,36 +109,17 @@ class NewsContentViewController: UIViewController {
 			let majorMinor = "\(versionComponents[0]).\(versionComponents[1])"
 			
 			// Show update summary if first open after update
-			if UserDefaults.standard.string(forKey: "AppVersionForUpdateSummary")?.contains(majorMinor) ?? true {
+			if let version = UserDefaults.standard.string(forKey: "AppVersionForUpdateSummary"), version.contains(majorMinor) {
 				notificationManager.registerForPushNotifications()
 			} else {
 				showUpdateSummary()
 				cleanUpRealm()
 				UserDefaults.standard.setValue(Bundle.main.releaseVersionNumberPretty, forKey: "AppVersionForUpdateSummary")
 			}
-		}
-	}
-	
-	@objc func refreshData() {
-		let deadline = DispatchTime.now() + .milliseconds(500)
-		DispatchQueue.main.asyncAfter(deadline: deadline) {
-			self.retrieveNews()
-		}
-	}
-	
-	
-	private func configureTableView() {
-		tableView.delegate = self
-		tableView.dataSource = self
-		tableView.rowHeight = UITableViewAutomaticDimension
-		tableView.estimatedRowHeight = 100.0
-		tableView.backgroundColor = UIColor(red: 40.0/255, green: 49.0/255, blue: 73.0/255, alpha: 1)
-		tableView.separatorStyle = .singleLine
-		
-		if #available(iOS 10.0, *) {
-			tableView.refreshControl = refresher
 		} else {
-			tableView.addSubview(refresher)
+			showUpdateSummary()
+			cleanUpRealm()
+			UserDefaults.standard.setValue(Bundle.main.releaseVersionNumberPretty, forKey: "AppVersionForUpdateSummary")
 		}
 	}
 	
@@ -93,7 +129,7 @@ class NewsContentViewController: UIViewController {
 	private func showUpdateSummary() {
 		
 		// First, declare alerts
-		let alerts = [Alert(image: #imageLiteral(resourceName: "notificationIcon"), title: "Notifications", text: "There's not enough pings in your life. Get notified about NA/EU final scores and breaking news. Subscribe to notifications you want and the ones you don't 👉 Three dots > Settings"), Alert(image: #imageLiteral(resourceName: "scoreboard"), title: "Game Results", text: "Sure, G2 went to game 5... But was it close? Did it go to overtime? Tap on a match to get the per-game scores."), Alert(image: #imageLiteral(resourceName: "updated"), title: "Auto-Refresh", text: "All matches and standings update in real-time without having to manually refresh the page. It's like having full boost, on demand."), Alert(image: #imageLiteral(resourceName: "coins"), title: "Contribute to development", text: "Help out with Boost ctRL's development so we can bring more features and pay for all these notifications you wanted 😉")]
+		let alerts = [Alert(image: #imageLiteral(resourceName: "newspaper"), title: "Revamped News Feed", text: "Keep up on the latest news as it breaks courtesy of Rocketeers.gg and Octane.gg"),Alert(image: #imageLiteral(resourceName: "twitchLogo"), title: "Watch the Pros", text: "Don't just watch the pros on the weekend. See when the pros are live on Twitch during the week. !prime")]
 	
 		// Simply call AlertOnboarding...
 		let alertView = AlertOnboarding(arrayOfAlerts: alerts)
@@ -110,39 +146,215 @@ class NewsContentViewController: UIViewController {
 		alertView.show()
 	}
 	
-	// MARK: - Receive from Firebase
-	private func retrieveNews() {
+	// MARK: - Retrieve Data
+	func getRocketeersArticles() {
+        // https://medium.com/flawless-app-stories/writing-network-layer-in-swift-protocol-oriented-approach-4fa40ef1f908
+		rocketeersArticles.removeAll()
 		
-		newsArray.removeAll()
-		self.refresher.endRefreshing()
-		let newsDB = Database.database().reference().child("news")
+		let urlString = "https://rocketeers.gg/wp-json/wp/v2/posts?per_page=10&_embed"
 		
-		newsDB.observe(.childAdded) {
-			(snapshot) in
-			
-			let snapshotValue = snapshot.value as! Dictionary<String, String>
-			
-            guard let headline = snapshotValue["h"],
-                let detail = snapshotValue["d"],
-                let categoryString = snapshotValue["c"],
-                let link = snapshotValue["l"],
-                let siteName = snapshotValue["s"] else {
-                    return
-            }
-			
-			let news = News()
-			news.headline = headline
-			news.link = link
-			news.detail = detail
-			news.category = news.setCategory(category: categoryString)
-			news.siteName = siteName
-			news.id = snapshot.key
-			
-			self.newsArray.insert(news, at: 0)
-			self.tableView.reloadData()
+		if let url = URL(string: urlString) {
+			if let data = try? Data(contentsOf: url) {
+				let responseString = String(data: data, encoding: .utf8)
+				self.parse(json: data, from: .rocketeers)
+				return
+			}
+		}
+    }
+	
+	func getOctaneArticles() {
+		octaneArticles.removeAll()
+		
+		let urlString = "https://api.octane.gg/api/news_section"
+		
+		if let url = URL(string: urlString) {
+			if let data = try? Data(contentsOf: url) {
+				self.parse(json: data, from: .octane)
+				return
+			}
 		}
 	}
 	
+	func parse(json: Data, from site: Site) {
+        let decoder = JSONDecoder()
+        
+        if site == .rocketeers {
+            //decoder.keyDecodingStrategy = .convertFromSnakeCase
+            
+            do {
+                let jsonArticles = try decoder.decode(RocketeersArticles.self, from: json)
+                rocketeersArticles = jsonArticles
+                var section = sections[1] as! RocketeersSection
+                section.articles = rocketeersArticles
+                sections[1] = section
+            } catch let DecodingError.dataCorrupted(context) {
+                print(context)
+            } catch let DecodingError.keyNotFound(key, context) {
+                print("Key '\(key)' not found:", context.debugDescription)
+                print("codingPath:", context.codingPath)
+            } catch let DecodingError.valueNotFound(value, context) {
+                print("Value '\(value)' not found:", context.debugDescription)
+                print("codingPath:", context.codingPath)
+            } catch let DecodingError.typeMismatch(type, context)  {
+                print("Type '\(type)' mismatch:", context.debugDescription)
+                print("codingPath:", context.codingPath)
+            } catch {
+                print("error: ", error)
+            }
+        } else if site == .octane {
+            if let jsonArticles = try? decoder.decode(OctaneArticles.self, from: json) {
+                octaneArticles = jsonArticles.data
+				var section = sections[3] as! OctaneSection
+				section.articles = octaneArticles
+				sections[3] = section
+            }
+		} else if site == .twitch {
+			if let jsonStreamers = try? decoder.decode(Streamers.self, from: json) {
+				livePlayers = jsonStreamers.data
+				var section = sections[5] as! TwitchSection
+				section.streamers = livePlayers
+				sections[5] = section
+			}
+		}
+        
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
+	
+	
+	/// Gets client ID for Twitch API. Since this may expire, the token should be grabbed from CloudKit in case it changes
+	private func getClientID() {
+        var zoneID: CKRecordZone.ID = CKRecordZone.ID()
+        
+        publicDB.fetchAllRecordZones { (zones, error) in
+            if let zones = zones {
+                zoneID = zones.first!.zoneID
+            }
+        }
+        let pred = NSPredicate(value: true)
+        //let sort = NSSortDescriptor(key: "creationDate", ascending: false)
+        let query = CKQuery(recordType: "Settings", predicate: pred)
+        //query.sortDescriptors = [sort]
+        
+        let operation = CKQueryOperation(query: query)
+        operation.desiredKeys = ["twitchClientID"]
+        operation.resultsLimit = 1
+        operation.zoneID = zoneID
+        
+        var newSettings = Settings()
+        
+        operation.recordFetchedBlock = { record in
+            let settings = Settings()
+            settings.twitchClientID = record["twitchClientID"]!
+            newSettings = settings
+        }
+        
+        operation.queryCompletionBlock = { [unowned self] (cursor, error) in
+            DispatchQueue.main.async {
+                if error == nil {
+                    self.settings = newSettings
+                    print(self.settings.twitchClientID)
+                    self.getLivePlayers(from: self.players, withID: self.settings.twitchClientID)
+                } else {
+                    let ac = UIAlertController(title: "Fetch Failed", message: "There was an error fetching from CK: \(error!.localizedDescription)", preferredStyle: .alert)
+                    ac.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(ac, animated: true)
+                }
+            }
+        }
+    
+		CKContainer(identifier: Constants.CloudKitID).publicCloudDatabase.add(operation)
+    }
+	
+	/// Gets the Twitch names for pro players (stored in CloudKit)
+	private func getPlayers() {
+		players.removeAll()
+		livePlayers.removeAll()
+        var zoneID: CKRecordZone.ID = CKRecordZone.ID()
+        
+        publicDB.fetchAllRecordZones { (zones, error) in
+            if let zones = zones {
+				print(zones)
+                zoneID = zones.first!.zoneID
+            }
+        }
+        
+        let pred = NSPredicate(value: true)
+        let sort = NSSortDescriptor(key: "userLogin", ascending: false)
+        let query = CKQuery(recordType: "Player", predicate: pred)
+        
+        let operation = CKQueryOperation(query: query)
+        operation.desiredKeys = ["recordName", "userLogin"]
+        operation.resultsLimit = 50
+        operation.zoneID = zoneID
+        
+        print(CKRecordZone.default().zoneID)
+        
+        var newPlayers = [Player]()
+        
+        operation.recordFetchedBlock = { record in
+            let player = Player()
+            player.recordID = record.recordID
+            player.id = record["recordName"]
+            player.twitchName = record["userLogin"]
+            newPlayers.append(player)
+        }
+        
+        operation.queryCompletionBlock = { [unowned self] (cursor, error) in
+            DispatchQueue.main.async {
+                if error == nil {
+                    NewsContentViewController.isDirty = false
+                    self.players = newPlayers
+                    self.getClientID()
+                } else {
+                    let ac = UIAlertController(title: "Player Fetch Failed", message: "There was an error fetching from CK: \(error!.localizedDescription)", preferredStyle: .alert)
+                    ac.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(ac, animated: true)
+                }
+            }
+        }
+        
+		CKContainer(identifier: Constants.CloudKitID).publicCloudDatabase.add(operation)
+    }
+	
+	
+	/// Gets live players from Twitch
+	/// - Parameters:
+	///   - from: List of player names retrieved from `getPlayers()`
+	///   - id: Twitch Client ID (API Key) retrieved from `getClientID()`
+	private func getLivePlayers(from: [Player], withID id: String) {
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "api.twitch.tv"
+        components.path = "/helix/streams"
+        
+        var queryItems = [URLQueryItem]()
+        for player in players {
+            queryItems.append(URLQueryItem(name: "user_login", value: player.twitchName))
+        }
+        components.queryItems = queryItems
+                
+        var request = URLRequest(url: components.url!)
+        
+        request.setValue(id, forHTTPHeaderField: "Client-ID")
+        request.httpMethod = "GET"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let _ = URLSession.shared.dataTask(with: request) { (data, response, error) -> Void in
+			if let data = data {
+			    if let jsonString = String(data: data, encoding: .utf8) {
+                    print("🧡🧡🧡🧡🧡🧡🧡🧡🧡🧡 - \(jsonString)")
+				    self.parse(json: data, from: .twitch)
+			    }
+			}
+			else {
+                print("Error: \(String(describing: error))")
+            }
+		}.resume()
+        
+        
+    }
 	
 	// MARK: - Analytics
 	
@@ -174,40 +386,29 @@ class NewsContentViewController: UIViewController {
 	}
 }
 
+extension NewsContentViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+	func numberOfSections(in collectionView: UICollectionView) -> Int {
+        sections.count
+    }
 
-// MARK: - Table View Delegate/Data Source Methods
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return sections[section].numberOfItems
+    }
 
-extension NewsContentViewController: UITableViewDelegate, UITableViewDataSource {
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return newsArray.count
-	}
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return sections[indexPath.section].configureCell(collectionView: collectionView, indexPath: indexPath)
+    }
 	
-	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! CustomNewsCell
-		cell.setNews(news: newsArray[indexPath.row])
-		cell.delegate = self
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		
-		
-		cell.headlineLabel.text = newsArray[indexPath.row].headline
-		
-		return cell
-	}
-	
-	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let newsItem = newsArray[indexPath.row]
-		logAnalyticsEvent(for: newsItem)
-	}
-}
-
-// MARK: - CustomNewsCell Delegate Method
-
-extension NewsContentViewController: CustomNewsCellDelegate {
-	func didTapNewsItem(url: String) {
+		let url = sections[indexPath.section].handleSelection(collectionView: collectionView, indexPath: indexPath)
 		if let link = URL(string: url) {
 			UIApplication.shared.open(link, options: [:])
 		}
 	}
 }
+
+
 
 // MARK: - Alert View Delegate
 extension NewsContentViewController: AlertOnboardingDelegate {
@@ -223,55 +424,4 @@ extension NewsContentViewController: AlertOnboardingDelegate {
 
 	}
 	
-}
-
-
-// MARK: - CustomNewsCell Class
-
-class CustomNewsCell: UITableViewCell {
-	
-	
-	// MARK:  Cell Outlets
-	
-	@IBOutlet weak var headlineLabel: UILabel!
-	@IBOutlet weak var detailLabel: UILabel!
-	@IBOutlet weak var categoryView: UIView!
-	@IBOutlet weak var categoryLabel: UILabel!
-	@IBOutlet weak var siteLabel: UILabel!
-	
-	
-	// MARK: Cell Variables
-	
-	var newsItem: News!
-	var delegate: CustomNewsCellDelegate?
-	
-	
-	// MARK: Cell Functions
-	
-	func setNews(news: News) {
-		newsItem = news
-		headlineLabel.text = news.headline
-		
-		if news.detail == "none" {
-			detailLabel.text = nil
-			detailLabel.isHidden = true
-		} else {
-			detailLabel.text = news.detail			
-		}
-		
-		siteLabel.text = news.siteName
-		
-		categoryLabel.text = String(describing: newsItem.category).replacingOccurrences(of: "_", with: " ")
-		
-		categoryView.layer.cornerRadius = 4
-		categoryView.layer.borderWidth = 1
-		categoryView.layer.borderColor = UIColor(hex: "FC214F")?.cgColor
-	}
-	
-	
-	// MARK: Cell Actions
-	
-	@IBAction func newsButtonPressed(_ sender: UIButton) {
-		delegate?.didTapNewsItem(url: newsItem.link)
-	}
 }

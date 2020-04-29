@@ -50,3 +50,25 @@ enum EventType {
 	static let resultNotification = "result_notification"
 	static let team = "team"
 }
+
+enum AvenirNext: String {
+	case regular = "AvenirNext-Regular"
+	case ultraLight = "AvenirNext-UltraLight"
+	case demibold = "AvenirNext-Demibold"
+	case medium = "AvenirNext-Medium"
+	
+	func size(_ size: CGFloat) -> UIFont? {
+		return UIFont(name: self.rawValue, size: size)
+	}
+}
+
+enum Site {
+	case octane
+	case rocketeers
+	case twitch
+}
+
+enum Constants {
+	static let CloudKitID = "iCloud.com.zacjohnson.Boost-ctRL"
+	
+}

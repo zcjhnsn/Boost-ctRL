@@ -328,7 +328,7 @@ extension ResultsVC: UITableViewDataSource, UITableViewDelegate {
 			
 			cell.contentView.addSubview(overtimeLabel)
 			
-			overtimeLabel.anchorCenter(to: cell.contentView)
+			overtimeLabel.center(in: cell.contentView)
 		}
 		
 		let parsedResult = result.components(separatedBy: "-")
