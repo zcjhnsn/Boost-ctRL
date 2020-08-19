@@ -9,5 +9,7 @@
 import Foundation
 
 class Settings: NSObject {
-    var twitchClientID: String = "none"
+    var twitchClientID: String?
+	var twitchClientSecret: String?
+	var twitchAppAccessToken: String?
 }
