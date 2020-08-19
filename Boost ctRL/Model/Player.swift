@@ -9,13 +9,6 @@
 import Foundation
 import CloudKit
 
-class Player: NSObject {
-    var recordID: CKRecord.ID!
-    var id: String!
-    var twitchName: String!
-    var viewers: Int = 0
-}
-
 struct Streamer: Codable {
 	var userName: String
 	var title: String

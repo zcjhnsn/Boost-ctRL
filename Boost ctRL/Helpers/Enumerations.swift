@@ -70,5 +70,7 @@ enum Site {
 
 enum Constants {
 	static let CloudKitID = "iCloud.com.zacjohnson.Boost-ctRL"
-	
+	static let TwitchClientID = "twitchClientID"
+	static let TwitchClientSecret = "twitchClientSecret"
+	static let TwitchIDForRL = "30921"
 }
