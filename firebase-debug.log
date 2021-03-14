@@ -1,0 +1,62 @@
+[debug] [2021-03-14T01:13:16.504Z] ----------------------------------------------------------------------
+[debug] [2021-03-14T01:13:16.505Z] Command:       /usr/local/bin/node /usr/local/bin/firebase functions:shell
+[debug] [2021-03-14T01:13:16.506Z] CLI Version:   9.6.1
+[debug] [2021-03-14T01:13:16.506Z] Platform:      darwin
+[debug] [2021-03-14T01:13:16.506Z] Node Version:  v14.16.0
+[debug] [2021-03-14T01:13:16.506Z] Time:          Sat Mar 13 2021 18:13:16 GMT-0700 (Mountain Standard Time)
+[debug] [2021-03-14T01:13:16.506Z] ----------------------------------------------------------------------
+[debug] [2021-03-14T01:13:16.506Z] 
+[debug] [2021-03-14T01:13:16.510Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-03-14T01:13:16.510Z] > authorizing via signed-in user
+[debug] [2021-03-14T01:13:16.511Z] [iam] checking project boost-ctrl for permissions ["firebase.projects.get"]
+[debug] [2021-03-14T01:13:16.512Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-03-14T01:13:16.512Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-03-14T01:13:16.672Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Sun, 14 Mar 2021 01:13:16 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-14T01:13:16.702Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/boost-ctrl:testIamPermissions  
+ {"permissions":["firebase.projects.get"]}
+[debug] [2021-03-14T01:13:16.916Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 14 Mar 2021 01:13:16 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=95","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[warn] ⚠  Your requested "node" version "12" doesn't match your global version "14" {"metadata":{"emulator":{"name":"functions"},"message":"Your requested \"node\" version \"12\" doesn't match your global version \"14\""}}
+[debug] [2021-03-14T01:13:16.929Z] defaultcredentials: writing to file /Users/zac/.config/firebase/boostctrlapp_gmail_com_application_default_credentials.json
+[debug] [2021-03-14T01:13:16.930Z] DEBUG: Setting GAC to /Users/zac/.config/firebase/boostctrlapp_gmail_com_application_default_credentials.json
+[debug] [2021-03-14T01:13:16.931Z] > refreshing access token with scopes: []
+[debug] [2021-03-14T01:13:16.931Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-03-14T01:13:17.440Z] <<< HTTP RESPONSE 200 {"date":"Sun, 14 Mar 2021 01:13:17 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-14T01:13:17.471Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/boost-ctrl/adminSdkConfig [none]
+[debug] [2021-03-14T01:13:18.343Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/boost-ctrl/adminSdkConfig 200
+[debug] [2021-03-14T01:13:18.343Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/boost-ctrl/adminSdkConfig {"projectId":"boost-ctrl","databaseURL":"https://boost-ctrl.firebaseio.com","storageBucket":"boost-ctrl.appspot.com","locationId":"us-central"}
+[debug] [2021-03-14T01:13:18.382Z] [functions] Watching "/Users/zac/Development/Personal/Boost-ctRL/functions" for Cloud Functions...
+[debug] [2021-03-14T01:13:18.391Z] DEBUG: [worker-pool] addWorker(~diagnostic~)
+[debug] [2021-03-14T01:13:18.391Z] DEBUG: [worker-pool] Adding worker with key ~diagnostic~, total=1
+[debug] [2021-03-14T01:13:18.391Z] DEBUG: [worker-pool] submitWork(triggerId=)
+[debug] [2021-03-14T01:13:18.391Z] DEBUG: [worker-~diagnostic~-0c9ea295-3467-41fc-a340-5c14f7e428ea]: Assigning socketPath: /var/folders/lc/dxxr902x4jn_lzh8_qqwx66r0000gp/T/fire_emu_6333.sock
+[debug] [2021-03-14T01:13:18.392Z] DEBUG: [worker-~diagnostic~-0c9ea295-3467-41fc-a340-5c14f7e428ea]: BUSY
+[debug] [2021-03-14T01:13:18.513Z] DEBUG: [runtime-status] [6333] Functions runtime initialized. {"cwd":"/Users/zac/Development/Personal/Boost-ctRL/functions","node_version":"14.16.0"}
+[debug] [2021-03-14T01:13:18.513Z] DEBUG: [runtime-status] [6333] Disabled runtime features: undefined
+[debug] [2021-03-14T01:13:18.515Z] DEBUG: [runtime-status] [6333] Resolved module firebase-admin {"declared":true,"installed":true,"version":"9.5.0","resolution":"/Users/zac/Development/Personal/Boost-ctRL/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2021-03-14T01:13:18.515Z] DEBUG: [runtime-status] [6333] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.2","resolution":"/Users/zac/Development/Personal/Boost-ctRL/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2021-03-14T01:13:18.517Z] DEBUG: [runtime-status] [6333] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.2","resolution":"/Users/zac/Development/Personal/Boost-ctRL/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2021-03-14T01:13:18.519Z] DEBUG: [runtime-status] [6333] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}]
+[debug] [2021-03-14T01:13:18.519Z] DEBUG: [runtime-status] [6333] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.2","resolution":"/Users/zac/Development/Personal/Boost-ctRL/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2021-03-14T01:13:18.544Z] DEBUG: [runtime-status] [6333] Checked functions.config() {"config":{}}
+[debug] [2021-03-14T01:13:18.544Z] DEBUG: [runtime-status] [6333] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"3.13.2","resolution":"/Users/zac/Development/Personal/Boost-ctRL/functions/node_modules/firebase-functions/lib/index.js"}}
+[debug] [2021-03-14T01:13:18.544Z] DEBUG: [runtime-status] [6333] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.2","resolution":"/Users/zac/Development/Personal/Boost-ctRL/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2021-03-14T01:13:18.545Z] DEBUG: [runtime-status] [6333] Resolved module firebase-admin {"declared":true,"installed":true,"version":"9.5.0","resolution":"/Users/zac/Development/Personal/Boost-ctRL/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2021-03-14T01:13:18.545Z] DEBUG: [runtime-status] [6333] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.2","resolution":"/Users/zac/Development/Personal/Boost-ctRL/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2021-03-14T01:13:18.545Z] DEBUG: [runtime-status] [6333] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"9.5.0","resolution":"/Users/zac/Development/Personal/Boost-ctRL/functions/node_modules/firebase-admin/lib/index.js"}}
+[warn] ⚠  It looks like you're trying to access functions.config().pandascore but there is no value there. You can learn more about setting up config here: https://firebase.google.com/docs/functions/local-emulator {"metadata":{"emulator":{"name":"functions"},"message":"It looks like you're trying to access functions.config().pandascore but there is no value there. You can learn more about setting up config here: https://firebase.google.com/docs/functions/local-emulator"}}
+[warn] ⚠  TypeError: Cannot read property 'key' of undefined
+    at Object.<anonymous> (/Users/zac/Development/Personal/Boost-ctRL/functions/index.js:8:60)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at Module.require (internal/modules/cjs/loader.js:952:19)
+    at require (internal/modules/cjs/helpers.js:88:18)
+    at initializeRuntime (/usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:678:29)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async handleMessage (/usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:716:20) {"metadata":{"emulator":{"name":"functions"},"message":"TypeError: Cannot read property 'key' of undefined\n    at Object.<anonymous> (/Users/zac/Development/Personal/Boost-ctRL/functions/index.js:8:60)\n    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n    at Module.load (internal/modules/cjs/loader.js:928:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n    at Module.require (internal/modules/cjs/loader.js:952:19)\n    at require (internal/modules/cjs/helpers.js:88:18)\n    at initializeRuntime (/usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:678:29)\n    at processTicksAndRejections (internal/process/task_queues.js:93:5)\n    at async handleMessage (/usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:716:20)"}}
+[warn] ⚠  We were unable to load your functions code. (see above) {"metadata":{"emulator":{"name":"functions"}}}
+[debug] [2021-03-14T01:13:18.566Z] DEBUG: [worker-~diagnostic~-0c9ea295-3467-41fc-a340-5c14f7e428ea]: exited
+[debug] [2021-03-14T01:13:18.566Z] DEBUG: [worker-~diagnostic~-0c9ea295-3467-41fc-a340-5c14f7e428ea]: FINISHED

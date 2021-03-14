@@ -1,0 +1,3 @@
+[1m[31mError:[39m[22m [1mfucntions:config:get[22m is not a Firebase command
+
+Did you mean [1mfunctions:config:clone[22m?
