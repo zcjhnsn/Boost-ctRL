@@ -13,6 +13,24 @@
 		11A0EA8225FDBFBD004DE5BB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11A0EA8125FDBFBD004DE5BB /* Preview Assets.xcassets */; };
 		11A0EA8D25FDBFBD004DE5BB /* Boost_ctRLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0EA8C25FDBFBD004DE5BB /* Boost_ctRLTests.swift */; };
 		11A0EA9825FDBFBD004DE5BB /* Boost_ctRLUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0EA9725FDBFBD004DE5BB /* Boost_ctRLUITests.swift */; };
+		11A0EAAD25FDC124004DE5BB /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0EAAC25FDC124004DE5BB /* NewsView.swift */; };
+		11A0EAB225FDC588004DE5BB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0EAB125FDC588004DE5BB /* SettingsView.swift */; };
+		11A0EAB725FDCA8B004DE5BB /* TipJarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0EAB625FDCA8B004DE5BB /* TipJarView.swift */; };
+		11A0EABC25FDCBC5004DE5BB /* Bundle+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0EABB25FDCBC5004DE5BB /* Bundle+Ext.swift */; };
+		11A0EAC525FDCCEB004DE5BB /* ChangeLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0EAC425FDCCEB004DE5BB /* ChangeLogView.swift */; };
+		11A0EAD325FDD51E004DE5BB /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0EAD225FDD51E004DE5BB /* Article.swift */; };
+		11A0EAE425FDD61E004DE5BB /* ArticleItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0EAE325FDD61E004DE5BB /* ArticleItemView.swift */; };
+		11A0EAE925FDD87D004DE5BB /* URLImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0EAE825FDD87D004DE5BB /* URLImageModel.swift */; };
+		11A0EAEE25FDD9F1004DE5BB /* URLImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0EAED25FDD9F1004DE5BB /* URLImageView.swift */; };
+		11A0EAF325FE9CB7004DE5BB /* ArticleRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0EAF225FE9CB7004DE5BB /* ArticleRowView.swift */; };
+		11A0EAFB25FEA1A5004DE5BB /* RocketeersArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0EAFA25FEA1A5004DE5BB /* RocketeersArticle.swift */; };
+		11A0EB0025FEA1DB004DE5BB /* OctaneArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0EAFF25FEA1DB004DE5BB /* OctaneArticle.swift */; };
+		11A0EB0525FEA3D0004DE5BB /* NewsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0EB0425FEA3D0004DE5BB /* NewsAPI.swift */; };
+		11A0EB0A25FEA422004DE5BB /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0EB0925FEA422004DE5BB /* Agent.swift */; };
+		11A0EB1725FEAAAC004DE5BB /* ArticlesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0EB1625FEAAAC004DE5BB /* ArticlesViewModel.swift */; };
+		21BC09EC2684B97B605CA5CA /* Pods_Boost_ctRLTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC839E06C22B8D39DC679324 /* Pods_Boost_ctRLTests.framework */; };
+		C43F8C7D2C83337DF5E58991 /* Pods_Boost_ctRL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F51D21759EE2A1C7A34C691 /* Pods_Boost_ctRL.framework */; };
+		C6540839D65DA6AB619C4F08 /* Pods_Boost_ctRL_Boost_ctRLUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF99447B441CE2EE00FDE1B5 /* Pods_Boost_ctRL_Boost_ctRLUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E64C21261260FFD4EAA7150 /* Pods-Boost ctRL-Boost ctRLUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boost ctRL-Boost ctRLUITests.debug.xcconfig"; path = "Target Support Files/Pods-Boost ctRL-Boost ctRLUITests/Pods-Boost ctRL-Boost ctRLUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		11A0EA7725FDBFBC004DE5BB /* Boost ctRL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Boost ctRL.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A0EA7A25FDBFBC004DE5BB /* Boost_ctRLApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boost_ctRLApp.swift; sourceTree = "<group>"; };
 		11A0EA7C25FDBFBC004DE5BB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -45,6 +64,29 @@
 		11A0EA9325FDBFBD004DE5BB /* Boost ctRLUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Boost ctRLUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A0EA9725FDBFBD004DE5BB /* Boost_ctRLUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boost_ctRLUITests.swift; sourceTree = "<group>"; };
 		11A0EA9925FDBFBD004DE5BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11A0EAAC25FDC124004DE5BB /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
+		11A0EAB125FDC588004DE5BB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		11A0EAB625FDCA8B004DE5BB /* TipJarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarView.swift; sourceTree = "<group>"; };
+		11A0EABB25FDCBC5004DE5BB /* Bundle+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Ext.swift"; sourceTree = "<group>"; };
+		11A0EAC425FDCCEB004DE5BB /* ChangeLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLogView.swift; sourceTree = "<group>"; };
+		11A0EAD225FDD51E004DE5BB /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		11A0EAE325FDD61E004DE5BB /* ArticleItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleItemView.swift; sourceTree = "<group>"; };
+		11A0EAE825FDD87D004DE5BB /* URLImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImageModel.swift; sourceTree = "<group>"; };
+		11A0EAED25FDD9F1004DE5BB /* URLImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImageView.swift; sourceTree = "<group>"; };
+		11A0EAF225FE9CB7004DE5BB /* ArticleRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRowView.swift; sourceTree = "<group>"; };
+		11A0EAFA25FEA1A5004DE5BB /* RocketeersArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketeersArticle.swift; sourceTree = "<group>"; };
+		11A0EAFF25FEA1DB004DE5BB /* OctaneArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OctaneArticle.swift; sourceTree = "<group>"; };
+		11A0EB0425FEA3D0004DE5BB /* NewsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPI.swift; sourceTree = "<group>"; };
+		11A0EB0925FEA422004DE5BB /* Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
+		11A0EB1625FEAAAC004DE5BB /* ArticlesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesViewModel.swift; sourceTree = "<group>"; };
+		2E25E3E59B3F2C84775ED11D /* Pods-Boost ctRL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boost ctRL.debug.xcconfig"; path = "Target Support Files/Pods-Boost ctRL/Pods-Boost ctRL.debug.xcconfig"; sourceTree = "<group>"; };
+		8F51D21759EE2A1C7A34C691 /* Pods_Boost_ctRL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Boost_ctRL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		906206D4834387E7D16EB1DE /* Pods-Boost ctRLTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boost ctRLTests.release.xcconfig"; path = "Target Support Files/Pods-Boost ctRLTests/Pods-Boost ctRLTests.release.xcconfig"; sourceTree = "<group>"; };
+		93F8E57467D48D07BC795A6F /* Pods-Boost ctRL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boost ctRL.release.xcconfig"; path = "Target Support Files/Pods-Boost ctRL/Pods-Boost ctRL.release.xcconfig"; sourceTree = "<group>"; };
+		AC839E06C22B8D39DC679324 /* Pods_Boost_ctRLTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Boost_ctRLTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C055D4AC3761DE64E2861700 /* Pods-Boost ctRLTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boost ctRLTests.debug.xcconfig"; path = "Target Support Files/Pods-Boost ctRLTests/Pods-Boost ctRLTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DF99447B441CE2EE00FDE1B5 /* Pods_Boost_ctRL_Boost_ctRLUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Boost_ctRL_Boost_ctRLUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F15AC75C5B583F8AADC0E0C3 /* Pods-Boost ctRL-Boost ctRLUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boost ctRL-Boost ctRLUITests.release.xcconfig"; path = "Target Support Files/Pods-Boost ctRL-Boost ctRLUITests/Pods-Boost ctRL-Boost ctRLUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C43F8C7D2C83337DF5E58991 /* Pods_Boost_ctRL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21BC09EC2684B97B605CA5CA /* Pods_Boost_ctRLTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6540839D65DA6AB619C4F08 /* Pods_Boost_ctRL_Boost_ctRLUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +124,8 @@
 				11A0EA8B25FDBFBD004DE5BB /* Boost ctRLTests */,
 				11A0EA9625FDBFBD004DE5BB /* Boost ctRLUITests */,
 				11A0EA7825FDBFBC004DE5BB /* Products */,
+				342F5CC9C46EC03E61754000 /* Pods */,
+				B7A1731918477956882AAFF1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,11 +142,15 @@
 		11A0EA7925FDBFBC004DE5BB /* Boost ctRL */ = {
 			isa = PBXGroup;
 			children = (
+				11A0EB1525FEAA91004DE5BB /* ViewModels */,
 				11A0EA7A25FDBFBC004DE5BB /* Boost_ctRLApp.swift */,
-				11A0EA7C25FDBFBC004DE5BB /* ContentView.swift */,
+				11A0EAA825FDC037004DE5BB /* Views */,
 				11A0EA7E25FDBFBD004DE5BB /* Assets.xcassets */,
 				11A0EA8325FDBFBD004DE5BB /* Info.plist */,
 				11A0EA8025FDBFBD004DE5BB /* Preview Content */,
+				11A0EAC025FDCBCA004DE5BB /* Extensions */,
+				11A0EAD725FDD5B9004DE5BB /* Models */,
+				11A0EB0E25FEA429004DE5BB /* API */,
 			);
 			path = "Boost ctRL";
 			sourceTree = "<group>";
@@ -130,6 +181,81 @@
 			path = "Boost ctRLUITests";
 			sourceTree = "<group>";
 		};
+		11A0EAA825FDC037004DE5BB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				11A0EA7C25FDBFBC004DE5BB /* ContentView.swift */,
+				11A0EAAC25FDC124004DE5BB /* NewsView.swift */,
+				11A0EAB125FDC588004DE5BB /* SettingsView.swift */,
+				11A0EAB625FDCA8B004DE5BB /* TipJarView.swift */,
+				11A0EAC425FDCCEB004DE5BB /* ChangeLogView.swift */,
+				11A0EAE325FDD61E004DE5BB /* ArticleItemView.swift */,
+				11A0EAED25FDD9F1004DE5BB /* URLImageView.swift */,
+				11A0EAF225FE9CB7004DE5BB /* ArticleRowView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		11A0EAC025FDCBCA004DE5BB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				11A0EABB25FDCBC5004DE5BB /* Bundle+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		11A0EAD725FDD5B9004DE5BB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				11A0EAD225FDD51E004DE5BB /* Article.swift */,
+				11A0EAE825FDD87D004DE5BB /* URLImageModel.swift */,
+				11A0EAFA25FEA1A5004DE5BB /* RocketeersArticle.swift */,
+				11A0EAFF25FEA1DB004DE5BB /* OctaneArticle.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		11A0EB0E25FEA429004DE5BB /* API */ = {
+			isa = PBXGroup;
+			children = (
+				11A0EB0425FEA3D0004DE5BB /* NewsAPI.swift */,
+				11A0EB0925FEA422004DE5BB /* Agent.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		11A0EB1525FEAA91004DE5BB /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				11A0EB1625FEAAAC004DE5BB /* ArticlesViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		342F5CC9C46EC03E61754000 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2E25E3E59B3F2C84775ED11D /* Pods-Boost ctRL.debug.xcconfig */,
+				93F8E57467D48D07BC795A6F /* Pods-Boost ctRL.release.xcconfig */,
+				0E64C21261260FFD4EAA7150 /* Pods-Boost ctRL-Boost ctRLUITests.debug.xcconfig */,
+				F15AC75C5B583F8AADC0E0C3 /* Pods-Boost ctRL-Boost ctRLUITests.release.xcconfig */,
+				C055D4AC3761DE64E2861700 /* Pods-Boost ctRLTests.debug.xcconfig */,
+				906206D4834387E7D16EB1DE /* Pods-Boost ctRLTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B7A1731918477956882AAFF1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8F51D21759EE2A1C7A34C691 /* Pods_Boost_ctRL.framework */,
+				DF99447B441CE2EE00FDE1B5 /* Pods_Boost_ctRL_Boost_ctRLUITests.framework */,
+				AC839E06C22B8D39DC679324 /* Pods_Boost_ctRLTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,9 +263,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 11A0EA9C25FDBFBD004DE5BB /* Build configuration list for PBXNativeTarget "Boost ctRL" */;
 			buildPhases = (
+				3BBC8823ECF1EEACC1D82350 /* [CP] Check Pods Manifest.lock */,
 				11A0EA7325FDBFBC004DE5BB /* Sources */,
 				11A0EA7425FDBFBC004DE5BB /* Frameworks */,
 				11A0EA7525FDBFBC004DE5BB /* Resources */,
+				F2919114F7E3B8B66D5B71FC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -154,6 +282,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 11A0EA9F25FDBFBD004DE5BB /* Build configuration list for PBXNativeTarget "Boost ctRLTests" */;
 			buildPhases = (
+				D03D6477674BEF79F08E93DA /* [CP] Check Pods Manifest.lock */,
 				11A0EA8425FDBFBD004DE5BB /* Sources */,
 				11A0EA8525FDBFBD004DE5BB /* Frameworks */,
 				11A0EA8625FDBFBD004DE5BB /* Resources */,
@@ -172,9 +301,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 11A0EAA225FDBFBD004DE5BB /* Build configuration list for PBXNativeTarget "Boost ctRLUITests" */;
 			buildPhases = (
+				C5C18A9F78D8047BD6E2F342 /* [CP] Check Pods Manifest.lock */,
 				11A0EA8F25FDBFBD004DE5BB /* Sources */,
 				11A0EA9025FDBFBD004DE5BB /* Frameworks */,
 				11A0EA9125FDBFBD004DE5BB /* Resources */,
+				99C212EF1C27A1C9656A51BF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -254,13 +385,131 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3BBC8823ECF1EEACC1D82350 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Boost ctRL-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		99C212EF1C27A1C9656A51BF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Boost ctRL-Boost ctRLUITests/Pods-Boost ctRL-Boost ctRLUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Boost ctRL-Boost ctRLUITests/Pods-Boost ctRL-Boost ctRLUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Boost ctRL-Boost ctRLUITests/Pods-Boost ctRL-Boost ctRLUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C5C18A9F78D8047BD6E2F342 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Boost ctRL-Boost ctRLUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D03D6477674BEF79F08E93DA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Boost ctRLTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F2919114F7E3B8B66D5B71FC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Boost ctRL/Pods-Boost ctRL-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Boost ctRL/Pods-Boost ctRL-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Boost ctRL/Pods-Boost ctRL-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		11A0EA7325FDBFBC004DE5BB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11A0EAFB25FEA1A5004DE5BB /* RocketeersArticle.swift in Sources */,
+				11A0EAC525FDCCEB004DE5BB /* ChangeLogView.swift in Sources */,
+				11A0EB0525FEA3D0004DE5BB /* NewsAPI.swift in Sources */,
+				11A0EB0025FEA1DB004DE5BB /* OctaneArticle.swift in Sources */,
+				11A0EAAD25FDC124004DE5BB /* NewsView.swift in Sources */,
+				11A0EB0A25FEA422004DE5BB /* Agent.swift in Sources */,
+				11A0EAB725FDCA8B004DE5BB /* TipJarView.swift in Sources */,
+				11A0EAB225FDC588004DE5BB /* SettingsView.swift in Sources */,
+				11A0EAEE25FDD9F1004DE5BB /* URLImageView.swift in Sources */,
+				11A0EAD325FDD51E004DE5BB /* Article.swift in Sources */,
+				11A0EABC25FDCBC5004DE5BB /* Bundle+Ext.swift in Sources */,
 				11A0EA7D25FDBFBC004DE5BB /* ContentView.swift in Sources */,
 				11A0EA7B25FDBFBC004DE5BB /* Boost_ctRLApp.swift in Sources */,
+				11A0EAE425FDD61E004DE5BB /* ArticleItemView.swift in Sources */,
+				11A0EAF325FE9CB7004DE5BB /* ArticleRowView.swift in Sources */,
+				11A0EB1725FEAAAC004DE5BB /* ArticlesViewModel.swift in Sources */,
+				11A0EAE925FDD87D004DE5BB /* URLImageModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +663,7 @@
 		};
 		11A0EA9D25FDBFBD004DE5BB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E25E3E59B3F2C84775ED11D /* Pods-Boost ctRL.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -427,15 +677,17 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 3.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zacjohnson.Boost-ctRL";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		11A0EA9E25FDBFBD004DE5BB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 93F8E57467D48D07BC795A6F /* Pods-Boost ctRL.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -449,15 +701,17 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 3.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zacjohnson.Boost-ctRL";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		11A0EAA025FDBFBD004DE5BB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C055D4AC3761DE64E2861700 /* Pods-Boost ctRLTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -480,6 +734,7 @@
 		};
 		11A0EAA125FDBFBD004DE5BB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 906206D4834387E7D16EB1DE /* Pods-Boost ctRLTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -502,6 +757,7 @@
 		};
 		11A0EAA325FDBFBD004DE5BB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E64C21261260FFD4EAA7150 /* Pods-Boost ctRL-Boost ctRLUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -522,6 +778,7 @@
 		};
 		11A0EAA425FDBFBD004DE5BB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F15AC75C5B583F8AADC0E0C3 /* Pods-Boost ctRL-Boost ctRLUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "rl_platform_keyart_2019.f1cb27a519bdb5b6ed34049a5b86e317.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
