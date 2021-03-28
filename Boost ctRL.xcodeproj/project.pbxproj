@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		112D941E2601DCBB00530CD3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 112D941D2601DCBB00530CD3 /* GoogleService-Info.plist */; };
 		11A0EA7B25FDBFBC004DE5BB /* Boost_ctRLApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0EA7A25FDBFBC004DE5BB /* Boost_ctRLApp.swift */; };
 		11A0EA7D25FDBFBC004DE5BB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0EA7C25FDBFBC004DE5BB /* ContentView.swift */; };
 		11A0EA7F25FDBFBD004DE5BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11A0EA7E25FDBFBD004DE5BB /* Assets.xcassets */; };
@@ -25,7 +26,7 @@
 		11A0EAF325FE9CB7004DE5BB /* ArticleRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0EAF225FE9CB7004DE5BB /* ArticleRowView.swift */; };
 		11A0EAFB25FEA1A5004DE5BB /* RocketeersArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0EAFA25FEA1A5004DE5BB /* RocketeersArticle.swift */; };
 		11A0EB0025FEA1DB004DE5BB /* OctaneArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0EAFF25FEA1DB004DE5BB /* OctaneArticle.swift */; };
-		11A0EB0525FEA3D0004DE5BB /* NewsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0EB0425FEA3D0004DE5BB /* NewsAPI.swift */; };
+		11A0EB0525FEA3D0004DE5BB /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0EB0425FEA3D0004DE5BB /* API.swift */; };
 		11A0EB0A25FEA422004DE5BB /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0EB0925FEA422004DE5BB /* Agent.swift */; };
 		11A0EB1725FEAAAC004DE5BB /* ArticlesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0EB1625FEAAAC004DE5BB /* ArticlesViewModel.swift */; };
 		21BC09EC2684B97B605CA5CA /* Pods_Boost_ctRLTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC839E06C22B8D39DC679324 /* Pods_Boost_ctRLTests.framework */; };
@@ -52,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		0E64C21261260FFD4EAA7150 /* Pods-Boost ctRL-Boost ctRLUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boost ctRL-Boost ctRLUITests.debug.xcconfig"; path = "Target Support Files/Pods-Boost ctRL-Boost ctRLUITests/Pods-Boost ctRL-Boost ctRLUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		112D941D2601DCBB00530CD3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		11A0EA7725FDBFBC004DE5BB /* Boost ctRL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Boost ctRL.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A0EA7A25FDBFBC004DE5BB /* Boost_ctRLApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boost_ctRLApp.swift; sourceTree = "<group>"; };
 		11A0EA7C25FDBFBC004DE5BB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -76,7 +78,7 @@
 		11A0EAF225FE9CB7004DE5BB /* ArticleRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRowView.swift; sourceTree = "<group>"; };
 		11A0EAFA25FEA1A5004DE5BB /* RocketeersArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketeersArticle.swift; sourceTree = "<group>"; };
 		11A0EAFF25FEA1DB004DE5BB /* OctaneArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OctaneArticle.swift; sourceTree = "<group>"; };
-		11A0EB0425FEA3D0004DE5BB /* NewsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPI.swift; sourceTree = "<group>"; };
+		11A0EB0425FEA3D0004DE5BB /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		11A0EB0925FEA422004DE5BB /* Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
 		11A0EB1625FEAAAC004DE5BB /* ArticlesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesViewModel.swift; sourceTree = "<group>"; };
 		2E25E3E59B3F2C84775ED11D /* Pods-Boost ctRL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boost ctRL.debug.xcconfig"; path = "Target Support Files/Pods-Boost ctRL/Pods-Boost ctRL.debug.xcconfig"; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			children = (
 				11A0EB1525FEAA91004DE5BB /* ViewModels */,
 				11A0EA7A25FDBFBC004DE5BB /* Boost_ctRLApp.swift */,
+				112D941D2601DCBB00530CD3 /* GoogleService-Info.plist */,
 				11A0EAA825FDC037004DE5BB /* Views */,
 				11A0EA7E25FDBFBD004DE5BB /* Assets.xcassets */,
 				11A0EA8325FDBFBD004DE5BB /* Info.plist */,
@@ -218,7 +221,7 @@
 		11A0EB0E25FEA429004DE5BB /* API */ = {
 			isa = PBXGroup;
 			children = (
-				11A0EB0425FEA3D0004DE5BB /* NewsAPI.swift */,
+				11A0EB0425FEA3D0004DE5BB /* API.swift */,
 				11A0EB0925FEA422004DE5BB /* Agent.swift */,
 			);
 			path = API;
@@ -242,7 +245,6 @@
 				C055D4AC3761DE64E2861700 /* Pods-Boost ctRLTests.debug.xcconfig */,
 				906206D4834387E7D16EB1DE /* Pods-Boost ctRLTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -366,6 +368,7 @@
 			files = (
 				11A0EA8225FDBFBD004DE5BB /* Preview Assets.xcassets in Resources */,
 				11A0EA7F25FDBFBD004DE5BB /* Assets.xcassets in Resources */,
+				112D941E2601DCBB00530CD3 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,7 +498,7 @@
 			files = (
 				11A0EAFB25FEA1A5004DE5BB /* RocketeersArticle.swift in Sources */,
 				11A0EAC525FDCCEB004DE5BB /* ChangeLogView.swift in Sources */,
-				11A0EB0525FEA3D0004DE5BB /* NewsAPI.swift in Sources */,
+				11A0EB0525FEA3D0004DE5BB /* API.swift in Sources */,
 				11A0EB0025FEA1DB004DE5BB /* OctaneArticle.swift in Sources */,
 				11A0EAAD25FDC124004DE5BB /* NewsView.swift in Sources */,
 				11A0EB0A25FEA422004DE5BB /* Agent.swift in Sources */,
