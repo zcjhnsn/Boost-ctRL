@@ -11,6 +11,9 @@ PODS:
   - Firebase/Database (5.4.0):
     - Firebase/CoreOnly
     - FirebaseDatabase (= 5.0.2)
+  - Firebase/Functions (5.4.0):
+    - Firebase/CoreOnly
+    - FirebaseFunctions (= 2.1.0)
   - Firebase/Messaging (5.4.0):
     - Firebase/CoreOnly
     - FirebaseMessaging (= 3.0.3)
@@ -27,6 +30,9 @@ PODS:
   - FirebaseDatabase (5.0.2):
     - FirebaseCore (~> 5.0)
     - leveldb-library (~> 1.18)
+  - FirebaseFunctions (2.1.0):
+    - FirebaseCore (~> 5.0)
+    - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseInstanceID (3.1.1):
     - FirebaseCore (~> 5.0)
   - FirebaseMessaging (3.0.3):
@@ -50,11 +56,6 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - Protobuf (3.6.0)
-  - Realm (3.18.0):
-    - Realm/Headers (= 3.18.0)
-  - Realm/Headers (3.18.0)
-  - RealmSwift (3.18.0):
-    - Realm (= 3.18.0)
 
 DEPENDENCIES:
   - ACTabScrollView (from `https://github.com/azurechen/ACTabScrollView.git`)
@@ -62,9 +63,9 @@ DEPENDENCIES:
   - Firebase
   - Firebase/Core
   - Firebase/Database
+  - Firebase/Functions
   - Firebase/Messaging
   - Firebase/Storage
-  - RealmSwift (~> 3.18.0)
 
 SPEC REPOS:
   trunk:
@@ -72,6 +73,7 @@ SPEC REPOS:
     - FirebaseAnalytics
     - FirebaseCore
     - FirebaseDatabase
+    - FirebaseFunctions
     - FirebaseInstanceID
     - FirebaseMessaging
     - FirebaseStorage
@@ -80,8 +82,6 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - Protobuf
-    - Realm
-    - RealmSwift
 
 EXTERNAL SOURCES:
   ACTabScrollView:
@@ -104,6 +104,7 @@ SPEC CHECKSUMS:
   FirebaseAnalytics: b3628aea54c50464c32c393fb2ea032566e7ecc2
   FirebaseCore: 42b3267233bd21a5abd54117ccc38ca3dd0f8e83
   FirebaseDatabase: 27be5ac5bc75e0b17537b2bbfada8258addcc8cd
+  FirebaseFunctions: 0cb3bc0bbeac1daf6fea378a1064ff7f484e4c4e
   FirebaseInstanceID: f3f0657372592ecdfdfe2cac604a5a75758376a6
   FirebaseMessaging: f43eb0c0e1da096e659de6f713038e74862a62cd
   FirebaseStorage: 7ca4bb7b58a25fa647b04f524033fc7cb7eb272b
@@ -112,9 +113,7 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 0fc0ad8bec688b2a3017a139953e01374fedbd5f
-  Realm: 7b3d04740facf45e958a514b466a32b04f1113d6
-  RealmSwift: c817b5f374668cf08f649afb05f55d92a787649c
 
-PODFILE CHECKSUM: b770300ea7e2916c3d24a8146e7e5f70f60ee484
+PODFILE CHECKSUM: dc3410ef5c2a2b25b97015de61c538ecfc40d126
 
 COCOAPODS: 1.10.1

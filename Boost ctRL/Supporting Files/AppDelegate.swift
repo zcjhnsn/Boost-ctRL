@@ -8,13 +8,8 @@
 
 import UIKit
 import Firebase
-import RealmSwift
 import FirebaseMessaging
 import UserNotifications
-
-var teamRealm = try! Realm()
-var rlcsRealm = try! Realm()
-var rlrsRealm = try! Realm()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -30,33 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		FirebaseApp.configure()
 		Database.database().isPersistenceEnabled = true
 		
-		//////////////////////////////////////////////
-		
-		// MARK: - Realm Migrations
-		Realm.Configuration.defaultConfiguration = Realm.Configuration(
-			schemaVersion: 2,
-			migrationBlock: { migration, oldSchemaVersion in
-				if oldSchemaVersion < 1 {
-					migration.enumerateObjects(ofType: RealmMatchRLCS.className()) { oldObject, newObject in
-						// combine name fields into a single field
-						newObject!["date"] = ""
-						newObject!["title"] = ""
-					}
-					
-					migration.enumerateObjects(ofType: RealmMatchRLRS.className(), { (oldMatch, newMatch) in
-						newMatch!["date"] = ""
-						newMatch!["title"] = ""
-					})
-				}
-				if oldSchemaVersion < 2 {
-					print("❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️ - Deleting Realm")
-					migration.deleteData(forType: RealmMatchRLCS.className())
-					migration.deleteData(forType: RealmMatchRLRS.className())
-				}
-			}, deleteRealmIfMigrationNeeded: true
-		)
-		
-		
 		//get application instance ID
 		InstanceID.instanceID().instanceID { (result, error) in
 			if let error = error {
@@ -66,9 +34,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			}
 		}
 		
-		//////////////////////////////////////////////
-		
-		downloadDataFromFirebase()	
+		downloadDataFromFirebase()
+        
+        // MARK: - Setup Window
+        
+        window = UIWindow(UIScreen.main.bounds)
+        let mainController = NewsVC()
+        window?.rootViewController = mainController
+        window?.makeKeyAndVisible()
+        
 		return true
 	}
 	

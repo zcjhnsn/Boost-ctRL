@@ -12,8 +12,8 @@ pod 'Firebase/Core'
 pod 'Firebase/Database'
 pod 'Firebase/Storage'
 pod 'Firebase/Messaging'
+pod 'Firebase/Functions'
 pod 'ACTabScrollView', :git => 'https://github.com/azurechen/ACTabScrollView.git'
-pod 'RealmSwift', '~> 3.18.0'
 pod 'AlertOnboarding', :git => 'https://github.com/gilthonweapps/AlertOnboarding'
 
 end

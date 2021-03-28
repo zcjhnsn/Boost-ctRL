@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,7 +16,7 @@
 		078504C6231759D800FAC1E3 /* SlideInPresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078504C5231759D800FAC1E3 /* SlideInPresentationManager.swift */; };
 		078504C823175CD700FAC1E3 /* SlideInPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078504C723175CD700FAC1E3 /* SlideInPresentationController.swift */; };
 		078504CC231A04E200FAC1E3 /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078504CB231A04E200FAC1E3 /* Enumerations.swift */; };
-		078D007020FE71A70069476E /* NewsContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078D006F20FE71A70069476E /* NewsContentViewController.swift */; };
+		078D007020FE71A70069476E /* NewsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078D006F20FE71A70069476E /* NewsVC.swift */; };
 		078D007420FE76B50069476E /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078D007320FE76B50069476E /* News.swift */; };
 		078D007620FED6530069476E /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078D007520FED6530069476E /* Match.swift */; };
 		07C5897421012F7800B0EE62 /* MatchesContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C5897321012F7800B0EE62 /* MatchesContentViewController.swift */; };
@@ -33,10 +33,9 @@
 		07E3C8CD20E55A1F00F2A16A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07E3C8CC20E55A1F00F2A16A /* Assets.xcassets */; };
 		07E3C8D020E55A1F00F2A16A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07E3C8CE20E55A1F00F2A16A /* LaunchScreen.storyboard */; };
 		07E3C8DA20EDABE000F2A16A /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C8D920EDABE000F2A16A /* InfoViewController.swift */; };
-		07E3C8DC20EDB2F700F2A16A /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C8DB20EDB2F700F2A16A /* TabBarViewController.swift */; };
+		07E3C8DC20EDB2F700F2A16A /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C8DB20EDB2F700F2A16A /* TabBarVC.swift */; };
 		07E3C8E320EE82BF00F2A16A /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C8E220EE82BF00F2A16A /* Team.swift */; };
 		07E3C90D20F66CE500F2A16A /* TeamsContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3C90C20F66CE500F2A16A /* TeamsContentViewController.swift */; };
-		07F48419222DD044003A7CCF /* RealmObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F48418222DD044003A7CCF /* RealmObjects.swift */; };
 		07F4D6F224673C4E007CC197 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F4D6F124673C4E007CC197 /* API.swift */; };
 		07F4D6F52475E9FA007CC197 /* TwitchTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F4D6F42475E9FA007CC197 /* TwitchTokenResponse.swift */; };
 		07FDAC1623EB3C45004C7D44 /* TwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FDAC1523EB3C45004C7D44 /* TwitchCell.swift */; };
@@ -67,7 +66,7 @@
 		078504C5231759D800FAC1E3 /* SlideInPresentationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInPresentationManager.swift; sourceTree = "<group>"; };
 		078504C723175CD700FAC1E3 /* SlideInPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInPresentationController.swift; sourceTree = "<group>"; };
 		078504CB231A04E200FAC1E3 /* Enumerations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enumerations.swift; sourceTree = "<group>"; };
-		078D006F20FE71A70069476E /* NewsContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsContentViewController.swift; sourceTree = "<group>"; };
+		078D006F20FE71A70069476E /* NewsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsVC.swift; sourceTree = "<group>"; };
 		078D007320FE76B50069476E /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		078D007520FED6530069476E /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		07C5897321012F7800B0EE62 /* MatchesContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesContentViewController.swift; sourceTree = "<group>"; };
@@ -87,10 +86,9 @@
 		07E3C8CF20E55A1F00F2A16A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		07E3C8D120E55A1F00F2A16A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07E3C8D920EDABE000F2A16A /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
-		07E3C8DB20EDB2F700F2A16A /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		07E3C8DB20EDB2F700F2A16A /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		07E3C8E220EE82BF00F2A16A /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		07E3C90C20F66CE500F2A16A /* TeamsContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsContentViewController.swift; sourceTree = "<group>"; };
-		07F48418222DD044003A7CCF /* RealmObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmObjects.swift; sourceTree = "<group>"; };
 		07F4D6F124673C4E007CC197 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		07F4D6F42475E9FA007CC197 /* TwitchTokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitchTokenResponse.swift; sourceTree = "<group>"; };
 		07FDAC1523EB3C45004C7D44 /* TwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitchCell.swift; sourceTree = "<group>"; };
@@ -180,7 +178,7 @@
 		078151CF225B03D2002A1363 /* News */ = {
 			isa = PBXGroup;
 			children = (
-				078D006F20FE71A70069476E /* NewsContentViewController.swift */,
+				078D006F20FE71A70069476E /* NewsVC.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -251,7 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				078504C4231759AB00FAC1E3 /* Presentation */,
-				07E3C8DB20EDB2F700F2A16A /* TabBarViewController.swift */,
+				07E3C8DB20EDB2F700F2A16A /* TabBarVC.swift */,
 				078151CE225B03C9002A1363 /* Info */,
 				078151CB225AFFEF002A1363 /* Matches */,
 				078151CF225B03D2002A1363 /* News */,
@@ -266,7 +264,6 @@
 				07E3C8E220EE82BF00F2A16A /* Team.swift */,
 				078D007320FE76B50069476E /* News.swift */,
 				078D007520FED6530069476E /* Match.swift */,
-				07F48418222DD044003A7CCF /* RealmObjects.swift */,
 				07DD5877225E5EC900851D9B /* IAPProduct.swift */,
 				07DD5879225E625000851D9B /* IAPService.swift */,
 				07DD587F225FEC8600851D9B /* IAP.swift */,
@@ -376,7 +373,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 07E3C8BB20E55A1C00F2A16A /* Build configuration list for PBXProject "Boost ctRL" */;
+			buildConfigurationList = 07E3C8BB20E55A1C00F2A16A /* Build configuration list for PBXProject "Boost Ctrl" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -483,7 +480,7 @@
 				07E3C8C620E55A1C00F2A16A /* TeamsViewController.swift in Sources */,
 				07FDAC2123ED0D7D004C7D44 /* ReusableView.swift in Sources */,
 				07D253072200E57F0070302C /* TeamDetailViewController.swift in Sources */,
-				078D007020FE71A70069476E /* NewsContentViewController.swift in Sources */,
+				078D007020FE71A70069476E /* NewsVC.swift in Sources */,
 				078D007420FE76B50069476E /* News.swift in Sources */,
 				07FDAC1A23EB3E01004C7D44 /* RocketeersArticle.swift in Sources */,
 				07F4D6F224673C4E007CC197 /* API.swift in Sources */,
@@ -495,14 +492,13 @@
 				07DD5878225E5EC900851D9B /* IAPProduct.swift in Sources */,
 				07F4D6F52475E9FA007CC197 /* TwitchTokenResponse.swift in Sources */,
 				07FDAC1F23ED0D56004C7D44 /* Section.swift in Sources */,
-				07F48419222DD044003A7CCF /* RealmObjects.swift in Sources */,
 				07E3C90D20F66CE500F2A16A /* TeamsContentViewController.swift in Sources */,
 				078504C823175CD700FAC1E3 /* SlideInPresentationController.swift in Sources */,
 				07E3C8E320EE82BF00F2A16A /* Team.swift in Sources */,
 				07C5897421012F7800B0EE62 /* MatchesContentViewController.swift in Sources */,
 				07FDAC2C23ED0FEE004C7D44 /* TitleSection.swift in Sources */,
 				078504BF231750B000FAC1E3 /* ResultsVC.swift in Sources */,
-				07E3C8DC20EDB2F700F2A16A /* TabBarViewController.swift in Sources */,
+				07E3C8DC20EDB2F700F2A16A /* TabBarVC.swift in Sources */,
 				0719339E22374F94002388C9 /* Downloader.swift in Sources */,
 				0719339C22374DCE002388C9 /* Extensions.swift in Sources */,
 				07E3C8DA20EDABE000F2A16A /* InfoViewController.swift in Sources */,
@@ -707,7 +703,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		07E3C8BB20E55A1C00F2A16A /* Build configuration list for PBXProject "Boost ctRL" */ = {
+		07E3C8BB20E55A1C00F2A16A /* Build configuration list for PBXProject "Boost Ctrl" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				07E3C8D220E55A1F00F2A16A /* Debug */,

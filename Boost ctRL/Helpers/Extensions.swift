@@ -95,26 +95,6 @@ extension String {
 	}
 }
 
-// MARK: - AppDelegate Extension
-
-// download data from firebase on load
-extension AppDelegate {
-	func downloadDataFromFirebase() {
-		let downloader = Downloader()
-		if downloader.loadTeamsAndStandings() {
-			print("Initial Team Download Complete: ✅")
-		} else {
-			print("Returned False ‼️")
-		}
-		
-		if downloader.loadMatches() {
-			print("Initial Matches Download ✅")
-		} else {
-			print("Initial Matches Download 🔴")
-		}
-	}
-}
-
 // MARK: - Bundle Extension
 
 extension Bundle {
