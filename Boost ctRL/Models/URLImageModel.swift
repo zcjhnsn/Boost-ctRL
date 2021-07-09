@@ -41,11 +41,11 @@ class UrlImageModel: ObservableObject {
     }
     
     func loadImageFromUrl() {
-        guard let urlString = urlString else {
+        guard let urlStringSafe = urlString, !urlStringSafe.isEmpty else {
             return
         }
         
-        let url = URL(string: urlString)!
+        let url = URL(string: urlStringSafe)!
         let task = URLSession.shared.dataTask(with: url, completionHandler: getImageFromResponse(data:response:error:))
         task.resume()
     }

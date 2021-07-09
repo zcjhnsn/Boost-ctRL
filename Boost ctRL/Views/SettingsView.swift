@@ -27,12 +27,20 @@ struct SettingsView: View {
                 }
                 
                 Section(header: Text("App Info")) {
+                    NavigationLink("Change Log", destination: ChangeLogView()
+                                    .navigationBarTitle("Change Log")
+                                    .navigationBarItems(trailing: Button(action: {
+                                        presentationMode.wrappedValue.dismiss()
+                                    }, label: {
+                                        Image(systemName: "xmark")
+                                            .foregroundColor(.primary)
+                                    }))
+                    )
                     HStack {
                         Text("Version")
                         Spacer()
                         Text(Bundle.main.releaseVersionNumberPretty)
                     }
-                    NavigationLink("Change Log", destination: ChangeLogView())
                 }
             }
             .navigationBarTitle(Text("Settings"))

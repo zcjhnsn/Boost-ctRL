@@ -10,41 +10,34 @@ import SwiftUI
 struct NewsView: View {
     @State var isShowingSettings: Bool = false
     @ObservedObject var articlesViewModel = ArticlesViewModel()
+    @ObservedObject var recentMatchesViewModel = RecentMatchesViewModel()
     
     var body: some View {
         NavigationView {
             ScrollView {
                 Group {
-                    ArticleRowView(publisherName: NewsSource.rocketeers.rawValue, articles: articlesViewModel.rocketeersArticles)
+                    RecentResultsRowView(recentMatches: recentMatchesViewModel.matches)
                         .listRowInsets(EdgeInsets())
+                        .redacted(reason: recentMatchesViewModel.isMatchesLoading ? .placeholder : [])
                         .animation(.linear(duration: 0.3))
-                        .overlay(ProgressView()
-                                    .progressViewStyle(CircularProgressViewStyle())
-                                    .opacity(articlesViewModel.isRocketeersLoading ? 1 : 0)
-                        )
                     
                     Divider()
+                        .opacity(recentMatchesViewModel.matches.isEmpty ? 0.0 : 1.0)
+                        
                 }
-                
-                
+                    
                 Group {
-                    
-                    ArticleRowView(publisherName: NewsSource.octane.rawValue, articles: articlesViewModel.octaneArticles)
-                        .listRowInsets(EdgeInsets())
-                        .animation(.linear(duration: 0.3))
-                        .overlay(ProgressView()
-                                    .progressViewStyle(CircularProgressViewStyle())
-                                    .opacity(articlesViewModel.isOctaneLoading ? 1 : 0)
-                        )
-                    
-                    Divider()
+                    ArticleColumnView(publisherName: "Top Stories", articles: articlesViewModel.octaneArticles)
+                        .redacted(reason: articlesViewModel.isOctaneLoading ? .placeholder : [])
                 }
-                    
                 
             }
             .listStyle(PlainListStyle())
             .navigationTitle("News")
-            .navigationBarItems(trailing: Button(action: {
+            .navigationBarItems(leading: Label(
+                title: { Text("Boost Control").font(.system(.headline, design: .default).weight(.bold)).foregroundColor(.blue) },
+                icon: { Image("ctrl-blue").resizable().frame(width: 25, height: 25, alignment: .center) }
+),trailing: Button(action: {
                 isShowingSettings = true
             }, label: {
                 Image(systemName: "ellipsis")
@@ -63,3 +56,25 @@ struct NewsView_Previews: PreviewProvider {
         NewsView()
     }
 }
+
+/*
+                Group {
+                    ArticleRowView(publisherName: NewsSource.rocketeers.rawValue, articles: articlesViewModel.rocketeersArticles)
+                        .listRowInsets(EdgeInsets())
+                        .animation(.linear(duration: 0.3))
+                        .redacted(reason: articlesViewModel.isRocketeersLoading ? .placeholder : [])
+
+                    Divider()
+                }
+                
+                
+                Group {
+
+                    ArticleRowView(publisherName: NewsSource.octane.rawValue, articles: articlesViewModel.octaneArticles)
+                        .listRowInsets(EdgeInsets())
+                        .animation(.linear(duration: 0.3))
+                        .redacted(reason: articlesViewModel.isOctaneLoading ? .placeholder : [])
+
+                    Divider()
+                }
+*/

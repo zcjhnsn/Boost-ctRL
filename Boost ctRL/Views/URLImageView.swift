@@ -7,25 +7,37 @@
 
 import SwiftUI
 
+enum ImageType {
+    case logo
+    case news
+}
+
 struct UrlImageView: View {
     @ObservedObject var urlImageModel: UrlImageModel
+    let imageType: ImageType
     
-    init(urlString: String?) {
+    init(urlString: String? = nil, type: ImageType) {
         urlImageModel = UrlImageModel(urlString: urlString)
+        imageType = type
     }
     
     var body: some View {
-        Image(uiImage: urlImageModel.image ?? UrlImageView.defaultImage!)
+        Image(uiImage: urlImageModel.image ?? defaultImage)
             .resizable()
-            .scaledToFill()
-//            .frame(width: 100, height: 100)
+            .aspectRatio(contentMode: .fit)
     }
     
-    static var defaultImage = UIImage(named: "rl-default")
+    var defaultImage: UIImage {
+        if imageType == .news {
+            return UIImage(named: "rl-default")!
+        } else {
+            return UIImage(named: "ctrl-glyph")!
+        }
+    }
 }
 
 struct UrlImageView_Previews: PreviewProvider {
     static var previews: some View {
-        UrlImageView(urlString: nil)
+        UrlImageView(urlString: nil, type: .logo)
     }
 }
