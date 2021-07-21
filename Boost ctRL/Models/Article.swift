@@ -6,12 +6,14 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Article: Identifiable, Hashable, Codable {
     let id: String
     let image: String
     let link: String
     let title: String
+    let description: String?
     
     var newsSource: NewsSource {
         return link.lowercased().contains(NewsSource.rocketeers.rawValue.lowercased()) ? .rocketeers : .octane
@@ -35,7 +37,7 @@ struct Article: Identifiable, Hashable, Codable {
     }
     
     enum OctaneCodingKeys: String, CodingKey {
-        case title, image, id, slug
+        case title, image, id, slug, description
     }
     
     enum RocketeersCodingKeys: String, CodingKey {
@@ -43,11 +45,12 @@ struct Article: Identifiable, Hashable, Codable {
             case embedded = "_embedded"
     }
 
-    init(id: String, image: String, link: String, title: String) {
+    init(id: String, image: String, link: String, title: String, description: String? = nil) {
         self.id = id
         self.image = image
         self.link = link
         self.title = title
+        self.description = description
     }
     
     // https://stackoverflow.com/a/61164837/10096672
@@ -67,16 +70,19 @@ struct Article: Identifiable, Hashable, Codable {
             let image = try container.decode(OctaneImage.self, forKey: .image)
             let slug = try container.decode(String.self, forKey: .slug)
             
+            self.description = try container.decodeIfPresent(String.self, forKey: .description)
             self.id = try container.decode(String.self, forKey: .id)
             self.image = image.url
             self.link = "https://octane.gg/news/\(slug)"
             self.title = try container.decode(String.self, forKey: .title)
+        
         case .rocketeers:
             let container = try decoder.container(keyedBy: RocketeersCodingKeys.self)
             let intID = try container.decode(Int.self, forKey: .id)
             let title = try container.decode(Title.self, forKey: .title)
             let embedded = try container.decode(Embedded.self, forKey: .embedded)
             
+            self.description = nil
             self.id = String(intID)
             self.image = embedded.wpFeaturedmedia[0].mediaDetails.sizes.large.sourceURL
             self.link = try container.decode(String.self, forKey: .link)
@@ -137,5 +143,28 @@ enum NewsSource: String, CaseIterable, Codable {
     
     static func allValues() -> [NewsSource] {
         return [.rocketeers, .octane]
+    }
+}
+
+enum Browsers {
+    case chrome
+    case duckduckgo
+    case firefox
+    case safari
+    case systemDefault
+    
+    var scheme: String {
+        switch self {
+        case .chrome:
+            return "googlechrome://"
+        case .duckduckgo:
+            return "ddgQuickLink://"
+        case .firefox:
+            return "firefox://"
+        case .safari:
+            return "x-web-search://"
+        default:
+            return ""
+        }
     }
 }
