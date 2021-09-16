@@ -10,31 +10,50 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         TabView {
+            
+            // MARK: - Home Page
+            
             NewsView()
             .tabItem {
-                Image(systemName: "newspaper")
-                Text("News")
+                Image(systemName: "flame")
+                Text("Home")
             }
             
+            // MARK: - Events
+
             NavigationView {
                 Text("Page Two")
-                    .navigationBarTitle("Page Two")
+                    .navigationBarTitle("Events")
             }
             .tabItem {
                 Image(systemName: "calendar")
-                Text("Matches")
+                Text("Events")
             }
             
+            // MARK: - Teams
+
             NavigationView {
-                Text("Page Three")
-                    .navigationBarTitle("Page Three")
+                Text("Teams")
+                    .navigationBarTitle("Teams")
             }
             .tabItem {
-                Image(systemName: "3.circle")
-                Text("Page 3")
+                Image(systemName: "person.3")
+                Text("Teams")
+            }
+            
+            // MARK: - Players
+
+            NavigationView {
+                Text("Players")
+                    .navigationBarTitle("Players")
+            }
+            .tabItem {
+                Image(systemName: "gamecontroller")
+                Text("Players")
             }
         }
         .edgesIgnoringSafeArea(.top)
+        
     }
 }
 

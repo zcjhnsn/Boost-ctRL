@@ -12,6 +12,9 @@ enum Endpoint {
     case newsRocketeers
     case newsOctane
     case matches
+    case event(id: String)
+    case eventParticipants(id: String)
+    case statsForPlayers
     
     var path: String {
         switch self {
@@ -21,6 +24,12 @@ enum Endpoint {
             return "/wp-json/wp/v2/posts"
         case .matches:
             return "/matches"
+        case .event(let id):
+            return "/events/\(id)"
+        case .eventParticipants(let id):
+            return "/events/\(id)/participants"
+        case .statsForPlayers:
+            return "/stats/players"
         }
     }
 }
@@ -34,6 +43,7 @@ enum API {
     
     static func run<T: Decodable>(_ request: URLRequest, decodingArticleType: Agent.ArticleSource = .notAnArticle) -> AnyPublisher<T, Error> {
         let decoder: JSONDecoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
         
         switch decodingArticleType {
         case .octaneNews:
@@ -65,7 +75,7 @@ enum API {
         var components = URLComponents(string: octaneNewsBase.appendingPathComponent(Endpoint.newsOctane.path).absoluteString)!
         components.queryItems = [
             URLQueryItem(name: "_sort", value: "published_at:desc"),
-            URLQueryItem(name: "_limit", value: "10")
+            URLQueryItem(name: "_limit", value: "20")
         ]
         
         let request = URLRequest(url: components.url!)
@@ -82,6 +92,44 @@ enum API {
             URLQueryItem(name: "group", value: "rlcs"),
             URLQueryItem(name: "sort", value: "date:desc"),
             URLQueryItem(name: "perPage", value: "\(limit)")
+        ]
+        
+        let request = URLRequest(url: components.url!)
+        
+        return run(request)
+    }
+    
+    /// Get event by id
+    /// - Parameter id: ID of event
+    /// - Returns: `EventResult` object
+    static func getEvent(byID id: String) -> AnyPublisher<EventResult, Error> {
+        let components = URLComponents(string: octaneBase.appendingPathComponent(Endpoint.event(id: id).path).absoluteString)!
+        
+        let request = URLRequest(url: components.url!)
+        
+        return run(request)
+    }
+    
+    /// Get event participants (teams + players)
+    /// - Parameter eventID: Event's ID
+    /// - Returns: `EventParticipants` object
+    static func getParticipants(forEvent eventID: String) -> AnyPublisher<EventParticipants, Error> {
+        let components = URLComponents(string: octaneBase.appendingPathComponent(Endpoint.eventParticipants(id: eventID).path).absoluteString)!
+        
+        let request = URLRequest(url: components.url!)
+        
+        return run(request)
+    }
+    
+    /// Get top performers for event (based on Octane's player rating)
+    /// - Parameter eventID: Event ID
+    /// - Returns: **Unsorted** array of TopPerformers
+    static func getTopPerformers(forEvent eventID: String) -> AnyPublisher<TopPerformers, Error> {
+        var components = URLComponents(string: octaneBase.appendingPathComponent(Endpoint.statsForPlayers.path).absoluteString)!
+        
+        components.queryItems = [
+            URLQueryItem(name: "event", value: eventID),
+            URLQueryItem(name: "stat", value: "rating")
         ]
         
         let request = URLRequest(url: components.url!)

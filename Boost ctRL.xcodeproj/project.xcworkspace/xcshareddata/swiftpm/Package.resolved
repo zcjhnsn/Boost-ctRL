@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/pointfreeco/combine-schedulers",
         "state": {
           "branch": null,
-          "revision": "c37e5ae8012fb654af776cc556ff8ae64398c841",
-          "version": "0.5.0"
+          "revision": "6dcc7c034d28fe7ac652453faeae07656f723909",
+          "version": "0.5.1"
         }
       },
       {
@@ -56,12 +56,30 @@
         }
       },
       {
+        "package": "SwiftUI-Shimmer",
+        "repositoryURL": "https://github.com/markiv/SwiftUI-Shimmer.git",
+        "state": {
+          "branch": null,
+          "revision": "5b2e81191e77f66e6c6ca497f11a77fe48f7f0fc",
+          "version": "1.0.0"
+        }
+      },
+      {
+        "package": "SwiftUICharts",
+        "repositoryURL": "https://github.com/zcjhnsn/SwiftUICharts.git",
+        "state": {
+          "branch": "zj/add-int-support",
+          "revision": "65816b57fd122c136e5cb01b2dc8e5a81063163f",
+          "version": null
+        }
+      },
+      {
         "package": "xctest-dynamic-overlay",
         "repositoryURL": "https://github.com/pointfreeco/xctest-dynamic-overlay",
         "state": {
           "branch": null,
-          "revision": "603974e3909ad4b48ba04aad7e0ceee4f077a518",
-          "version": "0.1.0"
+          "revision": "152390e9e78ebbf0d767ee52971d41e7f44f39bc",
+          "version": "0.1.1"
         }
       }
     ]

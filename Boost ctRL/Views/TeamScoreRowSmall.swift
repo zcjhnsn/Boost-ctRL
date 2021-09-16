@@ -14,7 +14,7 @@ struct TeamScoreRowSmall: View {
     var scoreColor: Color {
         if isInProgress {
             return .black
-        } else if let isWinner = teamResult.winner, isWinner {
+        } else if teamResult.winner {
             return .green
         } else {
             return .red
@@ -43,8 +43,8 @@ struct TeamScoreRowSmall: View {
             // MARK: - Team Name
 
             Text(teamResult.teamInfo.team.name)
-                .font(teamResult.winner ?? false ? winnerFontStyle : defaultFontStyle)
-                .foregroundColor(teamResult.winner ?? false ? .primary : .secondary)
+                .font(teamResult.winner ? winnerFontStyle : defaultFontStyle)
+                .foregroundColor(teamResult.winner ? .primary : .secondary)
             
             Spacer()
             
@@ -53,7 +53,7 @@ struct TeamScoreRowSmall: View {
             Text("\(teamResult.score)")
                 .frame(alignment: .leading)
                 .foregroundColor(scoreColor)
-                .font(teamResult.winner ?? false ? winnerScoreFontStyle : loserScoreFontStyle)
+                .font(teamResult.winner ? winnerScoreFontStyle : loserScoreFontStyle)
             
         }
         .padding([.horizontal], 12)

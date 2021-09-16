@@ -12,7 +12,7 @@ import SwiftUI
 struct MatchCardViewSmall: View {
     var match: Match
     var inProgress: Bool {
-        if match.blue.winner == nil && match.orange.winner == nil {
+        if !match.blue.winner && !match.orange.winner {
             return true
         } else {
             return false
@@ -20,55 +20,64 @@ struct MatchCardViewSmall: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading) {
-            GeometryReader { geo in
-                VStack(alignment: .leading, spacing: 8, content: {
-                    
-                    HStack {
+        NavigationLink(destination:
+                        MatchResultView(match: match)
+                            .navigationTitle("Match Overview")
+                
+        ) {
+            
+            VStack(alignment: .leading) {
+                GeometryReader { geo in
+                    VStack(alignment: .leading, spacing: 8, content: {
                         
-                        VStack(spacing: 6) {
+                        HStack {
                             
-                            Text(match.event.name)
-                                .font(.system(.footnote, design: .rounded))
-                                .padding([.horizontal, .top], 12)
-                                .frame(width: 220,alignment: .leading)
+                            VStack(spacing: 6) {
+                                
+                                Text(match.event.name)
+                                    .font(.system(.footnote, design: .rounded))
+                                    .padding([.horizontal, .top], 12)
+                                    .frame(width: 220,alignment: .leading)
+                                
+                                TeamScoreRowSmall(teamResult: match.blue, isInProgress: inProgress)
+                                
+                                
+                                TeamScoreRowSmall(teamResult: match.orange, isInProgress: inProgress)
+                                    .padding([.bottom], 12)
+                            }
                             
-                            TeamScoreRowSmall(teamResult: match.blue, isInProgress: inProgress)
-                            
-                            
-                            TeamScoreRowSmall(teamResult: match.orange, isInProgress: inProgress)
-                            .padding([.bottom], 12)
+                            //                        VStack(spacing: 2) {
+                            //
+                            //                            UrlImageView(urlString: "https://griffon.octane.gg/events/rlcs-x-championships.png")
+                            //                                .frame(height: 18)
+                            //                                .clipped()
+                            //                                .padding([.top, .trailing], 8)
+                            //
+                            //                            Spacer()
+                            //
+                            //                            Text("NA")
+                            //                                .lineLimit(2)
+                            //                                .foregroundColor(.red)
+                            //                                .font(.system(.body, design: .rounded).weight(.bold))
+                            //                                .padding([.horizontal, .bottom], 8)
+                            //                                .frame(maxWidth: .infinity, alignment: .trailing)
+                            //                        }
                         }
                         
-//                        VStack(spacing: 2) {
-//
-//                            UrlImageView(urlString: "https://griffon.octane.gg/events/rlcs-x-championships.png")
-//                                .frame(height: 18)
-//                                .clipped()
-//                                .padding([.top, .trailing], 8)
-//
-//                            Spacer()
-//
-//                            Text("NA")
-//                                .lineLimit(2)
-//                                .foregroundColor(.red)
-//                                .font(.system(.body, design: .rounded).weight(.bold))
-//                                .padding([.horizontal, .bottom], 8)
-//                                .frame(maxWidth: .infinity, alignment: .trailing)
-//                        }
-                    }
+                    })
+                    .frame(width: geo.size.width, height: geo.size.height, alignment: .top)
                     
-                })
-                .frame(width: geo.size.width, height: geo.size.height, alignment: .top)
-                
+                }
             }
+            .background(Color(UIColor.secondarySystemBackground))
+            .frame(width: 220, height: 90, alignment: .topLeading)
+            .cornerRadius(8, corners: .allCorners)
+            .padding(.leading, 15)
+            .padding(.vertical, 4)
+            
+            
         }
-        //.background(Color(UIColor.systemBackground))
-        .background(Color(UIColor.secondarySystemBackground))
-        .frame(width: 220, height: 90, alignment: .topLeading)
-        .cornerRadius(8, corners: .allCorners)
-        .padding(.leading, 15)
-
+        
     }
 }
 
@@ -84,12 +93,12 @@ struct MatchCardViewSmall_Previews: PreviewProvider {
                             blue: TeamResult(
                                 score: 3,
                                 teamInfo: TeamInfo(team: Team(
-                                        id: "1",
-                                        slug: "nrg",
-                                        name: "NRG Esports",
-                                        image: "https://griffon.octane.gg/teams/nrg-esports.png"
-                                    ),
-                                    stats: nil
+                                    id: "1",
+                                    slug: "nrg",
+                                    name: "NRG Esports",
+                                    image: "https://griffon.octane.gg/teams/nrg-esports.png"
+                                ),
+                                stats: nil
                                 ),
                                 players: [
                                     PlayerResult(
@@ -128,12 +137,12 @@ struct MatchCardViewSmall_Previews: PreviewProvider {
                             orange: TeamResult(
                                 score: 2,
                                 teamInfo: TeamInfo(team: Team(
-                                        id: "1",
-                                        slug: "nrg",
-                                        name: "NRG Esports",
-                                        image: "https://griffon.octane.gg/teams/nrg-esports.png"
-                                    ),
-                                    stats: nil
+                                    id: "1",
+                                    slug: "nrg",
+                                    name: "NRG Esports",
+                                    image: "https://griffon.octane.gg/teams/nrg-esports.png"
+                                ),
+                                stats: nil
                                 ),
                                 players: [
                                     PlayerResult(
@@ -172,7 +181,7 @@ struct MatchCardViewSmall_Previews: PreviewProvider {
                             number: 1,
                             games: nil))
             .preferredColorScheme(.dark)
-            
+        
     }
 }
 

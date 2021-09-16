@@ -39,14 +39,14 @@ struct TeamResult: Codable {
     let score: Int
     let teamInfo: TeamInfo
     let players: [PlayerResult]
-    let winner: Bool?
+    let winner: Bool
     
     enum CodingKeys: String, CodingKey {
         case teamInfo = "team"
         case score, players, winner
     }
     
-    init(score: Int, teamInfo: TeamInfo, players: [PlayerResult], winner: Bool?) {
+    init(score: Int, teamInfo: TeamInfo, players: [PlayerResult], winner: Bool) {
         self.score = score
         self.teamInfo = teamInfo
         self.players = players
@@ -58,7 +58,7 @@ struct TeamResult: Codable {
         self.score = try container.decodeIfPresent(Int.self, forKey: .score) ?? 0
         self.teamInfo = try container.decode(TeamInfo.self, forKey: .teamInfo)
         self.players = try container.decode([PlayerResult].self, forKey: .players)
-        self.winner = try container.decodeIfPresent(Bool.self, forKey: .winner) 
+        self.winner = try container.decodeIfPresent(Bool.self, forKey: .winner) ?? false
     }
 }
 
@@ -179,7 +179,7 @@ struct Format: Codable {
 }
 
 // MARK: - Game
-struct Game: Codable {
+struct Game: Codable, Hashable {
     let id: String
     let blue, orange, duration: Int
     let overtime: Bool?

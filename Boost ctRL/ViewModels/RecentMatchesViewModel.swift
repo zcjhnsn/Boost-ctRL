@@ -11,6 +11,19 @@ import Combine
 class RecentMatchesViewModel: ObservableObject {
     @Published var matches: [Match] = []
     @Published var isMatchesLoading: Bool = true
+    let dummyData = [
+        PreviewHelper.MATCH,
+        PreviewHelper.MATCH,
+        PreviewHelper.MATCH,
+        PreviewHelper.MATCH,
+        PreviewHelper.MATCH,
+        PreviewHelper.MATCH,
+        PreviewHelper.MATCH,
+        PreviewHelper.MATCH,
+        PreviewHelper.MATCH,
+        PreviewHelper.MATCH,
+        PreviewHelper.MATCH
+    ]
     
     var cancellationToken: AnyCancellable?
     
@@ -31,7 +44,6 @@ class RecentMatchesViewModel: ObservableObject {
             .sink(receiveCompletion: { _ in },
                   receiveValue: { matchResults in
                     self.matches = matchResults.matches
-                    print(self.matches)
                     self.isMatchesLoading = false
                   })
     }

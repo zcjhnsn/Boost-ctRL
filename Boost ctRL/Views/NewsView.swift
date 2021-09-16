@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Shimmer
 
 struct NewsView: View {
     @State var isShowingSettings: Bool = false
@@ -14,12 +15,12 @@ struct NewsView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView {
+            ScrollView(.vertical, showsIndicators: false) {
                 Group {
-                    RecentResultsRowView(recentMatches: recentMatchesViewModel.matches)
+                    RecentResultsRowView(recentMatches: recentMatchesViewModel.isMatchesLoading ? recentMatchesViewModel.dummyData : recentMatchesViewModel.matches)
                         .listRowInsets(EdgeInsets())
-                        .redacted(reason: recentMatchesViewModel.isMatchesLoading ? .placeholder : [])
-                        .animation(.linear(duration: 0.3))
+                        .animation(.easeInOut)
+                        .redacted(when: recentMatchesViewModel.isMatchesLoading)                        
                     
                     Divider()
                         .opacity(recentMatchesViewModel.matches.isEmpty ? 0.0 : 1.0)
@@ -27,13 +28,37 @@ struct NewsView: View {
                 }
                 
                 Group {
-                    ArticleColumnView(publisherName: "Top Stories", articles: articlesViewModel.octaneArticles)
-                        .redacted(reason: articlesViewModel.isOctaneLoading ? .placeholder : [])
+                    HStack {
+                        Label(
+                            title: {
+                                Text("Top Stories")
+                                    .font(.system(.title3, design: .default).weight(.bold))
+                            },
+                            icon: {
+                                Image(systemName: "newspaper")
+                                    .foregroundColor(.blue)
+                            }
+                        )
+                            .padding(.leading, 15)
+                            .padding(.top, 5)
+                        
+                        
+//                        Text("Top Stories")
+//                            .font(.system(.title2, design: .default).weight(.bold))
+//                            .padding(.leading, 15)
+//                            .padding(.top, 5)
+//                            .unredacted()
+                        
+                        Spacer()
+                    }
+                    ArticleColumnView(articles: articlesViewModel.octaneArticles)
+                        .redacted(when: articlesViewModel.isOctaneLoading)
+                        .animation(.easeInOut)
                 }
                 
             }
             .listStyle(PlainListStyle())
-            .navigationTitle("News")
+            .navigationTitle("Home")
             .navigationBarItems(leading: Label(
                 title: { Text("Boost Control").font(.system(.headline, design: .default).weight(.bold)).foregroundColor(.blue) },
                 icon: { Image("ctrl-blue").resizable().frame(width: 25, height: 25, alignment: .center) }
@@ -78,3 +103,15 @@ struct NewsView_Previews: PreviewProvider {
  Divider()
  }
  */
+
+extension View {
+    @ViewBuilder
+    func redacted(when condition: Bool) -> some View {
+        if !condition {
+            unredacted()
+        } else {
+            redacted(reason: .placeholder)
+                .shimmering()
+        }
+    }
+}

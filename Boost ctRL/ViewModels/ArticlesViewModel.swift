@@ -11,7 +11,16 @@ import Combine
 class ArticlesViewModel: ObservableObject {
     @Published var articles: [Article] = []
     @Published var rocketeersArticles: [Article] = [Article(id: "0", image: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Rocket_League_logo.svg", link: "https://rocketeers.gg", title: "RL is life"), Article(id: "1", image: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Rocket_League_logo.svg", link: "https://rocketeers.gg", title: "What a save, what a save, what a save")]
-    @Published var octaneArticles: [Article] = [Article(id: "0", image: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Rocket_League_logo.svg", link: "https://octane.gg", title: "RL is life"), Article(id: "1", image: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Rocket_League_logo.svg", link: "https://octane.gg", title: "What a save, what a save, what a save")]
+    @Published var octaneArticles: [Article] = [
+        Article(id: "0", image: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Rocket_League_logo.svg", link: "https://octane.gg", title: "RL is life"),
+        Article(id: "1", image: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Rocket_League_logo.svg", link: "https://octane.gg", title: "What a save, what a save, what a save"),
+        Article(id: "2", image: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Rocket_League_logo.svg", link: "https://octane.gg", title: "What a save, what a save, what a save"),
+        Article(id: "3", image: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Rocket_League_logo.svg", link: "https://octane.gg", title: "What a save, what a save, what a save"),
+        Article(id: "4", image: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Rocket_League_logo.svg", link: "https://octane.gg", title: "What a save, what a save, what a save"),
+        Article(id: "5", image: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Rocket_League_logo.svg", link: "https://octane.gg", title: "What a save, what a save, what a save"),
+        Article(id: "6", image: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Rocket_League_logo.svg", link: "https://octane.gg", title: "What a save, what a save, what a save"),
+        Article(id: "7", image: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Rocket_League_logo.svg", link: "https://octane.gg", title: "What a save, what a save, what a save"),
+        Article(id: "8", image: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Rocket_League_logo.svg", link: "https://octane.gg", title: "What a save, what a save, what a save")]
     @Published var isRocketeersLoading: Bool = true
     @Published var isOctaneLoading: Bool = true
     
