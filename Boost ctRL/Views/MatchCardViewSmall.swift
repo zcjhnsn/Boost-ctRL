@@ -45,23 +45,6 @@ struct MatchCardViewSmall: View {
                                 TeamScoreRowSmall(teamResult: match.orange, isInProgress: inProgress)
                                     .padding([.bottom], 12)
                             }
-                            
-                            //                        VStack(spacing: 2) {
-                            //
-                            //                            UrlImageView(urlString: "https://griffon.octane.gg/events/rlcs-x-championships.png")
-                            //                                .frame(height: 18)
-                            //                                .clipped()
-                            //                                .padding([.top, .trailing], 8)
-                            //
-                            //                            Spacer()
-                            //
-                            //                            Text("NA")
-                            //                                .lineLimit(2)
-                            //                                .foregroundColor(.red)
-                            //                                .font(.system(.body, design: .rounded).weight(.bold))
-                            //                                .padding([.horizontal, .bottom], 8)
-                            //                                .frame(maxWidth: .infinity, alignment: .trailing)
-                            //                        }
                         }
                         
                     })

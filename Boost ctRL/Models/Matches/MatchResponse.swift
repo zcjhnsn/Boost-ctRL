@@ -133,7 +133,7 @@ struct Positioning: Codable {
 }
 
 // MARK: - TeamTeam
-struct Team: Codable, Identifiable {
+struct Team: Codable, Identifiable, Hashable {
     let id, slug, name: String
     let image: String
 

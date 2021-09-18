@@ -36,6 +36,12 @@
 		0776C18726A620F100582BE2 /* BrowserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0776C18626A620F100582BE2 /* BrowserHelper.swift */; };
 		0776C18926A6280700582BE2 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0776C18826A6280700582BE2 /* SafariView.swift */; };
 		0776C18B26A9FBB600582BE2 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0776C18A26A9FBB600582BE2 /* String+Ext.swift */; };
+		07D8C65026F3D57F009FA85C /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 07D8C64F26F3D57F009FA85C /* BottomSheet */; };
+		07D8C65226F3D5BC009FA85C /* TeamFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D8C65126F3D5BC009FA85C /* TeamFilterView.swift */; };
+		07D8C65426F3E755009FA85C /* ActiveTeamsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D8C65326F3E755009FA85C /* ActiveTeamsViewModel.swift */; };
+		07D8C65726F3E8BA009FA85C /* ActiveTeams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D8C65626F3E8BA009FA85C /* ActiveTeams.swift */; };
+		07D8C65926F5122D009FA85C /* TeamBasicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D8C65826F5122D009FA85C /* TeamBasicView.swift */; };
+		07D8C65B26F52B8A009FA85C /* TeamDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D8C65A26F52B8A009FA85C /* TeamDetailView.swift */; };
 		11A0EA7B25FDBFBC004DE5BB /* Boost_ctRLApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0EA7A25FDBFBC004DE5BB /* Boost_ctRLApp.swift */; };
 		11A0EA7D25FDBFBC004DE5BB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0EA7C25FDBFBC004DE5BB /* ContentView.swift */; };
 		11A0EA7F25FDBFBD004DE5BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11A0EA7E25FDBFBD004DE5BB /* Assets.xcassets */; };
@@ -116,6 +122,11 @@
 		0776C18626A620F100582BE2 /* BrowserHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserHelper.swift; sourceTree = "<group>"; };
 		0776C18826A6280700582BE2 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		0776C18A26A9FBB600582BE2 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		07D8C65126F3D5BC009FA85C /* TeamFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamFilterView.swift; sourceTree = "<group>"; };
+		07D8C65326F3E755009FA85C /* ActiveTeamsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTeamsViewModel.swift; sourceTree = "<group>"; };
+		07D8C65626F3E8BA009FA85C /* ActiveTeams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTeams.swift; sourceTree = "<group>"; };
+		07D8C65826F5122D009FA85C /* TeamBasicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamBasicView.swift; sourceTree = "<group>"; };
+		07D8C65A26F52B8A009FA85C /* TeamDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailView.swift; sourceTree = "<group>"; };
 		11A0EA7725FDBFBC004DE5BB /* Boost ctRL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Boost ctRL.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A0EA7A25FDBFBC004DE5BB /* Boost_ctRLApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boost_ctRLApp.swift; sourceTree = "<group>"; };
 		11A0EA7C25FDBFBC004DE5BB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -151,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0717583226B7888000E74C8D /* SwiftUICharts in Frameworks */,
+				07D8C65026F3D57F009FA85C /* BottomSheet in Frameworks */,
 				070FA1C326AA1DD300F204AE /* Shimmer in Frameworks */,
 				0776C1852698E15600582BE2 /* MarkdownUI in Frameworks */,
 			);
@@ -222,6 +234,44 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		07D8C65526F3E8A8009FA85C /* Teams */ = {
+			isa = PBXGroup;
+			children = (
+				07D8C65626F3E8BA009FA85C /* ActiveTeams.swift */,
+			);
+			path = Teams;
+			sourceTree = "<group>";
+		};
+		07D8C65C26F535DC009FA85C /* News */ = {
+			isa = PBXGroup;
+			children = (
+				07D8C65D26F535EA009FA85C /* Articles */,
+				11A0EAAC25FDC124004DE5BB /* NewsView.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		07D8C65D26F535EA009FA85C /* Articles */ = {
+			isa = PBXGroup;
+			children = (
+				0776C1802698C59300582BE2 /* ArticleColumnView.swift */,
+				11A0EAE325FDD61E004DE5BB /* ArticleItemCardView.swift */,
+				0776C17E2698BDCD00582BE2 /* ArticleItemView.swift */,
+				11A0EAF225FE9CB7004DE5BB /* ArticleRowView.swift */,
+			);
+			path = Articles;
+			sourceTree = "<group>";
+		};
+		07D8C65E26F53618009FA85C /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				11A0EAC425FDCCEB004DE5BB /* ChangeLogView.swift */,
+				11A0EAB125FDC588004DE5BB /* SettingsView.swift */,
+				11A0EAB625FDCA8B004DE5BB /* TipJarView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		11A0EA6E25FDBFBC004DE5BB = {
 			isa = PBXGroup;
 			children = (
@@ -290,22 +340,19 @@
 		11A0EAA825FDC037004DE5BB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0776C1802698C59300582BE2 /* ArticleColumnView.swift */,
-				11A0EAE325FDD61E004DE5BB /* ArticleItemCardView.swift */,
-				0776C17E2698BDCD00582BE2 /* ArticleItemView.swift */,
-				11A0EAF225FE9CB7004DE5BB /* ArticleRowView.swift */,
-				11A0EAC425FDCCEB004DE5BB /* ChangeLogView.swift */,
+				07D8C65C26F535DC009FA85C /* News */,
+				07D8C65E26F53618009FA85C /* Settings */,
 				11A0EA7C25FDBFBC004DE5BB /* ContentView.swift */,
 				0770ECE42683C0E000370F66 /* MatchCardViewSmall.swift */,
 				0776C13D2694E95E00582BE2 /* MatchResultView.swift */,
-				11A0EAAC25FDC124004DE5BB /* NewsView.swift */,
 				0776C13B268E9DC400582BE2 /* RecentResultsRowView.swift */,
 				0776C18826A6280700582BE2 /* SafariView.swift */,
-				11A0EAB125FDC588004DE5BB /* SettingsView.swift */,
 				0776C13426866D1300582BE2 /* TeamScoreRowSmall.swift */,
-				11A0EAB625FDCA8B004DE5BB /* TipJarView.swift */,
 				11A0EAED25FDD9F1004DE5BB /* URLImageView.swift */,
 				0717583626B8C8F700E74C8D /* EventDetailView.swift */,
+				07D8C65126F3D5BC009FA85C /* TeamFilterView.swift */,
+				07D8C65A26F52B8A009FA85C /* TeamDetailView.swift */,
+				07D8C65826F5122D009FA85C /* TeamBasicView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -323,6 +370,7 @@
 		11A0EAD725FDD5B9004DE5BB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				07D8C65526F3E8A8009FA85C /* Teams */,
 				0776C13626866E9100582BE2 /* Matches */,
 				11A0EAD225FDD51E004DE5BB /* Article.swift */,
 				11A0EAE825FDD87D004DE5BB /* URLImageModel.swift */,
@@ -348,6 +396,7 @@
 				11A0EB1625FEAAAC004DE5BB /* ArticlesViewModel.swift */,
 				0776C1392686715F00582BE2 /* RecentMatchesViewModel.swift */,
 				0717583826B8C97B00E74C8D /* EventViewModel.swift */,
+				07D8C65326F3E755009FA85C /* ActiveTeamsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -373,6 +422,7 @@
 				0776C1842698E15600582BE2 /* MarkdownUI */,
 				070FA1C226AA1DD300F204AE /* Shimmer */,
 				0717583126B7888000E74C8D /* SwiftUICharts */,
+				07D8C64F26F3D57F009FA85C /* BottomSheet */,
 			);
 			productName = "Boost ctRL";
 			productReference = 11A0EA7725FDBFBC004DE5BB /* Boost ctRL.app */;
@@ -449,6 +499,7 @@
 				0776C1832698E15600582BE2 /* XCRemoteSwiftPackageReference "MarkdownUI" */,
 				070FA1C126AA1DD300F204AE /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
 				0717583026B7888000E74C8D /* XCRemoteSwiftPackageReference "SwiftUICharts" */,
+				07D8C64E26F3D57F009FA85C /* XCRemoteSwiftPackageReference "BottomSheet" */,
 			);
 			productRefGroup = 11A0EA7825FDBFBC004DE5BB /* Products */;
 			projectDirPath = "";
@@ -495,6 +546,8 @@
 				0776C1412694EA1000582BE2 /* PreviewHelper.swift in Sources */,
 				070FA1C526AB4ECC00F204AE /* NetworkMonitor.swift in Sources */,
 				0770ECE52683C0E000370F66 /* MatchCardViewSmall.swift in Sources */,
+				07D8C65426F3E755009FA85C /* ActiveTeamsViewModel.swift in Sources */,
+				07D8C65726F3E8BA009FA85C /* ActiveTeams.swift in Sources */,
 				0776C13C268E9DC400582BE2 /* RecentResultsRowView.swift in Sources */,
 				0776C18B26A9FBB600582BE2 /* String+Ext.swift in Sources */,
 				11A0EAFB25FEA1A5004DE5BB /* RocketeersArticle.swift in Sources */,
@@ -507,6 +560,7 @@
 				0776C17F2698BDCD00582BE2 /* ArticleItemView.swift in Sources */,
 				0776C1812698C59300582BE2 /* ArticleColumnView.swift in Sources */,
 				11A0EB0A25FEA422004DE5BB /* Agent.swift in Sources */,
+				07D8C65226F3D5BC009FA85C /* TeamFilterView.swift in Sources */,
 				070FA1CB26B4CF6F00F204AE /* CollapsibleView.swift in Sources */,
 				0717584026C1CC3B00E74C8D /* CustomColors.swift in Sources */,
 				11A0EAB725FDCA8B004DE5BB /* TipJarView.swift in Sources */,
@@ -519,11 +573,13 @@
 				0776C13526866D1300582BE2 /* TeamScoreRowSmall.swift in Sources */,
 				070FA1C026AA1A2500F204AE /* View+Ext.swift in Sources */,
 				070FA1C726B4954300F204AE /* LazyNavigationView.swift in Sources */,
+				07D8C65926F5122D009FA85C /* TeamBasicView.swift in Sources */,
 				070FA1C926B4BC8C00F204AE /* LongPressAlertModifier.swift in Sources */,
 				0776C13E2694E95E00582BE2 /* MatchResultView.swift in Sources */,
 				11A0EAEE25FDD9F1004DE5BB /* URLImageView.swift in Sources */,
 				0717582D26B77DDB00E74C8D /* MatchStatsHelper.swift in Sources */,
 				11A0EAD325FDD51E004DE5BB /* Article.swift in Sources */,
+				07D8C65B26F52B8A009FA85C /* TeamDetailView.swift in Sources */,
 				11A0EABC25FDCBC5004DE5BB /* Bundle+Ext.swift in Sources */,
 				0717583426B89C4700E74C8D /* EventResult.swift in Sources */,
 				0776C18926A6280700582BE2 /* SafariView.swift in Sources */,
@@ -882,6 +938,14 @@
 				minimumVersion = 0.5.1;
 			};
 		};
+		07D8C64E26F3D57F009FA85C /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/LucasMucGH/BottomSheet";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -899,6 +963,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0776C1832698E15600582BE2 /* XCRemoteSwiftPackageReference "MarkdownUI" */;
 			productName = MarkdownUI;
+		};
+		07D8C64F26F3D57F009FA85C /* BottomSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 07D8C64E26F3D57F009FA85C /* XCRemoteSwiftPackageReference "BottomSheet" */;
+			productName = BottomSheet;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

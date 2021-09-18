@@ -69,6 +69,18 @@ struct PreviewHelper {
         image: "https://griffon.octane.gg/teams/nrg-esports.png"
     )
     
+    static let MOCK_PLAYER_ACTIVE: ActivePlayer = ActivePlayer(id: "1", slug: "gg", tag: "GarrettG", name: "Garrett Gordon", country: "us", team: MOCK_ACTIVE_TEAM_INFO, relevant: true, coach: false)
+    
+    static let MOCK_ACTIVE_TEAM_INFO = ActiveTeamInfo(id: "1", slug: "nrg", name: "NRG Esports", region: Region.na, image: "https://griffon.octane.gg/teams/nrg-esports.png", relevant: true)
+    
+    static let MOCK_ACTIVE_TEAM: ActiveTeam = ActiveTeam(team: MOCK_ACTIVE_TEAM_INFO, players: [
+        MOCK_PLAYER_ACTIVE,
+        MOCK_PLAYER_ACTIVE,
+        MOCK_PLAYER_ACTIVE
+    ])
+    
+    static let MOCK_ACTIVE_TEAM_RESPONSE: ActiveTeamsResponse = ActiveTeamsResponse(teams: [MOCK_ACTIVE_TEAM, MOCK_ACTIVE_TEAM, MOCK_ACTIVE_TEAM])
+    
     static let FORMAT = Format(type: "best", length: 3)
     
     static let EVENT = Event(id: "123", slug: "123", name: "RLCS XI Fall Major", region: "na", mode: 3, tier: "S", image: "https://griffon.octane.gg/events/rlcs-x-championships.png", groups: ["rlcsxi"])

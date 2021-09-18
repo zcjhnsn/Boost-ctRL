@@ -32,10 +32,7 @@ struct ContentView: View {
             
             // MARK: - Teams
 
-            NavigationView {
-                Text("Teams")
-                    .navigationBarTitle("Teams")
-            }
+            TeamFilterView()
             .tabItem {
                 Image(systemName: "person.3")
                 Text("Teams")

@@ -9,6 +9,7 @@ import Foundation
 import Combine
 
 enum Endpoint {
+    case activeTeams
     case newsRocketeers
     case newsOctane
     case matches
@@ -18,6 +19,8 @@ enum Endpoint {
     
     var path: String {
         switch self {
+        case .activeTeams:
+            return "/teams/active"
         case .newsOctane:
             return "/articles"
         case .newsRocketeers:
@@ -131,6 +134,16 @@ enum API {
             URLQueryItem(name: "event", value: eventID),
             URLQueryItem(name: "stat", value: "rating")
         ]
+        
+        let request = URLRequest(url: components.url!)
+        
+        return run(request)
+    }
+    
+    /// Retrieves all active teams from Octane.gg
+    /// - Returns: **Unsorted** array of active teams
+    static func getActiveTeams() -> AnyPublisher<ActiveTeamsResponse, Error> {
+        let components = URLComponents(string: octaneBase.appendingPathComponent(Endpoint.activeTeams.path).absoluteString)!
         
         let request = URLRequest(url: components.url!)
         
