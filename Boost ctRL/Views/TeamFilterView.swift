@@ -102,7 +102,7 @@ struct TeamFilterView: View {
                 
             }
             .onTapGesture(perform: {
-                resignSearchResponder()
+                //resignSearchResponder()
             })
             .navigationBarTitle("Teams")
             .navigationBarItems(leading: Label(
@@ -114,6 +114,9 @@ struct TeamFilterView: View {
                 Image(systemName: "questionmark.circle")
                     .foregroundColor(.primary)
             }))
+            .alert(isPresented: $isShowingFAQ, content: {
+                Alert(title: Text("This page only shows ACTIVE teams"), message: Text("Use the Events tab to find older or less relevant teams."), dismissButton: .default(Text("Okay")))
+            })
         }
         
     

@@ -20,10 +20,9 @@ struct MatchCardViewSmall: View {
     }
     
     var body: some View {
-        NavigationLink(destination:
-                        MatchResultView(match: match)
+        NavigationLink(
+            destination: MatchResultView(match: match)
                             .navigationTitle("Match Overview")
-                
         ) {
             
             VStack(alignment: .leading) {
