@@ -163,8 +163,8 @@ struct Event: Codable {
     let id, slug, name, region: String
     let mode: Int
     let tier: String
-    let image: String
-    let groups: [String]
+    let image: String?
+    let groups: [String]?
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"

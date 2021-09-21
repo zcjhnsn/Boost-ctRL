@@ -12,6 +12,7 @@ import SwiftUICharts
 
 struct MatchResultView: View {
     var match: Match
+    @ObservedObject var matchViewModel = MatchViewModel()
     var gameSelectorIsHidden: Bool {
         return match.games?.isEmpty ?? true
     }
@@ -25,9 +26,24 @@ struct MatchResultView: View {
                 GameSelectorView(match: match)
             }
             
+            VStack {
+                TopPerformersHeader()
+                
+                EventTopPerformersView(performers: matchViewModel.topPerformers)
+                    .redacted(when: matchViewModel.isTopPerformersLoading)
+                    .padding(.bottom)
+            }
+            .background(Color(UIColor.secondarySystemBackground))
+            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+            .padding(.horizontal)
+            
             MatchStatsView(match: match)
         }
+        .onAppear {
+            matchViewModel.getTopPerformers(forMatch: match.id)
+        }
     }
+        
 }
 
 // MARK: - Match Results Header View
@@ -63,6 +79,7 @@ struct MatchResultsHeaderView: View {
                     
                     VStack(alignment: .leading) {
                         Text(match.event.name)
+                            .multilineTextAlignment(.leading)
                             .font(.system(.subheadline).weight(.bold))
                             .foregroundColor(.primary)
                         
@@ -210,8 +227,13 @@ struct GameSelectorView: View {
     var body: some View {
         
         Collapsible(label: {
-            Text("Game Results")
-                .font(.system(.title3, design: .default).weight(.bold))
+            Label {
+                Text("Game Results")
+                    .font(.system(.title3, design: .default).weight(.bold))
+            } icon: {
+                Image(systemName: "checkmark.circle.fill")
+            }
+
         }) {
             
             VStack {
@@ -346,8 +368,13 @@ struct MatchStatsWrapperView: View {
     
     var body: some View {
         Collapsible(label: {
-            Text("Match Stats")
-                .font(.system(.title3, design: .default).weight(.bold))
+            Label {
+                Text("Match Stats")
+                    .font(.system(.title3, design: .default).weight(.bold))
+            } icon: {
+                Image(systemName: "checkmark.circle.fill")
+            }
+
         }) {
             VStack {
                 MatchStatsView(match: match)
@@ -367,10 +394,14 @@ struct MatchStatsView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("Stats")
-                    .font(.system(.title3, design: .default).weight(.bold))
-                    
-                
+                Label {
+                    Text("Stats")
+                        .font(.system(.title3, design: .default).weight(.bold))
+                } icon: {
+                    Image(systemName: "chart.bar.doc.horizontal")
+                        .foregroundColor(Color.purple)
+                }
+
                 Spacer()
             }
             .padding(.leading)

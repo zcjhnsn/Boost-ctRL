@@ -12,10 +12,10 @@ class ActiveTeamsViewModel: ObservableObject {
     @Published var teams: [ActiveTeam] = PreviewHelper.MOCK_ACTIVE_TEAM_RESPONSE.teams
     @Published var searchText: String = ""
     @Published var isTeamsLoading: Bool = true
+    @Published var filteredData: [ActiveTeam] = []
     
         
     var cancellationToken: AnyCancellable?
-    var filteredData: [ActiveTeam] = []
     var publisher: AnyCancellable?
     
     init() {
@@ -24,10 +24,12 @@ class ActiveTeamsViewModel: ObservableObject {
             .receive(on: RunLoop.main)
             .sink(receiveValue: { (str) in
                 if !self.searchText.isEmpty {
-                    self.filteredData = self.teams.filter { $0.team.name.contains(str) }
+                    self.filteredData = self.teams.filter { $0.team.name.lowercased().contains(str.lowercased()) }
                 } else {
+                    print("It's empty")
                     self.filteredData = self.teams
                 }
+                print("🟢 - \(str) - filtered: \(self.filteredData.count) - total: \(self.teams.count)")
             })
     }
     

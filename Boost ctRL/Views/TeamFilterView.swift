@@ -88,6 +88,7 @@ struct TeamFilterView: View {
                     return true
                 }, id: \.team.id) {
                     TeamBasicView(team: $0)
+                        .redacted(when: activeTeamsViewModel.isTeamsLoading)
                         .onTapGesture(perform: {
                             if isSearching {
                                 resignSearchResponder()
@@ -101,9 +102,6 @@ struct TeamFilterView: View {
                 Spacer()
                 
             }
-            .onTapGesture(perform: {
-                //resignSearchResponder()
-            })
             .navigationBarTitle("Teams")
             .navigationBarItems(leading: Label(
                 title: { Text("Boost Control").font(.system(.headline, design: .default).weight(.bold)).foregroundColor(.blue) },
@@ -118,8 +116,6 @@ struct TeamFilterView: View {
                 Alert(title: Text("This page only shows ACTIVE teams"), message: Text("Use the Events tab to find older or less relevant teams."), dismissButton: .default(Text("Okay")))
             })
         }
-        
-    
         .onAppear(perform: {
             activeTeamsViewModel.getTeams()
         })

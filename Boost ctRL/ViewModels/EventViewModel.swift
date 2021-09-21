@@ -38,7 +38,7 @@ class EventViewModel: ObservableObject {
             .sink(receiveCompletion: { _ in
                 self.isEventLoading = false
             }, receiveValue: { eventResult in
-                    self.event = eventResult
+                self.event = eventResult
             })
     }
     
@@ -65,7 +65,7 @@ class EventViewModel: ObservableObject {
     /// - Parameter id: Event
     func getTopPerformers(forEvent id: String) {
         isTopPerformersLoading = true
-        let results = API.getTopPerformers(forEvent: id)
+        let results = API.getTopPerformers(forID: id, idType: .event)
         
         topPerformersToken = results
             .mapError({ error -> Error in

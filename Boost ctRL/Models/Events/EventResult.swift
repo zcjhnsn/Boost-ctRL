@@ -15,8 +15,8 @@ struct EventResult: Codable {
     let mode: Int
     let prize: Prize
     let tier: String
-    let image: String
-    let groups: [String]
+    let image: String?
+    let groups: [String]?
     let stages: [EventStage]
 
     enum CodingKeys: String, CodingKey {
@@ -25,7 +25,8 @@ struct EventResult: Codable {
     }
     
     func getRegionName() -> String {
-        switch self.region {
+        print(self.region)
+        switch self.region.lowercased() {
         case AppConstants.Region.na:
                 return "North America"
             case AppConstants.Region.eu:

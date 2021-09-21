@@ -15,6 +15,7 @@ struct EventDetailView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             EventHeaderView(event: eventViewModel.event)
+                .redacted(when: eventViewModel.isEventLoading)
             
             EventDetailsView(event: eventViewModel.event)
                 .redacted(when: eventViewModel.isEventLoading)
@@ -54,8 +55,13 @@ struct EventDetailsView: View {
     
     var body: some View {
         Collapsible {
-            Text("Details")
-                .font(.system(.title3, design: .default).weight(.semibold))
+            Label {
+                Text("Details")
+                    .font(.system(.title3, design: .default).weight(.semibold))
+            } icon: {
+                Image(systemName: "info.circle")
+            }
+
         } content: {
             HStack {
                 VStack(alignment: .leading, spacing: 6) {

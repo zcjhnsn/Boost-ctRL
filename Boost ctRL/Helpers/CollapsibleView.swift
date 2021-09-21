@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Collapsible<Content: View>: View {
-    @State var label: () -> Text
+    @State var label: () -> Label<Text, Image>
     @State var content: () -> Content
     
     @State private var collapsed: Bool = false
@@ -41,6 +41,7 @@ struct Collapsible<Content: View>: View {
                         .animation(.easeInOut)
                 }
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: collapsed ? 0 : .none)
+                .padding(collapsed ? -8 : 0)
                 .clipped()
         }
         

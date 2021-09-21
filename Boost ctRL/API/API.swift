@@ -37,6 +37,11 @@ enum Endpoint {
     }
 }
 
+enum IDType {
+    case match
+    case event
+}
+
 enum API {
     static let agent = Agent()
     static let octaneBase = URL(string: "https://zsr.octane.gg")!
@@ -92,7 +97,8 @@ enum API {
     static func getRecentMatches(limit: Int = 10) -> AnyPublisher<MatchResponse, Error> {
         var components = URLComponents(string: octaneBase.appendingPathComponent(Endpoint.matches.path).absoluteString)!
         components.queryItems = [
-            URLQueryItem(name: "group", value: "rlcs"),
+            URLQueryItem(name: "tier", value: "S"),
+            URLQueryItem(name: "tier", value: "A"),
             URLQueryItem(name: "sort", value: "date:desc"),
             URLQueryItem(name: "perPage", value: "\(limit)")
         ]
@@ -125,13 +131,14 @@ enum API {
     }
     
     /// Get top performers for event (based on Octane's player rating)
-    /// - Parameter eventID: Event ID
+    /// - Parameter id: Event ID or match ID
+    /// - Parameter idType: IDType
     /// - Returns: **Unsorted** array of TopPerformers
-    static func getTopPerformers(forEvent eventID: String) -> AnyPublisher<TopPerformers, Error> {
+    static func getTopPerformers(forID id: String, idType: IDType) -> AnyPublisher<TopPerformers, Error> {
         var components = URLComponents(string: octaneBase.appendingPathComponent(Endpoint.statsForPlayers.path).absoluteString)!
         
         components.queryItems = [
-            URLQueryItem(name: "event", value: eventID),
+            URLQueryItem(name: String(describing: idType), value: id),
             URLQueryItem(name: "stat", value: "rating")
         ]
         
