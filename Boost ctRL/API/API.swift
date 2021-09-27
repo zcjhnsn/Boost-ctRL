@@ -15,6 +15,7 @@ enum Endpoint {
     case matches
     case event(id: String)
     case eventParticipants(id: String)
+    case eventMatches(id: String)
     case statsForPlayers
     
     var path: String {
@@ -31,6 +32,8 @@ enum Endpoint {
             return "/events/\(id)"
         case .eventParticipants(let id):
             return "/events/\(id)/participants"
+        case .eventMatches(id: let id):
+            return "/events/\(id)/matches"
         case .statsForPlayers:
             return "/stats/players"
         }
@@ -143,6 +146,19 @@ enum API {
         ]
         
         let request = URLRequest(url: components.url!)
+        
+        return run(request)
+    }
+    
+    /// Get matches for event
+    /// - Parameter eventID: Event ID ( the slug)
+    /// - Returns: `MatchResult`
+    static func getMatches(forEvent eventID: String) -> AnyPublisher<MatchResponse, Error> {
+        let components = URLComponents(string: octaneBase.appendingPathComponent(Endpoint.eventMatches(id: eventID).path).absoluteString)!
+        
+        let request = URLRequest(url: components.url!)
+        
+        print("✅ Completed - \(request.url)")
         
         return run(request)
     }

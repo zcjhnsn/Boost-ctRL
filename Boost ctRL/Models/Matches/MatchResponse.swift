@@ -8,11 +8,17 @@ import Foundation
 // MARK: - MatchResults
 struct MatchResponse: Codable {
     let matches: [Match]
-    let page, perPage, pageSize: Int
+    let page, perPage, pageSize: Int?
 }
 
+
+
 // MARK: - Match
-struct Match: Codable, Identifiable {
+struct Match: Codable, Identifiable, Hashable {
+    static func == (lhs: Match, rhs: Match) -> Bool {
+        return lhs.id == lhs.id
+    }
+    
     let id, slug: String
     let event: Event
     let stage: Stage
@@ -35,7 +41,7 @@ enum MatchResult {
 }
 
 // MARK: - TeamResults
-struct TeamResult: Codable {
+struct TeamResult: Codable, Hashable {
     let score: Int
     let teamInfo: TeamInfo
     let players: [PlayerResult]
@@ -63,19 +69,19 @@ struct TeamResult: Codable {
 }
 
 // MARK: - PlayerElement
-struct PlayerResult: Codable {
+struct PlayerResult: Codable, Hashable {
     let player: Player
     let stats: PlayerStats?
     let advanced: Advanced?
 }
 
 // MARK: - Advanced
-struct Advanced: Codable {
+struct Advanced: Codable, Hashable {
     let goalParticipation, rating: Double
 }
 
 // MARK: - PlayerPlayer
-struct Player: Codable, Identifiable {
+struct Player: Codable, Identifiable, Hashable {
     let id, slug, tag, country: String
 
     enum CodingKeys: String, CodingKey {
@@ -85,32 +91,40 @@ struct Player: Codable, Identifiable {
 }
 
 // MARK: - PlayerStats
-struct PlayerStats: Codable {
+struct PlayerStats: Codable, Hashable {
     let core: Core
     let boost, movement, positioning: [String: Double]
     let demo: Demo
 }
 
 // MARK: - Core
-struct Core: Codable {
+struct Core: Codable, Hashable {
     let shots, goals, saves, assists: Int
     let score: Int
     let shootingPercentage: Double
 }
 
 // MARK: - Demo
-struct Demo: Codable {
+struct Demo: Codable, Hashable {
     let inflicted, taken: Int
 }
 
 // MARK: - BlueTeam
-struct TeamInfo: Codable {
+struct TeamInfo: Codable, Hashable {
     let team: Team
     let stats: TeamStats?
 }
 
 // MARK: - TeamStats
-struct TeamStats: Codable {
+struct TeamStats: Codable, Hashable {
+    static func == (lhs: TeamStats, rhs: TeamStats) -> Bool {
+        return lhs.core == rhs.core &&
+        lhs.boost == rhs.boost &&
+        lhs.positioning == rhs.positioning &&
+        lhs.movement == rhs.movement &&
+        lhs.demo == rhs.demo
+    }
+    
     let core: Core
     let boost: [String: Double]
     let movement: Movement
@@ -119,7 +133,7 @@ struct TeamStats: Codable {
 }
 
 // MARK: - Movement
-struct Movement: Codable {
+struct Movement: Codable, Hashable, Equatable {
     let totalDistance: Int
     let timeSupersonicSpeed, timeBoostSpeed, timeSlowSpeed, timeGround: Double
     let timeLowAir, timeHighAir, timePowerslide: Double
@@ -127,7 +141,7 @@ struct Movement: Codable {
 }
 
 // MARK: - Positioning
-struct Positioning: Codable {
+struct Positioning: Codable, Hashable, Equatable {
     let timeDefensiveThird, timeNeutralThird, timeOffensiveThird, timeDefensiveHalf: Double
     let timeOffensiveHalf, timeBehindBall, timeInfrontBall: Double
 }
@@ -159,7 +173,7 @@ struct Team: Codable, Identifiable, Hashable {
 }
 
 // MARK: - Event
-struct Event: Codable {
+struct Event: Codable, Hashable {
     let id, slug, name, region: String
     let mode: Int
     let tier: String
@@ -173,7 +187,7 @@ struct Event: Codable {
 }
 
 // MARK: - Format
-struct Format: Codable {
+struct Format: Codable, Hashable {
     let type: String
     let length: Int
 }
@@ -183,7 +197,7 @@ struct Game: Codable, Hashable {
     let id: String
     let blue, orange, duration: Int
     let overtime: Bool?
-    let ballchasing: String
+    let ballchasing: String?
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -192,7 +206,7 @@ struct Game: Codable, Hashable {
 }
 
 // MARK: - Stage
-struct Stage: Codable {
+struct Stage: Codable, Hashable {
     let id: Int
     let name: String
 

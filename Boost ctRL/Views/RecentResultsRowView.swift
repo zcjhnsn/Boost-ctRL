@@ -16,7 +16,7 @@ struct RecentResultsRowView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top, spacing: 0) {
                     ForEach(recentMatches) { m in
-                        MatchCardViewSmall(match: m)
+                        MatchCardView(match: m, viewSize: .small)
                     }
                 }
             }

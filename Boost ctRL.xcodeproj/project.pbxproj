@@ -23,8 +23,8 @@
 		0717583E26BC4B3700E74C8D /* ThemeDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0717583D26BC4B3700E74C8D /* ThemeDefinitions.swift */; };
 		0717584026C1CC3B00E74C8D /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0717583F26C1CC3B00E74C8D /* CustomColors.swift */; };
 		0717584226C2EB7500E74C8D /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0717584126C2EB7500E74C8D /* AppConstants.swift */; };
-		0770ECE52683C0E000370F66 /* MatchCardViewSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0770ECE42683C0E000370F66 /* MatchCardViewSmall.swift */; };
-		0776C13526866D1300582BE2 /* TeamScoreRowSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0776C13426866D1300582BE2 /* TeamScoreRowSmall.swift */; };
+		0770ECE52683C0E000370F66 /* MatchCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0770ECE42683C0E000370F66 /* MatchCardView.swift */; };
+		0776C13526866D1300582BE2 /* TeamScoreRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0776C13426866D1300582BE2 /* TeamScoreRow.swift */; };
 		0776C13826866EC900582BE2 /* MatchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0776C13726866EC900582BE2 /* MatchResponse.swift */; };
 		0776C13A2686715F00582BE2 /* RecentMatchesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0776C1392686715F00582BE2 /* RecentMatchesViewModel.swift */; };
 		0776C13C268E9DC400582BE2 /* RecentResultsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0776C13B268E9DC400582BE2 /* RecentResultsRowView.swift */; };
@@ -37,6 +37,10 @@
 		0776C18926A6280700582BE2 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0776C18826A6280700582BE2 /* SafariView.swift */; };
 		0776C18B26A9FBB600582BE2 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0776C18A26A9FBB600582BE2 /* String+Ext.swift */; };
 		0786A65E26FA5F0B001CD89D /* MatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786A65D26FA5F0B001CD89D /* MatchViewModel.swift */; };
+		0786A66026FD0E3D001CD89D /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786A65F26FD0E3D001CD89D /* Date+Ext.swift */; };
+		0786A66326FD1D87001CD89D /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 0786A66226FD1D87001CD89D /* Collections */; };
+		0786A66526FD1D87001CD89D /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = 0786A66426FD1D87001CD89D /* DequeModule */; };
+		0786A66726FD1D87001CD89D /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 0786A66626FD1D87001CD89D /* OrderedCollections */; };
 		07D8C65026F3D57F009FA85C /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 07D8C64F26F3D57F009FA85C /* BottomSheet */; };
 		07D8C65226F3D5BC009FA85C /* TeamFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D8C65126F3D5BC009FA85C /* TeamFilterView.swift */; };
 		07D8C65426F3E755009FA85C /* ActiveTeamsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D8C65326F3E755009FA85C /* ActiveTeamsViewModel.swift */; };
@@ -111,8 +115,8 @@
 		0717583D26BC4B3700E74C8D /* ThemeDefinitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeDefinitions.swift; sourceTree = "<group>"; };
 		0717583F26C1CC3B00E74C8D /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		0717584126C2EB7500E74C8D /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
-		0770ECE42683C0E000370F66 /* MatchCardViewSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCardViewSmall.swift; sourceTree = "<group>"; };
-		0776C13426866D1300582BE2 /* TeamScoreRowSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamScoreRowSmall.swift; sourceTree = "<group>"; };
+		0770ECE42683C0E000370F66 /* MatchCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCardView.swift; sourceTree = "<group>"; };
+		0776C13426866D1300582BE2 /* TeamScoreRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamScoreRow.swift; sourceTree = "<group>"; };
 		0776C13726866EC900582BE2 /* MatchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchResponse.swift; sourceTree = "<group>"; };
 		0776C1392686715F00582BE2 /* RecentMatchesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentMatchesViewModel.swift; sourceTree = "<group>"; };
 		0776C13B268E9DC400582BE2 /* RecentResultsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentResultsRowView.swift; sourceTree = "<group>"; };
@@ -124,6 +128,7 @@
 		0776C18826A6280700582BE2 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		0776C18A26A9FBB600582BE2 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		0786A65D26FA5F0B001CD89D /* MatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewModel.swift; sourceTree = "<group>"; };
+		0786A65F26FD0E3D001CD89D /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		07D8C65126F3D5BC009FA85C /* TeamFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamFilterView.swift; sourceTree = "<group>"; };
 		07D8C65326F3E755009FA85C /* ActiveTeamsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTeamsViewModel.swift; sourceTree = "<group>"; };
 		07D8C65626F3E8BA009FA85C /* ActiveTeams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTeams.swift; sourceTree = "<group>"; };
@@ -165,8 +170,11 @@
 			files = (
 				0717583226B7888000E74C8D /* SwiftUICharts in Frameworks */,
 				07D8C65026F3D57F009FA85C /* BottomSheet in Frameworks */,
+				0786A66326FD1D87001CD89D /* Collections in Frameworks */,
 				070FA1C326AA1DD300F204AE /* Shimmer in Frameworks */,
 				0776C1852698E15600582BE2 /* MarkdownUI in Frameworks */,
+				0786A66726FD1D87001CD89D /* OrderedCollections in Frameworks */,
+				0786A66526FD1D87001CD89D /* DequeModule in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,11 +353,11 @@
 				07D8C65C26F535DC009FA85C /* News */,
 				07D8C65E26F53618009FA85C /* Settings */,
 				11A0EA7C25FDBFBC004DE5BB /* ContentView.swift */,
-				0770ECE42683C0E000370F66 /* MatchCardViewSmall.swift */,
+				0770ECE42683C0E000370F66 /* MatchCardView.swift */,
 				0776C13D2694E95E00582BE2 /* MatchResultView.swift */,
 				0776C13B268E9DC400582BE2 /* RecentResultsRowView.swift */,
 				0776C18826A6280700582BE2 /* SafariView.swift */,
-				0776C13426866D1300582BE2 /* TeamScoreRowSmall.swift */,
+				0776C13426866D1300582BE2 /* TeamScoreRow.swift */,
 				11A0EAED25FDD9F1004DE5BB /* URLImageView.swift */,
 				0717583626B8C8F700E74C8D /* EventDetailView.swift */,
 				07D8C65126F3D5BC009FA85C /* TeamFilterView.swift */,
@@ -365,6 +373,7 @@
 				11A0EABB25FDCBC5004DE5BB /* Bundle+Ext.swift */,
 				0776C18A26A9FBB600582BE2 /* String+Ext.swift */,
 				070FA1BF26AA1A2500F204AE /* View+Ext.swift */,
+				0786A65F26FD0E3D001CD89D /* Date+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -426,6 +435,9 @@
 				070FA1C226AA1DD300F204AE /* Shimmer */,
 				0717583126B7888000E74C8D /* SwiftUICharts */,
 				07D8C64F26F3D57F009FA85C /* BottomSheet */,
+				0786A66226FD1D87001CD89D /* Collections */,
+				0786A66426FD1D87001CD89D /* DequeModule */,
+				0786A66626FD1D87001CD89D /* OrderedCollections */,
 			);
 			productName = "Boost ctRL";
 			productReference = 11A0EA7725FDBFBC004DE5BB /* Boost ctRL.app */;
@@ -503,6 +515,7 @@
 				070FA1C126AA1DD300F204AE /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
 				0717583026B7888000E74C8D /* XCRemoteSwiftPackageReference "SwiftUICharts" */,
 				07D8C64E26F3D57F009FA85C /* XCRemoteSwiftPackageReference "BottomSheet" */,
+				0786A66126FD1D87001CD89D /* XCRemoteSwiftPackageReference "swift-collections" */,
 			);
 			productRefGroup = 11A0EA7825FDBFBC004DE5BB /* Products */;
 			projectDirPath = "";
@@ -548,13 +561,14 @@
 			files = (
 				0776C1412694EA1000582BE2 /* PreviewHelper.swift in Sources */,
 				070FA1C526AB4ECC00F204AE /* NetworkMonitor.swift in Sources */,
-				0770ECE52683C0E000370F66 /* MatchCardViewSmall.swift in Sources */,
+				0770ECE52683C0E000370F66 /* MatchCardView.swift in Sources */,
 				07D8C65426F3E755009FA85C /* ActiveTeamsViewModel.swift in Sources */,
 				07D8C65726F3E8BA009FA85C /* ActiveTeams.swift in Sources */,
 				0776C13C268E9DC400582BE2 /* RecentResultsRowView.swift in Sources */,
 				0776C18B26A9FBB600582BE2 /* String+Ext.swift in Sources */,
 				11A0EAFB25FEA1A5004DE5BB /* RocketeersArticle.swift in Sources */,
 				11A0EAC525FDCCEB004DE5BB /* ChangeLogView.swift in Sources */,
+				0786A66026FD0E3D001CD89D /* Date+Ext.swift in Sources */,
 				11A0EB0525FEA3D0004DE5BB /* API.swift in Sources */,
 				11A0EB0025FEA1DB004DE5BB /* OctaneArticle.swift in Sources */,
 				070FA1BE26AA1A0900F204AE /* NavigationBarModifiers.swift in Sources */,
@@ -573,7 +587,7 @@
 				0776C13A2686715F00582BE2 /* RecentMatchesViewModel.swift in Sources */,
 				0717584226C2EB7500E74C8D /* AppConstants.swift in Sources */,
 				11A0EAB225FDC588004DE5BB /* SettingsView.swift in Sources */,
-				0776C13526866D1300582BE2 /* TeamScoreRowSmall.swift in Sources */,
+				0776C13526866D1300582BE2 /* TeamScoreRow.swift in Sources */,
 				070FA1C026AA1A2500F204AE /* View+Ext.swift in Sources */,
 				070FA1C726B4954300F204AE /* LazyNavigationView.swift in Sources */,
 				07D8C65926F5122D009FA85C /* TeamBasicView.swift in Sources */,
@@ -946,6 +960,14 @@
 				minimumVersion = 0.5.1;
 			};
 		};
+		0786A66126FD1D87001CD89D /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		07D8C64E26F3D57F009FA85C /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/LucasMucGH/BottomSheet";
@@ -971,6 +993,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0776C1832698E15600582BE2 /* XCRemoteSwiftPackageReference "MarkdownUI" */;
 			productName = MarkdownUI;
+		};
+		0786A66226FD1D87001CD89D /* Collections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0786A66126FD1D87001CD89D /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = Collections;
+		};
+		0786A66426FD1D87001CD89D /* DequeModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0786A66126FD1D87001CD89D /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = DequeModule;
+		};
+		0786A66626FD1D87001CD89D /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0786A66126FD1D87001CD89D /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
 		};
 		07D8C64F26F3D57F009FA85C /* BottomSheet */ = {
 			isa = XCSwiftPackageProductDependency;

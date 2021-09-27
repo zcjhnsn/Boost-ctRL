@@ -7,8 +7,12 @@
 
 import SwiftUI
 
+
+
 struct Collapsible<Content: View>: View {
-    @State var label: () -> Label<Text, Image>
+    @State var text: () -> Text
+    @State var image: () -> Image
+    @State var iconColor: () -> Color
     @State var content: () -> Content
     
     @State private var collapsed: Bool = false
@@ -23,7 +27,12 @@ struct Collapsible<Content: View>: View {
                 },
                 label: {
                     HStack {
-                        self.label()
+                        Label(title: {
+                            self.text()
+                        }, icon: {
+                            self.image()
+                                .foregroundColor(self.iconColor())
+                        })
                         Spacer()
                         Image(systemName: "chevron.up")
                             .rotationEffect(.degrees(collapsed ? 180 : 0))

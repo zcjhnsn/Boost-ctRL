@@ -33,8 +33,6 @@ struct Agent {
         return URLSession.shared
             .dataTaskPublisher(for: request) // Create data task as Combine publisher
             .tryMap { result -> Response<T> in
-//                print(String(data: result.data, encoding: .utf8))
-//                print(request.url?.absoluteString)
                 let value = try decoder.decode(T.self, from: result.data) // Parse the data
                 return Response(value: value, response: result.response) //
             }

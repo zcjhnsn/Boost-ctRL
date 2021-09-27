@@ -19,11 +19,11 @@ class UrlImageModel: ObservableObject {
     
     func loadImage() {
         if loadImageFromCache() {
-            print("Cache hit")
+//            print("Cache hit")
             return
         }
         
-        print("Cache miss, loading from url")
+//        print("Cache miss, loading from url")
         loadImageFromUrl()
     }
     

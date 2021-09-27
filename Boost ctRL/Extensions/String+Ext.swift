@@ -7,7 +7,7 @@
 
 import Foundation
 
-    /// Localized date and time display options
+/// Localized date and time display options
     enum DateTimeOption {
         /// Just the date sytlized with `.medium` `dateStyle`
         case date
@@ -17,6 +17,11 @@ import Foundation
         case time
     }
 extension String {
+    
+    func isoDateToUTC() -> Date? {
+        let dateFormatter = ISO8601DateFormatter()
+        return dateFormatter.date(from: self)
+    }
     
     
     /// Takes ISO8601 date string and returns a localized time/date depending on the option
@@ -29,6 +34,7 @@ extension String {
         
         let dt = dateFormatter.date(from: self)
         dateFormatter.timeZone = TimeZone.current
+        dateFormatter.locale = Locale.current
         
         switch option {
         case .dateTime:
@@ -40,18 +46,15 @@ extension String {
         case .time:
             dateFormatter.dateStyle = .none
             dateFormatter.timeStyle = .short
-            
         }
         
         // Just in case the date from Octane isn't formatted correctly
         guard let date = dt else {
             switch option {
-            case .dateTime:
-                return "---"
-            case .date:
-                return "---"
             case .time:
                 return ""
+            default:
+                return "---"
             }
         }
         

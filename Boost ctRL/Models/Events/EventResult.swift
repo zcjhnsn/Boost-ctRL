@@ -25,7 +25,6 @@ struct EventResult: Codable {
     }
     
     func getRegionName() -> String {
-        print(self.region)
         switch self.region.lowercased() {
         case AppConstants.Region.na:
                 return "North America"
@@ -76,7 +75,11 @@ struct EventParticipants: Codable {
 }
 
 // MARK: - Participant
-struct Participant: Codable {
+struct Participant: Codable, Hashable {
+    static func == (lhs: Participant, rhs: Participant) -> Bool {
+        return lhs.team.id == rhs.team.id
+    }
+    
     let team: Team
     let players: [Player]
 }

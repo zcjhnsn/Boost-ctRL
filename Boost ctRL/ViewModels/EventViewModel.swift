@@ -7,18 +7,23 @@
 
 import Foundation
 import Combine
+import Collections
 
 class EventViewModel: ObservableObject {
     @Published var event: EventResult = PreviewHelper.EVENT_RESULT
     @Published var participants: [Participant] = PreviewHelper.MOCK_PARTICIPANTS
     @Published var topPerformers: [TopPerformer] = PreviewHelper.MOCK_TOP_PERFORMERS
+    @Published var eventMatches: OrderedDictionary<DateComponents, [Match]> = [ DateComponents(year: 2021, month: 9, day: 23) : [ PreviewHelper.MATCH, PreviewHelper.MATCH, PreviewHelper.MATCH ]]
+    
     @Published var isEventLoading: Bool = true
     @Published var isParticipantsLoading: Bool = true
     @Published var isTopPerformersLoading: Bool = true
+    @Published var isEventMatchesLoading: Bool = true
         
     var cancellationToken: AnyCancellable?
     var participantsToken: AnyCancellable?
     var topPerformersToken: AnyCancellable?
+    var matchesToken: AnyCancellable?
     
     init() {
         
@@ -81,5 +86,45 @@ class EventViewModel: ObservableObject {
             })
     }
     
+    func getMatches(forEvent id: String) {
+        isEventMatchesLoading = true
+        let results = API.getMatches(forEvent: id)
+        
+        matchesToken = results
+            .mapError({ error -> Error in
+                print("💀 Error - Could not fetch event matches - \(error)")
+                return error
+            })
+            .sink(receiveCompletion: { _ in
+                
+            }, receiveValue: { response in
+                
+                self.eventMatches = self.groupMatchesByDate(response.matches)
+                self.isEventMatchesLoading = false
+            })
+    }
+    
+    /// Group array of matches by date. Uses new `OrderedDictionary` from `Collections` library.
+    /// - Parameter matches: Array of matches
+    /// - Returns: Ordered Dictionary of matches keyed by Year/Month/Day components
+    private func groupMatchesByDate(_ matches: [Match]) -> OrderedDictionary<DateComponents, [Match]> {
+        // Date formatter to convert ISO8601 time to local time
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        dateFormatter.locale = Locale.current
+        dateFormatter.timeZone = TimeZone.current
+        
+        let sortedMatches = matches.sorted(by: { $0.date > $1.date })
+        
+        // New `OrderedDictionary` from the `Collections` library 🥳
+        // Dictionary keys look like -> year: 2021 month: 6 day: 20 isLeapMonth: false
+        let orderedDict = OrderedDictionary<DateComponents, [Match]>(grouping: sortedMatches) { match in
+            let date = dateFormatter.date(from: match.date) ?? Date()
+            let components = Calendar.current.dateComponents([.day, .year, .month], from: date)
+            return components
+        }
+        
+        return orderedDict
+    }
 }
 

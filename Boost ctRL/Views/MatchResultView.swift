@@ -61,8 +61,10 @@ struct MatchResultsHeaderView: View {
     
     var inProgress: Bool {
         if !match.blue.winner && !match.orange.winner {
+            print("❌ Failed - No Winner")
             return true
         } else {
+            print("🥳 Success - There is a winner")
             return false
         }
     }
@@ -72,7 +74,7 @@ struct MatchResultsHeaderView: View {
             HStack {
                 NavigationLink(
                     destination:  NavigationLazyView(
-                        EventDetailView(eventID: match.event.id)
+                        EventDetailView(eventID: match.event.slug)
                             .navigationBarTitleDisplayMode(.large)
                             .navigationTitle(Text("Event Overview"))
                     )) {
@@ -115,14 +117,14 @@ struct MatchResultsHeaderView: View {
                         .padding(.trailing)
                     
                     Text("\(match.blue.score)")
-                        .font(.system(.largeTitle, design: .rounded).weight(.bold))
+                        .font(.system(.largeTitle, design: .rounded).weight(match.blue.winner ? .bold : .regular))
                         .foregroundColor(inProgress ? .black : (match.blue.winner ? .green : .red))
                     
                     Text("-")
                         .font(.system(.title, design: .rounded).weight(.bold))
                     
                     Text("\(match.orange.score)")
-                        .font(.system(.largeTitle, design: .rounded).weight(.bold))
+                        .font(.system(.largeTitle, design: .rounded).weight(match.orange.winner ? .bold : .regular))
                         .foregroundColor(inProgress ? .black : (match.orange.winner ? .green : .red))
                     
                     UrlImageView(urlString: match.orange.teamInfo.team.image, type: .logo)
@@ -226,75 +228,78 @@ struct GameSelectorView: View {
     
     var body: some View {
         
-        Collapsible(label: {
-            Label {
-                Text("Game Results")
-                    .font(.system(.title3, design: .default).weight(.bold))
-            } icon: {
-                Image(systemName: "checkmark.circle.fill")
-            }
-
+        Collapsible(text: {
+            Text("Game Results")
+                .font(.system(.title3, design: .default).weight(.bold))
+        }, image: {
+            Image(systemName: "checkmark.circle")
+        }, iconColor: {
+            Color.green
         }) {
-            
-            VStack {
+            ScrollView(.horizontal, showsIndicators: false) {
+                
                 VStack {
-                    HStack {
-                        // horizontal row of game scores + buttons
-                        VStack {
+                    VStack {
+                        HStack {
+                            // horizontal row of game scores + buttons
+                            VStack {
+                                
+                                Text(" ") // buffer to get the alignment with the game scores right.
+                                    .font(.system(.footnote, design: .rounded).weight(.light))
+                                
+                                UrlImageView(urlString: match.blue.teamInfo.team.image, type: .logo)
+                                    .frame(width: 25, height: 25, alignment: .center)
+                                
+                                Divider()
+                                    .opacity(1.0)
+                                    .frame(width: 25, height: 3, alignment: .center)
+                                
+                                UrlImageView(urlString: match.orange.teamInfo.team.image, type: .logo)
+                                    .frame(width: 25, height: 25, alignment: .center)
+                                
+                                
+                            }
                             
-                            Text(" ") // buffer to get the alignment with the game scores right.
-                            
-                            UrlImageView(urlString: match.blue.teamInfo.team.image, type: .logo)
-                                .frame(width: 25, height: 25, alignment: .center)
-                            
-                            Divider()
-                                .opacity(1.0)
-                                .frame(width: 25, height: 3, alignment: .center)
-                            
-                            UrlImageView(urlString: match.orange.teamInfo.team.image, type: .logo)
-                                .frame(width: 25, height: 25, alignment: .center)
-                            
-                            
-                        }
-                        
-                        ForEach(Array((match.games ?? []).enumerated()), id: \.element) { index, game in
-                            GameResultSmallView(game: game, index: index + 1)
-                                .padding(.horizontal, 4)
-                                .padding(.vertical, 4)
-                        }
-                        
-                        Divider()
-                        
-                        VStack {
-                            Text("T")
-                                .font(.system(.callout, design: .rounded).weight(.light))
-                                .foregroundColor(Color(.tertiaryLabel))
-                                .padding(.bottom, 4)
-                            
-                            Text("\(blueTotalGoals ?? 0)")
-                                .font(matchResultFont.0)
-                                .foregroundColor(matchResultColors.0)
-                            
+                            ForEach(Array((match.games ?? []).enumerated()), id: \.element) { index, game in
+                                GameResultSmallView(game: game, index: index + 1)
+                                    .padding(.horizontal, 4)
+                                    .padding(.vertical, 4)
+                            }
                             
                             Divider()
-                                .opacity(0)
-                                .frame(width: 25, height: 3, alignment: .center)
                             
-                            Text("\(orangeTotalGoals ?? 0)")
-                                .font(matchResultFont.1)
-                                .foregroundColor(matchResultColors.1)
+                            VStack {
+                                Text("T")
+                                    .font(.system(.footnote, design: .rounded).weight(.light))
+                                    .foregroundColor(Color(.tertiaryLabel))
+                                    .padding(.bottom, 4)
+                                
+                                Text("\(blueTotalGoals ?? 0)")
+                                    .font(matchResultFont.0)
+                                    .foregroundColor(matchResultColors.0)
+                                
+                                
+                                Divider()
+                                    .opacity(0)
+                                    .frame(width: 25, height: 3, alignment: .center)
+                                
+                                Text("\(orangeTotalGoals ?? 0)")
+                                    .font(matchResultFont.1)
+                                    .foregroundColor(matchResultColors.1)
+                            }
+                            .padding(.horizontal, 4)
+                            .padding(.vertical, 4)
+                            .background(Color(.tertiarySystemBackground))
+                            .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
                         }
-                        .padding(.horizontal, 4)
-                        .padding(.vertical, 4)
-                        .background(Color(.tertiarySystemBackground))
-                        .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
+                        
+                        Text("* = OT")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
                     }
-                    
-                    Text("* = OT")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
                 }
             }
+            .padding(.horizontal)
         }
         .padding(.vertical)
         .background(Color(.secondarySystemBackground))
@@ -338,7 +343,7 @@ struct GameResultSmallView: View {
             
             VStack {
                 Text("G\(index)\(overTimeFlag)")
-                    .font(.system(.callout, design: .rounded).weight(.light))
+                    .font(.system(.footnote, design: .rounded).weight(.light))
                     .foregroundColor(.secondary)
                     .padding(.bottom, 4)
                 
@@ -357,32 +362,8 @@ struct GameResultSmallView: View {
             }
             
         }
+        .frame(minWidth: 10)
     }
-}
-
-// MARK: - Match Wrapper View
-
-
-struct MatchStatsWrapperView: View {
-    var match: Match
-    
-    var body: some View {
-        Collapsible(label: {
-            Label {
-                Text("Match Stats")
-                    .font(.system(.title3, design: .default).weight(.bold))
-            } icon: {
-                Image(systemName: "checkmark.circle.fill")
-            }
-
-        }) {
-            VStack {
-                MatchStatsView(match: match)
-            }
-        }
-    }
-    
-    
 }
 
 // MARK: - Match Stats View

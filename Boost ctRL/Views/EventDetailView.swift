@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Collections
 
 struct EventDetailView: View {
     var eventID: String
@@ -24,10 +25,20 @@ struct EventDetailView: View {
             
             EventTopPerformersView(performers: eventViewModel.topPerformers)
                 .redacted(when: eventViewModel.isTopPerformersLoading)
+            
+            ParticipantsView(participants: eventViewModel.participants)
+                .redacted(when: eventViewModel.isParticipantsLoading)
+            
+            EventMatchesHeaderView()
+            
+            EventMatchesView(matches: eventViewModel.eventMatches)
+                .redacted(when: eventViewModel.isEventMatchesLoading)
         }
         .onAppear(perform: {
             eventViewModel.getEvent(byID: eventID)
+            eventViewModel.getParticipants(forEvent: eventID)
             eventViewModel.getTopPerformers(forEvent: eventID)
+            eventViewModel.getMatches(forEvent: eventID)
         })
     }
 }
@@ -41,7 +52,7 @@ struct EventHeaderView: View {
             Text(event.name)
                 .font(.system(.title3).weight(.bold))
                 .foregroundColor(.primary)
-
+            
             
             Spacer()
             
@@ -54,15 +65,14 @@ struct EventDetailsView: View {
     var event: EventResult
     
     var body: some View {
-        Collapsible {
-            Label {
+        Collapsible(text: {
                 Text("Details")
                     .font(.system(.title3, design: .default).weight(.semibold))
-            } icon: {
-                Image(systemName: "info.circle")
-            }
-
-        } content: {
+        }, image: {
+            Image(systemName: "info.circle")
+        }, iconColor: {
+            Color.primary
+        }, content: {
             HStack {
                 VStack(alignment: .leading, spacing: 6) {
                     Label(
@@ -138,13 +148,12 @@ struct EventDetailsView: View {
                 Spacer()
             }
             .padding(.horizontal)
-            
-        }
+        })
         .padding(.vertical)
         .background(Color(.secondarySystemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
         .padding(.horizontal)
-
+        
     }
 }
 
@@ -155,13 +164,14 @@ struct TopPerformersHeader: View {
             Label(
                 title: {
                     Text("Top Performers")
-                        .font(.system(.title3, design: .default).weight(.semibold))
+                        .font(.system(.title3, design: .default).weight(.bold))
                 },
                 icon: {
                     Image(systemName: "bolt")
                         .foregroundColor(.yellow)
                 }
             )
+                .padding(.vertical, 8)
             
             Spacer()
         }
@@ -230,7 +240,7 @@ struct TopPerformerView: View {
             
             Text(performer.teams[0].name)
                 .font(.system(.subheadline, design: .default).weight(.light))
-
+            
         }
         .cornerRadius(8)
         .padding(.leading, index == 0 ? 16 : 8)
@@ -243,10 +253,153 @@ struct TopPerformerView: View {
         let ratingPerGame = cumulativeRating / totalGames
         
         return "\(((ratingPerGame * 1000).rounded(.toNearestOrEven) / 1000))"
-        
-//        return String(format: "%.3f", ratingPerGame)
     }
 }
+
+
+struct ParticipantsView: View {
+    @State var showPlayers: Bool = false
+    
+    var participants: [Participant]
+    
+    private var defaultImage: UIImage {
+        return UIImage(named: "ctrl-glyph")!
+    }
+    
+    var rows = [
+        GridItem(.fixed(120)),
+        GridItem(.fixed(120)),
+    ]
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            HStack {
+                Label {
+                    Text("Participants")
+                        .font(.system(.title3, design: .default).weight(.bold))
+                } icon: {
+                    Image(systemName: "car.2.fill")
+                        .foregroundColor(.blue)
+                }
+                
+                Spacer()
+                
+                Text("Players")
+                    .font(.system(.caption, design: .default))
+                
+                Toggle(isOn: $showPlayers) {
+                    Text("")
+                }
+                .toggleStyle(SwitchToggleStyle(tint: .blue))
+                .labelsHidden()
+                    
+            }
+            .padding(.horizontal)
+            
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                LazyHGrid(rows: rows, spacing: 8) {
+                    
+                    ForEach(participants, id: \.team.id) { participant  in
+                        
+                        VStack {
+                            if showPlayers {
+                                ForEach(participant.players, id: \.id) { player in
+                                    HStack {
+                                        Image(uiImage: UIImage(named: player.country.lowercased()) ?? defaultImage)
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                        
+                                        Text(player.tag)
+                                            .font(.system(.subheadline, design: .default).weight(.light))
+                                        
+                                        
+                                        Spacer()
+                                        
+                                    }
+                                }
+                                .transition(.opacity)
+                            } else {
+                                UrlImageView(urlString: participant.team.image, type: .logo)
+                                    .transition(.opacity)
+                                
+                                Text(participant.team.name)
+                                    .font(.system(.subheadline, design: .default).weight(.light))
+                                    .transition(.opacity)
+                            }
+                        }
+                        .frame(width: 120)
+                        .padding()
+                        .background(Color(UIColor.secondarySystemBackground))
+                        .cornerRadius(8, corners: .allCorners)
+                        
+                        
+                        
+                    }
+                }
+            }
+            .padding(.leading)
+            
+        }
+        .padding(.vertical)
+        
+    }
+}
+
+
+struct EventMatchesHeaderView: View {
+    var body: some View {
+        HStack {
+            Label {
+                Text("Matches")
+                    .font(.system(.title3, design: .default).weight(.bold))
+            } icon: {
+                Image(systemName: "calendar")
+                    .foregroundColor(Color.red)
+            }
+            
+            Spacer()
+        }
+        .padding(.horizontal)
+
+    }
+}
+
+
+struct EventMatchesView: View {
+    var matches: OrderedDictionary<DateComponents, [Match]>
+    let dateFormatter: DateFormatter = {
+        let df = DateFormatter()
+        df.dateFormat = "dd MMM yyyy"
+        return df
+    }()
+    
+    var body: some View {
+        VStack {
+            ForEach(matches.keys.sorted(by: { $0.date ?? Date() > $1.date ?? Date() }), id: \.day) { date in
+                
+                VStack {
+                    HStack {
+                        Text(Calendar.current.date(from: date)!, formatter: dateFormatter)
+                            .font(.system(.body, design: .default).weight(.bold))
+                        
+                        Spacer()
+                    }.padding([.horizontal, .top])
+                    
+                    ForEach(matches[date]!.sorted(by: { $0.date > $1.date}), id: \.id) { match in
+                        MatchCardView(match: match, viewSize: .medium)
+                    }
+//                    .padding(.horizontal)
+                    
+                }
+                .background(Color(UIColor.systemGroupedBackground))
+                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                .padding(.horizontal)
+            }
+        }
+    }
+}
+
 
 struct EventDetailView_Previews: PreviewProvider {
     static var previews: some View {
