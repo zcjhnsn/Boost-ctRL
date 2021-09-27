@@ -10,10 +10,11 @@ import SwiftUI
 struct ArticleColumnView: View {
     var articles: [Article]
     
+    var cols = [GridItem(.adaptive(minimum: 350))]
+    
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            VStack(alignment: .leading, spacing: 15) {   
-                
+            LazyVGrid(columns: cols, alignment: .leading, spacing: 15) {
                 ForEach(articles) { article in
                     ArticleItemView(article: article)
                 }
