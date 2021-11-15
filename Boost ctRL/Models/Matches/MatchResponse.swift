@@ -70,7 +70,7 @@ struct TeamResult: Codable, Hashable {
 
 // MARK: - PlayerElement
 struct PlayerResult: Codable, Hashable {
-    let player: Player
+    let player: PlayerBasic
     let stats: PlayerStats?
     let advanced: Advanced?
 }
@@ -81,7 +81,7 @@ struct Advanced: Codable, Hashable {
 }
 
 // MARK: - PlayerPlayer
-struct Player: Codable, Identifiable, Hashable {
+struct PlayerBasic: Codable, Identifiable, Hashable {
     let id, slug, tag, country: String
 
     enum CodingKeys: String, CodingKey {
@@ -149,18 +149,19 @@ struct Positioning: Codable, Hashable, Equatable {
 // MARK: - TeamTeam
 struct Team: Codable, Identifiable, Hashable {
     let id, slug, name: String
-    let image: String
+    let image, region: String
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
-        case slug, name, image
+        case slug, name, image, region
     }
     
-    init(id: String, slug: String, name: String, image: String) {
+    init(id: String, slug: String, name: String, image: String, region: String) {
         self.id = id
         self.slug = slug
         self.name = name
         self.image = image
+        self.region = region
     }
     
     init(from decoder: Decoder) throws {
@@ -169,6 +170,7 @@ struct Team: Codable, Identifiable, Hashable {
         self.slug = try container.decode(String.self, forKey: .slug)
         self.name = try container.decode(String.self, forKey: .name)
         self.image = try container.decodeIfPresent(String.self, forKey: .image) ?? ""
+        self.region = try container.decodeIfPresent(String.self, forKey: .region) ?? ""
     }
 }
 

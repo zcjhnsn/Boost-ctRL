@@ -52,15 +52,29 @@ struct NewsView: View {
             }
             .listStyle(PlainListStyle())
             .navigationTitle("Home")
-            .navigationBarItems(leading: Label(
-                title: { Text("Boost Control").font(.system(.headline, design: .default).weight(.bold)).foregroundColor(.blue) },
-                icon: { Image("ctrl-blue").resizable().frame(width: 25, height: 25, alignment: .center) }
-            ),trailing: Button(action: {
-                isShowingSettings = true
-            }, label: {
-                Image(systemName: "ellipsis")
-                    .foregroundColor(.primary)
-            }))
+            .toolbar(content: {
+                
+                // MARK: Left NavBar Item
+
+                ToolbarItemGroup(placement: .navigationBarLeading) {
+                    Image("ctrl-color").resizable().frame(width: 25, height: 25, alignment: .center)
+                    Text("Boost \(Text("Control").foregroundColor(.ctrlOrange))")
+                        .foregroundColor(.ctrlBlue)
+                        .font(.system(.title3, design: .default).weight(.bold))
+                    
+                }
+                
+                // MARK: Right NavBar Item
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        isShowingSettings = true
+                    }, label: {
+                        Image(systemName: "ellipsis")
+                            .foregroundColor(.primary)
+                    })
+                }
+            })
             .sheet(isPresented: $isShowingSettings, content: {
                 SettingsView()
             })

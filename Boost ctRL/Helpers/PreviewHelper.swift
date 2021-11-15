@@ -31,12 +31,12 @@ struct PreviewHelper {
     static let MOCK_GAME7: Game = Game(id: UUID().uuidString, blue: 2, orange: 0, duration: 300, overtime: false, ballchasing: "")
     
     static let PLAYER_RESULT: PlayerResult = PlayerResult(
-        player: PLAYER,
+        player: PLAYER_BASIC,
         stats: nil,
         advanced: nil
     )
     
-    static let PLAYER: Player = Player(
+    static let PLAYER_BASIC: PlayerBasic = PlayerBasic(
         id: "gg",
         slug: "garrettg",
         tag: "GarrettG",
@@ -44,20 +44,20 @@ struct PreviewHelper {
     )
     
     static let MOCK_PARTICIPANTS: [Participant] = [
-        Participant(team: MOCK_TEAM_NA_1, players: [PLAYER, PLAYER, PLAYER]),
-        Participant(team: MOCK_TEAM_NA_1, players: [PLAYER, PLAYER, PLAYER]),
-        Participant(team: MOCK_TEAM_NA_1, players: [PLAYER, PLAYER, PLAYER]),
-        Participant(team: MOCK_TEAM_NA_1, players: [PLAYER, PLAYER, PLAYER]),
-        Participant(team: MOCK_TEAM_NA_1, players: [PLAYER, PLAYER, PLAYER]),
-        Participant(team: MOCK_TEAM_NA_1, players: [PLAYER, PLAYER, PLAYER])
+        Participant(team: MOCK_TEAM_NA_1, players: [PLAYER_BASIC, PLAYER_BASIC, PLAYER_BASIC]),
+        Participant(team: MOCK_TEAM_NA_1, players: [PLAYER_BASIC, PLAYER_BASIC, PLAYER_BASIC]),
+        Participant(team: MOCK_TEAM_NA_1, players: [PLAYER_BASIC, PLAYER_BASIC, PLAYER_BASIC]),
+        Participant(team: MOCK_TEAM_NA_1, players: [PLAYER_BASIC, PLAYER_BASIC, PLAYER_BASIC]),
+        Participant(team: MOCK_TEAM_NA_1, players: [PLAYER_BASIC, PLAYER_BASIC, PLAYER_BASIC]),
+        Participant(team: MOCK_TEAM_NA_1, players: [PLAYER_BASIC, PLAYER_BASIC, PLAYER_BASIC])
     ]
     
     static let MOCK_TOP_PERFORMERS: [TopPerformer] = [
-        TopPerformer(player: PLAYER, teams: [MOCK_TEAM_NA_1], games: Games(total: 0, replays: 0, wins: 0, seconds: 0, replaySeconds: 0), stats: Stats(rating: 1.000)),
-        TopPerformer(player: PLAYER, teams: [MOCK_TEAM_NA_1], games: Games(total: 0, replays: 0, wins: 0, seconds: 0, replaySeconds: 0), stats: Stats(rating: 1.000)),
-        TopPerformer(player: PLAYER, teams: [MOCK_TEAM_NA_1], games: Games(total: 0, replays: 0, wins: 0, seconds: 0, replaySeconds: 0), stats: Stats(rating: 1.000)),
-        TopPerformer(player: PLAYER, teams: [MOCK_TEAM_NA_1], games: Games(total: 0, replays: 0, wins: 0, seconds: 0, replaySeconds: 0), stats: Stats(rating: 1.000)),
-        TopPerformer(player: PLAYER, teams: [MOCK_TEAM_NA_1], games: Games(total: 0, replays: 0, wins: 0, seconds: 0, replaySeconds: 0), stats: Stats(rating: 1.000)),
+        TopPerformer(player: PLAYER_BASIC, teams: [MOCK_TEAM_NA_1], games: Games(total: 0, replays: 0, wins: 0, seconds: 0, replaySeconds: 0), stats: Stats(rating: 1.000)),
+        TopPerformer(player: PLAYER_BASIC, teams: [MOCK_TEAM_NA_1], games: Games(total: 0, replays: 0, wins: 0, seconds: 0, replaySeconds: 0), stats: Stats(rating: 1.000)),
+        TopPerformer(player: PLAYER_BASIC, teams: [MOCK_TEAM_NA_1], games: Games(total: 0, replays: 0, wins: 0, seconds: 0, replaySeconds: 0), stats: Stats(rating: 1.000)),
+        TopPerformer(player: PLAYER_BASIC, teams: [MOCK_TEAM_NA_1], games: Games(total: 0, replays: 0, wins: 0, seconds: 0, replaySeconds: 0), stats: Stats(rating: 1.000)),
+        TopPerformer(player: PLAYER_BASIC, teams: [MOCK_TEAM_NA_1], games: Games(total: 0, replays: 0, wins: 0, seconds: 0, replaySeconds: 0), stats: Stats(rating: 1.000)),
     ]
     
     static let MOCK_TEAM_INFO_NA_1: TeamInfo = TeamInfo(team: MOCK_TEAM_NA_1, stats: nil)
@@ -66,7 +66,8 @@ struct PreviewHelper {
         id: "1",
         slug: "nrg",
         name: "NRG Esports",
-        image: "https://griffon.octane.gg/teams/nrg-esports.png"
+        image: "https://griffon.octane.gg/teams/nrg-esports.png",
+        region: "NA"
     )
     
     static let MOCK_PLAYER_ACTIVE: ActivePlayer = ActivePlayer(id: "1", slug: "gg", tag: "GarrettG", name: "Garrett Gordon", country: "us", team: MOCK_ACTIVE_TEAM_INFO, relevant: true, coach: false)
@@ -110,7 +111,8 @@ struct PreviewHelper {
                 id: "1",
                 slug: "ssg",
                 name: "Spacestation Gaming",
-                image: "https://griffon.octane.gg/teams/Spacestation_Gaming_2021.png"
+                image: "https://griffon.octane.gg/teams/Spacestation_Gaming_2021.png",
+                region: "NA"
             ),
             stats: nil
             ),

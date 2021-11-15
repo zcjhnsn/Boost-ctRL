@@ -11,7 +11,7 @@ import SwiftUI
 struct Boost_ctRLApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(IconNames())
         }
     }
 }

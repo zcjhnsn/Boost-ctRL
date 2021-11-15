@@ -41,6 +41,10 @@
 		0786A66326FD1D87001CD89D /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 0786A66226FD1D87001CD89D /* Collections */; };
 		0786A66526FD1D87001CD89D /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = 0786A66426FD1D87001CD89D /* DequeModule */; };
 		0786A66726FD1D87001CD89D /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 0786A66626FD1D87001CD89D /* OrderedCollections */; };
+		0786A6CA2702C559001CD89D /* IconHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786A6C92702C559001CD89D /* IconHelper.swift */; };
+		0786A7202703B2EF001CD89D /* CountryFlagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786A71F2703B2EF001CD89D /* CountryFlagView.swift */; };
+		0786A7CB2704F1DC001CD89D /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786A7CA2704F1DC001CD89D /* Color+Ext.swift */; };
+		0786A7CE270503E8001CD89D /* Players.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786A7CD270503E8001CD89D /* Players.swift */; };
 		07D8C65026F3D57F009FA85C /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 07D8C64F26F3D57F009FA85C /* BottomSheet */; };
 		07D8C65226F3D5BC009FA85C /* TeamFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D8C65126F3D5BC009FA85C /* TeamFilterView.swift */; };
 		07D8C65426F3E755009FA85C /* ActiveTeamsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D8C65326F3E755009FA85C /* ActiveTeamsViewModel.swift */; };
@@ -129,6 +133,10 @@
 		0776C18A26A9FBB600582BE2 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		0786A65D26FA5F0B001CD89D /* MatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewModel.swift; sourceTree = "<group>"; };
 		0786A65F26FD0E3D001CD89D /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		0786A6C92702C559001CD89D /* IconHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconHelper.swift; sourceTree = "<group>"; };
+		0786A71F2703B2EF001CD89D /* CountryFlagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryFlagView.swift; sourceTree = "<group>"; };
+		0786A7CA2704F1DC001CD89D /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
+		0786A7CD270503E8001CD89D /* Players.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Players.swift; sourceTree = "<group>"; };
 		07D8C65126F3D5BC009FA85C /* TeamFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamFilterView.swift; sourceTree = "<group>"; };
 		07D8C65326F3E755009FA85C /* ActiveTeamsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTeamsViewModel.swift; sourceTree = "<group>"; };
 		07D8C65626F3E8BA009FA85C /* ActiveTeams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTeams.swift; sourceTree = "<group>"; };
@@ -240,8 +248,24 @@
 				070FA1CA26B4CF6F00F204AE /* CollapsibleView.swift */,
 				0717582C26B77DDB00E74C8D /* MatchStatsHelper.swift */,
 				0717584126C2EB7500E74C8D /* AppConstants.swift */,
+				0786A6C92702C559001CD89D /* IconHelper.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		0786A7212703B87F001CD89D /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
+		0786A7CC270503D7001CD89D /* Players */ = {
+			isa = PBXGroup;
+			children = (
+				0786A7CD270503E8001CD89D /* Players.swift */,
+			);
+			path = Players;
 			sourceTree = "<group>";
 		};
 		07D8C65526F3E8A8009FA85C /* Teams */ = {
@@ -305,6 +329,7 @@
 		11A0EA7925FDBFBC004DE5BB /* Boost ctRL */ = {
 			isa = PBXGroup;
 			children = (
+				0786A7212703B87F001CD89D /* Icons */,
 				0717583A26BC4AC600E74C8D /* Themes */,
 				070FA1BC26AA19EB00F204AE /* ViewModifiers */,
 				0776C13F2694E9FB00582BE2 /* Helpers */,
@@ -363,6 +388,7 @@
 				07D8C65126F3D5BC009FA85C /* TeamFilterView.swift */,
 				07D8C65A26F52B8A009FA85C /* TeamDetailView.swift */,
 				07D8C65826F5122D009FA85C /* TeamBasicView.swift */,
+				0786A71F2703B2EF001CD89D /* CountryFlagView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -374,6 +400,7 @@
 				0776C18A26A9FBB600582BE2 /* String+Ext.swift */,
 				070FA1BF26AA1A2500F204AE /* View+Ext.swift */,
 				0786A65F26FD0E3D001CD89D /* Date+Ext.swift */,
+				0786A7CA2704F1DC001CD89D /* Color+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -381,6 +408,7 @@
 		11A0EAD725FDD5B9004DE5BB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0786A7CC270503D7001CD89D /* Players */,
 				07D8C65526F3E8A8009FA85C /* Teams */,
 				0776C13626866E9100582BE2 /* Matches */,
 				11A0EAD225FDD51E004DE5BB /* Article.swift */,
@@ -572,9 +600,12 @@
 				11A0EB0525FEA3D0004DE5BB /* API.swift in Sources */,
 				11A0EB0025FEA1DB004DE5BB /* OctaneArticle.swift in Sources */,
 				070FA1BE26AA1A0900F204AE /* NavigationBarModifiers.swift in Sources */,
+				0786A7202703B2EF001CD89D /* CountryFlagView.swift in Sources */,
 				0717583926B8C97B00E74C8D /* EventViewModel.swift in Sources */,
 				11A0EAAD25FDC124004DE5BB /* NewsView.swift in Sources */,
+				0786A7CB2704F1DC001CD89D /* Color+Ext.swift in Sources */,
 				0776C17F2698BDCD00582BE2 /* ArticleItemView.swift in Sources */,
+				0786A7CE270503E8001CD89D /* Players.swift in Sources */,
 				0776C1812698C59300582BE2 /* ArticleColumnView.swift in Sources */,
 				11A0EB0A25FEA422004DE5BB /* Agent.swift in Sources */,
 				07D8C65226F3D5BC009FA85C /* TeamFilterView.swift in Sources */,
@@ -593,6 +624,7 @@
 				07D8C65926F5122D009FA85C /* TeamBasicView.swift in Sources */,
 				070FA1C926B4BC8C00F204AE /* LongPressAlertModifier.swift in Sources */,
 				0776C13E2694E95E00582BE2 /* MatchResultView.swift in Sources */,
+				0786A6CA2702C559001CD89D /* IconHelper.swift in Sources */,
 				11A0EAEE25FDD9F1004DE5BB /* URLImageView.swift in Sources */,
 				0717582D26B77DDB00E74C8D /* MatchStatsHelper.swift in Sources */,
 				11A0EAD325FDD51E004DE5BB /* Article.swift in Sources */,
@@ -765,6 +797,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Boost ctRL/Preview Content\"";
@@ -790,6 +823,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Boost ctRL/Preview Content\"";

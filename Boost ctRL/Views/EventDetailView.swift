@@ -306,9 +306,7 @@ struct ParticipantsView: View {
                             if showPlayers {
                                 ForEach(participant.players, id: \.id) { player in
                                     HStack {
-                                        Image(uiImage: UIImage(named: player.country.lowercased()) ?? defaultImage)
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
+                                        CountryFlagView(countryAbbreviation: player.country)
                                         
                                         Text(player.tag)
                                             .font(.system(.subheadline, design: .default).weight(.light))

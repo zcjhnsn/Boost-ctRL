@@ -158,8 +158,6 @@ enum API {
         
         let request = URLRequest(url: components.url!)
         
-        print("✅ Completed - \(request.url)")
-        
         return run(request)
     }
     

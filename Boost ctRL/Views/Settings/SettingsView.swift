@@ -10,6 +10,9 @@ import SwiftUI
 struct SettingsView: View {
     @Environment(\.presentationMode) var presentationMode
     
+    @EnvironmentObject var iconSettings: IconNames
+    @State private var selectedIconIndex: Int = 0
+    
     @AppStorage("LinkDestination") var linkDestination = 0
     
     @State var isShowingChangeLog: Bool = false
@@ -20,6 +23,32 @@ struct SettingsView: View {
         NavigationView {
             Form {
                 Section(header: Text("Customization")) {
+                    Picker(selection: $iconSettings.currentIndex,label:Text("App Icon")){
+                        ForEach(0 ..< iconSettings.iconNames.count){i in
+                            HStack(spacing:20){
+                                Image(uiImage: UIImage(named: self.iconSettings.iconNames[i] ?? "AppIcon") ?? UIImage())
+                                    .resizable()
+                                    .renderingMode(.original)
+                                    .frame(width: 50, height: 50, alignment: .leading)
+                                    .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                                Text(self.iconSettings.iconNames[i]?.components(separatedBy: "60x60").first ?? "Default")
+                            }
+                            .navigationBarTitle(Text("App Icon"))
+                        }.onReceive([self.iconSettings.currentIndex].publisher.first()){ value in
+                            let i = self.iconSettings.iconNames.firstIndex(of: UIApplication.shared.alternateIconName) ?? 0
+                            if value != i {
+                                UIApplication.shared.setAlternateIconName(self.iconSettings.iconNames[value], completionHandler: {
+                                    error in
+                                    if let error = error {
+                                        print(error.localizedDescription)
+                                    } else {
+                                        print("Success!")
+                                    }
+                                })
+                            }
+                        }
+                    }
+                    
                     Picker("Open links in", selection: $linkDestination) {
                         Text("In-App (Safari)").tag(0)
                         
@@ -68,11 +97,11 @@ struct SettingsView: View {
                     NavigationLink("Change Log", destination: ChangeLogView()
                                     .navigationBarTitle("Change Log")
                                     .navigationBarItems(trailing: Button(action: {
-                                        presentationMode.wrappedValue.dismiss()
-                                    }, label: {
-                                        Image(systemName: "xmark")
-                                            .foregroundColor(.primary)
-                                    }))
+                        presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Image(systemName: "xmark")
+                            .foregroundColor(.primary)
+                    }))
                     )
                     HStack {
                         Text("Version")
@@ -92,8 +121,37 @@ struct SettingsView: View {
     }
 }
 
+
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
+    }
+}
+
+
+struct IconSelectionView: View {
+    var items: [String?]
+    @Binding var selectedItem: Int
+    
+    var body: some View {
+        Form {
+            ForEach(0..<items.count) { index in
+                HStack {
+                    Image(uiImage: UIImage(named: self.items[index] ?? "AppIcon") ?? UIImage())
+                        .resizable()
+                        .renderingMode(.original)
+                        .frame(width: 50, height: 50, alignment: .leading)
+                        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                    Text(self.items[index] ?? "Default")
+                    Spacer()
+                    if self.selectedItem == index {
+                        Image(systemName: "checkmark").foregroundColor(Color.blue)
+                    }
+                }
+                .onTapGesture {
+                    self.selectedItem = index
+                }
+            }
+        }
     }
 }

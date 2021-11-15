@@ -22,9 +22,17 @@ struct UrlImageView: View {
     }
     
     var body: some View {
-        Image(uiImage: urlImageModel.image ?? defaultImage)
-            .resizable()
-            .aspectRatio(contentMode: .fit)
+        if urlImageModel.image == nil {
+            Image(uiImage: defaultImage)
+                .renderingMode(.template)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .foregroundColor(.primary)
+        } else {
+            Image(uiImage: urlImageModel.image!)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+        }
     }
     
     var defaultImage: UIImage {

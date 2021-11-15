@@ -41,13 +41,14 @@ struct RecentResultsRowView_Previews: PreviewProvider {
                             id: "1",
                             slug: "nrg",
                             name: "NRG Esports",
-                            image: "https://griffon.octane.gg/teams/nrg-esports.png"
+                            image: "https://griffon.octane.gg/teams/nrg-esports.png",
+                            region: "NA"
                         ),
                         stats: nil
                     ),
                     players: [
                         PlayerResult(
-                            player: Player(
+                            player: PlayerBasic(
                                 id: "gg",
                                 slug: "garrettg",
                                 tag: "GarrettG",
@@ -57,7 +58,7 @@ struct RecentResultsRowView_Previews: PreviewProvider {
                             advanced: nil
                         ),
                         PlayerResult(
-                            player: Player(
+                            player: PlayerBasic(
                                 id: "gg",
                                 slug: "garrettg",
                                 tag: "GarrettG",
@@ -67,7 +68,7 @@ struct RecentResultsRowView_Previews: PreviewProvider {
                             advanced: nil
                         ),
                         PlayerResult(
-                            player: Player(
+                            player: PlayerBasic(
                                 id: "gg",
                                 slug: "garrettg",
                                 tag: "GarrettG",
@@ -85,13 +86,14 @@ struct RecentResultsRowView_Previews: PreviewProvider {
                             id: "1",
                             slug: "nrg",
                             name: "NRG Esports",
-                            image: "https://griffon.octane.gg/teams/nrg-esports.png"
+                            image: "https://griffon.octane.gg/teams/nrg-esports.png",
+                            region: "NA"
                         ),
                         stats: nil
                     ),
                     players: [
                         PlayerResult(
-                            player: Player(
+                            player: PlayerBasic(
                                 id: "gg",
                                 slug: "garrettg",
                                 tag: "GarrettG",
@@ -101,7 +103,7 @@ struct RecentResultsRowView_Previews: PreviewProvider {
                             advanced: nil
                         ),
                         PlayerResult(
-                            player: Player(
+                            player: PlayerBasic(
                                 id: "gg",
                                 slug: "garrettg",
                                 tag: "GarrettG",
@@ -111,7 +113,7 @@ struct RecentResultsRowView_Previews: PreviewProvider {
                             advanced: nil
                         ),
                         PlayerResult(
-                            player: Player(
+                            player: PlayerBasic(
                                 id: "gg",
                                 slug: "garrettg",
                                 tag: "GarrettG",

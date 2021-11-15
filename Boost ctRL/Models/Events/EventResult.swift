@@ -81,7 +81,12 @@ struct Participant: Codable, Hashable {
     }
     
     let team: Team
-    let players: [Player]
+    let players: [PlayerBasic]
+    
+    enum CodingKeys: String, CodingKey {
+        case team
+        case players = "players"
+    }
 }
 
 
@@ -92,7 +97,7 @@ struct TopPerformers: Codable {
 
 // MARK: - TopPerformer
 struct TopPerformer: Codable {
-    let player: Player
+    let player: PlayerBasic
     let teams: [Team]
     let games: Games
     let stats: Stats
