@@ -6,113 +6,113 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
-			<key>Bee Dees</key>
+			<key>BDS</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>Bee Dees</string>
+					<string>BDS</string>
 				</array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
+				<key>UIPrerenderedIcon</key>
+				<false/>
 			</dict>
-			<key>Beehive</key>
+			<key>Vitality</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>Beehive</string>
+					<string>Vitality</string>
 				</array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
+				<key>UIPrerenderedIcon</key>
+				<false/>
 			</dict>
-			<key>Casper</key>
+			<key>Ghost</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>Casper</string>
+					<string>Ghost</string>
 				</array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
+				<key>UIPrerenderedIcon</key>
+				<false/>
 			</dict>
-			<key>Envious</key>
+			<key>Envy</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>Envious</string>
+					<string>Envy</string>
 				</array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
+				<key>UIPrerenderedIcon</key>
+				<false/>
 			</dict>
-			<key>EU eU</key>
+			<key>Guild</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>EU eU</string>
+					<string>Guild</string>
 				</array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
+				<key>UIPrerenderedIcon</key>
+				<false/>
 			</dict>
-			<key>Except</key>
+			<key>Xset</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>Except</string>
+					<string>Xset</string>
 				</array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
+				<key>UIPrerenderedIcon</key>
+				<false/>
 			</dict>
-			<key>eTogether</key>
+			<key>eUnited</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>eTogether</string>
+					<string>eUnited</string>
 				</array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
+				<key>UIPrerenderedIcon</key>
+				<false/>
 			</dict>
-			<key>Final Destination</key>
+			<key>Endpoint</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>Final Destination</string>
+					<string>Endpoint</string>
 				</array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
+				<key>UIPrerenderedIcon</key>
+				<false/>
 			</dict>
-			<key>First Dynasty</key>
+			<key>Dignitas</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>First Dynasty</string>
+					<string>Dignitas</string>
 				</array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
+				<key>UIPrerenderedIcon</key>
+				<false/>
 			</dict>
-			<key>Generally Energetic</key>
+			<key>NRG (The General)</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>Generally Energetic</string>
+					<string>NRG (The General)</string>
 				</array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
+				<key>UIPrerenderedIcon</key>
+				<false/>
 			</dict>
-			<key>Gentleman</key>
+			<key>SMPR</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>Gentleman</string>
+					<string>SMPR</string>
 				</array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
+				<key>UIPrerenderedIcon</key>
+				<false/>
 			</dict>
-			<key>Gigantes</key>
+			<key>Giants</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>Gigantes</string>
+					<string>Giants</string>
 				</array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
+				<key>UIPrerenderedIcon</key>
+				<false/>
 			</dict>
 			<key>Ibex</key>
 			<dict>
@@ -120,143 +120,143 @@
 				<array>
 					<string>Ibex</string>
 				</array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
+				<key>UIPrerenderedIcon</key>
+				<false/>
 			</dict>
-			<key>Korp</key>
+			<key>Karmine</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>Korp</string>
+					<string>Karmine</string>
 				</array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
+				<key>UIPrerenderedIcon</key>
+				<false/>
 			</dict>
-			<key>Lion</key>
+			<key>Knights</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>Lion</string>
+					<string>Knights</string>
 				</array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
+				<key>UIPrerenderedIcon</key>
+				<false/>
 			</dict>
-			<key>Messi</key>
+			<key>FC Barcelona</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>Messi</string>
+					<string>FC Barcelona</string>
 				</array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
+				<key>UIPrerenderedIcon</key>
+				<false/>
 			</dict>
-			<key>Misspelled</key>
+			<key>Rogue</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>Misspelled</string>
+					<string>Rogue</string>
 				</array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
+				<key>UIPrerenderedIcon</key>
+				<false/>
 			</dict>
-			<key>Phase</key>
+			<key>Faze</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>Phase</string>
+					<string>Faze</string>
 				</array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
+				<key>UIPrerenderedIcon</key>
+				<false/>
 			</dict>
-			<key>Purple1</key>
+			<key>Version1</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>Purple1</string>
+					<string>Version1</string>
 				</array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
+				<key>UIPrerenderedIcon</key>
+				<false/>
 			</dict>
-			<key>Samurai</key>
+			<key>G2</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>Samurai</string>
+					<string>G2</string>
 				</array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
+				<key>UIPrerenderedIcon</key>
+				<false/>
 			</dict>
-			<key>Single</key>
+			<key>Singularity</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>Single</string>
+					<string>Singularity</string>
 				</array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
+				<key>UIPrerenderedIcon</key>
+				<false/>
 			</dict>
-			<key>So Kool</key>
+			<key>SK</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>So Kool</string>
+					<string>SK</string>
 				</array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
+				<key>UIPrerenderedIcon</key>
+				<false/>
 			</dict>
-			<key>Solid Gas</key>
+			<key>Liquid</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>Solid Gas</string>
+					<string>Liquid</string>
 				</array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
+				<key>UIPrerenderedIcon</key>
+				<false/>
 			</dict>
-			<key>Sonic</key>
+			<key>Soniqs</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>Sonic</string>
+					<string>Soniqs</string>
 				</array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
+				<key>UIPrerenderedIcon</key>
+				<false/>
 			</dict>
-			<key>Uprising</key>
+			<key>Rebellion</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>Uprising</string>
+					<string>Rebellion</string>
 				</array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
+				<key>UIPrerenderedIcon</key>
+				<false/>
 			</dict>
-			<key>Zeros</key>
+			<key>Ground Zero</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>Zeros</string>
+					<string>Ground Zero</string>
 				</array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
+				<key>UIPrerenderedIcon</key>
+				<false/>
 			</dict>
-			<key>Astronaut</key>
+			<key>Spacestation</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>Astronaut</string>
+					<string>Spacestation</string>
 				</array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
+				<key>UIPrerenderedIcon</key>
+				<false/>
 			</dict>
-			<key>Energy</key>
+			<key>NRG</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>Energy</string>
+					<string>NRG</string>
 				</array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
+				<key>UIPrerenderedIcon</key>
+				<false/>
 			</dict>
 		</dict>
 		<key>CFBundlePrimaryIcon</key>
