@@ -326,6 +326,7 @@ struct ParticipantsView: View {
                                     .transition(.opacity)
                             }
                         }
+                        .transition(.opacity)
                         .frame(width: 120)
                         .padding()
                         .background(Color(UIColor.secondarySystemBackground))

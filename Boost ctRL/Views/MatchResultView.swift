@@ -400,7 +400,6 @@ struct MatchStatsView: View {
             
             ChosenStatsView(match: match, selectedType: $selectedStatType)
                 .padding()
-                .transition(.opacity)
                 .animation(.easeInOut)
             
             
@@ -445,27 +444,34 @@ struct PlayersChosenStatsView: View {
     
     @Binding var selectedType: StatsType
     
-    var body: some View {
+    var data: [DataPoint] {
         switch selectedType {
         case .score:
-            PlayersStatsChartView(dataPoints: matchHelper.getPlayerScore(), isDecimal: false)
-                    .transition(.opacity)
+            return matchHelper.getPlayerScore()
         case .goals:
-            PlayersStatsChartView(dataPoints: matchHelper.getPlayerGoals(), isDecimal: false)
-                    .transition(.opacity)
+            return matchHelper.getPlayerGoals()
         case .assists:
-            PlayersStatsChartView(dataPoints: matchHelper.getPlayerAssists(), isDecimal: false)
-                    .transition(.opacity)
+            return matchHelper.getPlayerAssists()
         case .saves:
-            PlayersStatsChartView(dataPoints: matchHelper.getPlayerSaves(), isDecimal: false)
-                    .transition(.opacity)
+            return matchHelper.getPlayerSaves()
         case .shots:
-            PlayersStatsChartView(dataPoints: matchHelper.getPlayerShots(), isDecimal: false)
-                    .transition(.opacity)
+            return matchHelper.getPlayerShots()
         case .shotPercentage:
-            PlayersStatsChartView(dataPoints: matchHelper.getPlayerShotPercentage(), isDecimal: true)
-                    .transition(.opacity)
+            return matchHelper.getPlayerShotPercentage()
         }
+    }
+    
+    var isDecimal: Bool {
+        switch selectedType {
+        case .shotPercentage:
+            return true
+        default:
+            return false
+        }
+    }
+    
+    var body: some View {
+            PlayersStatsChartView(dataPoints: data, isDecimal: isDecimal)
     }
 }
 
