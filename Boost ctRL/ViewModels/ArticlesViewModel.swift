@@ -24,12 +24,9 @@ class ArticlesViewModel: ObservableObject {
     @Published var isRocketeersLoading: Bool = true
     @Published var isOctaneLoading: Bool = true
     
-    var cancellationToken: AnyCancellable?
-    var octaneCancellationToken: AnyCancellable?
-    var rocketeersCancellationToken: AnyCancellable?
+    var subscriptions = [AnyCancellable]()
     
     init() {
-//        getArticles()
         getOctaneArticles()
         getRocketeersArticles()
     }
@@ -37,24 +34,26 @@ class ArticlesViewModel: ObservableObject {
     private func getArticles() {
         let rocketeers = API.getRocketeersArticles()
         let octane = API.getOctaneArticles()
-        cancellationToken = Publishers.Zip(rocketeers, octane)
+        
+        Publishers.Zip(rocketeers, octane)
             .mapError({ error -> Error in
                 print("💀 Error - Could not fetch articles together, will attempt separate fetch")
-                self.getSeparate()
+                self.getSeparate() 
                 return error
             })
             .sink(receiveCompletion: { _ in },
                   receiveValue: { rArticles, oArticles in
-                    var receivedArticles = [Article]()
-                    
-                    receivedArticles.append(contentsOf: rArticles)
-                    
-                    receivedArticles.append(contentsOf: oArticles)
-                      
-                    self.articles = receivedArticles
-                    self.isOctaneLoading = false
-                    self.isRocketeersLoading = false
-                  })
+                var receivedArticles = [Article]()
+                
+                receivedArticles.append(contentsOf: rArticles)
+                
+                receivedArticles.append(contentsOf: oArticles)
+                
+                self.articles = receivedArticles
+                self.isOctaneLoading = false
+                self.isRocketeersLoading = false
+            })
+            .store(in: &subscriptions)
     }
     
     
@@ -66,7 +65,7 @@ class ArticlesViewModel: ObservableObject {
     
     /// Retrieve articles from https://rocketeers.gg
     private func getRocketeersArticles() {
-        rocketeersCancellationToken = API.getRocketeersArticles()
+        API.getRocketeersArticles()
             .mapError({ error -> Error in
                 print("💀 Error - Could not fetch Rocketeers articles")
                 
@@ -74,15 +73,16 @@ class ArticlesViewModel: ObservableObject {
             })
             .sink(receiveCompletion: { _ in },
                   receiveValue: { articles in
-                    self.rocketeersArticles = articles
-                    self.isRocketeersLoading = false
-                  })
-            
+                self.rocketeersArticles = articles
+                self.isRocketeersLoading = false
+            })
+            .store(in: &subscriptions)
+        
     }
     
     /// Retrieve articles from https://octane.gg
     private func getOctaneArticles() {
-        octaneCancellationToken = API.getOctaneArticles()
+        API.getOctaneArticles()
             .mapError({ error -> Error in
                 print("💀 Error fetching Octane articles - \(error)")
                 
@@ -90,10 +90,11 @@ class ArticlesViewModel: ObservableObject {
             })
             .sink(receiveCompletion: { _ in },
                   receiveValue: { articles in
-                    self.octaneArticles.removeAll()
-                    self.octaneArticles = articles
-                    self.isOctaneLoading = false
-                  })
+                self.octaneArticles.removeAll()
+                self.octaneArticles = articles
+                self.isOctaneLoading = false
+            })
+            .store(in: &subscriptions)
     }
 }
 

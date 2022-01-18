@@ -15,7 +15,7 @@ class ActiveTeamsViewModel: ObservableObject {
     @Published var filteredData: [ActiveTeam] = []
     
         
-    var cancellationToken: AnyCancellable?
+    var subscriptions = [AnyCancellable]()
     var publisher: AnyCancellable?
     
     init() {
@@ -37,9 +37,7 @@ class ActiveTeamsViewModel: ObservableObject {
     /// - Parameter id: Event ID
     func getTeams() {
         isTeamsLoading = true
-        let results = API.getActiveTeams()
-        
-        cancellationToken = results
+        API.getActiveTeams()
             .mapError({ error -> Error in
                 print("💀 Error - Could not fetch active teams - \(error)")
                 return error
@@ -50,6 +48,7 @@ class ActiveTeamsViewModel: ObservableObject {
                 self.teams = activeTeamsResult.teams.sorted(by: { $0.team.name.lowercased() < $1.team.name.lowercased() })
                 self.filteredData = self.teams
             })
+            .store(in: &subscriptions)
     }
     
 

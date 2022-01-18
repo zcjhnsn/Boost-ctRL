@@ -20,10 +20,7 @@ class EventViewModel: ObservableObject {
     @Published var isTopPerformersLoading: Bool = true
     @Published var isEventMatchesLoading: Bool = true
         
-    var cancellationToken: AnyCancellable?
-    var participantsToken: AnyCancellable?
-    var topPerformersToken: AnyCancellable?
-    var matchesToken: AnyCancellable?
+    var subscriptions = [AnyCancellable]()
     
     init() {
         
@@ -33,9 +30,8 @@ class EventViewModel: ObservableObject {
     /// - Parameter id: Event ID
     func getEvent(byID id: String) {
         isEventLoading = true
-        let results = API.getEvent(byID: id)
         
-        cancellationToken = results
+        API.getEvent(byID: id)
             .mapError({ error -> Error in
                 print("💀 Error - Could not fetch event - \(error)")
                 return error
@@ -45,15 +41,15 @@ class EventViewModel: ObservableObject {
             }, receiveValue: { eventResult in
                 self.event = eventResult
             })
+            .store(in: &subscriptions)
     }
     
     /// Retrieves participants in an event
     /// - Parameter id: Event ID
     func getParticipants(forEvent id: String) {
         isParticipantsLoading = true
-        let results = API.getParticipants(forEvent: id)
         
-        participantsToken = results
+        API.getParticipants(forEvent: id)
             .mapError({ error -> Error in
                 print("💀 Error - Could not fetch participants - \(error)")
                 return error
@@ -63,6 +59,7 @@ class EventViewModel: ObservableObject {
             }, receiveValue: { eventParticipants in
                 self.participants = eventParticipants.participants
             })
+            .store(in: &subscriptions)
     }
     
     /// Retrieve top performers* for an event.
@@ -70,9 +67,8 @@ class EventViewModel: ObservableObject {
     /// - Parameter id: Event
     func getTopPerformers(forEvent id: String) {
         isTopPerformersLoading = true
-        let results = API.getTopPerformers(forID: id, idType: .event)
         
-        topPerformersToken = results
+        API.getTopPerformers(forID: id, idType: .event)
             .mapError({ error -> Error in
                 print("💀 Error - Could not fetch top participants - \(error)")
                 return error
@@ -84,13 +80,13 @@ class EventViewModel: ObservableObject {
                 self.topPerformers = Array(sortedPerformers.prefix(5))
                 self.isTopPerformersLoading = false
             })
+            .store(in: &subscriptions)
     }
     
     func getMatches(forEvent id: String) {
         isEventMatchesLoading = true
-        let results = API.getMatches(forEvent: id)
         
-        matchesToken = results
+        API.getMatches(forEvent: id)
             .mapError({ error -> Error in
                 print("💀 Error - Could not fetch event matches - \(error)")
                 return error
@@ -102,6 +98,7 @@ class EventViewModel: ObservableObject {
                 self.eventMatches = self.groupMatchesByDate(response.matches)
                 self.isEventMatchesLoading = false
             })
+            .store(in: &subscriptions)
     }
     
     /// Group array of matches by date. Uses new `OrderedDictionary` from `Collections` library.

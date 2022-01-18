@@ -25,7 +25,7 @@ class RecentMatchesViewModel: ObservableObject {
         PreviewHelper.MATCH
     ]
     
-    var cancellationToken: AnyCancellable?
+    var subscriptions = [AnyCancellable]()
     
     init() {
         getMatches()
@@ -34,18 +34,18 @@ class RecentMatchesViewModel: ObservableObject {
     /// Retrieves the 10 most recent ongoing/completed matches
     private func getMatches() {
         isMatchesLoading = true
-        let results = API.getRecentMatches()
         
-        cancellationToken = results
+        API.getRecentMatches()
             .mapError({ error -> Error in
                 print("💀 Error - Could not fetch recent matches - \(error) ")
                 return error
             })
             .sink(receiveCompletion: { _ in },
                   receiveValue: { matchResults in
-                    self.matches = matchResults.matches
-                    self.isMatchesLoading = false
-                  })
+                self.matches = matchResults.matches
+                self.isMatchesLoading = false
+            })
+            .store(in: &subscriptions)
     }
     
 }

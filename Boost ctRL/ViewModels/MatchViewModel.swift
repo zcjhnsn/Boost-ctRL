@@ -16,9 +16,7 @@ class MatchViewModel: ObservableObject {
     @Published var isParticipantsLoading: Bool = true
     @Published var isTopPerformersLoading: Bool = true
         
-    var cancellationToken: AnyCancellable?
-    var participantsToken: AnyCancellable?
-    var topPerformersToken: AnyCancellable?
+    var subscriptions = [AnyCancellable]()
     
     init() {
         
@@ -48,9 +46,8 @@ class MatchViewModel: ObservableObject {
     /// - Parameter id: Match ID/Slug
     func getTopPerformers(forMatch id: String) {
         isTopPerformersLoading = true
-        let results = API.getTopPerformers(forID: id, idType: .match)
         
-        topPerformersToken = results
+        API.getTopPerformers(forID: id, idType: .match)
             .mapError({ error -> Error in
                 print("💀 Error - Could not fetch top participants - \(error)")
                 return error
@@ -62,6 +59,7 @@ class MatchViewModel: ObservableObject {
                 self.topPerformers = Array(sortedPerformers.prefix(5))
                 self.isTopPerformersLoading = false
             })
+            .store(in: &subscriptions)
     }
     
 }
