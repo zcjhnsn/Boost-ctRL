@@ -14,28 +14,19 @@ struct PlayersResponse: Decodable {
 }
 
 // MARK: - Player
-struct Player: Decodable {
-    let id, slug, tag, name: String
-    let country: String
-    let team: Team
-    let relevant, coach, substitute: Bool?
+struct Player: Codable {
+    @DecodableDefault.EmptyString var id: String
+    @DecodableDefault.EmptyString var slug: String
+    @DecodableDefault.EmptyString var tag: String
+    @DecodableDefault.EmptyString var name: String
+    @DecodableDefault.EmptyString var country: String
+    @DecodableDefault.EmptyTeam var team: Team
+    @DecodableDefault.False var relevant: Bool
+    @DecodableDefault.False var coach: Bool
+    @DecodableDefault.False var substitute: Bool
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
-        case slug, tag, name, country, team, accounts, relevant, coach, substitute
-    }
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try container.decode(String.self, forKey: .id)
-        self.slug = try container.decode(String.self, forKey: .slug)
-        self.tag = try container.decode(String.self, forKey: .tag)
-        self.name = try container.decode(String.self, forKey: .name)
-        self.country = try container.decode(String.self, forKey: .country)
-        self.team = try container.decode(Team.self, forKey: .team)
-        self.relevant = try container.decodeIfPresent(Bool.self, forKey: .relevant) ?? false
-        self.coach = try container.decodeIfPresent(Bool.self, forKey: .coach) ?? false
-        self.substitute = try container.decodeIfPresent(Bool.self, forKey: .substitute) ?? false
+        case slug, tag, name, country, team, relevant, coach, substitute
     }
 }
-

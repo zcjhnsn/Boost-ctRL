@@ -9,18 +9,16 @@ import Foundation
 import Combine
 
 class MatchViewModel: ObservableObject {
-    @Published var match: Match = PreviewHelper.MATCH
-    @Published var participants: [Participant] = PreviewHelper.MOCK_PARTICIPANTS
-    @Published var topPerformers: [TopPerformer] = PreviewHelper.MOCK_TOP_PERFORMERS
+    @Published var match: Match = ExampleData.match
+    @Published var participants: [Participant] = ExampleData.participants
+    @Published var topPerformers: [TopPerformer] = ExampleData.topPerformers
     @Published var isMatchLoading: Bool = true
     @Published var isParticipantsLoading: Bool = true
     @Published var isTopPerformersLoading: Bool = true
         
     var subscriptions = [AnyCancellable]()
     
-    init() {
-        
-    }
+    init() { }
     
 //    /// Retrieves an event given an ID
 //    /// - Parameter id: Event ID

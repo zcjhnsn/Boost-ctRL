@@ -97,5 +97,3 @@ class ArticlesViewModel: ObservableObject {
             .store(in: &subscriptions)
     }
 }
-
-

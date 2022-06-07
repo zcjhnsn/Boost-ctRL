@@ -21,19 +21,25 @@ struct EventDetailView: View {
             EventDetailsView(event: eventViewModel.event)
                 .redacted(when: eventViewModel.isEventLoading)
             
-            TopPerformersHeader()
+            if !eventViewModel.topPerformers.isEmpty {
+                TopPerformersHeader()
+                
+                EventTopPerformersView(performers: eventViewModel.topPerformers)
+                    .redacted(when: eventViewModel.isTopPerformersLoading)
+            }
             
-            EventTopPerformersView(performers: eventViewModel.topPerformers)
-                .redacted(when: eventViewModel.isTopPerformersLoading)
-            
-            ParticipantsView(participants: eventViewModel.participants)
-                .redacted(when: eventViewModel.isParticipantsLoading)
+            if !eventViewModel.participants.isEmpty {
+                ParticipantsView(participants: eventViewModel.participants)
+                    .redacted(when: eventViewModel.isParticipantsLoading)
+            }
             
             EventMatchesHeaderView()
             
             EventMatchesView(matches: eventViewModel.eventMatches)
                 .redacted(when: eventViewModel.isEventMatchesLoading)
         }
+        .navigationBarTitleDisplayMode(.inline)
+        .background(Color.primaryGroupedBackground)
         .onAppear(perform: {
             eventViewModel.getEvent(byID: eventID)
             eventViewModel.getParticipants(forEvent: eventID)
@@ -50,7 +56,7 @@ struct EventHeaderView: View {
     var body: some View {
         HStack {
             Text(event.name)
-                .font(.system(.title3).weight(.bold))
+                .font(.system(.largeTitle).weight(.bold))
                 .foregroundColor(.primary)
             
             
@@ -63,6 +69,12 @@ struct EventHeaderView: View {
 
 struct EventDetailsView: View {
     var event: EventResult
+    
+    func getReadableDate(from eventDate: Date?) -> String {
+        guard let date = eventDate else { return "???" }
+        
+        return DateFormatter.localizedString(from: date, dateStyle: .short, timeStyle: .none)
+    }
     
     var body: some View {
         Collapsible(text: {
@@ -90,7 +102,7 @@ struct EventDetailsView: View {
                     
                     Label(
                         title: {
-                            Text("\(DateFormatter.localizedString(from: event.startDate, dateStyle: .short, timeStyle: .none)) - \(DateFormatter.localizedString(from: event.endDate, dateStyle: .short, timeStyle: .none))")
+                            Text("\(getReadableDate(from: event.startDate)) - \(getReadableDate(from: event.endDate))")
                                 .font(.system(.subheadline).weight(.regular))
                                 .foregroundColor(.primary)
                         },
@@ -102,7 +114,7 @@ struct EventDetailsView: View {
                     
                     Label(
                         title: {
-                            Text("\(event.prize.amount) \(event.prize.currency.uppercased())")
+                            Text(CurrencySymbol.shared.currencyString(for: Decimal(event.prize.amount), isoCurrencyCode: event.prize.currency, dropCents: true))
                                 .font(.system(.subheadline).weight(.regular))
                                 .foregroundColor(.primary)
                         },
@@ -143,14 +155,26 @@ struct EventDetailsView: View {
                         }
                     )
                     
-                    Spacer()
+                    Label (
+                        title: {
+                            Text("\(event.hasLAN() ? "LAN" : "Online")")
+                                .font(.system(.subheadline).weight(.regular))
+                                .foregroundColor(.primary)
+                        },
+                        icon: {
+                            Image(systemName: "network")
+                                .foregroundColor(.gray)
+                        }
+                    )
+                    
+//                    Spacer()
                 }
                 Spacer()
             }
             .padding(.horizontal)
         })
         .padding(.vertical)
-        .background(Color(.secondarySystemBackground))
+        .background(Color.secondaryGroupedBackground)
         .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
         .padding(.horizontal)
         
@@ -268,7 +292,7 @@ struct ParticipantsView: View {
     
     var rows = [
         GridItem(.fixed(120)),
-        GridItem(.fixed(120)),
+        GridItem(.fixed(120))
     ]
     
     var body: some View {
@@ -279,7 +303,7 @@ struct ParticipantsView: View {
                         .font(.system(.title3, design: .default).weight(.bold))
                 } icon: {
                     Image(systemName: "car.2.fill")
-                        .foregroundColor(.blue)
+                        .foregroundColor(.purple)
                 }
                 
                 Spacer()
@@ -329,10 +353,8 @@ struct ParticipantsView: View {
                         .transition(.opacity)
                         .frame(width: 120)
                         .padding()
-                        .background(Color(UIColor.secondarySystemBackground))
+                        .background(Color.secondaryGroupedBackground)
                         .cornerRadius(8, corners: .allCorners)
-                        
-                        
                         
                     }
                 }
@@ -354,7 +376,7 @@ struct EventMatchesHeaderView: View {
                     .font(.system(.title3, design: .default).weight(.bold))
             } icon: {
                 Image(systemName: "calendar")
-                    .foregroundColor(Color.red)
+                    .foregroundColor(Color.blue)
             }
             
             Spacer()
@@ -385,7 +407,7 @@ struct EventMatchesView: View {
                         Spacer()
                     }.padding([.horizontal, .top])
                     
-                    ForEach(matches[date]!.sorted(by: { $0.date > $1.date}), id: \.id) { match in
+                    ForEach(matches[date]!.sorted(by: { $0.date < $1.date}), id: \.id) { match in
                         MatchCardView(match: match, viewSize: .medium)
                     }
 //                    .padding(.horizontal)

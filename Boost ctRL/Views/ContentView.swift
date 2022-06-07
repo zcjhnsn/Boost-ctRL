@@ -10,21 +10,23 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         TabView {
-            
             // MARK: - Home Page
-            
+    
             NewsView()
             .tabItem {
-                Image(systemName: "flame")
-                Text("Home")
+                Label {
+                    Text("Home")
+                } icon: {
+                    Image("ctrl")
+                        .imageScale(.large)
+                }
+
+                
             }
             
             // MARK: - Events
 
-            NavigationView {
-                Text("Page Two")
-                    .navigationBarTitle("Events")
-            }
+            EventListScreen()
             .tabItem {
                 Image(systemName: "calendar")
                 Text("Events")
@@ -40,16 +42,14 @@ struct ContentView: View {
             
             // MARK: - Players
 
-            NavigationView {
-                Text("Players")
-                    .navigationBarTitle("Players")
-            }
+            SearchScreen()
+                .background(Color.secondaryGroupedBackground)
             .tabItem {
-                Image(systemName: "gamecontroller")
-                Text("Players")
+                Image(systemName: "magnifyingglass")
+                Text("Search")
             }
         }
-        .edgesIgnoringSafeArea(.top)
+//        .edgesIgnoringSafeArea(.top)
         
     }
 }

@@ -1,0 +1,20 @@
+{
+  "_id": "5f3d8fdd95f40596eae23d97",
+  "slug": "3d97-kuxir97",
+  "tag": "kuxir97",
+  "name": "Francesco Cinquemani",
+  "country": "it",
+  "team": {
+    "_id": "6020c370f1e4807cc702fc9a",
+    "slug": "fc9a-wolves-esports",
+    "name": "Wolves Esports",
+    "region": "EU",
+    "image": "https://griffon.octane.gg/teams/wolves-esports.png"
+  },
+  "accounts": [
+    {
+      "platform": "steam",
+      "id": "76561198072696308"
+    }
+  ]
+}

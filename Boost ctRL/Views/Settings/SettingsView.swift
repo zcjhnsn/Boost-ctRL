@@ -23,31 +23,29 @@ struct SettingsView: View {
         NavigationView {
             Form {
                 Section(header: Text("Customization")) {
-                    Picker(selection: $iconSettings.currentIndex,label:Text("App Icon")){
-                        ForEach(0 ..< iconSettings.iconNames.count){i in
-                            HStack(spacing:20){
-                                Image(uiImage: UIImage(named: self.iconSettings.iconNames[i] ?? "AppIcon") ?? UIImage())
-                                    .resizable()
-                                    .renderingMode(.original)
-                                    .frame(width: 50, height: 50, alignment: .leading)
-                                    .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-                                Text(self.iconSettings.iconNames[i]?.components(separatedBy: "60x60").first ?? "Default")
-                            }
-                            .navigationBarTitle(Text("App Icon"))
-                        }.onReceive([self.iconSettings.currentIndex].publisher.first()){ value in
-                            let i = self.iconSettings.iconNames.firstIndex(of: UIApplication.shared.alternateIconName) ?? 0
-                            if value != i {
-                                UIApplication.shared.setAlternateIconName(self.iconSettings.iconNames[value], completionHandler: {
-                                    error in
-                                    if let error = error {
-                                        print(error.localizedDescription)
-                                    } else {
-                                        print("Success!")
-                                    }
-                                })
-                            }
-                        }
-                    }
+//                    Picker(selection: $iconSettings.currentIndex, label: Text("App Icon")) {
+//                        ForEach(0 ..< iconSettings.iconNames.count) { i in
+//                            HStack(spacing: 20) {
+//                                Image(uiImage: UIImage(named: self.iconSettings.iconNames[i] ?? "AppIcon") ?? UIImage())
+//                                    .resizable()
+//                                    .renderingMode(.original)
+//                                    .frame(width: 50, height: 50, alignment: .leading)
+//                                    .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+//                                Text(self.iconSettings.iconNames[i]?.components(separatedBy: "60x60").first ?? "Default")
+//                            }
+//                        }.onReceive([self.iconSettings.currentIndex].publisher.first()) { value in
+//                            let i = self.iconSettings.iconNames.firstIndex(of: UIApplication.shared.alternateIconName) ?? 0
+//                            if value != i {
+//                                UIApplication.shared.setAlternateIconName(self.iconSettings.iconNames[value], completionHandler: { error in
+//                                    if let error = error {
+//                                        print(error.localizedDescription)
+//                                    } else {
+//                                        print("Success!")
+//                                    }
+//                                })
+//                            }
+//                        }
+//                    }
                     
                     Picker("Open links in", selection: $linkDestination) {
                         Text("In-App (Safari)").tag(0)

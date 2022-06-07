@@ -49,7 +49,7 @@ struct ActiveTeamInfo: Codable {
 }
 
 enum Region: String, Codable, CaseIterable {
-    case all    = "ALL"
+    case all    = "INT"
     case af     = "AF"
     case asia   = "ASIA"
     case eu     = "EU"

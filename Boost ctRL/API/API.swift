@@ -8,14 +8,26 @@
 import Foundation
 import Combine
 
+enum DateError: String, Error {
+    case invalidDate
+}
+
+enum EventStatus {
+    case completed
+    case ongoing
+    case upcoming
+}
+
 enum Endpoint {
     case activeTeams
     case newsRocketeers
     case newsOctane
     case matches
     case event(id: String)
+    case events
     case eventParticipants(id: String)
     case eventMatches(id: String)
+    case searchList
     case statsForPlayers
     
     var path: String {
@@ -30,12 +42,16 @@ enum Endpoint {
             return "/matches"
         case .event(let id):
             return "/events/\(id)"
+        case .events:
+            return "/events"
         case .eventParticipants(let id):
             return "/events/\(id)/participants"
         case .eventMatches(id: let id):
             return "/events/\(id)/matches"
         case .statsForPlayers:
             return "/stats/players"
+        case .searchList:
+            return "/search"
         }
     }
 }
@@ -54,7 +70,27 @@ enum API {
     
     static func run<T: Decodable>(_ request: URLRequest, decodingArticleType: Agent.ArticleSource = .notAnArticle) -> AnyPublisher<T, Error> {
         let decoder: JSONDecoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
+        
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .iso8601)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        
+        decoder.dateDecodingStrategy = .custom({ (decoder) -> Date in
+            let container = try decoder.singleValueContainer()
+            let dateStr = try container.decode(String.self)
+
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+            if let date = formatter.date(from: dateStr) {
+                return date
+            }
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssXXXXX"
+            if let date = formatter.date(from: dateStr) {
+                return date
+            }
+            throw DateError.invalidDate
+        })
+        
         
         switch decodingArticleType {
         case .octaneNews:
@@ -103,6 +139,7 @@ enum API {
             URLQueryItem(name: "tier", value: "S"),
             URLQueryItem(name: "tier", value: "A"),
             URLQueryItem(name: "sort", value: "date:desc"),
+            URLQueryItem(name: "before", value: DateFormatter.isoFrac.string(from: Date.today)),
             URLQueryItem(name: "perPage", value: "\(limit)")
         ]
         
@@ -146,7 +183,6 @@ enum API {
         ]
         
         let request = URLRequest(url: components.url!)
-        
         return run(request)
     }
     
@@ -165,6 +201,50 @@ enum API {
     /// - Returns: **Unsorted** array of active teams
     static func getActiveTeams() -> AnyPublisher<ActiveTeamsResponse, Error> {
         let components = URLComponents(string: octaneBase.appendingPathComponent(Endpoint.activeTeams.path).absoluteString)!
+        
+        let request = URLRequest(url: components.url!)
+        
+        return run(request)
+    }
+    
+    /// Get list of events
+    /// - Parameter completed: flag completed events
+    /// - Returns: list of events
+    static func getEvents(status: EventStatus) -> AnyPublisher<EventsResponse, Error> {
+        var components = URLComponents(string: octaneBase.appendingPathComponent(Endpoint.events.path).absoluteString)!
+        
+        switch status {
+        case .completed:
+            components.queryItems = [
+                URLQueryItem(name: "sort", value: "end_date:desc"),
+                URLQueryItem(name: "before", value: DateFormatter.isoFrac.string(from: Date.now)),
+                URLQueryItem(name: "after", value: "2021-01-01")
+            ]
+        case .ongoing:
+            components.queryItems = [
+                URLQueryItem(name: "sort", value: "start_date:asc"),
+                URLQueryItem(name: "date", value: DateFormatter.isoFrac.string(from: Date.now))
+            ]
+        case .upcoming:
+            components.queryItems = [
+                URLQueryItem(name: "sort", value: "start_date:asc"),
+                URLQueryItem(name: "after", value: DateFormatter.isoFrac.string(from: Date.now))
+            ]
+        }
+        
+        let request = URLRequest(url: components.url!)
+        
+        return run(request)
+    }
+    
+    /// Get list of searchable items
+    /// - Returns: list of searchable items
+    static func getSearchList() -> AnyPublisher<SearchList, Error> {
+        var components = URLComponents(string: octaneBase.appendingPathComponent(Endpoint.searchList.path).absoluteString)!
+        
+        components.queryItems = [
+            URLQueryItem(name: "relevant", value: "true")
+        ]
         
         let request = URLRequest(url: components.url!)
         

@@ -1,0 +1,226 @@
+[
+    {
+        "team": {
+            "_id": "6020bc70f1e4807cc70023c7",
+            "slug": "23c7-flipsid3-tactics",
+            "name": "FlipSid3 Tactics",
+            "image": "https://griffon.octane.gg/teams/flipsid3-tactics.png"
+        },
+        "players": [
+            {
+                "_id": "5f3d8fdd95f40596eae23d98",
+                "slug": "3d98-markydooda",
+                "tag": "Markydooda",
+                "country": "ab"
+            },
+            {
+                "_id": "6082fb1d0d9dcf9da5a4d079",
+                "slug": "d079-greazymeister",
+                "tag": "gReazymeister"
+            },
+            {
+                "_id": "5f3d8fdd95f40596eae23d97",
+                "slug": "3d97-kuxir97",
+                "tag": "kuxir97",
+                "country": "it"
+            }
+        ]
+    },
+    {
+        "team": {
+            "_id": "6020bc70f1e4807cc70023a9",
+            "slug": "23a9-genesis",
+            "name": "Genesis",
+            "image": "https://griffon.octane.gg/teams/genesis.png"
+        },
+        "players": [
+            {
+                "_id": "5f3d8fdd95f40596eae23d74",
+                "slug": "3d74-espeon",
+                "tag": "Espeon",
+                "country": "us"
+            },
+            {
+                "_id": "5f3d8fdd95f40596eae23d6b",
+                "slug": "3d6b-klassux",
+                "tag": "Klassux",
+                "country": "us"
+            },
+            {
+                "_id": "5f3d8fdd95f40596eae23d76",
+                "slug": "3d76-pluto",
+                "tag": "Pluto",
+                "country": "us"
+            }
+        ]
+    },
+    {
+        "team": {
+            "_id": "6020bccdf1e4807cc70062b6",
+            "slug": "62b6-mock-it-aces",
+            "name": "Mock-It Aces",
+            "image": "https://griffon.octane.gg/teams/mock-it-aces.png"
+        },
+        "players": [
+            {
+                "_id": "5f3d8fdd95f40596eae23da0",
+                "slug": "3da0-deevo",
+                "tag": "Deevo",
+                "country": "en"
+            },
+            {
+                "_id": "5f3d8fdd95f40596eae23da4",
+                "slug": "3da4-paschy90",
+                "tag": "Paschy90",
+                "country": "de"
+            },
+            {
+                "_id": "5f3d8fdd95f40596eae23d9c",
+                "slug": "3d9c-violentpanda",
+                "tag": "ViolentPanda",
+                "country": "nl"
+            }
+        ]
+    },
+    {
+        "team": {
+            "_id": "6020bc70f1e4807cc70023a0",
+            "slug": "23a0-nrg-esports",
+            "name": "NRG Esports",
+            "image": "https://griffon.octane.gg/teams/nrg-esports.png"
+        },
+        "players": [
+            {
+                "_id": "5f3d8fdd95f40596eae23d7a",
+                "slug": "3d7a-fireburner",
+                "tag": "Fireburner",
+                "country": "us"
+            },
+            {
+                "_id": "5f3d8fdd95f40596eae23d7b",
+                "slug": "3d7b-jacob",
+                "tag": "Jacob",
+                "country": "us"
+            },
+            {
+                "_id": "5f3d8fdd95f40596eae23d7c",
+                "slug": "3d7c-sadjunior",
+                "tag": "Sadjunior",
+                "country": "ca"
+            }
+        ]
+    },
+    {
+        "team": {
+            "_id": "6020bccdf1e4807cc70062de",
+            "slug": "62de-northern-gaming",
+            "name": "Northern Gaming",
+            "image": "https://griffon.octane.gg/teams/northern-gaming.png"
+        },
+        "players": [
+            {
+                "_id": "5f3d8fdd95f40596eae23da6",
+                "slug": "3da6-maestro",
+                "tag": "Maestro",
+                "country": "dk"
+            },
+            {
+                "_id": "5f3d8fdd95f40596eae23d99",
+                "slug": "3d99-miztik",
+                "tag": "miztik",
+                "country": "ab"
+            },
+            {
+                "_id": "5f9c7dc65246bf27936b664b",
+                "slug": "664b-remkoe",
+                "tag": "remkoe",
+                "country": "nl"
+            }
+        ]
+    },
+    {
+        "team": {
+            "_id": "6020bc70f1e4807cc7002413",
+            "slug": "2413-orbit",
+            "name": "Orbit",
+            "image": "https://griffon.octane.gg/teams/orbit.png"
+        },
+        "players": [
+            {
+                "_id": "5f3d8fdd95f40596eae23d6f",
+                "slug": "3d6f-garrettg",
+                "tag": "GarrettG",
+                "country": "us"
+            },
+            {
+                "_id": "5f3d8fdd95f40596eae23d70",
+                "slug": "3d70-moses",
+                "tag": "Moses",
+                "country": "us"
+            },
+            {
+                "_id": "5f3d8fdd95f40596eae23d73",
+                "slug": "3d73-turtle",
+                "tag": "Turtle",
+                "country": "us"
+            }
+        ]
+    },
+    {
+        "team": {
+            "_id": "6020bc70f1e4807cc70023af",
+            "slug": "23af-precision-z",
+            "name": "Precision Z",
+            "image": "https://griffon.octane.gg/teams/precision-z.png"
+        },
+        "players": [
+            {
+                "_id": "5f3d8fdd95f40596eae23d9a",
+                "slug": "3d9a-kaydop",
+                "tag": "Kaydop",
+                "country": "fr"
+            },
+            {
+                "_id": "5f3d8fdd95f40596eae23d9e",
+                "slug": "3d9e-sikii",
+                "tag": "Sikii",
+                "country": "de"
+            },
+            {
+                "_id": "5f3d8fdd95f40596eae23e77",
+                "slug": "3e77-skyline",
+                "tag": "Skyline",
+                "country": "ch"
+            }
+        ]
+    },
+    {
+        "team": {
+            "_id": "6020bc70f1e4807cc700242f",
+            "slug": "242f-take-3",
+            "name": "Take 3",
+            "image": "https://griffon.octane.gg/teams/take-3.png"
+        },
+        "players": [
+            {
+                "_id": "5f3d8fdd95f40596eae23d75",
+                "slug": "3d75-insolences",
+                "tag": "Insolences",
+                "country": "us"
+            },
+            {
+                "_id": "5f3d8fdd95f40596eae23d78",
+                "slug": "3d78-rizzo",
+                "tag": "Rizzo",
+                "country": "us"
+            },
+            {
+                "_id": "5f3d8fdd95f40596eae23d79",
+                "slug": "3d79-zanejackey",
+                "tag": "Zanejackey",
+                "country": "us"
+            }
+        ]
+    }
+]
+ 

@@ -14,7 +14,7 @@ struct MatchResultView: View {
     var match: Match
     @ObservedObject var matchViewModel = MatchViewModel()
     var gameSelectorIsHidden: Bool {
-        return match.games?.isEmpty ?? true
+        return match.games.isEmpty
     }
     
     var body: some View {
@@ -33,12 +33,13 @@ struct MatchResultView: View {
                     .redacted(when: matchViewModel.isTopPerformersLoading)
                     .padding(.bottom)
             }
-            .background(Color(UIColor.secondarySystemBackground))
+            .background(Color.secondaryGroupedBackground)
             .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
             .padding(.horizontal)
             
             MatchStatsView(match: match)
         }
+        .background(Color.primaryGroupedBackground)
         .onAppear {
             matchViewModel.getTopPerformers(forMatch: match.id)
         }
@@ -61,10 +62,8 @@ struct MatchResultsHeaderView: View {
     
     var inProgress: Bool {
         if !match.blue.winner && !match.orange.winner {
-            print("❌ Failed - No Winner")
             return true
         } else {
-            print("🥳 Success - There is a winner")
             return false
         }
     }
@@ -73,10 +72,9 @@ struct MatchResultsHeaderView: View {
         VStack(alignment: .center) {
             HStack {
                 NavigationLink(
-                    destination:  NavigationLazyView(
+                    destination: NavigationLazyView(
                         EventDetailView(eventID: match.event.slug)
                             .navigationBarTitleDisplayMode(.large)
-                            .navigationTitle(Text("Event Overview"))
                     )) {
                     
                     VStack(alignment: .leading) {
@@ -118,14 +116,14 @@ struct MatchResultsHeaderView: View {
                     
                     Text("\(match.blue.score)")
                         .font(.system(.largeTitle, design: .rounded).weight(match.blue.winner ? .bold : .regular))
-                        .foregroundColor(inProgress ? .black : (match.blue.winner ? .green : .red))
+                        .foregroundColor(inProgress ? .primary : (match.blue.winner ? .green : .red))
                     
                     Text("-")
                         .font(.system(.title, design: .rounded).weight(.bold))
                     
                     Text("\(match.orange.score)")
                         .font(.system(.largeTitle, design: .rounded).weight(match.orange.winner ? .bold : .regular))
-                        .foregroundColor(inProgress ? .black : (match.orange.winner ? .green : .red))
+                        .foregroundColor(inProgress ? .primary : (match.orange.winner ? .green : .red))
                     
                     UrlImageView(urlString: match.orange.teamInfo.team.image, type: .logo)
                         .frame(width: 100, height: 75, alignment: .center)
@@ -174,7 +172,7 @@ struct MatchResultsHeaderView: View {
                 .padding(.bottom)
                 
             }
-            .background(Color(UIColor.secondarySystemBackground))
+            .background(Color.secondaryGroupedBackground)
             .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
             .padding(.horizontal)
             
@@ -200,7 +198,7 @@ struct GameSelectorView: View {
     @State var showGameResultsTip = false
     
     var isHidden: Bool {
-        if let games = match.games, games.count > 0 {
+        if !match.games.isEmpty {
             return false
         } else { return true }
     }
@@ -219,11 +217,11 @@ struct GameSelectorView: View {
         .weight(.regular)
     
     var blueTotalGoals: Int? {
-        return match.games?.map { $0.blue }.reduce(0, +)
+        return match.games.map { $0.blue }.reduce(0, +)
     }
     
     var orangeTotalGoals: Int? {
-        return match.games?.map { $0.orange }.reduce(0, +)
+        return match.games.map { $0.orange }.reduce(0, +)
     }
     
     var body: some View {
@@ -271,7 +269,7 @@ struct GameSelectorView: View {
                             VStack {
                                 Text("T")
                                     .font(.system(.footnote, design: .rounded).weight(.light))
-                                    .foregroundColor(Color(.tertiaryLabel))
+                                    .foregroundColor(Color.primary)
                                     .padding(.bottom, 4)
                                 
                                 Text("\(blueTotalGoals ?? 0)")
@@ -289,7 +287,7 @@ struct GameSelectorView: View {
                             }
                             .padding(.horizontal, 4)
                             .padding(.vertical, 4)
-                            .background(Color(.tertiarySystemBackground))
+                            .background(Color.tertiaryGroupedBackground)
                             .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
                         }
                         
@@ -302,7 +300,7 @@ struct GameSelectorView: View {
             .padding(.horizontal)
         }
         .padding(.vertical)
-        .background(Color(.secondarySystemBackground))
+        .background(Color.secondaryGroupedBackground)
         .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
         .padding( .horizontal)
         .longPressAlert(title: "Game Results Help", message: "Tap a game result to see details for that game", dismissButton: .default(Text("Okay")))
@@ -400,18 +398,16 @@ struct MatchStatsView: View {
             
             ChosenStatsView(match: match, selectedType: $selectedStatType)
                 .padding()
-                .animation(.easeInOut)
+                .animation(.easeInOut, value: selectedStatType)
             
             
             Spacer()
             
         }
         .padding(.vertical)
-        .background(Color(.secondarySystemBackground))
+        .background(Color.secondaryGroupedBackground)
         .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
         .padding([.horizontal, .bottom])
-        
-        
         
     }
 }
@@ -528,7 +524,7 @@ struct TeamStatsView: View {
             .padding(.bottom)
             
             
-            Group {
+            SwiftUI.Group {
                 HStack {
                     Text("Score")
                         .font(.system(.headline, design: .default).weight(.bold))
@@ -595,7 +591,7 @@ struct TeamStatsView: View {
                 Divider()
             }
             
-            Group {
+            SwiftUI.Group {
                 
                 HStack {
                     Text("Saves")
@@ -656,8 +652,6 @@ struct TeamStatsView: View {
                 }
             }
             
-            
-            
         }
 //        .padding(.horizontal)
     }
@@ -699,7 +693,7 @@ struct PlayersStatsView: View {
 
 struct MatchResultView_Previews: PreviewProvider {
     static var previews: some View {
-        MatchResultView(match: PreviewHelper.MATCH)
+        MatchResultView(match: ExampleData.match)
     }
 }
 

@@ -7,11 +7,15 @@
 
 import SwiftUI
 
+// swiftlint:disable type_name
 @main
 struct Boost_ctRLApp: App {
+    @StateObject var iconNames = IconNames()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(IconNames())
+            ContentView()
+                .environmentObject(iconNames)
         }
     }
 }

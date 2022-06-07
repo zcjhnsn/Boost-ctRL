@@ -16,7 +16,7 @@ struct NewsView: View {
     var body: some View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
-                Group {
+                SwiftUI.Group {
                     RecentResultsRowView(recentMatches: recentMatchesViewModel.isMatchesLoading ? recentMatchesViewModel.dummyData : recentMatchesViewModel.matches)
                         .listRowInsets(EdgeInsets())
                         .animation(.easeInOut)
@@ -27,7 +27,7 @@ struct NewsView: View {
                     
                 }
                 
-                Group {
+                SwiftUI.Group {
                     HStack {
                         Label(
                             title: {
@@ -50,18 +50,18 @@ struct NewsView: View {
                 }
                 
             }
+            .background(Color.primaryGroupedBackground)
             .listStyle(PlainListStyle())
-            .navigationTitle("Home")
+            .navigationTitle("Boost Control")
             .toolbar(content: {
                 
                 // MARK: Left NavBar Item
 
                 ToolbarItemGroup(placement: .navigationBarLeading) {
-                    Image("ctrl-color").resizable().frame(width: 25, height: 25, alignment: .center)
-                    Text("Boost \(Text("Control").foregroundColor(.ctrlOrange))")
-                        .foregroundColor(.ctrlBlue)
-                        .font(.system(.title3, design: .default).weight(.bold))
-                    
+                    Image("ctrl-color")
+                        .resizable()
+                        .frame(width: 30, height: 28, alignment: .center)
+                        .padding(.trailing)
                 }
                 
                 // MARK: Right NavBar Item
@@ -86,5 +86,8 @@ struct NewsView: View {
 struct NewsView_Previews: PreviewProvider {
     static var previews: some View {
         NewsView()
+            .preferredColorScheme(.light)
+        NewsView()
+            .preferredColorScheme(.dark)
     }
 }

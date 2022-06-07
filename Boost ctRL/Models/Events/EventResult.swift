@@ -13,7 +13,7 @@ struct EventResult: Codable {
     let startDate, endDate: Date
     let region: String
     let mode: Int
-    let prize: Prize
+    @DecodableDefault.NoPrize var prize: Prize
     let tier: String
     let image: String?
     let groups: [String]?
@@ -27,31 +27,40 @@ struct EventResult: Codable {
     func getRegionName() -> String {
         switch self.region.lowercased() {
         case AppConstants.Region.na:
-                return "North America"
-            case AppConstants.Region.eu:
-                return "Europe"
-            case AppConstants.Region.oce:
-                return "Oceania"
-            case AppConstants.Region.sam:
-                return "South America"
-            case AppConstants.Region.me:
-                return "Middle East"
-            case AppConstants.Region.asia:
-                return "Asia"
-            case AppConstants.Region.af:
-                return "Africa"
-            case AppConstants.Region.int:
-                return "International"
-            default:
-                return "Unknown"
-            }
+            return "North America"
+        case AppConstants.Region.eu:
+            return "Europe"
+        case AppConstants.Region.oce:
+            return "Oceania"
+        case AppConstants.Region.sam:
+            return "South America"
+        case AppConstants.Region.me:
+            return "Middle East"
+        case AppConstants.Region.asia:
+            return "Asia"
+        case AppConstants.Region.af:
+            return "Africa"
+        case AppConstants.Region.int:
+            return "International"
+        default:
+            return "Unknown"
         }
+    }
+    
+    func hasLAN() -> Bool {
+        return stages.contains(where: { $0.lan == true })
+    }
 }
 
 // MARK: - Prize
-struct Prize: Codable {
-    let amount: Int
+struct Prize: Codable, Hashable {
+    let amount: Double
     let currency: String
+    
+    init(amount: Double, currency: String) {
+        self.amount = amount
+        self.currency = currency
+    }
 }
 
 // MARK: - Stage
@@ -59,12 +68,13 @@ struct EventStage: Codable {
     let id: Int
     let name: String
     let startDate, endDate: Date
-    let prize: Prize
+    @DecodableDefault.NoPrize var prize: Prize
+    @DecodableDefault.False var lan: Bool
     let liquipedia: String
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
-        case name, startDate, endDate, prize, liquipedia
+        case name, startDate, endDate, prize, liquipedia, lan
     }
 }
 
@@ -85,7 +95,7 @@ struct Participant: Codable, Hashable {
     
     enum CodingKeys: String, CodingKey {
         case team
-        case players = "players"
+        case players
     }
 }
 

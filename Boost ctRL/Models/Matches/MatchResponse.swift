@@ -12,21 +12,22 @@ struct MatchResponse: Codable {
 }
 
 
-
 // MARK: - Match
 struct Match: Codable, Identifiable, Hashable {
     static func == (lhs: Match, rhs: Match) -> Bool {
         return lhs.id == lhs.id
     }
     
-    let id, slug: String
+    @DecodableDefault.ID var id: String
+    let slug: String
     let event: Event
     let stage: Stage
     let date: String
     let format: Format
-    let blue, orange: TeamResult
+    @DecodableDefault.EmptyTeamResult var blue: TeamResult
+    @DecodableDefault.EmptyTeamResult var orange: TeamResult
     let number: Int
-    let games: [Game]?
+    @DecodableDefault.EmptyList var games: [Game]
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -42,10 +43,10 @@ enum MatchResult {
 
 // MARK: - TeamResults
 struct TeamResult: Codable, Hashable {
-    let score: Int
+    @DecodableDefault.Zero var score: Int
     let teamInfo: TeamInfo
-    let players: [PlayerResult]
-    let winner: Bool
+    @DecodableDefault.EmptyList var players: [PlayerResult]
+    @DecodableDefault.False var winner: Bool
     
     enum CodingKeys: String, CodingKey {
         case teamInfo = "team"
@@ -57,14 +58,6 @@ struct TeamResult: Codable, Hashable {
         self.teamInfo = teamInfo
         self.players = players
         self.winner = winner
-    }
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.score = try container.decodeIfPresent(Int.self, forKey: .score) ?? 0
-        self.teamInfo = try container.decode(TeamInfo.self, forKey: .teamInfo)
-        self.players = try container.decode([PlayerResult].self, forKey: .players)
-        self.winner = try container.decodeIfPresent(Bool.self, forKey: .winner) ?? false
     }
 }
 
@@ -87,6 +80,21 @@ struct PlayerBasic: Codable, Identifiable, Hashable {
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case slug, tag, country
+    }
+    
+    init(id: String, slug: String, tag: String, country: String) {
+        self.id = id
+        self.slug = slug
+        self.tag = tag
+        self.country = country
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decodeIfPresent(String.self, forKey: .id) ?? "CTRLExamplePlayer"
+        self.slug = try container.decodeIfPresent(String.self, forKey: .slug) ?? "ctrl-example-player"
+        self.tag = try container.decodeIfPresent(String.self, forKey: .tag) ?? "TBD"
+        self.country = try container.decodeIfPresent(String.self, forKey: .country) ?? ""
     }
 }
 
@@ -111,8 +119,13 @@ struct Demo: Codable, Hashable {
 
 // MARK: - BlueTeam
 struct TeamInfo: Codable, Hashable {
-    let team: Team
-    let stats: TeamStats?
+    @DecodableDefault.EmptyTeam var team: Team
+    var stats: TeamStats?
+    
+    init(team: Team, stats: TeamStats?) {
+        self.team = team
+        self.stats = stats
+    }
 }
 
 // MARK: - TeamStats
@@ -148,8 +161,11 @@ struct Positioning: Codable, Hashable, Equatable {
 
 // MARK: - TeamTeam
 struct Team: Codable, Identifiable, Hashable {
-    let id, slug, name: String
-    let image, region: String
+    var id: String
+    @DecodableDefault.EmptyString var slug: String
+    @DecodableDefault.EmptyString var name: String
+    @DecodableDefault.EmptyString var image: String
+    @DecodableDefault.EmptyString var region: String
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -163,29 +179,6 @@ struct Team: Codable, Identifiable, Hashable {
         self.image = image
         self.region = region
     }
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try container.decode(String.self, forKey: .id)
-        self.slug = try container.decode(String.self, forKey: .slug)
-        self.name = try container.decode(String.self, forKey: .name)
-        self.image = try container.decodeIfPresent(String.self, forKey: .image) ?? ""
-        self.region = try container.decodeIfPresent(String.self, forKey: .region) ?? ""
-    }
-}
-
-// MARK: - Event
-struct Event: Codable, Hashable {
-    let id, slug, name, region: String
-    let mode: Int
-    let tier: String
-    let image: String?
-    let groups: [String]?
-
-    enum CodingKeys: String, CodingKey {
-        case id = "_id"
-        case slug, name, region, mode, tier, image, groups
-    }
 }
 
 // MARK: - Format
@@ -196,24 +189,14 @@ struct Format: Codable, Hashable {
 
 // MARK: - Game
 struct Game: Codable, Hashable {
-    let id: String
-    let blue, orange, duration: Int
+    @DecodableDefault.ID var id: String
+    let blue, orange: Int
+    @DecodableDefault.Zero var duration: Int
     let overtime: Bool?
     let ballchasing: String?
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case blue, orange, duration, overtime, ballchasing
-    }
-}
-
-// MARK: - Stage
-struct Stage: Codable, Hashable {
-    let id: Int
-    let name: String
-
-    enum CodingKeys: String, CodingKey {
-        case id = "_id"
-        case name
     }
 }

@@ -20,60 +20,6 @@ struct TeamFilterView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                HStack {
-                    HStack {
-                        TextField("Search Teams by Name", text: $activeTeamsViewModel.searchText)
-                            .onChange(of: activeTeamsViewModel.searchText, perform: { value in
-                                if value.isEmpty {
-                                    isShowingClear = false
-                                } else {
-                                    isShowingClear = true
-                                    isSearching = true
-                                }
-                            })
-                            .padding(.leading, 24)
-                    }
-                    .padding(.horizontal)
-                    .padding(.vertical, 8)
-                    .background(Color(UIColor.secondarySystemBackground))
-                    .cornerRadius(6)
-                    .padding(.horizontal)
-                    .onTapGesture(perform: {
-                        isSearching = true
-                    })
-                    .overlay(
-                        HStack {
-                            Image(systemName: "magnifyingglass")
-                            Spacer()
-                            
-                            if isShowingClear {
-                                Button(action: {
-                                    activeTeamsViewModel.searchText = ""
-                                }, label: {
-                                    Image(systemName: "xmark.circle.fill")
-                                })
-                            }
-                        }
-                        .foregroundColor(.gray)
-                        .padding(.horizontal, 24)
-                    )
-                    .transition(.move(edge: .trailing))
-                    .animation(.easeInOut)
-                    
-                    if isSearching {
-                        Button(action: {
-                            hideKeyboard()
-                            isSearching = false
-                        }, label: {
-                            Text("Cancel")
-                                .padding(.trailing)
-                                .padding(.leading, -12)
-                        })
-                        .transition(.move(edge: .trailing))
-                        .animation(.easeInOut)
-                    }
-                }
-                
                 Picker("Region", selection: $selectedRegion) {
                     ForEach(0 ..< Region.allCases.count) {
                         Text(Region.allCases[$0].rawValue.uppercased())
@@ -94,28 +40,51 @@ struct TeamFilterView: View {
                                 resignSearchResponder()
                             }
                         })
+                        .padding([.vertical], 4)
+                        .background(Color.secondaryGroupedBackground)
+                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                         .padding([.bottom], 1)
+                        
                     
-                    Divider()
                 }
+                .padding(.horizontal)
+                
+                VStack(alignment: .center) {
+                    Text("Can't find a team? Looking for a player?\nTap \(Image(systemName: "magnifyingglass")) and search there.")
+                        .font(.subheadline)
+                        .foregroundColor(Color(uiColor: UIColor.tertiaryLabel))
+                        .multilineTextAlignment(.center)
+                }
+                .padding()
+                .padding(.horizontal)
                 
                 Spacer()
                 
             }
+            .background(Color.primaryGroupedBackground)
             .navigationBarTitle("Teams")
-            .navigationBarItems(leading: Label(
-                title: { Text("Boost Control").font(.system(.headline, design: .default).weight(.bold)).foregroundColor(.blue) },
-                icon: { Image("ctrl-blue").resizable().frame(width: 25, height: 25, alignment: .center) }
-            ),trailing: Button(action: {
-                isShowingFAQ = true
-            }, label: {
-                Image(systemName: "questionmark.circle")
-                    .foregroundColor(.primary)
-            }))
+            .toolbar(content: {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Image("ctrl-color")
+                        .resizable()
+                        .frame(width: 30, height: 28, alignment: .center)
+                        .padding(.trailing)
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        // Present FAQ
+                    } label: {
+                        Image(systemName: "questionmark.circle")
+                    }
+
+                }
+            })
             .alert(isPresented: $isShowingFAQ, content: {
                 Alert(title: Text("This page only shows ACTIVE teams"), message: Text("Use the Events tab to find older or less relevant teams."), dismissButton: .default(Text("Okay")))
             })
         }
+        .searchable(text: $activeTeamsViewModel.searchText, prompt: "Search teams by name")
         .onAppear(perform: {
             activeTeamsViewModel.getTeams()
         })
@@ -127,22 +96,17 @@ struct TeamFilterView: View {
     }
 }
 
-
-
 struct TeamFilterView_Previews: PreviewProvider {
     static var previews: some View {
         TeamFilterView()
     }
 }
 
-
-
-
 struct MultiSelectPickerView: View {
-    //the list of all items to read from
+    // the list of all items to read from
     @State var sourceItems: [String]
     
-    //a binding to the values we want to track
+    // a binding to the values we want to track
     @Binding var selectedItems: [String]
     
     var body: some View {
@@ -152,7 +116,7 @@ struct MultiSelectPickerView: View {
                     Button(action: {
                         withAnimation {
                             if self.selectedItems.contains(item) {
-                                //you may need to adapt this piece, my object has an ID I match against rather than just the string
+                                // you may need to adapt this piece, my object has an ID I match against rather than just the string
                                 self.selectedItems.removeAll(where: { $0 == item })
                             } else {
                                 self.selectedItems.append(item)

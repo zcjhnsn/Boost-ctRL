@@ -42,7 +42,7 @@ struct MatchCardView: View {
                                     Text(match.event.name)
                                         .font(.system(.footnote, design: .rounded))
                                         .padding([.horizontal, .top], 12)
-                                        .frame(width: 220,alignment: .leading)
+                                        .frame(width: 220, alignment: .leading)
                                     
                                     TeamScoreRow(teamResult: match.blue, isInProgress: inProgress, viewSize: viewSize)
                                     
@@ -57,7 +57,7 @@ struct MatchCardView: View {
                         
                     }
                 }
-                .background(Color(UIColor.secondarySystemBackground))
+                .background(Color.secondaryGroupedBackground)
                 .frame(width: 220, height: 90, alignment: .topLeading)
                 .cornerRadius(8, corners: .allCorners)
                 .padding(.leading, 15)
@@ -111,107 +111,10 @@ struct MatchCardView: View {
 
 struct MatchCardView_Previews: PreviewProvider {
     static var previews: some View {
-        MatchCardView(match: Match(
-                            id: "123123123",
-                            slug: "123123",
-                            event: Event(id: "123", slug: "123", name: "RLCS XI Fall Major", region: "na", mode: 3, tier: "S", image: "https://griffon.octane.gg/events/rlcs-x-championships.png", groups: ["rlcsxi"]),
-                            stage: Stage(id: 123, name: "asdf"),
-                            date: "2021-09-23T19:38:52Z",
-                            format: Format(type: "best", length: 3),
-                            blue: TeamResult(
-                                score: 3,
-                                teamInfo: TeamInfo(team: Team(
-                                    id: "1",
-                                    slug: "nrg",
-                                    name: "NRG Esports",
-                                    image: "https://griffon.octane.gg/teams/nrg-esports.png",
-                                    region: "NA"
-                                ),
-                                stats: nil
-                                ),
-                                players: [
-                                    PlayerResult(
-                                        player: PlayerBasic(
-                                            id: "gg",
-                                            slug: "garrettg",
-                                            tag: "GarrettG",
-                                            country: "us"
-                                        ),
-                                        stats: nil,
-                                        advanced: nil
-                                    ),
-                                    PlayerResult(
-                                        player: PlayerBasic(
-                                            id: "gg",
-                                            slug: "garrettg",
-                                            tag: "GarrettG",
-                                            country: "us"
-                                        ),
-                                        stats: nil,
-                                        advanced: nil
-                                    ),
-                                    PlayerResult(
-                                        player: PlayerBasic(
-                                            id: "gg",
-                                            slug: "garrettg",
-                                            tag: "GarrettG",
-                                            country: "us"
-                                        ),
-                                        stats: nil,
-                                        advanced: nil
-                                    )
-                                ],
-                                winner: true
-                            ),
-                            orange: TeamResult(
-                                score: 2,
-                                teamInfo: TeamInfo(team: Team(
-                                    id: "1",
-                                    slug: "nrg",
-                                    name: "NRG Esports",
-                                    image: "https://griffon.octane.gg/teams/nrg-esports.png",
-                                    region: "NA"
-                                ),
-                                stats: nil
-                                ),
-                                players: [
-                                    PlayerResult(
-                                        player: PlayerBasic(
-                                            id: "gg",
-                                            slug: "garrettg",
-                                            tag: "GarrettG",
-                                            country: "us"
-                                        ),
-                                        stats: nil,
-                                        advanced: nil
-                                    ),
-                                    PlayerResult(
-                                        player: PlayerBasic(
-                                            id: "gg",
-                                            slug: "garrettg",
-                                            tag: "GarrettG",
-                                            country: "us"
-                                        ),
-                                        stats: nil,
-                                        advanced: nil
-                                    ),
-                                    PlayerResult(
-                                        player: PlayerBasic(
-                                            id: "gg",
-                                            slug: "garrettg",
-                                            tag: "GarrettG",
-                                            country: "us"
-                                        ),
-                                        stats: nil,
-                                        advanced: nil
-                                    )
-                                ],
-                                winner: false
-                            ),
-                            number: 1,
-                            games: nil), viewSize: .medium)
+        MatchCardView(match: ExampleData.match, viewSize: .medium)
+            .preferredColorScheme(.light)
+        MatchCardView(match: ExampleData.match, viewSize: .medium)
             .preferredColorScheme(.dark)
         
     }
 }
-

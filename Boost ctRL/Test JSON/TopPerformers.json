@@ -1,0 +1,368 @@
+[
+    {
+        "player": {
+            "_id": "5f3d8fdd95f40596eae23d8e",
+            "slug": "3d8e-memory",
+            "tag": "Memory",
+            "country": "us"
+        },
+        "events": [
+            {
+                "_id": "615345bdf8090ec7452868f4",
+                "slug": "68f4-rlcs-2021-22-winter-north-america-regional-2",
+                "name": "RLCS 2021-22 Winter North America Regional 2",
+                "region": "NA",
+                "mode": 3,
+                "tier": "A",
+                "image": "https://griffon.octane.gg/events/rlcs-2021-22.png",
+                "groups": [
+                    "rlcs",
+                    "rlcs2122",
+                    "rlcs2122winter"
+                ]
+            }
+        ],
+        "teams": [
+            {
+                "_id": "6081af87b35d3cf552e29721",
+                "slug": "9721-shopify-rebellion",
+                "name": "Shopify Rebellion",
+                "region": "NA",
+                "image": "https://griffon.octane.gg/teams/Shopify_Rebellion_fixed.png",
+                "relevant": true
+            }
+        ],
+        "opponents": [
+            {
+                "_id": "6020c1bff1e4807cc7025907",
+                "slug": "5907-xset",
+                "name": "XSET",
+                "region": "NA",
+                "image": "https://griffon.octane.gg/teams/xset.png",
+                "relevant": true
+            }
+        ],
+        "startDate": "2022-01-28T21:32:39Z",
+        "endDate": "2022-01-28T21:54:33Z",
+        "games": {
+            "total": 4,
+            "replays": 4,
+            "wins": 1,
+            "seconds": 1200,
+            "replaySeconds": 1200
+        },
+        "matches": {
+            "total": 1,
+            "replays": 1,
+            "wins": 0
+        },
+        "stats": {
+            "rating": 2.96579370759284
+        }
+    },
+    {
+        "player": {
+            "_id": "5f3d8fdd95f40596eae2413c",
+            "slug": "413c-percy",
+            "tag": "percy.",
+            "country": "us"
+        },
+        "events": [
+            {
+                "_id": "615345bdf8090ec7452868f4",
+                "slug": "68f4-rlcs-2021-22-winter-north-america-regional-2",
+                "name": "RLCS 2021-22 Winter North America Regional 2",
+                "region": "NA",
+                "mode": 3,
+                "tier": "A",
+                "image": "https://griffon.octane.gg/events/rlcs-2021-22.png",
+                "groups": [
+                    "rlcs",
+                    "rlcs2122",
+                    "rlcs2122winter"
+                ]
+            }
+        ],
+        "teams": [
+            {
+                "_id": "6020c1bff1e4807cc7025907",
+                "slug": "5907-xset",
+                "name": "XSET",
+                "region": "NA",
+                "image": "https://griffon.octane.gg/teams/xset.png",
+                "relevant": true
+            }
+        ],
+        "opponents": [
+            {
+                "_id": "6081af87b35d3cf552e29721",
+                "slug": "9721-shopify-rebellion",
+                "name": "Shopify Rebellion",
+                "region": "NA",
+                "image": "https://griffon.octane.gg/teams/Shopify_Rebellion_fixed.png",
+                "relevant": true
+            }
+        ],
+        "startDate": "2022-01-28T21:32:39Z",
+        "endDate": "2022-01-28T21:54:33Z",
+        "games": {
+            "total": 4,
+            "replays": 4,
+            "wins": 3,
+            "seconds": 1200,
+            "replaySeconds": 1200
+        },
+        "matches": {
+            "total": 1,
+            "replays": 1,
+            "wins": 1
+        },
+        "stats": {
+            "rating": 4.39415327319825
+        }
+    },
+    {
+        "player": {
+            "_id": "5f3d8fdd95f40596eae24137",
+            "slug": "4137-jpow",
+            "tag": "JPow",
+            "country": "us"
+        },
+        "events": [
+            {
+                "_id": "615345bdf8090ec7452868f4",
+                "slug": "68f4-rlcs-2021-22-winter-north-america-regional-2",
+                "name": "RLCS 2021-22 Winter North America Regional 2",
+                "region": "NA",
+                "mode": 3,
+                "tier": "A",
+                "image": "https://griffon.octane.gg/events/rlcs-2021-22.png",
+                "groups": [
+                    "rlcs",
+                    "rlcs2122",
+                    "rlcs2122winter"
+                ]
+            }
+        ],
+        "teams": [
+            {
+                "_id": "6020c1bff1e4807cc7025907",
+                "slug": "5907-xset",
+                "name": "XSET",
+                "region": "NA",
+                "image": "https://griffon.octane.gg/teams/xset.png",
+                "relevant": true
+            }
+        ],
+        "opponents": [
+            {
+                "_id": "6081af87b35d3cf552e29721",
+                "slug": "9721-shopify-rebellion",
+                "name": "Shopify Rebellion",
+                "region": "NA",
+                "image": "https://griffon.octane.gg/teams/Shopify_Rebellion_fixed.png",
+                "relevant": true
+            }
+        ],
+        "startDate": "2022-01-28T21:32:39Z",
+        "endDate": "2022-01-28T21:54:33Z",
+        "games": {
+            "total": 4,
+            "replays": 4,
+            "wins": 3,
+            "seconds": 1200,
+            "replaySeconds": 1200
+        },
+        "matches": {
+            "total": 1,
+            "replays": 1,
+            "wins": 1
+        },
+        "stats": {
+            "rating": 4.436776460601953
+        }
+    },
+    {
+        "player": {
+            "_id": "5f3d8fdd95f40596eae23e9e",
+            "slug": "3e9e-rapid",
+            "tag": "rapid",
+            "country": "us"
+        },
+        "events": [
+            {
+                "_id": "615345bdf8090ec7452868f4",
+                "slug": "68f4-rlcs-2021-22-winter-north-america-regional-2",
+                "name": "RLCS 2021-22 Winter North America Regional 2",
+                "region": "NA",
+                "mode": 3,
+                "tier": "A",
+                "image": "https://griffon.octane.gg/events/rlcs-2021-22.png",
+                "groups": [
+                    "rlcs",
+                    "rlcs2122",
+                    "rlcs2122winter"
+                ]
+            }
+        ],
+        "teams": [
+            {
+                "_id": "6081af87b35d3cf552e29721",
+                "slug": "9721-shopify-rebellion",
+                "name": "Shopify Rebellion",
+                "region": "NA",
+                "image": "https://griffon.octane.gg/teams/Shopify_Rebellion_fixed.png",
+                "relevant": true
+            }
+        ],
+        "opponents": [
+            {
+                "_id": "6020c1bff1e4807cc7025907",
+                "slug": "5907-xset",
+                "name": "XSET",
+                "region": "NA",
+                "image": "https://griffon.octane.gg/teams/xset.png",
+                "relevant": true
+            }
+        ],
+        "startDate": "2022-01-28T21:32:39Z",
+        "endDate": "2022-01-28T21:54:33Z",
+        "games": {
+            "total": 4,
+            "replays": 4,
+            "wins": 1,
+            "seconds": 1200,
+            "replaySeconds": 1200
+        },
+        "matches": {
+            "total": 1,
+            "replays": 1,
+            "wins": 0
+        },
+        "stats": {
+            "rating": 4.545497644166003
+        }
+    },
+    {
+        "player": {
+            "_id": "5f3d8fdd95f40596eae23f75",
+            "slug": "3f75-hockser",
+            "tag": "hockser",
+            "country": "us"
+        },
+        "events": [
+            {
+                "_id": "615345bdf8090ec7452868f4",
+                "slug": "68f4-rlcs-2021-22-winter-north-america-regional-2",
+                "name": "RLCS 2021-22 Winter North America Regional 2",
+                "region": "NA",
+                "mode": 3,
+                "tier": "A",
+                "image": "https://griffon.octane.gg/events/rlcs-2021-22.png",
+                "groups": [
+                    "rlcs",
+                    "rlcs2122",
+                    "rlcs2122winter"
+                ]
+            }
+        ],
+        "teams": [
+            {
+                "_id": "6020c1bff1e4807cc7025907",
+                "slug": "5907-xset",
+                "name": "XSET",
+                "region": "NA",
+                "image": "https://griffon.octane.gg/teams/xset.png",
+                "relevant": true
+            }
+        ],
+        "opponents": [
+            {
+                "_id": "6081af87b35d3cf552e29721",
+                "slug": "9721-shopify-rebellion",
+                "name": "Shopify Rebellion",
+                "region": "NA",
+                "image": "https://griffon.octane.gg/teams/Shopify_Rebellion_fixed.png",
+                "relevant": true
+            }
+        ],
+        "startDate": "2022-01-28T21:32:39Z",
+        "endDate": "2022-01-28T21:54:33Z",
+        "games": {
+            "total": 4,
+            "replays": 4,
+            "wins": 3,
+            "seconds": 1200,
+            "replaySeconds": 1200
+        },
+        "matches": {
+            "total": 1,
+            "replays": 1,
+            "wins": 1
+        },
+        "stats": {
+            "rating": 2.8464052596014464
+        }
+    },
+    {
+        "player": {
+            "_id": "5f5ae87bc6cbf591c568a57b",
+            "slug": "a57b-paarth",
+            "tag": "Paarth",
+            "country": "us"
+        },
+        "events": [
+            {
+                "_id": "615345bdf8090ec7452868f4",
+                "slug": "68f4-rlcs-2021-22-winter-north-america-regional-2",
+                "name": "RLCS 2021-22 Winter North America Regional 2",
+                "region": "NA",
+                "mode": 3,
+                "tier": "A",
+                "image": "https://griffon.octane.gg/events/rlcs-2021-22.png",
+                "groups": [
+                    "rlcs",
+                    "rlcs2122",
+                    "rlcs2122winter"
+                ]
+            }
+        ],
+        "teams": [
+            {
+                "_id": "6081af87b35d3cf552e29721",
+                "slug": "9721-shopify-rebellion",
+                "name": "Shopify Rebellion",
+                "region": "NA",
+                "image": "https://griffon.octane.gg/teams/Shopify_Rebellion_fixed.png",
+                "relevant": true
+            }
+        ],
+        "opponents": [
+            {
+                "_id": "6020c1bff1e4807cc7025907",
+                "slug": "5907-xset",
+                "name": "XSET",
+                "region": "NA",
+                "image": "https://griffon.octane.gg/teams/xset.png",
+                "relevant": true
+            }
+        ],
+        "startDate": "2022-01-28T21:32:39Z",
+        "endDate": "2022-01-28T21:54:33Z",
+        "games": {
+            "total": 4,
+            "replays": 4,
+            "wins": 1,
+            "seconds": 1200,
+            "replaySeconds": 1200
+        },
+        "matches": {
+            "total": 1,
+            "replays": 1,
+            "wins": 0
+        },
+        "stats": {
+            "rating": 2.650775783610803
+        }
+    }
+]

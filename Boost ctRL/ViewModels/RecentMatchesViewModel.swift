@@ -11,18 +11,17 @@ import Combine
 class RecentMatchesViewModel: ObservableObject {
     @Published var matches: [Match] = []
     @Published var isMatchesLoading: Bool = true
-    let dummyData = [
-        PreviewHelper.MATCH,
-        PreviewHelper.MATCH,
-        PreviewHelper.MATCH,
-        PreviewHelper.MATCH,
-        PreviewHelper.MATCH,
-        PreviewHelper.MATCH,
-        PreviewHelper.MATCH,
-        PreviewHelper.MATCH,
-        PreviewHelper.MATCH,
-        PreviewHelper.MATCH,
-        PreviewHelper.MATCH
+    let dummyData: [Match] = [
+        ExampleData.match,
+        ExampleData.match,
+        ExampleData.match,
+        ExampleData.match,
+        ExampleData.match,
+        ExampleData.match,
+        ExampleData.match,
+        ExampleData.match,
+        ExampleData.match,
+        ExampleData.match
     ]
     
     var subscriptions = [AnyCancellable]()

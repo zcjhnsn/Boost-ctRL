@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-
-
 struct Collapsible<Content: View>: View {
     @State var text: () -> Text
     @State var image: () -> Image

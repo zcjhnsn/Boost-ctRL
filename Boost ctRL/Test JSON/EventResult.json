@@ -1,0 +1,52 @@
+{
+    "_id": "615345bdf8090ec7452868f4",
+    "slug": "68f4-rlcs-2021-22-winter-north-america-regional-2",
+    "name": "RLCS 2021-22 Winter North America Regional 2",
+    "startDate": "2022-01-23T00:00:00Z",
+    "endDate": "2022-01-30T23:30:00Z",
+    "region": "NA",
+    "mode": 3,
+    "prize": {
+        "amount": 100000,
+        "currency": "USD"
+    },
+    "tier": "A",
+    "image": "https://griffon.octane.gg/events/rlcs-2021-22.png",
+    "groups": [
+        "rlcs",
+        "rlcs2122",
+        "rlcs2122winter"
+    ],
+    "stages": [
+        {
+            "_id": 0,
+            "name": "Closed Qualifier",
+            "startDate": "2022-01-24T00:00:00Z",
+            "endDate": "2022-01-24T23:30:00Z",
+            "liquipedia": "https://liquipedia.net/rocketleague/Rocket_League_Championship_Series/2021-22/Winter/North_America/2/Closed_Qualifier",
+            "qualifier": true
+        },
+        {
+            "_id": 1,
+            "name": "Group Stage",
+            "startDate": "2022-01-28T18:00:00Z",
+            "endDate": "2022-01-28T23:30:00Z",
+            "prize": {
+                "amount": 4000,
+                "currency": "USD"
+            },
+            "liquipedia": "https://liquipedia.net/rocketleague/Rocket_League_Championship_Series/2021-22/Winter/North_America/2"
+        },
+        {
+            "_id": 2,
+            "name": "Playoffs",
+            "startDate": "2022-01-28T21:00:00Z",
+            "endDate": "2022-01-30T23:30:00Z",
+            "prize": {
+                "amount": 96000,
+                "currency": "USD"
+            },
+            "liquipedia": "https://liquipedia.net/rocketleague/Rocket_League_Championship_Series/2021-22/Winter/North_America/2"
+        }
+    ]
+}

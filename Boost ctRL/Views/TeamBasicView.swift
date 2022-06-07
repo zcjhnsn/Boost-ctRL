@@ -13,7 +13,7 @@ struct TeamBasicView: View {
     var regionColor: Color {
         switch team.team.region {
         case .asia:
-            return .pink
+            return .teal
         case .eu:
             return .blue
         case .me:
@@ -37,7 +37,7 @@ struct TeamBasicView: View {
             HStack {
                 UrlImageView(urlString: team.team.image, type: .logo)
                     .padding(4)
-                    .background(Color(UIColor.secondarySystemBackground))
+                    .background(Color.secondaryGroupedBackground)
                     .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
                     .frame(width: 50, height: 50, alignment: .center)
                     .padding([.leading])
@@ -62,6 +62,6 @@ struct TeamBasicView: View {
 
 struct TeamBasicView_Previews: PreviewProvider {
     static var previews: some View {
-        TeamBasicView(team: PreviewHelper.MOCK_ACTIVE_TEAM)
+        TeamBasicView(team: ExampleData.activeTeam)
     }
 }

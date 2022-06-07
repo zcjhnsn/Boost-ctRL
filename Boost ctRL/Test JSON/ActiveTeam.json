@@ -1,0 +1,88 @@
+
+{
+  "team": {
+    "_id": "6020bc71f1e4807cc7002514",
+    "slug": "2514-1ne-esports",
+    "name": "1NE eSports",
+    "region": "ASIA",
+    "image": "https://griffon.octane.gg/teams/1ne-esports.png"
+  },
+  "players": [
+    {
+      "_id": "5f3d8fdd95f40596eae24355",
+      "slug": "4355-gon",
+      "tag": "Gon",
+      "name": "Handy Setiawan",
+      "country": "id",
+      "team": {
+        "_id": "6020bc71f1e4807cc7002514",
+        "slug": "2514-1ne-esports",
+        "name": "1NE eSports",
+        "region": "ASIA",
+        "image": "https://griffon.octane.gg/teams/1ne-esports.png"
+      }
+    },
+    {
+      "_id": "609b903ea07ea8dc37040007",
+      "slug": "0007-misty",
+      "tag": "Misty",
+      "name": "Thrishernn Raaj",
+      "country": "my",
+      "team": {
+        "_id": "6020bc71f1e4807cc7002514",
+        "slug": "2514-1ne-esports",
+        "name": "1NE eSports",
+        "region": "ASIA",
+        "image": "https://griffon.octane.gg/teams/1ne-esports.png"
+      },
+      "accounts": [
+        {
+          "platform": "steam",
+          "id": "76561198185792373"
+        }
+      ]
+    },
+    {
+      "_id": "6064e22e3036cdb09d774566",
+      "slug": "4566-revoir",
+      "tag": "Revoir",
+      "name": "Dika Utama",
+      "country": "id",
+      "team": {
+        "_id": "6020bc71f1e4807cc7002514",
+        "slug": "2514-1ne-esports",
+        "name": "1NE eSports",
+        "region": "ASIA",
+        "image": "https://griffon.octane.gg/teams/1ne-esports.png"
+      },
+      "accounts": [
+        {
+          "platform": "steam",
+          "id": "76561198142293058"
+        }
+      ]
+    },
+    {
+      "_id": "5f3d8fdd95f40596eae23f18",
+      "slug": "3f18-squirrel",
+      "tag": "Squirrel",
+      "name": "Jordy Loing",
+      "country": "id",
+      "team": {
+        "_id": "6020bc71f1e4807cc7002514",
+        "slug": "2514-1ne-esports",
+        "name": "1NE eSports",
+        "region": "ASIA",
+        "image": "https://griffon.octane.gg/teams/1ne-esports.png"
+      },
+      "accounts": [
+        {
+          "platform": "steam",
+          "id": "76561198223175356"
+        }
+      ],
+      "substitute": true
+    }
+  ]
+}
+

@@ -14,7 +14,7 @@ struct TeamScoreRow: View {
     
     private var scoreColor: Color {
         if isInProgress {
-            return .black
+            return Color.primary
         } else if teamResult.winner {
             return .green
         } else {
@@ -111,7 +111,7 @@ struct TeamScoreRow: View {
 struct TeamScoreRow_Previews: PreviewProvider {
     static var previews: some View {
         TeamScoreRow(
-            teamResult: PreviewHelper.TEAM_RESULT_NA_1,
+            teamResult: ExampleData.teamResult,
             isInProgress: false,
             viewSize: .medium
         )

@@ -9,11 +9,10 @@ import Foundation
 import Combine
 
 class ActiveTeamsViewModel: ObservableObject {
-    @Published var teams: [ActiveTeam] = PreviewHelper.MOCK_ACTIVE_TEAM_RESPONSE.teams
+    @Published var teams: [ActiveTeam] = [ ExampleData.activeTeam, ExampleData.activeTeam, ExampleData.activeTeam, ExampleData.activeTeam ]
     @Published var searchText: String = ""
     @Published var isTeamsLoading: Bool = true
     @Published var filteredData: [ActiveTeam] = []
-    
         
     var subscriptions = [AnyCancellable]()
     var publisher: AnyCancellable?
@@ -26,10 +25,8 @@ class ActiveTeamsViewModel: ObservableObject {
                 if !self.searchText.isEmpty {
                     self.filteredData = self.teams.filter { $0.team.name.lowercased().contains(str.lowercased()) }
                 } else {
-                    print("It's empty")
                     self.filteredData = self.teams
                 }
-                print("🟢 - \(str) - filtered: \(self.filteredData.count) - total: \(self.teams.count)")
             })
     }
     
@@ -50,8 +47,4 @@ class ActiveTeamsViewModel: ObservableObject {
             })
             .store(in: &subscriptions)
     }
-    
-
-    
 }
-

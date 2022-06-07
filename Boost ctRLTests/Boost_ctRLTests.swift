@@ -8,6 +8,7 @@
 import XCTest
 @testable import Boost_ctRL
 
+// swiftlint:disable type_name
 class Boost_ctRLTests: XCTestCase {
 
     override func setUpWithError() throws {
@@ -28,6 +29,10 @@ class Boost_ctRLTests: XCTestCase {
         self.measure {
             // Put the code you want to measure the time of here.
         }
+    }
+    
+    func testTopPerformersJSON() throws {
+        
     }
 
 }

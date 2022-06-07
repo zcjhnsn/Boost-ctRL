@@ -7,6 +7,7 @@
 
 import XCTest
 
+// swiftlint:disable type_name
 class Boost_ctRLUITests: XCTestCase {
 
     override func setUpWithError() throws {

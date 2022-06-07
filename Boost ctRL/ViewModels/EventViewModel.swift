@@ -10,10 +10,10 @@ import Combine
 import Collections
 
 class EventViewModel: ObservableObject {
-    @Published var event: EventResult = PreviewHelper.EVENT_RESULT
-    @Published var participants: [Participant] = PreviewHelper.MOCK_PARTICIPANTS
-    @Published var topPerformers: [TopPerformer] = PreviewHelper.MOCK_TOP_PERFORMERS
-    @Published var eventMatches: OrderedDictionary<DateComponents, [Match]> = [ DateComponents(year: 2021, month: 9, day: 23) : [ PreviewHelper.MATCH, PreviewHelper.MATCH, PreviewHelper.MATCH ]]
+    @Published var event: EventResult = ExampleData.eventResult
+    @Published var participants: [Participant] = ExampleData.participants
+    @Published var topPerformers: [TopPerformer] = ExampleData.topPerformers
+    @Published var eventMatches: OrderedDictionary<DateComponents, [Match]> = [DateComponents(year: 2021, month: 9, day: 23): [ ExampleData.match, ExampleData.match, ExampleData.match ]]
     
     @Published var isEventLoading: Bool = true
     @Published var isParticipantsLoading: Bool = true
@@ -33,7 +33,7 @@ class EventViewModel: ObservableObject {
         
         API.getEvent(byID: id)
             .mapError({ error -> Error in
-                print("💀 Error - Could not fetch event - \(error)")
+                print("💀 Error - Could not fetch event ID: \(id) - \(error)")
                 return error
             })
             .sink(receiveCompletion: { _ in
@@ -124,4 +124,3 @@ class EventViewModel: ObservableObject {
         return orderedDict
     }
 }
-
