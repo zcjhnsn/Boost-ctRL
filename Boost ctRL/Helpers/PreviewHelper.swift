@@ -8,12 +8,14 @@
 import Foundation
 
 struct ExampleData {
+    // swiftlint:disable force_try
     static func fromJson<T: Codable>(name: String) -> T {
         let jsonDecoder = JSONDecoder()
         jsonDecoder.dateDecodingStrategy = .iso8601
         let data = try! Data(contentsOf: Bundle.main.url(forResource: name, withExtension: "json")!)
         return try! jsonDecoder.decode(T.self, from: data)
     }
+    // swiftlint:enable force_try
     
     static var team: Team {
         fromJson(name: "Team")
@@ -45,6 +47,10 @@ struct ExampleData {
     
     static var participants: [Participant] {
         fromJson(name: "Participants")
+    }
+    
+    static var matchResponse: MatchResponse {
+        fromJson(name: "RecordTest")
     }
     
     static var teamResult: TeamResult {

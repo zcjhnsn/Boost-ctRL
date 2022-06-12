@@ -29,7 +29,7 @@ class SearchViewModel: ObservableObject {
                 }
             })
     }
-    
+     
     /// Retrieves search items
     func getSearchItems() {
         isSearchListLoading = true

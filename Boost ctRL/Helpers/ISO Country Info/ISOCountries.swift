@@ -23,12 +23,14 @@ public struct IsoCountryInfo {
 
 }
 
-// swiftlint:disable type_body_length
 public class IsoCountries {
 
     public class func flag(countryCode: String) -> String? {
         var string = ""
-        let country = countryCode.uppercased()
+        var country = countryCode.uppercased()
+        if country == "EN" {
+            country = "GB"
+        }
 
         let regionalA = "🇦".unicodeScalars
         let letterA = "A".unicodeScalars
@@ -298,4 +300,3 @@ public class IsoCountries {
     ]
     // swiftlint:enable line_length
 }
-// swiftlint:enable type_body_length

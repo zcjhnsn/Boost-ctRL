@@ -133,7 +133,7 @@ struct IconSelectionView: View {
     
     var body: some View {
         Form {
-            ForEach(0..<items.count) { index in
+            ForEach(0 ..< items.count, id: \.self) { index in
                 HStack {
                     Image(uiImage: UIImage(named: self.items[index] ?? "AppIcon") ?? UIImage())
                         .resizable()

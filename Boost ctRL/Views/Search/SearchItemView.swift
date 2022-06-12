@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SearchItemView: View {
+    @State private var showScreen: Bool = false
     var item: SearchItem
     
     var body: some View {
@@ -18,6 +19,7 @@ struct SearchItemView: View {
                     .padding([.vertical, .leading])
                     .font(.system(.body).smallCaps())
                     .foregroundColor(Color.gray)
+                
                 
                 if item.type == .player {
                     Text(getCountryFlag())
@@ -31,10 +33,21 @@ struct SearchItemView: View {
                 }
                 
                 Text(item.label)
+                    .foregroundColor(Color.primary)
                     .font(.system(.headline))
                 
                 Spacer()
             }
+            
+            if let id = item.id, item.type == .team {
+                NavigationLink("Team Info", isActive: $showScreen) {
+                    TeamScreen(team: Team(id: id, slug: id, name: item.label, image: item.image ?? "", region: ""))
+                }
+                .hidden()
+            }
+        }
+        .onTapGesture {
+            showScreen.toggle()
         }
         .background(Color.secondaryGroupedBackground)
         .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))

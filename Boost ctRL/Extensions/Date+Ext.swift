@@ -19,11 +19,15 @@ extension Date {
 
 
 extension Date {
-   static var tomorrow: Date { return Date().dayAfter }
-   static var today: Date { return Date() }
-   var dayAfter: Date {
+    static var tomorrow: Date { return Date().dayAfter }
+    static var today: Date { return Date() }
+    var dayAfter: Date {
       return Calendar.current.date(byAdding: .day, value: 1, to: Date())!
-   }
+    }
+    
+    func monthsAgo(_ numberOfMonths: Int) -> Date {
+        return Calendar.current.date(byAdding: .month, value: -numberOfMonths, to: Date())!
+    }
     
     func readable() -> String {
         return DateFormatter.localizedString(from: self, dateStyle: .short, timeStyle: .none)

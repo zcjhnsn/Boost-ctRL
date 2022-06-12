@@ -72,6 +72,9 @@
 		11A0EB0525FEA3D0004DE5BB /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0EB0425FEA3D0004DE5BB /* API.swift */; };
 		11A0EB0A25FEA422004DE5BB /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0EB0925FEA422004DE5BB /* Agent.swift */; };
 		11A0EB1725FEAAAC004DE5BB /* ArticlesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0EB1625FEAAAC004DE5BB /* ArticlesViewModel.swift */; };
+		5C0A6B4628567E8F0018290F /* RecordTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C0A6B4528567A470018290F /* RecordTest.json */; };
+		5C0A6B4728567E900018290F /* RecordTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C0A6B4528567A470018290F /* RecordTest.json */; };
+		5C0A6B4928569C920018290F /* StatsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0A6B4828569C920018290F /* StatsResponse.swift */; };
 		5C2C5FF527A356F800C41E60 /* DecodableDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2C5FF427A356F800C41E60 /* DecodableDefault.swift */; };
 		5C33A7B227A4C80D009BE6A0 /* EventListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C33A7B127A4C80D009BE6A0 /* EventListScreen.swift */; };
 		5C37B7AA284989B00040AE55 /* EventCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C37B7A9284989B00040AE55 /* EventCardView.swift */; };
@@ -89,10 +92,26 @@
 		5C67484D284F02B1001093EF /* SearchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C67484C284F02B1001093EF /* SearchScreen.swift */; };
 		5C67484F284F02BF001093EF /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C67484E284F02BF001093EF /* SearchViewModel.swift */; };
 		5C8166B22849430000EFC2C9 /* ArticleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8166B12849430000EFC2C9 /* ArticleCardView.swift */; };
+		5C9D26A42850DAA600643C12 /* TeamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9D26A32850DAA600643C12 /* TeamViewModel.swift */; };
+		5C9D26CC2850FD5B00643C12 /* AddOperatorCGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9D26BB2850FC5500643C12 /* AddOperatorCGPoint.swift */; };
+		5C9D26CD2850FD5B00643C12 /* ProgressViewStyle+gauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9D26BD2850FC5500643C12 /* ProgressViewStyle+gauge.swift */; };
+		5C9D26CE2850FD5B00643C12 /* GaugeProgressViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9D26BC2850FC5500643C12 /* GaugeProgressViewStyle.swift */; };
+		5C9D26CF2850FD6900643C12 /* AngularGradient+trafficLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9D26C12850FC5500643C12 /* AngularGradient+trafficLight.swift */; };
+		5C9D26D02850FD6900643C12 /* GaugePointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9D26C92850FC5500643C12 /* GaugePointer.swift */; };
+		5C9D26D12850FD6900643C12 /* Angle+angularGradiendGaugeStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9D26C52850FC5500643C12 /* Angle+angularGradiendGaugeStart.swift */; };
+		5C9D26D22850FD6900643C12 /* Gauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9D26CB2850FC5500643C12 /* Gauge.swift */; };
+		5C9D26D32850FD6900643C12 /* GaugePosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9D26CA2850FC5500643C12 /* GaugePosition.swift */; };
+		5C9D26D42850FD6900643C12 /* CGRect+center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9D26C22850FC5500643C12 /* CGRect+center.swift */; };
+		5C9D26D52850FD6900643C12 /* Ring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9D26BF2850FC5500643C12 /* Ring.swift */; };
+		5C9D26D62850FD6900643C12 /* CGPoint+subtractingFromX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9D26C32850FC5500643C12 /* CGPoint+subtractingFromX.swift */; };
+		5C9D26D72850FD6900643C12 /* CGRect+shortestSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9D26C62850FC5500643C12 /* CGRect+shortestSide.swift */; };
+		5C9D26D82850FD6900643C12 /* Angle+angularGradientGaugeEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9D26C72850FC5500643C12 /* Angle+angularGradientGaugeEnd.swift */; };
+		5C9D26D92850FD6900643C12 /* CGPoint+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9D26C42850FC5500643C12 /* CGPoint+init.swift */; };
 		5CB5650B284A818C00AB035C /* CurrencySymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB5650A284A818C00AB035C /* CurrencySymbol.swift */; };
 		5CC6F0BE284FA39800605583 /* SearchItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC6F0BD284FA39800605583 /* SearchItemView.swift */; };
 		5CC6F0C1284FB46000605583 /* ISOCountries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC6F0C0284FB46000605583 /* ISOCountries.swift */; };
 		5CC6F0C3284FB49900605583 /* ISOCountryCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC6F0C2284FB49900605583 /* ISOCountryCodes.swift */; };
+		5CC6F0C7284FE54100605583 /* TeamScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC6F0C6284FE54100605583 /* TeamScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,6 +209,8 @@
 		11A0EB0425FEA3D0004DE5BB /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		11A0EB0925FEA422004DE5BB /* Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
 		11A0EB1625FEAAAC004DE5BB /* ArticlesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesViewModel.swift; sourceTree = "<group>"; };
+		5C0A6B4528567A470018290F /* RecordTest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RecordTest.json; sourceTree = "<group>"; };
+		5C0A6B4828569C920018290F /* StatsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsResponse.swift; sourceTree = "<group>"; };
 		5C2C5FF427A356F800C41E60 /* DecodableDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableDefault.swift; sourceTree = "<group>"; };
 		5C33A7B127A4C80D009BE6A0 /* EventListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListScreen.swift; sourceTree = "<group>"; };
 		5C37B7A9284989B00040AE55 /* EventCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCardView.swift; sourceTree = "<group>"; };
@@ -206,10 +227,26 @@
 		5C67484C284F02B1001093EF /* SearchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreen.swift; sourceTree = "<group>"; };
 		5C67484E284F02BF001093EF /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		5C8166B12849430000EFC2C9 /* ArticleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCardView.swift; sourceTree = "<group>"; };
+		5C9D26A32850DAA600643C12 /* TeamViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewModel.swift; sourceTree = "<group>"; };
+		5C9D26BB2850FC5500643C12 /* AddOperatorCGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOperatorCGPoint.swift; sourceTree = "<group>"; };
+		5C9D26BC2850FC5500643C12 /* GaugeProgressViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeProgressViewStyle.swift; sourceTree = "<group>"; };
+		5C9D26BD2850FC5500643C12 /* ProgressViewStyle+gauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProgressViewStyle+gauge.swift"; sourceTree = "<group>"; };
+		5C9D26BF2850FC5500643C12 /* Ring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ring.swift; sourceTree = "<group>"; };
+		5C9D26C12850FC5500643C12 /* AngularGradient+trafficLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AngularGradient+trafficLight.swift"; sourceTree = "<group>"; };
+		5C9D26C22850FC5500643C12 /* CGRect+center.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+center.swift"; sourceTree = "<group>"; };
+		5C9D26C32850FC5500643C12 /* CGPoint+subtractingFromX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+subtractingFromX.swift"; sourceTree = "<group>"; };
+		5C9D26C42850FC5500643C12 /* CGPoint+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+init.swift"; sourceTree = "<group>"; };
+		5C9D26C52850FC5500643C12 /* Angle+angularGradiendGaugeStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Angle+angularGradiendGaugeStart.swift"; sourceTree = "<group>"; };
+		5C9D26C62850FC5500643C12 /* CGRect+shortestSide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+shortestSide.swift"; sourceTree = "<group>"; };
+		5C9D26C72850FC5500643C12 /* Angle+angularGradientGaugeEnd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Angle+angularGradientGaugeEnd.swift"; sourceTree = "<group>"; };
+		5C9D26C92850FC5500643C12 /* GaugePointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugePointer.swift; sourceTree = "<group>"; };
+		5C9D26CA2850FC5500643C12 /* GaugePosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugePosition.swift; sourceTree = "<group>"; };
+		5C9D26CB2850FC5500643C12 /* Gauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gauge.swift; sourceTree = "<group>"; };
 		5CB5650A284A818C00AB035C /* CurrencySymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySymbol.swift; sourceTree = "<group>"; };
 		5CC6F0BD284FA39800605583 /* SearchItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemView.swift; sourceTree = "<group>"; };
 		5CC6F0C0284FB46000605583 /* ISOCountries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISOCountries.swift; sourceTree = "<group>"; };
 		5CC6F0C2284FB49900605583 /* ISOCountryCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISOCountryCodes.swift; sourceTree = "<group>"; };
+		5CC6F0C6284FE54100605583 /* TeamScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,6 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				07D8C65626F3E8BA009FA85C /* ActiveTeams.swift */,
+				5C0A6B4828569C920018290F /* StatsResponse.swift */,
 			);
 			path = Teams;
 			sourceTree = "<group>";
@@ -376,6 +414,9 @@
 		11A0EA7925FDBFBC004DE5BB /* Boost ctRL */ = {
 			isa = PBXGroup;
 			children = (
+				5C9D26B92850FC5500643C12 /* GaugeProgressViewStyle */,
+				5CC6F0C5284FE34100605583 /* Player */,
+				5CC6F0C4284FE33900605583 /* Team */,
 				11A0EA8325FDBFBD004DE5BB /* Info.plist */,
 				11A0EA7A25FDBFBC004DE5BB /* Boost_ctRLApp.swift */,
 				11A0EA7E25FDBFBD004DE5BB /* Assets.xcassets */,
@@ -505,6 +546,7 @@
 				5C3BF86227AE320600AF72C3 /* EventResult.json */,
 				5C3BF86427AE32CE00AF72C3 /* ActiveTeam.json */,
 				5C3BF86627AE334700AF72C3 /* Participants.json */,
+				5C0A6B4528567A470018290F /* RecordTest.json */,
 			);
 			path = "Test JSON";
 			sourceTree = "<group>";
@@ -518,6 +560,59 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		5C9D26B92850FC5500643C12 /* GaugeProgressViewStyle */ = {
+			isa = PBXGroup;
+			children = (
+				5C9D26BA2850FC5500643C12 /* Operators */,
+				5C9D26BC2850FC5500643C12 /* GaugeProgressViewStyle.swift */,
+				5C9D26BD2850FC5500643C12 /* ProgressViewStyle+gauge.swift */,
+				5C9D26BE2850FC5500643C12 /* Shapes */,
+				5C9D26C02850FC5500643C12 /* Extensions */,
+				5C9D26C82850FC5500643C12 /* Gauge */,
+			);
+			path = GaugeProgressViewStyle;
+			sourceTree = "<group>";
+		};
+		5C9D26BA2850FC5500643C12 /* Operators */ = {
+			isa = PBXGroup;
+			children = (
+				5C9D26BB2850FC5500643C12 /* AddOperatorCGPoint.swift */,
+			);
+			path = Operators;
+			sourceTree = "<group>";
+		};
+		5C9D26BE2850FC5500643C12 /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				5C9D26BF2850FC5500643C12 /* Ring.swift */,
+			);
+			path = Shapes;
+			sourceTree = "<group>";
+		};
+		5C9D26C02850FC5500643C12 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5C9D26C12850FC5500643C12 /* AngularGradient+trafficLight.swift */,
+				5C9D26C22850FC5500643C12 /* CGRect+center.swift */,
+				5C9D26C32850FC5500643C12 /* CGPoint+subtractingFromX.swift */,
+				5C9D26C42850FC5500643C12 /* CGPoint+init.swift */,
+				5C9D26C52850FC5500643C12 /* Angle+angularGradiendGaugeStart.swift */,
+				5C9D26C62850FC5500643C12 /* CGRect+shortestSide.swift */,
+				5C9D26C72850FC5500643C12 /* Angle+angularGradientGaugeEnd.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5C9D26C82850FC5500643C12 /* Gauge */ = {
+			isa = PBXGroup;
+			children = (
+				5C9D26C92850FC5500643C12 /* GaugePointer.swift */,
+				5C9D26CA2850FC5500643C12 /* GaugePosition.swift */,
+				5C9D26CB2850FC5500643C12 /* Gauge.swift */,
+			);
+			path = Gauge;
+			sourceTree = "<group>";
+		};
 		5CC6F0BF284FB43900605583 /* ISO Country Info */ = {
 			isa = PBXGroup;
 			children = (
@@ -525,6 +620,22 @@
 				5CC6F0C2284FB49900605583 /* ISOCountryCodes.swift */,
 			);
 			path = "ISO Country Info";
+			sourceTree = "<group>";
+		};
+		5CC6F0C4284FE33900605583 /* Team */ = {
+			isa = PBXGroup;
+			children = (
+				5CC6F0C6284FE54100605583 /* TeamScreen.swift */,
+				5C9D26A32850DAA600643C12 /* TeamViewModel.swift */,
+			);
+			path = Team;
+			sourceTree = "<group>";
+		};
+		5CC6F0C5284FE34100605583 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Player;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -650,6 +761,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C0A6B4728567E900018290F /* RecordTest.json in Resources */,
 				5C3BF85727AE234500AF72C3 /* Team.json in Resources */,
 				5C3BF85D27AE269800AF72C3 /* Player.json in Resources */,
 				11A0EA8225FDBFBD004DE5BB /* Preview Assets.xcassets in Resources */,
@@ -666,6 +778,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C0A6B4628567E8F0018290F /* RecordTest.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -711,18 +824,26 @@
 				0776C13C268E9DC400582BE2 /* RecentResultsRowView.swift in Sources */,
 				0776C18B26A9FBB600582BE2 /* String+Ext.swift in Sources */,
 				11A0EAFB25FEA1A5004DE5BB /* RocketeersArticle.swift in Sources */,
+				5C9D26A42850DAA600643C12 /* TeamViewModel.swift in Sources */,
+				5C9D26CE2850FD5B00643C12 /* GaugeProgressViewStyle.swift in Sources */,
 				11A0EAC525FDCCEB004DE5BB /* ChangeLogView.swift in Sources */,
 				5C37B7AA284989B00040AE55 /* EventCardView.swift in Sources */,
 				0786A66026FD0E3D001CD89D /* Date+Ext.swift in Sources */,
 				5C2C5FF527A356F800C41E60 /* DecodableDefault.swift in Sources */,
+				5C9D26D42850FD6900643C12 /* CGRect+center.swift in Sources */,
 				11A0EB0525FEA3D0004DE5BB /* API.swift in Sources */,
+				5C9D26D22850FD6900643C12 /* Gauge.swift in Sources */,
 				11A0EB0025FEA1DB004DE5BB /* OctaneArticle.swift in Sources */,
 				070FA1BE26AA1A0900F204AE /* NavigationBarModifiers.swift in Sources */,
 				0786A7202703B2EF001CD89D /* CountryFlagView.swift in Sources */,
 				0717583926B8C97B00E74C8D /* EventViewModel.swift in Sources */,
+				5C9D26CC2850FD5B00643C12 /* AddOperatorCGPoint.swift in Sources */,
 				11A0EAAD25FDC124004DE5BB /* NewsView.swift in Sources */,
 				5C67484F284F02BF001093EF /* SearchViewModel.swift in Sources */,
+				5C9D26CD2850FD5B00643C12 /* ProgressViewStyle+gauge.swift in Sources */,
+				5C9D26D72850FD6900643C12 /* CGRect+shortestSide.swift in Sources */,
 				0786A7CB2704F1DC001CD89D /* Color+Ext.swift in Sources */,
+				5C9D26D62850FD6900643C12 /* CGPoint+subtractingFromX.swift in Sources */,
 				5C3BF86E27AEDFF300AF72C3 /* EventListViewModel.swift in Sources */,
 				0776C17F2698BDCD00582BE2 /* ArticleItemView.swift in Sources */,
 				0786A7CE270503E8001CD89D /* Players.swift in Sources */,
@@ -732,7 +853,9 @@
 				07D8C65226F3D5BC009FA85C /* TeamFilterView.swift in Sources */,
 				070FA1CB26B4CF6F00F204AE /* CollapsibleView.swift in Sources */,
 				0717584026C1CC3B00E74C8D /* CustomColors.swift in Sources */,
+				5C9D26D32850FD6900643C12 /* GaugePosition.swift in Sources */,
 				11A0EAB725FDCA8B004DE5BB /* TipJarView.swift in Sources */,
+				5C9D26D52850FD6900643C12 /* Ring.swift in Sources */,
 				5C8166B22849430000EFC2C9 /* ArticleCardView.swift in Sources */,
 				0717583C26BC4B0700E74C8D /* Theme.swift in Sources */,
 				0717583E26BC4B3700E74C8D /* ThemeDefinitions.swift in Sources */,
@@ -740,10 +863,13 @@
 				0776C13A2686715F00582BE2 /* RecentMatchesViewModel.swift in Sources */,
 				0717584226C2EB7500E74C8D /* AppConstants.swift in Sources */,
 				5C33A7B227A4C80D009BE6A0 /* EventListScreen.swift in Sources */,
+				5C9D26D92850FD6900643C12 /* CGPoint+init.swift in Sources */,
+				5C0A6B4928569C920018290F /* StatsResponse.swift in Sources */,
 				11A0EAB225FDC588004DE5BB /* SettingsView.swift in Sources */,
 				0776C13526866D1300582BE2 /* TeamScoreRow.swift in Sources */,
 				070FA1C026AA1A2500F204AE /* View+Ext.swift in Sources */,
 				070FA1C726B4954300F204AE /* LazyNavigationView.swift in Sources */,
+				5C9D26D02850FD6900643C12 /* GaugePointer.swift in Sources */,
 				07D8C65926F5122D009FA85C /* TeamBasicView.swift in Sources */,
 				5CC6F0C3284FB49900605583 /* ISOCountryCodes.swift in Sources */,
 				070FA1C926B4BC8C00F204AE /* LongPressAlertModifier.swift in Sources */,
@@ -753,13 +879,16 @@
 				11A0EAEE25FDD9F1004DE5BB /* URLImageView.swift in Sources */,
 				0717582D26B77DDB00E74C8D /* MatchStatsHelper.swift in Sources */,
 				11A0EAD325FDD51E004DE5BB /* Article.swift in Sources */,
+				5CC6F0C7284FE54100605583 /* TeamScreen.swift in Sources */,
 				5C67484A284F00D4001093EF /* SearchList.swift in Sources */,
 				07D8C65B26F52B8A009FA85C /* TeamDetailView.swift in Sources */,
 				11A0EABC25FDCBC5004DE5BB /* Bundle+Ext.swift in Sources */,
 				0717583426B89C4700E74C8D /* EventResult.swift in Sources */,
 				0776C18926A6280700582BE2 /* SafariView.swift in Sources */,
 				0717583726B8C8F700E74C8D /* EventDetailView.swift in Sources */,
+				5C9D26D12850FD6900643C12 /* Angle+angularGradiendGaugeStart.swift in Sources */,
 				11A0EA7D25FDBFBC004DE5BB /* ContentView.swift in Sources */,
+				5C9D26D82850FD6900643C12 /* Angle+angularGradientGaugeEnd.swift in Sources */,
 				11A0EA7B25FDBFBC004DE5BB /* Boost_ctRLApp.swift in Sources */,
 				11A0EAE425FDD61E004DE5BB /* ArticleItemCardView.swift in Sources */,
 				0786A65E26FA5F0B001CD89D /* MatchViewModel.swift in Sources */,
@@ -768,6 +897,7 @@
 				5CB5650B284A818C00AB035C /* CurrencySymbol.swift in Sources */,
 				5C67484D284F02B1001093EF /* SearchScreen.swift in Sources */,
 				11A0EB1725FEAAAC004DE5BB /* ArticlesViewModel.swift in Sources */,
+				5C9D26CF2850FD6900643C12 /* AngularGradient+trafficLight.swift in Sources */,
 				11A0EAE925FDD87D004DE5BB /* URLImageModel.swift in Sources */,
 				0776C18726A620F100582BE2 /* BrowserHelper.swift in Sources */,
 			);
@@ -856,7 +986,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -911,7 +1041,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -979,9 +1109,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AW6P749K93;
+				DEVELOPMENT_TEAM = V95KUS67FZ;
 				INFOPLIST_FILE = "Boost ctRLTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1001,9 +1131,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AW6P749K93;
+				DEVELOPMENT_TEAM = V95KUS67FZ;
 				INFOPLIST_FILE = "Boost ctRLTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1022,7 +1152,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AW6P749K93;
+				DEVELOPMENT_TEAM = V95KUS67FZ;
 				INFOPLIST_FILE = "Boost ctRLUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1042,7 +1172,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AW6P749K93;
+				DEVELOPMENT_TEAM = V95KUS67FZ;
 				INFOPLIST_FILE = "Boost ctRLUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

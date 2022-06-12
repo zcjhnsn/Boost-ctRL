@@ -137,7 +137,7 @@ struct MatchResultsHeaderView: View {
                 HStack {
                     
                     NavigationLink(
-                        destination: Text("\(match.blue.teamInfo.team.name)"),
+                        destination: TeamScreen(team: match.blue.teamInfo.team),
                         label: {
                             VStack(alignment: .leading) {
                                 Text(blueNameSplit.0)
@@ -154,7 +154,7 @@ struct MatchResultsHeaderView: View {
                     Spacer()
                     
                     NavigationLink(
-                        destination: Text("\(match.orange.teamInfo.team.name)"),
+                        destination: TeamScreen(team: match.orange.teamInfo.team),
                         label: {
                             VStack(alignment: .trailing) {
                                 Text(orangeNameSplit.0)
@@ -258,7 +258,7 @@ struct GameSelectorView: View {
                                 
                             }
                             
-                            ForEach(Array((match.games ?? []).enumerated()), id: \.element) { index, game in
+                            ForEach(Array(match.games.enumerated()), id: \.element) { index, game in
                                 GameResultSmallView(game: game, index: index + 1)
                                     .padding(.horizontal, 4)
                                     .padding(.vertical, 4)
@@ -682,7 +682,7 @@ struct PlayersStatsView: View {
             Spacer()
             
             PlayersChosenStatsView(match: match, selectedType: $pickerSelection)
-                .animation(.easeInOut)
+                .animation(.easeInOut, value: pickerSelection)
             
             Spacer()
         }

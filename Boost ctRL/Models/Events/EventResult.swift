@@ -123,4 +123,3 @@ struct Games: Codable {
 struct Stats: Codable {
     let rating: Double
 }
-

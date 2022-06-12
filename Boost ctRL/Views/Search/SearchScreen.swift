@@ -10,6 +10,13 @@ import SwiftUI
 struct SearchScreen: View {
     @StateObject private var viewModel = SearchViewModel()
     
+    let suggestions: [String] = [
+        "GarrettG",
+        "RLCS 2021-22 World Championship",
+        "Moist Esports",
+        "RLCS Season 5 World Championship"
+    ]
+    
     var body: some View {
         NavigationView {
             ZStack {

@@ -21,7 +21,7 @@ struct TeamFilterView: View {
         NavigationView {
             ScrollView {
                 Picker("Region", selection: $selectedRegion) {
-                    ForEach(0 ..< Region.allCases.count) {
+                    ForEach(0 ..< Region.allCases.count, id: \.self) {
                         Text(Region.allCases[$0].rawValue.uppercased())
                     }
                 }.pickerStyle(SegmentedPickerStyle())

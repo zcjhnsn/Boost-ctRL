@@ -161,6 +161,7 @@ struct Positioning: Codable, Hashable, Equatable {
 
 // MARK: - TeamTeam
 struct Team: Codable, Identifiable, Hashable {
+    
     var id: String
     @DecodableDefault.EmptyString var slug: String
     @DecodableDefault.EmptyString var name: String
@@ -179,6 +180,33 @@ struct Team: Codable, Identifiable, Hashable {
         self.image = image
         self.region = region
     }
+    
+    func getRegionName() -> String {
+        switch self.region.lowercased() {
+        case AppConstants.Region.na:
+            return "North America"
+        case AppConstants.Region.eu:
+            return "Europe"
+        case AppConstants.Region.oce:
+            return "Oceania"
+        case AppConstants.Region.sam:
+            return "South America"
+        case AppConstants.Region.me:
+            return "Middle East"
+        case AppConstants.Region.asia:
+            return "Asia"
+        case AppConstants.Region.af:
+            return "Africa"
+        case AppConstants.Region.int:
+            return "International"
+        default:
+            return "Unknown"
+        }
+    }
+    
+    func isSameTeam(as teamID: String) -> Bool {
+        return id == teamID || slug == teamID
+    }
 }
 
 // MARK: - Format
@@ -192,7 +220,7 @@ struct Game: Codable, Hashable {
     @DecodableDefault.ID var id: String
     let blue, orange: Int
     @DecodableDefault.Zero var duration: Int
-    let overtime: Bool?
+    @DecodableDefault.False var overtime: Bool
     let ballchasing: String?
 
     enum CodingKeys: String, CodingKey {

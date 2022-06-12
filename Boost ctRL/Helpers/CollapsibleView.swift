@@ -45,7 +45,7 @@ struct Collapsible<Content: View>: View {
                 VStack {
                     self.content()
                         .opacity(collapsed ? 0 : 1)
-                        .animation(.easeInOut)
+                        .animation(.easeInOut, value: collapsed)
                 }
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: collapsed ? 0 : .none)
                 .padding(collapsed ? -8 : 0)

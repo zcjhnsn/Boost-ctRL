@@ -27,8 +27,10 @@ enum Endpoint {
     case events
     case eventParticipants(id: String)
     case eventMatches(id: String)
+    case players
     case searchList
     case statsForPlayers
+    case teamStats
     
     var path: String {
         switch self {
@@ -48,10 +50,14 @@ enum Endpoint {
             return "/events/\(id)/participants"
         case .eventMatches(id: let id):
             return "/events/\(id)/matches"
+        case .players:
+            return "players"
         case .statsForPlayers:
             return "/stats/players"
         case .searchList:
             return "/search"
+        case .teamStats:
+            return "/stats/teams"
         }
     }
 }
@@ -247,6 +253,57 @@ enum API {
         ]
         
         let request = URLRequest(url: components.url!)
+        
+        return run(request)
+    }
+    
+    static func getPlayers(teamID: String = "") -> AnyPublisher<PlayerResponse, Error> {
+        var components = URLComponents(string: octaneBase.appendingPathComponent(Endpoint.players.path).absoluteString)!
+        
+        if !teamID.isEmpty {
+            components.queryItems = [
+                URLQueryItem(name: "team", value: teamID)
+            ]
+        }
+        
+        let request = URLRequest(url: components.url!)
+        
+        return run(request)
+    }
+    
+    static func getMatches(teamID: String) -> AnyPublisher<MatchResponse, Error> {
+        var components = URLComponents(string: octaneBase.appendingPathComponent(Endpoint.matches.path).absoluteString)!
+        print("🥶🥶🥶🥶🥶", DateFormatter.simple.string(from: Date().monthsAgo(3)))
+        components.queryItems = [
+            URLQueryItem(name: "team", value: teamID),
+            URLQueryItem(name: "after", value: DateFormatter.simple.string(from: Date().monthsAgo(3)))
+        ]
+        
+        let request = URLRequest(url: components.url!)
+        
+        return run(request)
+    }
+    
+    static func getStats(for teamID: String, isOvertime: Bool = false) -> AnyPublisher<StatsResponse, Error> {
+        var components = URLComponents(string: octaneBase.appendingPathComponent(Endpoint.teamStats.path).absoluteString)!
+        
+        components.queryItems = [
+            URLQueryItem(name: "team", value: teamID),
+            URLQueryItem(name: "after", value: DateFormatter.simple.string(from: Date().monthsAgo(3))),
+            URLQueryItem(name: "stat", value: "goals"),
+            URLQueryItem(name: "stat", value: "goalsAgainst"),
+            URLQueryItem(name: "stat", value: "goalsDifferential"),
+            URLQueryItem(name: "stat", value: "taken"),
+            URLQueryItem(name: "stat", value: "inflicted")
+        ]
+        
+        if isOvertime {
+            components.queryItems?.append(URLQueryItem(name: "overtime", value: "true"))
+        }
+        
+        let request = URLRequest(url: components.url!)
+        
+        print("🥶🥶🥶🥶🥶", request.url?.absoluteURL)
         
         return run(request)
     }

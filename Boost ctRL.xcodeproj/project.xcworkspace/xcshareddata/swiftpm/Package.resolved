@@ -1,115 +1,113 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "AttributedText",
-        "repositoryURL": "https://github.com/gonzalezreal/AttributedText",
-        "state": {
-          "branch": null,
-          "revision": "bf076de48dbb2172525486936d512e1bba062642",
-          "version": "0.3.0"
-        }
-      },
-      {
-        "package": "BottomSheet",
-        "repositoryURL": "https://github.com/LucasMucGH/BottomSheet",
-        "state": {
-          "branch": null,
-          "revision": "953c9a53d05ed7b61ae50a476758a97b7291da0a",
-          "version": "2.4.0"
-        }
-      },
-      {
-        "package": "combine-schedulers",
-        "repositoryURL": "https://github.com/pointfreeco/combine-schedulers",
-        "state": {
-          "branch": null,
-          "revision": "6dcc7c034d28fe7ac652453faeae07656f723909",
-          "version": "0.5.1"
-        }
-      },
-      {
-        "package": "MarkdownUI",
-        "repositoryURL": "https://github.com/gonzalezreal/MarkdownUI",
-        "state": {
-          "branch": null,
-          "revision": "e8931e37dcf777b4c03ca76aa09c10cf246a2ced",
-          "version": "0.5.1"
-        }
-      },
-      {
-        "package": "NetworkImage",
-        "repositoryURL": "https://github.com/gonzalezreal/NetworkImage",
-        "state": {
-          "branch": null,
-          "revision": "15582b821cb097012b41b83d6219717926ec4ed6",
-          "version": "2.1.0"
-        }
-      },
-      {
-        "package": "cmark",
-        "repositoryURL": "https://github.com/SwiftDocOrg/swift-cmark.git",
-        "state": {
-          "branch": null,
-          "revision": "9c8096a23f44794bde297452d87c455fc4f76d42",
-          "version": "0.29.0+20210102.9c8096a"
-        }
-      },
-      {
-        "package": "swift-collections",
-        "repositoryURL": "https://github.com/apple/swift-collections.git",
-        "state": {
-          "branch": null,
-          "revision": "2d33a0ea89c961dcb2b3da2157963d9c0370347e",
-          "version": "1.0.1"
-        }
-      },
-      {
-        "package": "SwiftCommonMark",
-        "repositoryURL": "https://github.com/gonzalezreal/SwiftCommonMark",
-        "state": {
-          "branch": null,
-          "revision": "ed60da54305c244d0f77bc8d08495e04161e96a4",
-          "version": "0.1.2"
-        }
-      },
-      {
-        "package": "SwiftlySearch",
-        "repositoryURL": "https://github.com/thislooksfun/SwiftlySearch",
-        "state": {
-          "branch": "master",
-          "revision": "2ce5dc30ee8fa12fe0dbb6e169825eb76e1c8fe2",
-          "version": null
-        }
-      },
-      {
-        "package": "SwiftUI-Shimmer",
-        "repositoryURL": "https://github.com/markiv/SwiftUI-Shimmer.git",
-        "state": {
-          "branch": null,
-          "revision": "5b2e81191e77f66e6c6ca497f11a77fe48f7f0fc",
-          "version": "1.0.0"
-        }
-      },
-      {
-        "package": "SwiftUICharts",
-        "repositoryURL": "https://github.com/zcjhnsn/SwiftUICharts.git",
-        "state": {
-          "branch": "zj/add-int-support",
-          "revision": "6a26f0466428cc1f6cc13c7c3347c93ffd804baa",
-          "version": null
-        }
-      },
-      {
-        "package": "xctest-dynamic-overlay",
-        "repositoryURL": "https://github.com/pointfreeco/xctest-dynamic-overlay",
-        "state": {
-          "branch": null,
-          "revision": "152390e9e78ebbf0d767ee52971d41e7f44f39bc",
-          "version": "0.1.1"
-        }
+  "pins" : [
+    {
+      "identity" : "attributedtext",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/gonzalezreal/AttributedText",
+      "state" : {
+        "revision" : "bf076de48dbb2172525486936d512e1bba062642",
+        "version" : "0.3.0"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "bottomsheet",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/LucasMucGH/BottomSheet",
+      "state" : {
+        "revision" : "953c9a53d05ed7b61ae50a476758a97b7291da0a",
+        "version" : "2.4.0"
+      }
+    },
+    {
+      "identity" : "combine-schedulers",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/combine-schedulers",
+      "state" : {
+        "revision" : "6dcc7c034d28fe7ac652453faeae07656f723909",
+        "version" : "0.5.1"
+      }
+    },
+    {
+      "identity" : "markdownui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/gonzalezreal/MarkdownUI",
+      "state" : {
+        "revision" : "e8931e37dcf777b4c03ca76aa09c10cf246a2ced",
+        "version" : "0.5.1"
+      }
+    },
+    {
+      "identity" : "networkimage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/gonzalezreal/NetworkImage",
+      "state" : {
+        "revision" : "15582b821cb097012b41b83d6219717926ec4ed6",
+        "version" : "2.1.0"
+      }
+    },
+    {
+      "identity" : "swift-cmark",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwiftDocOrg/swift-cmark.git",
+      "state" : {
+        "revision" : "9c8096a23f44794bde297452d87c455fc4f76d42",
+        "version" : "0.29.0+20210102.9c8096a"
+      }
+    },
+    {
+      "identity" : "swift-collections",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-collections.git",
+      "state" : {
+        "revision" : "2d33a0ea89c961dcb2b3da2157963d9c0370347e",
+        "version" : "1.0.1"
+      }
+    },
+    {
+      "identity" : "swiftcommonmark",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/gonzalezreal/SwiftCommonMark",
+      "state" : {
+        "revision" : "ed60da54305c244d0f77bc8d08495e04161e96a4",
+        "version" : "0.1.2"
+      }
+    },
+    {
+      "identity" : "swiftlysearch",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/thislooksfun/SwiftlySearch",
+      "state" : {
+        "branch" : "master",
+        "revision" : "2ce5dc30ee8fa12fe0dbb6e169825eb76e1c8fe2"
+      }
+    },
+    {
+      "identity" : "swiftui-shimmer",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/markiv/SwiftUI-Shimmer.git",
+      "state" : {
+        "revision" : "5b2e81191e77f66e6c6ca497f11a77fe48f7f0fc",
+        "version" : "1.0.0"
+      }
+    },
+    {
+      "identity" : "swiftuicharts",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/zcjhnsn/SwiftUICharts.git",
+      "state" : {
+        "branch" : "zj/add-int-support",
+        "revision" : "6a26f0466428cc1f6cc13c7c3347c93ffd804baa"
+      }
+    },
+    {
+      "identity" : "xctest-dynamic-overlay",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/xctest-dynamic-overlay",
+      "state" : {
+        "revision" : "152390e9e78ebbf0d767ee52971d41e7f44f39bc",
+        "version" : "0.1.1"
+      }
+    }
+  ],
+  "version" : 2
 }

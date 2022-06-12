@@ -22,7 +22,7 @@ struct SearchItem: Codable {
 }
 
 enum SearchType: String, Codable {
-    case event = "event"
-    case player = "player"
-    case team = "team"
+    case event
+    case player
+    case team
 }

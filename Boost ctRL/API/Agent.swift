@@ -34,10 +34,10 @@ struct Agent {
             .dataTaskPublisher(for: request) // Create data task as Combine publisher
             .tryMap { result -> Response<T> in
                 let value = try decoder.decode(T.self, from: result.data) // Parse the data
-                return Response(value: value, response: result.response) //
+                return Response(value: value, response: result.response)
             }
-            .receive(on: DispatchQueue.main) // 6
-            .eraseToAnyPublisher() // 7
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
     }
 }
 

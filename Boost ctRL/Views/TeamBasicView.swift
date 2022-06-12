@@ -32,7 +32,7 @@ struct TeamBasicView: View {
     
     var body: some View {
         
-        NavigationLink(destination: TeamDetailView(teamID: team.team.id).navigationTitle(Text("Team Detail"))) {
+        NavigationLink(destination: TeamScreen(team: Team(id: team.team.id, slug: team.team.slug, name: team.team.name, image: team.team.image ?? "", region: team.team.region?.rawValue ?? "INT"))) {
             
             HStack {
                 UrlImageView(urlString: team.team.image, type: .logo)

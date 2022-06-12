@@ -19,7 +19,7 @@ struct NewsView: View {
                 SwiftUI.Group {
                     RecentResultsRowView(recentMatches: recentMatchesViewModel.isMatchesLoading ? recentMatchesViewModel.dummyData : recentMatchesViewModel.matches)
                         .listRowInsets(EdgeInsets())
-                        .animation(.easeInOut)
+                        .animation(.easeInOut, value: recentMatchesViewModel.isMatchesLoading)
                         .redacted(when: recentMatchesViewModel.isMatchesLoading)                        
                     
                     Divider()
@@ -46,7 +46,7 @@ struct NewsView: View {
                     }
                     ArticleColumnView(articles: articlesViewModel.octaneArticles)
                         .redacted(when: articlesViewModel.isOctaneLoading)
-                        .animation(.easeInOut)
+                        .animation(.easeInOut, value: articlesViewModel.isOctaneLoading)
                 }
                 
             }

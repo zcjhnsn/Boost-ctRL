@@ -17,9 +17,32 @@ struct ArticleColumnView: View {
             LazyVGrid(columns: cols, alignment: .leading, spacing: 15) {
                 ForEach(articles) { article in
                     ArticleItemView(article: article)
+                        .contextMenu {
+                            Button {
+                                UIPasteboard.general.string = article.link
+                            } label: {
+                                Text("Copy link")
+                                Image(systemName: "doc.on.doc")
+                            }
+
+                            Button {
+                                actionSheet(article: article)
+                            } label: {
+                                Label("Share link", systemImage: "square.and.arrow.up")
+                            }
+                        }
                 }
             }
         }
+    }
+    
+    func actionSheet(article: Article) {
+        guard let urlShare = URL(string: article.link) else { return }
+        let activityVC = UIActivityViewController(activityItems: [urlShare], applicationActivities: nil)
+        let scenes = UIApplication.shared.connectedScenes
+        let windowScene = scenes.first as? UIWindowScene
+        let window = windowScene?.windows.first
+        window?.rootViewController?.present(activityVC, animated: true, completion: nil)
     }
 }
 

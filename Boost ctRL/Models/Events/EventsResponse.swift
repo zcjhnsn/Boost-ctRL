@@ -121,15 +121,15 @@ enum Tier: String, Codable, Comparable {
         }
     }
     
-    static func ==(lhs: Tier, rhs: Tier) -> Bool {
+    static func == (lhs: Tier, rhs: Tier) -> Bool {
         return lhs.sortOrder == rhs.sortOrder
     }
     
-    static func <(lhs: Tier, rhs: Tier) -> Bool {
+    static func < (lhs: Tier, rhs: Tier) -> Bool {
         return lhs.sortOrder < rhs.sortOrder
     }
     
-    static func >(lhs: Tier, rhs: Tier) -> Bool {
+    static func > (lhs: Tier, rhs: Tier) -> Bool {
         return lhs.sortOrder > rhs.sortOrder
     }
 }

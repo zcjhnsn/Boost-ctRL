@@ -7,6 +7,7 @@
 
 import Foundation
 
+// swiftlint:disable type_name
 protocol DecodableDefaultSource {
     associatedtype Value: Decodable
     static var defaultValue: Value { get }
@@ -120,6 +121,7 @@ extension DecodableDefault {
     typealias EmptyTeamResult = Wrapper<Sources.EmptyTeamResult>
     typealias ID = Wrapper<Sources.ID>
 }
+// swiftlint:enable type_name
 
 
 extension DecodableDefault.Wrapper: Equatable where Value: Equatable {}
