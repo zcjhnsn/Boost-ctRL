@@ -332,7 +332,7 @@ struct GameResultSmallView: View {
     }
     
     var overTimeFlag: String {
-        return game.overtime ?? false ? "*" : ""
+        return game.overtime ? "*" : ""
     }
     
     var body: some View {
@@ -478,13 +478,12 @@ struct PlayersStatsChartView: View {
     var isDecimal: Bool
     
     var body: some View {
-        if isDecimal {
-            HorizontalBarChartView(dataPoints: dataPoints) { point in
-                Text(point.legend.label) + Text(" - ") + Text(point.value.percentage).bold()
+        HorizontalBarChartView(dataPoints: dataPoints, isDecimal: false, separator: " -") { bar in
+            if isDecimal {
+                return Text(bar.legend.label) + Text("- \(bar.value.percentage)")
+            } else {
+                return Text(bar.legend.label) + Text("- \(bar.value, specifier: "%.0f")")
             }
-            
-        } else {
-            HorizontalBarChartView(dataPoints: dataPoints, isDecimal: false, separator: " -")
         }
     }
 }
@@ -507,6 +506,63 @@ struct ChosenStatsView: View {
 
 // MARK: - Team Stats View
 
+struct TeamsChosenStatsView: View {
+    var match: Match
+    
+    var matchHelper: MatchStatsHelper {
+        return MatchStatsHelper(match: match)
+    }
+    
+    @Binding var selectedType: StatsType
+    
+    var data: [DataPoint] {
+        switch selectedType {
+        case .score:
+            return matchHelper.getTeamScore()
+        case .goals:
+            return matchHelper.getTeamGoals()
+        case .assists:
+            return matchHelper.getTeamAssists()
+        case .saves:
+            return matchHelper.getTeamSaves()
+        case .shots:
+            return matchHelper.getTeamShots()
+        case .shotPercentage:
+            return matchHelper.getTeamShotPercentage()
+        }
+    }
+    
+    var isDecimal: Bool {
+        switch selectedType {
+        case .shotPercentage:
+            return true
+        default:
+            return false
+        }
+    }
+    
+    var body: some View {
+            TeamStatsChartView(dataPoints: data, isDecimal: isDecimal)
+    }
+}
+
+// MARK: - Players Stats Chart View
+
+struct TeamStatsChartView: View {
+    var dataPoints: [DataPoint]
+    var isDecimal: Bool
+    
+    var body: some View {
+        HorizontalBarChartView(dataPoints: dataPoints, isDecimal: false, separator: " -", text: { bar in
+            if isDecimal {
+                return Text("\(bar.value.percentage)")
+            } else {
+                return Text("\(bar.value, specifier: "%.0f")")
+            }
+        })
+            .chartStyle(BarChartStyle(showLegends: true))
+    }
+}
 
 struct TeamStatsView: View {
     var match: Match
@@ -515,145 +571,30 @@ struct TeamStatsView: View {
         return MatchStatsHelper(match: match)
     }
     
+    @State var pickerSelection: StatsType = .score
+    
     var body: some View {
-        
         VStack {
-            HorizontalBarChartView(dataPoints: statsHelper.getTeamNames(), text: { point in
-                Text(point.legend.label)
-            })
+            Picker("Select a stat type", selection: $pickerSelection) {
+                ForEach(StatsType.allCases, id: \.self) { type in
+                    Text(type.rawValue)
+                }
+            }
+            .pickerStyle(SegmentedPickerStyle())
             .padding(.bottom)
             
+            Spacer()
             
-            SwiftUI.Group {
-                HStack {
-                    Text("Score")
-                        .font(.system(.headline, design: .default).weight(.bold))
-                    
-                    Spacer()
-                }
-                
-                if statsHelper.getTeamScore().isEmpty {
-                    
-                    Text("No stats available")
-                        .foregroundColor(.secondary)
-                    
-                } else {
-                    HorizontalBarChartView(dataPoints: statsHelper.getTeamScore(), separator: " -", text: { point in
-                        Text("\(Int(point.value))")
-                    })
-                }
-                
-                Divider()
-                
-                HStack {
-                    Text("Goals")
-                        .font(.system(.headline, design: .default).weight(.bold))
-                    
-                    Spacer()
-                }
-                
-                if statsHelper.getTeamGoals().isEmpty {
-                    
-                    Text("No stats available")
-                        .foregroundColor(.secondary)
-                    
-                } else {
-                    HorizontalBarChartView(dataPoints: statsHelper.getTeamGoals(), separator: " -", text: { point in
-                        Text("\(Int(point.value))")
-                    })
-                }
-                Divider()
-                
-                /*
-                 let shots, goals, saves, assists: Int
-                 let score: Int
-                 let shootingPercentage: Double
-                 */
-                
-                HStack {
-                    Text("Assists")
-                        .font(.system(.headline, design: .default).weight(.bold))
-                    
-                    Spacer()
-                }
-                
-                if statsHelper.getTeamAssists().isEmpty {
-                    
-                    Text("No stats available")
-                        .foregroundColor(.secondary)
-                    
-                } else {
-                    HorizontalBarChartView(dataPoints: statsHelper.getTeamAssists(), separator: " -", text: { point in
-                        Text("\(Int(point.value))")
-                    })
-                }
-                
-                Divider()
-            }
+            TeamsChosenStatsView(match: match, selectedType: $pickerSelection)
+                .animation(.easeInOut, value: pickerSelection)
             
-            SwiftUI.Group {
-                
-                HStack {
-                    Text("Saves")
-                        .font(.system(.headline, design: .default).weight(.bold))
-                    
-                    Spacer()
-                }
-                
-                if statsHelper.getTeamSaves().isEmpty {
-                    
-                    Text("No stats available")
-                        .foregroundColor(.secondary)
-                    
-                } else {
-                    HorizontalBarChartView(dataPoints: statsHelper.getTeamSaves(), separator: " -", text: { point in
-                        Text("\(Int(point.value))")
-                    })
-                }
-                
-                Divider()
-                
-                HStack {
-                    Text("Shots")
-                        .font(.system(.headline, design: .default).weight(.bold))
-                    
-                    Spacer()
-                }
-                
-                if statsHelper.getTeamShots().isEmpty {
-                    
-                    Text("No stats available")
-                        .foregroundColor(.secondary)
-                    
-                } else {
-                    HorizontalBarChartView(dataPoints: statsHelper.getTeamShots(), separator: " -", text: { point in
-                        Text("\(Int(point.value))")
-                    })
-                }
-                
-                Divider()
-                
-                HStack {
-                    Text("Shooting Percentage")
-                        .font(.system(.headline, design: .default).weight(.bold))
-                    
-                    Spacer()
-                }
-                
-                if statsHelper.getTeamShotPercentage().isEmpty {
-                    
-                    Text("No stats available")
-                        .foregroundColor(.secondary)
-                    
-                } else {
-                    HorizontalBarChartView(dataPoints: statsHelper.getTeamShotPercentage(), separator: " -", text: { point in
-                        Text("\(point.value.percentage)")
-                    })
-                }
-            }
+            HorizontalBarChartView(dataPoints: statsHelper.getTeamNames(), text: { bar in
+                Text(bar.legend.label)
+            })
             
+            
+            Spacer()
         }
-//        .padding(.horizontal)
     }
 }
 
@@ -705,3 +646,4 @@ extension Animation {
             .delay(0.03 * Double(index))
     }
 }
+
