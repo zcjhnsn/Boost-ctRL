@@ -3,6 +3,16 @@
     {
       "filename" : "shift_primary@4x copy.png",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "shift_primary@4x.png",
+      "idiom" : "universal"
     }
   ],
   "info" : {
