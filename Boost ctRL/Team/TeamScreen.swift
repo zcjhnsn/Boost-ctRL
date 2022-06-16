@@ -10,6 +10,9 @@ import SwiftUI
 struct TeamScreen: View {
     @StateObject var viewModel = TeamViewModel()
     
+    @State var showPlayerScreen = false
+    @State var selectedPlayer = ExampleData.player
+    
     var team: Team
     var name: String = ""
     var image: String = ""
@@ -23,7 +26,7 @@ struct TeamScreen: View {
             ScrollView(.vertical, showsIndicators: false) {
                 TeamHeaderView(team: team)
                 
-                VStack {
+                VStack(spacing: 0) {
                     HStack {
                         Label(
                             title: {
@@ -42,26 +45,34 @@ struct TeamScreen: View {
                     .padding([.horizontal])
                     .padding(.vertical, 2)
                     
+                    NavigationLink("Player Info", isActive: $showPlayerScreen) {
+                        PlayerScreen(playerID: selectedPlayer.slug)
+                    }
+                    .hidden()
+                    
                     VStack {
-                        ForEach(viewModel.players, id: \.slug) { player in
+                        ForEach(viewModel.players, id: \.listID) { playerRow in
                             HStack {
-                                Text(IsoCountries.flag(countryCode: player.country) ?? "🌎")
+                                Text(IsoCountries.flag(countryCode: playerRow.country) ?? "🌎")
                                 
-                                Text(player.tag)
+                                Text(playerRow.tag)
                                 
-                                if player.substitute {
+                                if playerRow.substitute {
                                     Text("S")
                                         .foregroundColor(Color.gray)
                                 }
                                 
-                                if player.coach {
+                                if playerRow.coach {
                                     Image(systemName: "headphones")
                                         .foregroundColor(Color.gray)
                                 }
                                 
-                                Spacer()
-                                
+                                Spacer()                             
                             }
+                            .onTapGesture(perform: {
+                                selectedPlayer = playerRow
+                                showPlayerScreen.toggle()
+                            })
                             .padding(.horizontal)
                         }
                         .padding(.vertical)
@@ -131,7 +142,7 @@ struct TeamHeaderView: View {
                     .padding()
                     .background(Color.secondaryGroupedBackground)
                     .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                    .padding(.trailing)
+                    .padding([.trailing, .top])
                 
                 
             }
@@ -193,7 +204,7 @@ struct Last3MonthsView: View {
                             }
                         }
                         .progressViewStyle(
-                            .gauge(indicatorColor: .clear, indicatorStrokeColor: .primarySystemBackground,
+                            .gauge(indicatorColor: .clear, indicatorStrokeColor: .secondaryGroupedBackground,
                                    lowerLabel: {
                                        Text("\(viewModel.teamRecord.seriesWon)")
                                            .font(.system(.caption2))
@@ -219,7 +230,7 @@ struct Last3MonthsView: View {
                             }
                         }
                         .progressViewStyle(
-                            .gauge(indicatorColor: .clear, indicatorStrokeColor: .primarySystemBackground,
+                            .gauge(indicatorColor: .clear, indicatorStrokeColor: .secondaryGroupedBackground,
                                    lowerLabel: {
                                        Text("\(viewModel.teamRecord.gamesWon)")
                                            .font(.system(.caption2))
@@ -245,7 +256,7 @@ struct Last3MonthsView: View {
                             }
                         }
                         .progressViewStyle(
-                            .gauge(indicatorColor: .clear, indicatorStrokeColor: .primarySystemBackground,
+                            .gauge(indicatorColor: .clear, indicatorStrokeColor: .secondaryGroupedBackground,
                                    lowerLabel: {
                                        Text("\(viewModel.teamRecord.overtimeWin)")
                                            .font(.system(.caption2))
@@ -276,7 +287,7 @@ struct Last3MonthsView: View {
                             }
                         }
                         .progressViewStyle(
-                            .gauge(indicatorColor: .clear, indicatorStrokeColor: .primarySystemBackground,
+                            .gauge(indicatorColor: .clear, indicatorStrokeColor: .secondaryGroupedBackground,
                                    lowerLabel: {
                                        Text("\(viewModel.teamRecord.goalsFor)")
                                            .font(.system(.caption2))
@@ -302,7 +313,7 @@ struct Last3MonthsView: View {
                             }
                         }
                         .progressViewStyle(
-                            .gauge(indicatorColor: .clear, indicatorStrokeColor: .primarySystemBackground,
+                            .gauge(indicatorColor: .clear, indicatorStrokeColor: .secondaryGroupedBackground,
                                    lowerLabel: {
                                        Text("\(viewModel.teamRecord.demosFor)")
                                            .font(.system(.caption2))

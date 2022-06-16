@@ -75,6 +75,9 @@
 		5C0A6B4628567E8F0018290F /* RecordTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C0A6B4528567A470018290F /* RecordTest.json */; };
 		5C0A6B4728567E900018290F /* RecordTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C0A6B4528567A470018290F /* RecordTest.json */; };
 		5C0A6B4928569C920018290F /* StatsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0A6B4828569C920018290F /* StatsResponse.swift */; };
+		5C1F6A432858031C00875D7A /* PlayerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1F6A422858031C00875D7A /* PlayerScreen.swift */; };
+		5C1F6A45285804D700875D7A /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1F6A44285804D700875D7A /* PlayerViewModel.swift */; };
+		5C1F6A48285926BC00875D7A /* Players.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C1F6A47285926BC00875D7A /* Players.json */; };
 		5C2C5FF527A356F800C41E60 /* DecodableDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2C5FF427A356F800C41E60 /* DecodableDefault.swift */; };
 		5C33A7B227A4C80D009BE6A0 /* EventListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C33A7B127A4C80D009BE6A0 /* EventListScreen.swift */; };
 		5C37B7AA284989B00040AE55 /* EventCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C37B7A9284989B00040AE55 /* EventCardView.swift */; };
@@ -211,6 +214,10 @@
 		11A0EB1625FEAAAC004DE5BB /* ArticlesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesViewModel.swift; sourceTree = "<group>"; };
 		5C0A6B4528567A470018290F /* RecordTest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RecordTest.json; sourceTree = "<group>"; };
 		5C0A6B4828569C920018290F /* StatsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsResponse.swift; sourceTree = "<group>"; };
+		5C1F6A422858031C00875D7A /* PlayerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerScreen.swift; sourceTree = "<group>"; };
+		5C1F6A44285804D700875D7A /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
+		5C1F6A462858C3F000875D7A /* StatsObject.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = StatsObject.json; sourceTree = "<group>"; };
+		5C1F6A47285926BC00875D7A /* Players.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Players.json; sourceTree = "<group>"; };
 		5C2C5FF427A356F800C41E60 /* DecodableDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableDefault.swift; sourceTree = "<group>"; };
 		5C33A7B127A4C80D009BE6A0 /* EventListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListScreen.swift; sourceTree = "<group>"; };
 		5C37B7A9284989B00040AE55 /* EventCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCardView.swift; sourceTree = "<group>"; };
@@ -542,11 +549,13 @@
 				5C3BF85627AE234500AF72C3 /* Team.json */,
 				5C3BF85A27AE239900AF72C3 /* Match.json */,
 				5C3BF85C27AE269800AF72C3 /* Player.json */,
+				5C1F6A47285926BC00875D7A /* Players.json */,
 				5C3BF86027AE30BC00AF72C3 /* TopPerformers.json */,
 				5C3BF86227AE320600AF72C3 /* EventResult.json */,
 				5C3BF86427AE32CE00AF72C3 /* ActiveTeam.json */,
 				5C3BF86627AE334700AF72C3 /* Participants.json */,
 				5C0A6B4528567A470018290F /* RecordTest.json */,
+				5C1F6A462858C3F000875D7A /* StatsObject.json */,
 			);
 			path = "Test JSON";
 			sourceTree = "<group>";
@@ -634,6 +643,8 @@
 		5CC6F0C5284FE34100605583 /* Player */ = {
 			isa = PBXGroup;
 			children = (
+				5C1F6A422858031C00875D7A /* PlayerScreen.swift */,
+				5C1F6A44285804D700875D7A /* PlayerViewModel.swift */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -762,6 +773,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C0A6B4728567E900018290F /* RecordTest.json in Resources */,
+				5C1F6A48285926BC00875D7A /* Players.json in Resources */,
 				5C3BF85727AE234500AF72C3 /* Team.json in Resources */,
 				5C3BF85D27AE269800AF72C3 /* Player.json in Resources */,
 				11A0EA8225FDBFBD004DE5BB /* Preview Assets.xcassets in Resources */,
@@ -836,6 +848,8 @@
 				11A0EB0025FEA1DB004DE5BB /* OctaneArticle.swift in Sources */,
 				070FA1BE26AA1A0900F204AE /* NavigationBarModifiers.swift in Sources */,
 				0786A7202703B2EF001CD89D /* CountryFlagView.swift in Sources */,
+				5C1F6A432858031C00875D7A /* PlayerScreen.swift in Sources */,
+				5C1F6A45285804D700875D7A /* PlayerViewModel.swift in Sources */,
 				0717583926B8C97B00E74C8D /* EventViewModel.swift in Sources */,
 				5C9D26CC2850FD5B00643C12 /* AddOperatorCGPoint.swift in Sources */,
 				11A0EAAD25FDC124004DE5BB /* NewsView.swift in Sources */,

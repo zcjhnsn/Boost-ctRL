@@ -1,2 +1,21 @@
-#  <#Title#>
-
+{
+    "games": {
+        "total": 0,
+        "replays": 0,
+        "wins": 0,
+        "seconds": 0,
+        "replaySeconds": 0
+    },
+    "matches": {
+        "total": 0,
+        "replays": 0,
+        "wins": 0
+    },
+    "stats": {
+        "goals": 0,
+        "inflicted": 0,
+        "rating": 0.0,
+        "shootingPercentage": 0.0,
+        "taken": 0
+    }
+}

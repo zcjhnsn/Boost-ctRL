@@ -1,20 +1,105 @@
 {
-  "_id": "5f3d8fdd95f40596eae23d97",
-  "slug": "3d97-kuxir97",
-  "tag": "kuxir97",
-  "name": "Francesco Cinquemani",
-  "country": "it",
-  "team": {
-    "_id": "6020c370f1e4807cc702fc9a",
-    "slug": "fc9a-wolves-esports",
-    "name": "Wolves Esports",
-    "region": "EU",
-    "image": "https://griffon.octane.gg/teams/wolves-esports.png"
-  },
-  "accounts": [
-    {
-      "platform": "steam",
-      "id": "76561198072696308"
-    }
-  ]
+    "players": [
+        {
+            "_id": "5f3d8fdd95f40596eae23d69",
+            "slug": "3d69-chrome",
+            "tag": "Chrome",
+            "name": "Robert Gomez",
+            "country": "us",
+            "team": {
+                "_id": "6020bc70f1e4807cc7002389",
+                "slug": "2389-spacestation-gaming",
+                "name": "Spacestation Gaming",
+                "region": "NA",
+                "image": "https://griffon.octane.gg/teams/Spacestation_Gaming_2021.png"
+            },
+            "accounts": [
+                {
+                    "platform": "steam",
+                    "id": "76561198032576032"
+                },
+                {
+                    "platform": "steam",
+                    "id": "76561198438818487"
+                }
+            ],
+            "coach": true,
+            "relevant": true
+        },
+        {
+            "_id": "5f3d8fdd95f40596eae23eda",
+            "slug": "3eda-arsenal",
+            "tag": "Arsenal",
+            "name": "Tshaka Lateef Taylor Jr",
+            "country": "us",
+            "team": {
+                "_id": "6020bc70f1e4807cc7002389",
+                "slug": "2389-spacestation-gaming",
+                "name": "Spacestation Gaming",
+                "region": "NA",
+                "image": "https://griffon.octane.gg/teams/Spacestation_Gaming_2021.png"
+            },
+            "accounts": [
+                {
+                    "platform": "steam",
+                    "id": "76561198368482029"
+                },
+                {
+                    "platform": "steam",
+                    "id": "76561198362699782"
+                }
+            ],
+            "relevant": true
+        },
+        {
+            "_id": "5f3d8fdd95f40596eae24363",
+            "slug": "4363-daniel",
+            "tag": "Daniel",
+            "name": "Daniel Piecenski",
+            "country": "us",
+            "team": {
+                "_id": "6020bc70f1e4807cc7002389",
+                "slug": "2389-spacestation-gaming",
+                "name": "Spacestation Gaming",
+                "region": "NA",
+                "image": "https://griffon.octane.gg/teams/Spacestation_Gaming_2021.png",
+                "relevant": true
+            },
+            "accounts": [
+                {
+                    "platform": "steam",
+                    "id": "76561198355367441"
+                },
+                {
+                    "platform": "steam",
+                    "id": "76561198799189161"
+                }
+            ],
+            "relevant": true
+        },
+        {
+            "_id": "5f663e7728947d10dd334263",
+            "slug": "4263-retals",
+            "tag": "retals",
+            "name": "Slater Thomas",
+            "country": "us",
+            "team": {
+                "_id": "6020bc70f1e4807cc7002389",
+                "slug": "2389-spacestation-gaming",
+                "name": "Spacestation Gaming",
+                "region": "NA",
+                "image": "https://griffon.octane.gg/teams/Spacestation_Gaming_2021.png"
+            },
+            "accounts": [
+                {
+                    "platform": "steam",
+                    "id": "76561198353975600"
+                }
+            ],
+            "relevant": true
+        }
+    ],
+    "page": 1,
+    "perPage": 100,
+    "pageSize": 4
 }

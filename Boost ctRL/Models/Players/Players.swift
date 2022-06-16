@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - PlayersResponse
-struct PlayersResponse: Decodable {
+struct PlayersResponse: Codable {
     let players: [Player]
     let page, perPage, pageSize: Int
 }
@@ -24,6 +24,7 @@ struct Player: Codable {
     @DecodableDefault.False var relevant: Bool
     @DecodableDefault.False var coach: Bool
     @DecodableDefault.False var substitute: Bool
+    let listID = UUID()
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"

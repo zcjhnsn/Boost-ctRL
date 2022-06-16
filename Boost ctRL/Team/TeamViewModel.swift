@@ -68,7 +68,7 @@ struct TeamRecord {
 }
 
 class TeamViewModel: ObservableObject {
-    @Published var players: [Player] = Array(repeating: ExampleData.player, count: 3)
+    @Published var players: [Player] = []
     @Published var matchesLast3Months: [Match] = Array(repeating: ExampleData.match, count: 3)
     
     @Published var isPlayersLoading: Bool = true
@@ -97,11 +97,9 @@ class TeamViewModel: ObservableObject {
                 self.players = playerResponse.players.sorted { (lhs, rhs) in
                     let predicates: [SortedByRole] = [
                         // swiftlint:disable opening_brace
-                        
                         { !$0.coach && $1.coach },
-                        { (!$0.substitute && $1.substitute) && (!$0.coach && $1.coach) },
-                        { $0.tag < $1.tag },
                         { !$0.substitute && $1.substitute },
+                        { $0.tag.lowercased() < $1.tag.lowercased() }
                         // swiftlint:enable opening_brace
                     ]
                     
@@ -114,8 +112,9 @@ class TeamViewModel: ObservableObject {
                     }
                     
                     return false
-
                 }
+                
+                print("🚨🚨🚨", self.players.map { $0.tag })
             }
             .store(in: &subscriptions)
     }
@@ -149,7 +148,7 @@ class TeamViewModel: ObservableObject {
             })
             .compactMap { responses -> (StatsObject, StatsObject) in
                 guard let regularTime = responses.0.stats.first, let overtime = responses.1.stats.first else {
-                    return (StatsObject(games: Games(total: 0, replays: 0, wins: 0, seconds: 0, replaySeconds: 0), matches: Matches(total: 0, replays: 0, wins: 0), stats: QueriedStats(goals: 0, goalsAgainst: 0, goalsDifferential: 0.0, inflicted: 0, taken: 0)), StatsObject(games: Games(total: 0, replays: 0, wins: 0, seconds: 0, replaySeconds: 0), matches: Matches(total: 0, replays: 0, wins: 0), stats: QueriedStats(goals: 0, goalsAgainst: 0, goalsDifferential: 0.0, inflicted: 0, taken: 0)))
+                    return (ExampleData.statsObject, ExampleData.statsObject)
                 }
                 return (regularTime, overtime)
             }
@@ -200,7 +199,7 @@ func getRecord(from matches: [Match], teamID: String) -> TeamRecord {
                 teamRecord.overtimeWin += game.overtime && game.blue > game.orange ? 1 : 0
             }
                 
-        } else if match.orange.teamInfo.team.isSameTeam(as: teamID) && match.orange.winner  {
+        } else if match.orange.teamInfo.team.isSameTeam(as: teamID) && match.orange.winner {
             if match.orange.winner {
                 teamRecord.seriesWon += 1
             }

@@ -27,7 +27,10 @@ struct Matches: Codable {
 
 // MARK: - Stats
 struct QueriedStats: Codable {
-    let goals, goalsAgainst: Int
-    let goalsDifferential: Double
+    @DecodableDefault.Zero var goals: Int
+    @DecodableDefault.Zero var goalsAgainst: Int
+    @DecodableDefault.ZeroDouble var goalsDifferential: Double
     let inflicted, taken: Int
+    @DecodableDefault.ZeroDouble var rating: Double
+    @DecodableDefault.ZeroDouble var shootingPercentage: Double
 }

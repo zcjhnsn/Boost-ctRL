@@ -22,6 +22,7 @@ enum Endpoint {
     case activeTeams
     case newsRocketeers
     case newsOctane
+    case newsShift
     case matches
     case event(id: String)
     case events
@@ -31,6 +32,8 @@ enum Endpoint {
     case searchList
     case statsForPlayers
     case teamStats
+    case playerStats
+    case player(id: String)
     
     var path: String {
         switch self {
@@ -40,6 +43,8 @@ enum Endpoint {
             return "/articles"
         case .newsRocketeers:
             return "/wp-json/wp/v2/posts"
+        case .newsShift:
+            return "/articles"
         case .matches:
             return "/matches"
         case .event(let id):
@@ -58,6 +63,10 @@ enum Endpoint {
             return "/search"
         case .teamStats:
             return "/stats/teams"
+        case .playerStats:
+            return "/stats/players"
+        case .player(id: let id):
+            return "/players/\(id)"
         }
     }
 }
@@ -72,6 +81,7 @@ enum API {
     static let octaneBase = URL(string: "https://zsr.octane.gg")!
     static let octaneNewsBase = URL(string: "https://content.octane.gg")!
     static let rocketeersBase = URL(string: "https://rocketeers.gg")!
+    static let shiftBase = URL(string: "https://shiftrle.gg")!
     
     
     static func run<T: Decodable>(_ request: URLRequest, decodingArticleType: Agent.ArticleSource = .notAnArticle) -> AnyPublisher<T, Error> {
@@ -101,8 +111,8 @@ enum API {
         switch decodingArticleType {
         case .octaneNews:
             decoder.userInfo[.newsSite] = Article.Site.octane
-        case .rocketeersNews:
-            decoder.userInfo[.newsSite] = Article.Site.rocketeers
+        case .shiftNews:
+            decoder.userInfo[.newsSite] = Article.Site.shift
         case .notAnArticle:
             break
         }
@@ -113,16 +123,16 @@ enum API {
     }
     
     
-    static func getRocketeersArticles() -> AnyPublisher<[Article], Error> {
-        var components = URLComponents(string: rocketeersBase.appendingPathComponent(Endpoint.newsRocketeers.path).absoluteString)!
-        components.queryItems = [
-            URLQueryItem(name: "per_page", value: "10"),
-            URLQueryItem(name: "_embed", value: nil)
-        ]
-        
-        let request = URLRequest(url: components.url!)
-        return run(request, decodingArticleType: .rocketeersNews)
-    }
+//    static func getRocketeersArticles() -> AnyPublisher<[Article], Error> {
+//        var components = URLComponents(string: rocketeersBase.appendingPathComponent(Endpoint.newsRocketeers.path).absoluteString)!
+//        components.queryItems = [
+//            URLQueryItem(name: "per_page", value: "10"),
+//            URLQueryItem(name: "_embed", value: nil)
+//        ]
+//
+//        let request = URLRequest(url: components.url!)
+//        return run(request, decodingArticleType: .rocketeersNews)
+//    }
     
     static func getOctaneArticles() -> AnyPublisher<[Article], Error> {
         var components = URLComponents(string: octaneNewsBase.appendingPathComponent(Endpoint.newsOctane.path).absoluteString)!
@@ -133,6 +143,15 @@ enum API {
         
         let request = URLRequest(url: components.url!)
         return run(request, decodingArticleType: .octaneNews)
+    }
+    
+    static func getShiftArticles() -> AnyPublisher<[Article], Error> {
+        var components = URLComponents(string: shiftBase.appendingPathComponent(Endpoint.newsShift.path).absoluteString)!
+        components.queryItems = [
+            URLQueryItem(name: "format", value: "json-pretty")
+        ]
+        let request = URLRequest(url: components.url!)
+        return run(request, decodingArticleType: .shiftNews)
     }
     
     
@@ -303,7 +322,31 @@ enum API {
         
         let request = URLRequest(url: components.url!)
         
-        print("🥶🥶🥶🥶🥶", request.url?.absoluteURL)
+        return run(request)
+    }
+    
+    static func getStats(forPlayer playerID: String) -> AnyPublisher<StatsResponse, Error> {
+        var components = URLComponents(string: octaneBase.appendingPathComponent(Endpoint.playerStats.path).absoluteString)!
+        
+        components.queryItems = [
+            URLQueryItem(name: "player", value: playerID),
+            URLQueryItem(name: "after", value: DateFormatter.simple.string(from: Date().monthsAgo(3))),
+            URLQueryItem(name: "stat", value: "goals"),
+            URLQueryItem(name: "stat", value: "shootingPercentage"),
+            URLQueryItem(name: "stat", value: "rating"),
+            URLQueryItem(name: "stat", value: "taken"),
+            URLQueryItem(name: "stat", value: "inflicted")
+        ]
+        
+        let request = URLRequest(url: components.url!)
+        
+        return run(request)
+    }
+    
+    static func getPlayer(_ playerID: String) -> AnyPublisher<Player, Error> {
+        let components = URLComponents(string: octaneBase.appendingPathComponent(Endpoint.player(id: playerID).path).absoluteString)!
+        
+        let request = URLRequest(url: components.url!)
         
         return run(request)
     }

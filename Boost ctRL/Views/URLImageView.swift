@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-enum ImageType {
+enum ImageType: Equatable {
     case logo
-    case news
+    case news(Article.Site)
 }
 
 struct UrlImageView: View {
@@ -31,15 +31,16 @@ struct UrlImageView: View {
         } else {
             Image(uiImage: urlImageModel.image!)
                 .resizable()
-                .aspectRatio(contentMode: .fit)
+                .aspectRatio(contentMode: imageType == .news(.shift) ? .fill : .fit)
+                .frame(alignment: .center)
         }
     }
     
     var defaultImage: UIImage {
-        if imageType == .news {
-            return UIImage(named: "rl-default")!
-        } else {
+        if imageType == .logo {
             return UIImage(named: "ctrl-glyph")!
+        } else {
+            return UIImage(named: "rl-default")!
         }
     }
 }

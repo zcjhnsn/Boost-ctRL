@@ -104,7 +104,7 @@ struct EventListSelectedView: View {
             
             Spacer()
         }
-        .padding([.horizontal, .bottom])
+        .padding([.horizontal])
     }
 }
 

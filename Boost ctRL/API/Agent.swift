@@ -16,9 +16,13 @@ struct Agent {
         let response: URLResponse
     }
     
+    enum ShiftResponseCodingKeys: String, CodingKey {
+        case items
+    }
+    
     enum ArticleSource {
         case octaneNews
-        case rocketeersNews
+        case shiftNews
         case notAnArticle
     }
     
@@ -33,8 +37,23 @@ struct Agent {
         return URLSession.shared
             .dataTaskPublisher(for: request) // Create data task as Combine publisher
             .tryMap { result -> Response<T> in
-                let value = try decoder.decode(T.self, from: result.data) // Parse the data
-                return Response(value: value, response: result.response)
+                
+                if let key = CodingUserInfoKey(rawValue: "site"),
+                      let value = decoder.userInfo[key],
+                   let site =  value as? Article.Site, site == .shift {
+                    let response = try decoder.decode(ShiftResponse.self, from: result.data)
+                    
+                    let encoder = JSONEncoder()
+                    let itemsJSON = try encoder.encode(response.items)
+                    
+                    let val = try decoder.decode(T.self, from: itemsJSON)
+                    return Response(value: val, response: result.response)
+                } else {
+                    let value = try decoder.decode(T.self, from: result.data) // Parse the data
+                    return Response(value: value, response: result.response)
+                }
+                
+                
             }
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()

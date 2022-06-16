@@ -67,6 +67,10 @@ extension DecodableDefault {
             static var defaultValue: Int { 0 }
         }
         
+        enum ZeroDouble: Source {
+            static var defaultValue: Double { 0 }
+        }
+        
         enum ID: Source {
             static var defaultValue: String { String(UUID().uuidString) }
         }
@@ -118,6 +122,7 @@ extension DecodableDefault {
     typealias NoStages = Wrapper<Sources.NoStages>
     typealias Slug = Wrapper<Sources.Slug>
     typealias Zero = Wrapper<Sources.Zero>
+    typealias ZeroDouble = Wrapper<Sources.ZeroDouble>
     typealias EmptyTeamResult = Wrapper<Sources.EmptyTeamResult>
     typealias ID = Wrapper<Sources.ID>
 }

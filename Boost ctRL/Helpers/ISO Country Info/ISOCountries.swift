@@ -30,8 +30,12 @@ public class IsoCountries {
         var country = countryCode.uppercased()
         if country == "EN" {
             country = "GB"
+        } else if country == "WL" {
+            return "🏴󠁧󠁢󠁷󠁬󠁳󠁿"
+        } else if country == "AB" {
+            return "🏴󠁧󠁢󠁳󠁣󠁴󠁿"
         }
-
+        
         let regionalA = "🇦".unicodeScalars
         let letterA = "A".unicodeScalars
         let base = regionalA[regionalA.startIndex].value - letterA[letterA.startIndex].value
@@ -240,6 +244,7 @@ public class IsoCountries {
         IsoCountryInfo(name: "San Marino", numeric: "674", alpha2: "SM", alpha3: "SMR", calling: "+378", currency: "EUR", continent: "EU", fractionDigits: 2),
         IsoCountryInfo(name: "Sao Tome and Principe", numeric: "678", alpha2: "ST", alpha3: "STP", calling: "+239", currency: "STD", continent: "AF", fractionDigits: 2),
         IsoCountryInfo(name: "Saudi Arabia", numeric: "682", alpha2: "SA", alpha3: "SAU", calling: "+966", currency: "SAR", continent: "AS", fractionDigits: 2),
+        IsoCountryInfo(name: "Scotland", numeric: "826", alpha2: "AB", alpha3: "ABD", calling: "+44", currency: "GBP", continent: "EU", fractionDigits: 2),
         IsoCountryInfo(name: "Senegal", numeric: "686", alpha2: "SN", alpha3: "SEN", calling: "+221", currency: "XOF", continent: "AF", fractionDigits: 0),
         IsoCountryInfo(name: "Serbia", numeric: "688", alpha2: "RS", alpha3: "SRB", calling: "+381", currency: "RSD", continent: "EU", fractionDigits: 2),
         IsoCountryInfo(name: "Seychelles", numeric: "690", alpha2: "SC", alpha3: "SYC", calling: "+248", currency: "SCR", continent: "AF", fractionDigits: 2),
@@ -289,6 +294,7 @@ public class IsoCountries {
         IsoCountryInfo(name: "Vietnam", numeric: "704", alpha2: "VN", alpha3: "VNM", calling: "+84", currency: "VND", continent: "AS", fractionDigits: 0),
         IsoCountryInfo(name: "Virgin Islands, British", numeric: "092", alpha2: "VG", alpha3: "VGB", calling: "+284", currency: "USD", continent: "NA", fractionDigits: 2),
         IsoCountryInfo(name: "Virgin Islands, U.S.", numeric: "850", alpha2: "VI", alpha3: "VIR", calling: "+340", currency: "USD", continent: "NA", fractionDigits: 2),
+        IsoCountryInfo(name: "Wales", numeric: "876", alpha2: "WL", alpha3: "WLS", calling: "+44", currency: "GBP", continent: "EU", fractionDigits: 2),
         IsoCountryInfo(name: "Wallis and Futuna", numeric: "876", alpha2: "WF", alpha3: "WLF", calling: "+681", currency: "XPF", continent: "OC", fractionDigits: 0),
         IsoCountryInfo(name: "Western Sahara", numeric: "732", alpha2: "EH", alpha3: "ESH", calling: "+212", currency: "MAD", continent: "AF", fractionDigits: 2),
         IsoCountryInfo(name: "Yemen", numeric: "887", alpha2: "YE", alpha3: "YEM", calling: "+967", currency: "YER", continent: "AS", fractionDigits: 2),

@@ -44,6 +44,16 @@ struct SearchItemView: View {
                     TeamScreen(team: Team(id: id, slug: id, name: item.label, image: item.image ?? "", region: ""))
                 }
                 .hidden()
+            } else if let id = item.id, item.type == .player {
+                NavigationLink("Player Info", isActive: $showScreen) {
+                    PlayerScreen(playerID: id)
+                }
+                .hidden()
+            } else if let id = item.id, item.type == .event {
+                NavigationLink("Event Info", isActive: $showScreen) {
+                    EventDetailView(eventID: id)
+                }
+                .hidden()
             }
         }
         .onTapGesture {

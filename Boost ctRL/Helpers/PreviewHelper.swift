@@ -56,6 +56,14 @@ struct ExampleData {
     static var teamResult: TeamResult {
         TeamResult(score: 3, teamInfo: TeamInfo(team: team, stats: nil), players: [], winner: false)
     }
+    
+    static var statsObject: StatsObject {
+        fromJson(name: "StatsObject")
+    }
+    
+    static var players: PlayersResponse {
+        fromJson(name: "Players")
+    }
 }
 
 extension Decodable {

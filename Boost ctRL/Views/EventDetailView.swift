@@ -33,6 +33,13 @@ struct EventDetailView: View {
                     .redacted(when: eventViewModel.isParticipantsLoading)
             }
             
+            
+            if !eventViewModel.event.stages.isEmpty {
+                EventStagesHeaderView()
+                
+                EventStagesView(event: eventViewModel.event)
+            }
+            
             EventMatchesHeaderView()
             
             EventMatchesView(matches: eventViewModel.eventMatches)
@@ -214,7 +221,12 @@ struct EventTopPerformersView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     ForEach(Array(zip(performers.indices, performers)), id: \.0) { index, performer in
-                        TopPerformerView(performer: performer, index: index)
+                        NavigationLink(
+                            destination: PlayerScreen(playerID: performer.player.slug),
+                            label: {
+                                TopPerformerView(performer: performer, index: index)
+                                    .foregroundColor(.primary)
+                            })
                     }
                 }
             }
@@ -319,8 +331,7 @@ struct ParticipantsView: View {
                     
             }
             .padding(.horizontal)
-            
-            
+
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHGrid(rows: rows, spacing: 8) {
                     
@@ -421,9 +432,87 @@ struct EventMatchesView: View {
     }
 }
 
+struct EventStagesHeaderView: View {
+    var body: some View {
+        HStack {
+            Label {
+                Text("Stages")
+                    .font(.system(.title3, design: .default).weight(.bold))
+            } icon: {
+                Image(systemName: "flowchart")
+                    .foregroundColor(Color.orange)
+            }
+            
+            Spacer()
+        }
+        .padding(.horizontal)
+    }
+}
+
+struct EventStagesView: View {
+    @Environment(\.openURL) var openURL
+    @AppStorage("LinkDestination") var linkDestination = 0
+    @State var openInAppBrowser = false
+    
+    var event: EventResult
+    
+    var body: some View {
+        
+        VStack {
+            ForEach(event.stages, id: \.id) { stage in
+                HStack {
+                    Text(stage.name)
+                        .padding(8)
+                    
+                    Spacer()
+                    
+                    if !stage.liquipedia.isEmpty {
+                        Button(action: {
+                            if linkDestination == 0 {
+                                openInAppBrowser = true
+                            } else {
+                                openURL(LinkHelper.processLinkForDestination(stage.liquipedia, destination: linkDestination))
+                            }
+                        }, label: {
+                            Image("lp-logo")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .padding(.horizontal)
+                                .padding(.vertical, 2)
+                        })
+                        .frame(width: 100, height: 40, alignment: .center)
+                        .background(Color.liquipediaBlue)
+                        .padding(.vertical, 2)
+                        .padding(.horizontal, 2)
+                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        .sheet(isPresented: $openInAppBrowser, content: {
+                            SafariView(url: LinkHelper.processLinkForDestination(stage.liquipedia, destination: linkDestination))
+                                .edgesIgnoringSafeArea(.all)
+                        })
+                        
+                    }
+
+                }
+                .padding(2)
+                .background(Color.secondaryGroupedBackground)
+                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                .padding(.horizontal)
+            }
+        }
+        .padding(.bottom)
+    }
+}
+
 
 struct EventDetailView_Previews: PreviewProvider {
     static var previews: some View {
         EventDetailView(eventID: "609798263dfdaa8e09bfe851")
+    }
+}
+
+struct EventStagesView_Previews: PreviewProvider {
+    static var previews: some View {
+        EventStagesView(event: ExampleData.eventResult)
+            .preferredColorScheme(.dark)
     }
 }

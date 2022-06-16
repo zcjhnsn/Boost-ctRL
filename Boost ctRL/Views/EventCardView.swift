@@ -42,26 +42,26 @@ struct EventCardView: View {
                 
                 VStack(spacing: 4) {
                     HStack {
-                        Text("\(Image(systemName: "flame")) \(Text(event.tier.rawValue).bold())")
+                        Text("\(Image(systemName: "flame")) \(Text(event.tier.rawValue))")
                         Spacer()
-                        Text("\(Image(systemName: "mappin.and.ellipse")) \(Text(event.region.rawValue).bold())")
+                        Text("\(Image(systemName: "mappin.and.ellipse")) \(Text(event.region.rawValue))")
                         Spacer()
-                        Text("\(Image(systemName: "car")) \(Text("\(event.mode)v\(event.mode)").bold())")
+                        Text("\(Image(systemName: "car")) \(Text("\(event.mode)v\(event.mode)"))")
                         Spacer()
-                        Text("\(Image(systemName: "network")) \(Text(event.hasLAN() ? "LAN" : "Online").bold())")
+                        Text("\(Image(systemName: "network")) \(Text(event.hasLAN() ? "LAN" : "Online"))")
                     }
                     .padding(.horizontal, 4)
                     
                     HStack {
-                        Text("\(Image(systemName: "calendar")) \(Text(getDate()).bold())")
+                        Text("\(Image(systemName: "calendar")) \(Text(getDate()))")
                         Spacer()
-                        Text("\(Image(systemName: "dollarsign.square")) \(Text(CurrencySymbol.shared.currencyString(for: Decimal(event.prize.amount), isoCurrencyCode: event.prize.currency, dropCents: true)).bold())")
+                        Text("\(Image(systemName: "dollarsign.square")) \(Text(CurrencySymbol.shared.currencyString(for: Decimal(event.prize.amount), isoCurrencyCode: event.prize.currency, dropCents: true)))")
                         Spacer()
                     }
                     .padding(.horizontal, 4)
                 }
-                .font(.system(.subheadline, design: .rounded))
-                .padding(4)
+                .font(.system(.footnote, design: .rounded))
+                .padding(8)
                 .background(Color.tertiaryGroupedBackground)
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
                 
