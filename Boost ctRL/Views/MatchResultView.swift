@@ -110,9 +110,13 @@ struct MatchResultsHeaderView: View {
                     
                     Spacer()
                     
-                    UrlImageView(urlString: match.blue.teamInfo.team.image, type: .logo)
-                        .frame(width: 100, height: 75, alignment: .center)
-                        .padding(.trailing)
+                    NavigationLink(
+                        destination: TeamScreen(team: match.blue.teamInfo.team),
+                        label: {
+                            UrlImageView(urlString: match.blue.teamInfo.team.image, type: .logo)
+                                .frame(width: 100, height: 75, alignment: .center)
+                                .padding(.trailing)
+                        })
                     
                     Text("\(match.blue.score)")
                         .font(.system(.largeTitle, design: .rounded).weight(match.blue.winner ? .bold : .regular))
@@ -125,9 +129,13 @@ struct MatchResultsHeaderView: View {
                         .font(.system(.largeTitle, design: .rounded).weight(match.orange.winner ? .bold : .regular))
                         .foregroundColor(inProgress ? .primary : (match.orange.winner ? .green : .red))
                     
-                    UrlImageView(urlString: match.orange.teamInfo.team.image, type: .logo)
-                        .frame(width: 100, height: 75, alignment: .center)
-                        .padding(.leading)
+                    NavigationLink(
+                        destination: TeamScreen(team: match.orange.teamInfo.team),
+                        label: {
+                            UrlImageView(urlString: match.orange.teamInfo.team.image, type: .logo)
+                                .frame(width: 100, height: 75, alignment: .center)
+                                .padding(.leading)
+                        })
                     
                     Spacer()
                 }
@@ -646,4 +654,3 @@ extension Animation {
             .delay(0.03 * Double(index))
     }
 }
-
