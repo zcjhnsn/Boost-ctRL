@@ -10,7 +10,7 @@ import Combine
 
 class ArticlesViewModel: ObservableObject {
     @Published var articles: [Article] = []
-    @Published var rocketeersArticles: [Article] = [Article(id: "0", image: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Rocket_League_logo.svg", link: "https://rocketeers.gg", title: "RL is life"), Article(id: "1", image: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Rocket_League_logo.svg", link: "https://rocketeers.gg", title: "What a save, what a save, what a save")]
+    @Published var shiftArticles: [Article] = [Article(id: "0", image: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Rocket_League_logo.svg", link: "https://shiftrle.gg", title: "RL is life"), Article(id: "1", image: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Rocket_League_logo.svg", link: "https://shiftrle.gg", title: "What a save, what a save, what a save")]
     @Published var octaneArticles: [Article] = [
         Article(id: "0", image: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Rocket_League_logo.svg", link: "https://octane.gg", title: "RL is life"),
         Article(id: "1", image: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Rocket_League_logo.svg", link: "https://octane.gg", title: "What a save, what a save, what a save"),
@@ -21,21 +21,20 @@ class ArticlesViewModel: ObservableObject {
         Article(id: "6", image: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Rocket_League_logo.svg", link: "https://octane.gg", title: "What a save, what a save, what a save"),
         Article(id: "7", image: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Rocket_League_logo.svg", link: "https://octane.gg", title: "What a save, what a save, what a save"),
         Article(id: "8", image: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Rocket_League_logo.svg", link: "https://octane.gg", title: "What a save, what a save, what a save")]
-    @Published var isRocketeersLoading: Bool = true
+    @Published var isShiftLoading: Bool = true
     @Published var isOctaneLoading: Bool = true
     
     var subscriptions = [AnyCancellable]()
     
     init() {
-        getOctaneArticles()
-        getRocketeersArticles()
+        getArticles()
     }
     
     private func getArticles() {
-        let rocketeers = API.getRocketeersArticles()
+        let shift = API.getShiftArticles()
         let octane = API.getOctaneArticles()
         
-        Publishers.Zip(rocketeers, octane)
+        Publishers.Zip(shift, octane)
             .mapError({ error -> Error in
                 print("💀 Error - Could not fetch articles together, will attempt separate fetch")
                 self.getSeparate() 
@@ -49,9 +48,9 @@ class ArticlesViewModel: ObservableObject {
                 
                 receivedArticles.append(contentsOf: oArticles)
                 
-                self.articles = receivedArticles
+                self.articles = receivedArticles.sorted { $0.date > $1.date }
                 self.isOctaneLoading = false
-                self.isRocketeersLoading = false
+                self.isShiftLoading = false
             })
             .store(in: &subscriptions)
     }
@@ -59,22 +58,22 @@ class ArticlesViewModel: ObservableObject {
     
     /// If there is an error trying to get articles from a source, try each individually so we at least have something
     private func getSeparate() {
-        getRocketeersArticles()
+        getShiftArticles()
         getOctaneArticles()
     }
     
-    /// Retrieve articles from https://rocketeers.gg
-    private func getRocketeersArticles() {
-        API.getRocketeersArticles()
+    /// Retrieve articles from https://shiftrle.gg
+    private func getShiftArticles() {
+        API.getShiftArticles()
             .mapError({ error -> Error in
-                print("💀 Error - Could not fetch Rocketeers articles")
+                print("💀 Error - Could not fetch Shift articles - \(error)")
                 
                 return error
             })
             .sink(receiveCompletion: { _ in },
                   receiveValue: { articles in
-                self.rocketeersArticles = articles
-                self.isRocketeersLoading = false
+                self.shiftArticles = articles
+                self.isShiftLoading = false
             })
             .store(in: &subscriptions)
         

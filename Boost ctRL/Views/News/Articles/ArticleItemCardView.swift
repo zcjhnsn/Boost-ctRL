@@ -16,7 +16,7 @@ struct ArticleItemCardView: View {
                 GeometryReader { geo in
                     VStack(alignment: .leading, spacing: 8, content: {
                         
-                        UrlImageView(urlString: article.image, type: .news)
+                        UrlImageView(urlString: article.image, type: .news(.octane))
                             .frame(width: geo.size.width, height: geo.size.height * 0.6, alignment: .top)
                             .clipped()
                         

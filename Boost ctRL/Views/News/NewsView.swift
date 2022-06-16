@@ -10,8 +10,8 @@ import Shimmer
 
 struct NewsView: View {
     @State var isShowingSettings: Bool = false
-    @ObservedObject var articlesViewModel = ArticlesViewModel()
-    @ObservedObject var recentMatchesViewModel = RecentMatchesViewModel()
+    @StateObject var articlesViewModel = ArticlesViewModel()
+    @StateObject var recentMatchesViewModel = RecentMatchesViewModel()
     
     var body: some View {
         NavigationView {
@@ -44,9 +44,7 @@ struct NewsView: View {
                         
                         Spacer()
                     }
-                    ArticleColumnView(articles: articlesViewModel.octaneArticles)
-                        .redacted(when: articlesViewModel.isOctaneLoading)
-                        .animation(.easeInOut, value: articlesViewModel.isOctaneLoading)
+                    ArticleColumnView(viewModel: articlesViewModel)
                 }
                 
             }

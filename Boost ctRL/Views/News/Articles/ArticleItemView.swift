@@ -16,50 +16,48 @@ struct ArticleItemView: View {
     
     var body: some View {
         ZStack(alignment: .bottom, content: {
-            UrlImageView(urlString: article.image, type: .news)
+            UrlImageView(urlString: article.image, type: .news(.octane))
                 .clipped()
                 .overlay(
-                        LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .top, endPoint: .bottom)
-                            .onTapGesture {
-                                print("🟢 View tapped")
-                                if linkDestination == 0 {
-                                    openInAppBrowser = true
-                                } else {
-                                    openURL(LinkHelper.processLinkForDestination(article.link, destination: linkDestination))
-                                }
+                    LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .top, endPoint: .bottom)
+                        .onTapGesture {
+                            if linkDestination == 0 {
+                                openInAppBrowser = true
+                            } else {
+                                openURL(LinkHelper.processLinkForDestination(article.link, destination: linkDestination))
                             }
-                            
-                )
-//                .overlay(
-//                    Rectangle()
-//                        .fill(Color.clear)
-//
-//                )
+                        }
+                 )
             
             HStack {
                 
                 VStack(alignment: .leading, spacing: 4) {
                     
-                    Text(article.title)
-                        .lineLimit(3)
-                        .font(Font.headline.weight(.heavy))
-                        .foregroundColor(.white)
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(article.title)
+                            .lineLimit(3)
+                            .font(Font.headline.weight(.heavy))
+                            .foregroundColor(.white)
+                     
+                        Text(article.description ?? "")
+                            .lineLimit(3)
+                            .font(Font.subheadline.weight(.regular))
+                            .foregroundColor(.white)
+                    }
+                        .padding([.leading, .bottom], 10)
                     
+                    Divider()
                     
-                    Text(article.description ?? "")
-                        .lineLimit(3)
-                        .font(Font.subheadline.weight(.regular))
+                    ArticleCardMetaDataView(article: article)
                         .foregroundColor(.white)
                 }
-                .padding([.leading, .bottom], 10)
+                
                 
                 Spacer()
             }
             .allowsHitTesting(false)
         })
         .cornerRadius(8)
-        .padding(.horizontal, 10)
-        .shadow(radius: 5)
         .sheet(isPresented: $openInAppBrowser, content: {
             SafariView(url: LinkHelper.processLinkForDestination(article.link, destination: linkDestination))
                 .edgesIgnoringSafeArea(.all)
