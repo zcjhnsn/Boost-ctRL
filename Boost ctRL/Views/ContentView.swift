@@ -20,8 +20,6 @@ struct ContentView: View {
                     Image("ctrl")
                         .imageScale(.large)
                 }
-
-                
             }
             
             // MARK: - Events
@@ -49,8 +47,6 @@ struct ContentView: View {
                 Text("Search")
             }
         }
-//        .edgesIgnoringSafeArea(.top)
-        
     }
 }
 

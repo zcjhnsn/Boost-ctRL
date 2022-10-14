@@ -37,7 +37,7 @@ struct MatchResultView: View {
             .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
             .padding(.horizontal)
             
-            MatchStatsView(match: match)
+            StatsView(blueTeam: match.blue, orangeTeam: match.orange)
         }
         .background(Color.primaryGroupedBackground)
         .onAppear {
@@ -51,22 +51,6 @@ struct MatchResultView: View {
 
 struct MatchResultsHeaderView: View {
     var match: Match
-    
-    var blueNameSplit: (String, String) {
-        splitName(name: match.blue.teamInfo.team.name)
-    }
-    
-    var orangeNameSplit: (String, String) {
-        splitName(name: match.orange.teamInfo.team.name)
-    }
-    
-    var inProgress: Bool {
-        if !match.blue.winner && !match.orange.winner {
-            return true
-        } else {
-            return false
-        }
-    }
     
     var body: some View {
         VStack(alignment: .center) {
@@ -102,98 +86,12 @@ struct MatchResultsHeaderView: View {
                 }
             }
             
-            VStack {
-                
-                
-                // logos and scores
-                HStack {
-                    
-                    Spacer()
-                    
-                    NavigationLink(
-                        destination: TeamScreen(team: match.blue.teamInfo.team),
-                        label: {
-                            UrlImageView(urlString: match.blue.teamInfo.team.image, type: .logo)
-                                .frame(width: 100, height: 75, alignment: .center)
-                                .padding(.trailing)
-                        })
-                    
-                    Text("\(match.blue.score)")
-                        .font(.system(.largeTitle, design: .rounded).weight(match.blue.winner ? .bold : .regular))
-                        .foregroundColor(inProgress ? .primary : (match.blue.winner ? .green : .red))
-                    
-                    Text("-")
-                        .font(.system(.title, design: .rounded).weight(.bold))
-                    
-                    Text("\(match.orange.score)")
-                        .font(.system(.largeTitle, design: .rounded).weight(match.orange.winner ? .bold : .regular))
-                        .foregroundColor(inProgress ? .primary : (match.orange.winner ? .green : .red))
-                    
-                    NavigationLink(
-                        destination: TeamScreen(team: match.orange.teamInfo.team),
-                        label: {
-                            UrlImageView(urlString: match.orange.teamInfo.team.image, type: .logo)
-                                .frame(width: 100, height: 75, alignment: .center)
-                                .padding(.leading)
-                        })
-                    
-                    Spacer()
-                }
-                .padding(.top)
-                
-                // teams names
-                HStack {
-                    
-                    NavigationLink(
-                        destination: TeamScreen(team: match.blue.teamInfo.team),
-                        label: {
-                            VStack(alignment: .leading) {
-                                Text(blueNameSplit.0)
-                                    .font(.system(.body).weight(.light))
-                                    .foregroundColor(.primary)
-                                Text(blueNameSplit.1)
-                                    .font(.system(.headline).weight(.semibold))
-                                    .foregroundColor(.primary)
-                            }
-                            .padding(.leading)
-                        })
-                    
-                    
-                    Spacer()
-                    
-                    NavigationLink(
-                        destination: TeamScreen(team: match.orange.teamInfo.team),
-                        label: {
-                            VStack(alignment: .trailing) {
-                                Text(orangeNameSplit.0)
-                                    .font(.system(.body).weight(.light))
-                                    .foregroundColor(.primary)
-                                Text(orangeNameSplit.1)
-                                    .font(.system(.headline).weight(.semibold))
-                                    .foregroundColor(.primary)
-                            }
-                            .padding(.trailing)
-                        })
-                    
-                }
+            ScoresView(blue: match.blue, orange: match.orange)
+                .background(Color.secondaryGroupedBackground)
+                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
                 .padding(.horizontal)
-                .padding(.bottom)
-                
-            }
-            .background(Color.secondaryGroupedBackground)
-            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-            .padding(.horizontal)
             
         }
-    }
-    
-    func splitName(name: String) -> (String, String) {
-        var newName = name.components(separatedBy: " ")
-        guard newName.count > 1 else { return ("", name) }
-        
-        let lastWord = newName.removeLast()
-        let theRest = newName
-        return (theRest.joined(separator: " "), lastWord)
     }
 }
 
@@ -345,37 +243,72 @@ struct GameResultSmallView: View {
     
     var body: some View {
         
-        NavigationLink(destination: NavigationLazyView(Text("\(game.id)"))) {
-            
-            VStack {
-                Text("G\(index)\(overTimeFlag)")
-                    .font(.system(.footnote, design: .rounded).weight(.light))
-                    .foregroundColor(.secondary)
-                    .padding(.bottom, 4)
+        if game.id == "00000000" {
+            NavigationLink(destination: ErrorScreen()) {
                 
-                Text("\(game.blue)")
-                    .font(gameResultFont.0)
-                    .foregroundColor(gameResultColors.0)
+                VStack {
+                    Text("G\(index)\(overTimeFlag)")
+                        .font(.system(.footnote, design: .rounded).weight(.light))
+                        .foregroundColor(.secondary)
+                        .padding(.bottom, 4)
+                    
+                    Text("\(game.blue)")
+                        .font(gameResultFont.0)
+                        .foregroundColor(gameResultColors.0)
+                    
+                    
+                    Divider()
+                        .opacity(0)
+                        .frame(width: 25, height: 3, alignment: .center)
+                    
+                    Text("\(game.orange)")
+                        .font(gameResultFont.1)
+                        .foregroundColor(gameResultColors.1)
+                }
                 
-                
-                Divider()
-                    .opacity(0)
-                    .frame(width: 25, height: 3, alignment: .center)
-                
-                Text("\(game.orange)")
-                    .font(gameResultFont.1)
-                    .foregroundColor(gameResultColors.1)
             }
-            
+            .frame(minWidth: 10)
+        } else {
+            NavigationLink(destination: GameScreen(gameID: game.id, gameNumber: gameNumber(index))) {
+                
+                VStack {
+                    Text("G\(index)\(overTimeFlag)")
+                        .font(.system(.footnote, design: .rounded).weight(.light))
+                        .foregroundColor(.secondary)
+                        .padding(.bottom, 4)
+                    
+                    Text("\(game.blue)")
+                        .font(gameResultFont.0)
+                        .foregroundColor(gameResultColors.0)
+                    
+                    
+                    Divider()
+                        .opacity(0)
+                        .frame(width: 25, height: 3, alignment: .center)
+                    
+                    Text("\(game.orange)")
+                        .font(gameResultFont.1)
+                        .foregroundColor(gameResultColors.1)
+                }
+                
+            }
+            .frame(minWidth: 10)
         }
-        .frame(minWidth: 10)
+    }
+    
+    func gameNumber(_ number: Int) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .spellOut
+        
+        return formatter.string(from: NSNumber(integerLiteral: number))?.capitalized ?? "One"
     }
 }
 
 // MARK: - Match Stats View
 
-struct MatchStatsView: View {
-    var match: Match
+struct StatsView: View {
+    var blueTeam: TeamResult
+    var orangeTeam: TeamResult
     @State private var selectedStatType: StatsCategory = .team
     
     var body: some View {
@@ -404,7 +337,7 @@ struct MatchStatsView: View {
             
             Spacer()
             
-            ChosenStatsView(match: match, selectedType: $selectedStatType)
+            ChosenStatsView(blueTeam: blueTeam, orangeTeam: orangeTeam, selectedType: $selectedStatType)
                 .padding()
                 .animation(.easeInOut, value: selectedStatType)
             
@@ -440,10 +373,11 @@ enum StatsType: String, CaseIterable {
 
 // MARK: - Players Chosen Stats View
 struct PlayersChosenStatsView: View {
-    var match: Match
+    var blueTeam: TeamResult
+    var orangeTeam: TeamResult
     
-    var matchHelper: MatchStatsHelper {
-        return MatchStatsHelper(match: match)
+    var matchHelper: StatsHelper {
+        return StatsHelper(blueTeam: blueTeam, orangeTeam: orangeTeam)
     }
     
     @Binding var selectedType: StatsType
@@ -475,7 +409,7 @@ struct PlayersChosenStatsView: View {
     }
     
     var body: some View {
-            PlayersStatsChartView(dataPoints: data, isDecimal: isDecimal)
+        PlayersStatsChartView(dataPoints: data, isDecimal: isDecimal)
     }
 }
 
@@ -497,16 +431,17 @@ struct PlayersStatsChartView: View {
 }
 
 struct ChosenStatsView: View {
-    var match: Match
+    var blueTeam: TeamResult
+    var orangeTeam: TeamResult
     @Binding var selectedType: StatsCategory
     
     var body: some View {
         switch selectedType {
         case .team:
-                TeamStatsView(match: match)
+                TeamStatsView(blueTeam: blueTeam, orangeTeam: orangeTeam)
                     .transition(.asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .trailing)))
         case .players:
-                PlayersStatsView(match: match)
+                PlayersStatsView(blueTeam: blueTeam, orangeTeam: orangeTeam)
                     .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
         }
     }
@@ -515,10 +450,11 @@ struct ChosenStatsView: View {
 // MARK: - Team Stats View
 
 struct TeamsChosenStatsView: View {
-    var match: Match
+    var blueTeam: TeamResult
+    var orangeTeam: TeamResult
     
-    var matchHelper: MatchStatsHelper {
-        return MatchStatsHelper(match: match)
+    var matchHelper: StatsHelper {
+        return StatsHelper(blueTeam: blueTeam, orangeTeam: orangeTeam)
     }
     
     @Binding var selectedType: StatsType
@@ -573,10 +509,11 @@ struct TeamStatsChartView: View {
 }
 
 struct TeamStatsView: View {
-    var match: Match
+    var blueTeam: TeamResult
+    var orangeTeam: TeamResult
     
-    var statsHelper: MatchStatsHelper {
-        return MatchStatsHelper(match: match)
+    var statsHelper: StatsHelper {
+        return StatsHelper(blueTeam: blueTeam, orangeTeam: orangeTeam)
     }
     
     @State var pickerSelection: StatsType = .score
@@ -593,7 +530,7 @@ struct TeamStatsView: View {
             
             Spacer()
             
-            TeamsChosenStatsView(match: match, selectedType: $pickerSelection)
+            TeamsChosenStatsView(blueTeam: blueTeam, orangeTeam: orangeTeam, selectedType: $pickerSelection)
                 .animation(.easeInOut, value: pickerSelection)
             
             HorizontalBarChartView(dataPoints: statsHelper.getTeamNames(), text: { bar in
@@ -610,10 +547,11 @@ struct TeamStatsView: View {
 
 
 struct PlayersStatsView: View {    
-    var match: Match
+    var blueTeam: TeamResult
+    var orangeTeam: TeamResult
     
-    var statsHelper: MatchStatsHelper {
-        return MatchStatsHelper(match: match)
+    var statsHelper: StatsHelper {
+        return StatsHelper(blueTeam: blueTeam, orangeTeam: orangeTeam)
     }
     
     @State var pickerSelection: StatsType = .score
@@ -630,7 +568,7 @@ struct PlayersStatsView: View {
             
             Spacer()
             
-            PlayersChosenStatsView(match: match, selectedType: $pickerSelection)
+            PlayersChosenStatsView(blueTeam: blueTeam, orangeTeam: orangeTeam, selectedType: $pickerSelection)
                 .animation(.easeInOut, value: pickerSelection)
             
             Spacer()
@@ -652,5 +590,115 @@ extension Animation {
         Animation.spring(dampingFraction: 0.5)
             .speed(2)
             .delay(0.03 * Double(index))
+    }
+}
+
+struct ScoresView: View {
+    
+    var blue: TeamResult
+    var orange: TeamResult
+    
+    var blueNameSplit: (String, String) {
+        splitName(name: blue.teamInfo.team.name)
+    }
+    
+    var orangeNameSplit: (String, String) {
+        splitName(name: orange.teamInfo.team.name)
+    }
+    
+    private var inProgress: Bool {
+        if !blue.winner && !orange.winner {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    var body: some View {
+        VStack {
+            // logos and scores
+            HStack {
+                
+                Spacer()
+                
+                NavigationLink(
+                    destination: TeamScreen(team: blue.teamInfo.team),
+                    label: {
+                        UrlImageView(urlString: blue.teamInfo.team.image, type: .logo)
+                            .frame(width: 100, height: 75, alignment: .center)
+                            .padding(.trailing)
+                    })
+                
+                Text("\(blue.score)")
+                    .font(.system(.largeTitle, design: .rounded).weight(blue.winner ? .bold : .regular))
+                    .foregroundColor(inProgress ? .primary : (blue.winner ? .green : .red))
+                
+                Text("-")
+                    .font(.system(.title, design: .rounded).weight(.bold))
+                
+                Text("\(orange.score)")
+                    .font(.system(.largeTitle, design: .rounded).weight(orange.winner ? .bold : .regular))
+                    .foregroundColor(inProgress ? .primary : (orange.winner ? .green : .red))
+                
+                NavigationLink(
+                    destination: TeamScreen(team: orange.teamInfo.team),
+                    label: {
+                        UrlImageView(urlString: orange.teamInfo.team.image, type: .logo)
+                            .frame(width: 100, height: 75, alignment: .center)
+                            .padding(.leading)
+                    })
+                
+                Spacer()
+            }
+            .padding(.top)
+            
+            // teams names
+            HStack {
+                
+                NavigationLink(
+                    destination: TeamScreen(team: blue.teamInfo.team),
+                    label: {
+                        VStack(alignment: .leading) {
+                            Text(blueNameSplit.0)
+                                .font(.system(.body).weight(.light))
+                                .foregroundColor(.primary)
+                            Text(blueNameSplit.1)
+                                .font(.system(.headline).weight(.semibold))
+                                .foregroundColor(.primary)
+                        }
+                        .padding(.leading)
+                    })
+                
+                
+                Spacer()
+                
+                NavigationLink(
+                    destination: TeamScreen(team: orange.teamInfo.team),
+                    label: {
+                        VStack(alignment: .trailing) {
+                            Text(orangeNameSplit.0)
+                                .font(.system(.body).weight(.light))
+                                .foregroundColor(.primary)
+                            Text(orangeNameSplit.1)
+                                .font(.system(.headline).weight(.semibold))
+                                .foregroundColor(.primary)
+                        }
+                        .padding(.trailing)
+                    })
+                
+            }
+            .padding(.horizontal)
+            .padding(.bottom)
+            
+        }
+    }
+    
+    func splitName(name: String) -> (String, String) {
+        var newName = name.components(separatedBy: " ")
+        guard newName.count > 1 else { return ("", name) }
+        
+        let lastWord = newName.removeLast()
+        let theRest = newName
+        return (theRest.joined(separator: " "), lastWord)
     }
 }

@@ -6,9 +6,9 @@
 //
 
 import SwiftUI
-import BottomSheet
 
 struct TeamFilterView: View {
+    @State private var showSupport: Bool = false
     @ObservedObject var activeTeamsViewModel = ActiveTeamsViewModel()
     @State var selectedRegion: Int = 0
     @State var isShowingFAQ: Bool = false
@@ -73,7 +73,7 @@ struct TeamFilterView: View {
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        // Present FAQ
+                        showSupport.toggle()
                     } label: {
                         Image(systemName: "questionmark.circle")
                     }
@@ -83,6 +83,9 @@ struct TeamFilterView: View {
             .alert(isPresented: $isShowingFAQ, content: {
                 Alert(title: Text("This page only shows ACTIVE teams"), message: Text("Use the Events tab to find older or less relevant teams."), dismissButton: .default(Text("Okay")))
             })
+        }
+        .fullScreenCover(isPresented: $showSupport) {
+            SupportScreen()
         }
         .searchable(text: $activeTeamsViewModel.searchText, prompt: "Search teams by name")
         .onAppear(perform: {

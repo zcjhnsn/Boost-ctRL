@@ -82,25 +82,15 @@ struct SettingsView: View {
                     Link("RL Esports Subreddit", destination: LinkHelper.processLinkForDestination("https://reddit.com/r/rocketleagueesports", destination: linkDestination, fallbackURL: twitterURL))
                     Link("Liquipedia", destination: LinkHelper.processLinkForDestination("https://liquipedia.net/rocketleague/Main_Page", destination: linkDestination, fallbackURL: twitterURL))
                     Link("Octane.gg", destination: LinkHelper.processLinkForDestination("https://octane.gg", destination: linkDestination, fallbackURL: twitterURL))
-                    Link("Rocketeers.gg", destination: LinkHelper.processLinkForDestination("https://rocketeers..", destination: linkDestination, fallbackURL: twitterURL))
+                    Link("ShiftRLE", destination: LinkHelper.processLinkForDestination("https://shiftrle.gg", destination: linkDestination, fallbackURL: twitterURL))
                 }
                 
                 Section(header: Text("Connect with Boost ctRL")) {
                     
                     Link("@BoostctRL on Twitter", destination: LinkHelper.processLinkForDestination(twitterURL, destination: linkDestination))
-                    NavigationLink("Tip the Dev", destination: TipJarView())
                 }
                 
                 Section(header: Text("App Info")) {
-                    NavigationLink("Change Log", destination: ChangeLogView()
-                                    .navigationBarTitle("Change Log")
-                                    .navigationBarItems(trailing: Button(action: {
-                        presentationMode.wrappedValue.dismiss()
-                    }, label: {
-                        Image(systemName: "xmark")
-                            .foregroundColor(.primary)
-                    }))
-                    )
                     HStack {
                         Text("Version")
                         Spacer()

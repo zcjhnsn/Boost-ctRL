@@ -47,17 +47,19 @@ struct TeamResult: Codable, Hashable {
     let teamInfo: TeamInfo
     @DecodableDefault.EmptyList var players: [PlayerResult]
     @DecodableDefault.False var winner: Bool
+    @DecodableDefault.False var matchWinner: Bool
     
     enum CodingKeys: String, CodingKey {
         case teamInfo = "team"
-        case score, players, winner
+        case score, players, winner, matchWinner
     }
     
-    init(score: Int, teamInfo: TeamInfo, players: [PlayerResult], winner: Bool) {
+    init(score: Int, teamInfo: TeamInfo, players: [PlayerResult], winner: Bool, matchWinner: Bool) {
         self.score = score
         self.teamInfo = teamInfo
         self.players = players
         self.winner = winner
+        self.matchWinner = matchWinner
     }
 }
 

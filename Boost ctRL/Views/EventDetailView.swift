@@ -295,6 +295,8 @@ struct TopPerformerView: View {
 
 struct ParticipantsView: View {
     @State var showPlayers: Bool = false
+    @State var showTeamScreen: Bool = false
+    @State var chosenTeam: Team = ExampleData.team
     
     var participants: [Participant]
     
@@ -336,37 +338,44 @@ struct ParticipantsView: View {
                 LazyHGrid(rows: rows, spacing: 8) {
                     
                     ForEach(participants, id: \.team.id) { participant  in
-                        
-                        VStack {
-                            if showPlayers {
-                                ForEach(participant.players, id: \.id) { player in
-                                    HStack {
-                                        CountryFlagView(countryAbbreviation: player.country)
-                                        
-                                        Text(player.tag)
-                                            .font(.system(.subheadline, design: .default).weight(.light))
-                                        
-                                        
-                                        Spacer()
-                                        
+                        NavigationLink(destination: TeamScreen(team: chosenTeam), isActive: $showTeamScreen) {
+                            VStack {
+                                if showPlayers {
+                                    ForEach(participant.players, id: \.id) { player in
+                                        HStack {
+                                            CountryFlagView(countryAbbreviation: player.country)
+                                            
+                                            Text(player.tag)
+                                                .font(.system(.subheadline, design: .default).weight(.light))
+                                                .minimumScaleFactor(0.5)
+                                                .foregroundColor(.primary)
+                                            
+                                            
+                                            Spacer()
+                                            
+                                        }
                                     }
+                                    .transition(.opacity)
+                                } else {
+                                    UrlImageView(urlString: participant.team.image, type: .logo)
+                                        .transition(.opacity)
+                                    
+                                    Text(participant.team.name)
+                                        .font(.system(.subheadline, design: .default).weight(.light))
+                                        .transition(.opacity)
+                                        .foregroundColor(.primary)
                                 }
-                                .transition(.opacity)
-                            } else {
-                                UrlImageView(urlString: participant.team.image, type: .logo)
-                                    .transition(.opacity)
-                                
-                                Text(participant.team.name)
-                                    .font(.system(.subheadline, design: .default).weight(.light))
-                                    .transition(.opacity)
+                            }
+                            .transition(.opacity)
+                            .frame(width: 120)
+                            .padding()
+                            .background(Color.secondaryGroupedBackground)
+                            .cornerRadius(8, corners: .allCorners)
+                            .onTapGesture {
+                                self.chosenTeam = participant.team
+                                self.showTeamScreen.toggle()
                             }
                         }
-                        .transition(.opacity)
-                        .frame(width: 120)
-                        .padding()
-                        .background(Color.secondaryGroupedBackground)
-                        .cornerRadius(8, corners: .allCorners)
-                        
                     }
                 }
             }

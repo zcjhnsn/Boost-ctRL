@@ -1,0 +1,80 @@
+{
+    "releaseNotes": {
+        "id": 1,
+        "version": "3.0",
+        "title": "Back like we never left",
+        "description": "It's been too long. Thanks to the people at octane.gg, we're now powered by an API so this dev doesn't need to manually update game results 🙌 Hope you like it and tweet me with feedback!"
+    },
+    "faqSections": [{
+            "id": 0,
+            "title": "Frequently Asked Questions",
+            "hasDetailPage": true,
+            "items": [{
+                    "id": 1,
+                    "title": "Where do you get your data?",
+                    "text": "Boost Control is powered by [Octane.gg](https://octane.gg). Additional news articles are provided by [Shift RLE](https://shiftrle.gg)."
+                },
+                {
+                    "id": 2,
+                    "title": "Nothing seems to be loading. What gives?",
+                    "text": "Our service is dependent on Octane.gg's API. Their servers tend to get overloaded on competition weekends."
+                },
+                {
+                    "id": 3,
+                    "title": "Why can't I find player/team/event?",
+                    "text": "If it isn't on Octane.gg, it won't be listed here."
+                },
+                {
+                    "id": 4,
+                    "title": "Can you feature my article?",
+                    "text": "Potentially. Reach out to me on [Twitter](https://twitter.com/boostctrl)."
+                },
+                {
+                    "id": 5,
+                    "title": "Can you add [feature]?",
+                    "text": "Probably! Reach out to me on [Twitter](https://twitter.com/boostctrl)."
+                }
+            ]
+        }
+    ],
+    "contactSections": [{
+            "id": 0,
+            "title": "Feedback",
+            "items": [{
+                    "id": 0,
+                    "title": "Contact on Twitter",
+                    "url": "https://www.twitter.com/boostctrl",
+                    "imageName": "bubble.left.fill",
+                    "color": 0
+                }
+            ]
+        }
+    ],
+    "changelogItems": [{
+            "id": 0,
+            "version": "Version 3.0",
+            "date": "June 2022",
+            "notes": [{
+                    "id": 0,
+                    "releaseNote": "Complete overhaul"
+                },
+                {
+                    "id": 1,
+                    "releaseNote": "News powered by [Octane.gg](https://octane.gg) and [Shift RLE](https://shiftrle.gg)"
+                },
+                {
+                    "id": 2,
+                    "releaseNote": "Revamped match results, including overtimes and event stats."
+                },
+                {
+                    "id": 3,
+                    "releaseNote": "Search for teams, players, and events"
+                },
+                {
+                    "id": 4,
+                    "releaseNote": "Support for basic statistics"
+                }
+            ]
+        }
+    ]
+}

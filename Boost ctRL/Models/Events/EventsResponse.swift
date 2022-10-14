@@ -69,7 +69,7 @@ struct Stage: Codable, Hashable {
     let startDate, endDate: Date?
     let prize: Prize?
     let liquipedia: String?
-    let lan: Bool?
+    @DecodableDefault.False var lan: Bool
     let location: Location?
     let qualifier: Bool?
 

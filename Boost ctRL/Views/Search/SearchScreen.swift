@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SearchScreen: View {
+    @State private var showSupport: Bool = false
     @StateObject private var viewModel = SearchViewModel()
     
     let suggestions: [String] = [
@@ -37,16 +38,27 @@ struct SearchScreen: View {
             .background(Color.primaryGroupedBackground)
             .navigationTitle(Text("Search"))
             .navigationBarTitleDisplayMode(.large)
-            
+            .toolbar(content: {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Image("ctrl-color")
+                        .resizable()
+                        .frame(width: 30, height: 28, alignment: .center)
+                        .padding(.trailing)
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        showSupport.toggle()
+                    } label: {
+                        Image(systemName: "questionmark.circle")
+                    }
+
+                }
+            })
         }
-        .toolbar(content: {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Image("ctrl-color")
-                    .resizable()
-                    .frame(width: 30, height: 28, alignment: .center)
-                    .padding(.trailing)
-            }
-        })
+        .fullScreenCover(isPresented: $showSupport) {
+            SupportScreen()
+        }
         .searchable(text: $viewModel.searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search teams, events, and players")
         
     }

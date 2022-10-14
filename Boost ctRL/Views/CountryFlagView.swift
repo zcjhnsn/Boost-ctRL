@@ -16,11 +16,9 @@ struct CountryFlagView: View {
     
     var body: some View {
         if countryAbbreviation == nil || countryFlag == nil {
-            Image(systemName: "minus.rectangle.fill")
+            Image("empty")
                 .resizable()
-                .renderingMode(.template)
                 .aspectRatio(contentMode: .fit)
-                .foregroundColor(Color.gray)
         } else {
             Image(uiImage: countryFlag!)
                 .resizable()

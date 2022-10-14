@@ -9,7 +9,8 @@ import SwiftUI
 import Shimmer
 
 struct NewsView: View {
-    @State var isShowingSettings: Bool = false
+    @State private var isShowingSettings: Bool = false
+    @State private var showSupport: Bool = false
     @StateObject var articlesViewModel = ArticlesViewModel()
     @StateObject var recentMatchesViewModel = RecentMatchesViewModel()
     
@@ -66,6 +67,15 @@ struct NewsView: View {
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
+                        showSupport.toggle()
+                    }, label: {
+                        Image(systemName: "questionmark.circle")
+                            .foregroundColor(.primary)
+                    })
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
                         isShowingSettings = true
                     }, label: {
                         Image(systemName: "ellipsis")
@@ -73,6 +83,9 @@ struct NewsView: View {
                     })
                 }
             })
+            .fullScreenCover(isPresented: $showSupport) {
+                SupportScreen()
+            }
             .sheet(isPresented: $isShowingSettings, content: {
                 SettingsView()
             })

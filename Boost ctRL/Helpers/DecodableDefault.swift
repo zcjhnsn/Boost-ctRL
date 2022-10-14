@@ -72,7 +72,7 @@ extension DecodableDefault {
         }
         
         enum ID: Source {
-            static var defaultValue: String { String(UUID().uuidString) }
+            static var defaultValue: String { "00000000" }
         }
         
         // This is gross but doing it for the lulz
@@ -95,7 +95,7 @@ extension DecodableDefault {
         
         enum EmptyTeamResult: Source {
             static var defaultValue: TeamResult {
-                TeamResult(score: 0, teamInfo: TeamInfo(team: Team(id: String(Int.random(in: 123..<12345)), slug: "", name: "TBD", image: "", region: ""), stats: nil), players: [], winner: false)
+                TeamResult(score: 0, teamInfo: TeamInfo(team: Team(id: String(Int.random(in: 123..<12345)), slug: "", name: "TBD", image: "", region: ""), stats: nil), players: [], winner: false, matchWinner: false)
             }
         }
         

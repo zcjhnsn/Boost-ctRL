@@ -13,6 +13,7 @@ enum EventListStatus: String, CaseIterable {
 }
 
 struct EventListScreen: View {
+    @State private var showSupport: Bool = false
     @StateObject private var eventListViewModel = EventListViewModel()
     @State private var eventStatus: EventListStatus = .current
     
@@ -45,7 +46,7 @@ struct EventListScreen: View {
                 
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button {
-                        // present FAQ
+                        showSupport.toggle()
                     } label: {
                         Image(systemName: "questionmark.circle")
                     }
@@ -54,6 +55,9 @@ struct EventListScreen: View {
                 
                     
             }
+        }
+        .fullScreenCover(isPresented: $showSupport) {
+            SupportScreen()
         }
         .searchable(text: $eventListViewModel.searchText, placement: .navigationBarDrawer, prompt: "Search for an event")
         .toolbar {

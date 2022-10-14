@@ -20,33 +20,25 @@ enum EventStatus {
 
 enum Endpoint {
     case activeTeams
-    case newsRocketeers
-    case newsOctane
-    case newsShift
-    case matches
     case event(id: String)
     case events
     case eventParticipants(id: String)
     case eventMatches(id: String)
-    case players
+    case game(id: String)
+    case matches
+    case newsRocketeers
+    case newsOctane
+    case newsShift
     case searchList
     case statsForPlayers
     case teamStats
-    case playerStats
+    case players
     case player(id: String)
     
     var path: String {
         switch self {
         case .activeTeams:
             return "/teams/active"
-        case .newsOctane:
-            return "/articles"
-        case .newsRocketeers:
-            return "/wp-json/wp/v2/posts"
-        case .newsShift:
-            return "/articles"
-        case .matches:
-            return "/matches"
         case .event(let id):
             return "/events/\(id)"
         case .events:
@@ -55,18 +47,26 @@ enum Endpoint {
             return "/events/\(id)/participants"
         case .eventMatches(id: let id):
             return "/events/\(id)/matches"
+        case .game(id: let id):
+            return "/games/\(id)"
+        case .matches:
+            return "/matches"
+        case .newsOctane:
+            return "/articles"
+        case .newsRocketeers:
+            return "/wp-json/wp/v2/posts"
+        case .newsShift:
+            return "/articles"
         case .players:
             return "players"
+        case .player(id: let id):
+            return "/players/\(id)"
         case .statsForPlayers:
             return "/stats/players"
         case .searchList:
             return "/search"
         case .teamStats:
             return "/stats/teams"
-        case .playerStats:
-            return "/stats/players"
-        case .player(id: let id):
-            return "/players/\(id)"
         }
     }
 }
@@ -326,7 +326,7 @@ enum API {
     }
     
     static func getStats(forPlayer playerID: String) -> AnyPublisher<StatsResponse, Error> {
-        var components = URLComponents(string: octaneBase.appendingPathComponent(Endpoint.playerStats.path).absoluteString)!
+        var components = URLComponents(string: octaneBase.appendingPathComponent(Endpoint.statsForPlayers.path).absoluteString)!
         
         components.queryItems = [
             URLQueryItem(name: "player", value: playerID),
@@ -348,6 +348,12 @@ enum API {
         
         let request = URLRequest(url: components.url!)
         
+        return run(request)
+    }
+    
+    static func getGame(_ gameID: String) -> AnyPublisher<GameResult, Error> {
+        let components = URLComponents(string: octaneBase.appendingPathComponent(Endpoint.game(id: gameID).path).absoluteString)!
+        let request = URLRequest(url: components.url!)
         return run(request)
     }
 }

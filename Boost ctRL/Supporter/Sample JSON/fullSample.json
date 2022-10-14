@@ -1,0 +1,403 @@
+{
+    "releaseNotes": {
+        "id": 1,
+        "version": "1.1",
+        "title": "Big update",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo sconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    },
+    "headerItems": [{
+            "id": 5,
+            "title": "Welcome to Supporter",
+            "imageName": "apps.iphone",
+            "color": 0,
+            "supportPages": [{
+                    "id": 0,
+                    "title": "Show, don't tell",
+                    "subtitle": "Make your support pages extra clear by adding supporting images.",
+                    "imageURL": "https://jordibruin.github.io/navi-support/images/howtoenablesubtitles/en/subtitles-03-en.jpg",
+                    "darkImageURL": "https://jordibruin.github.io/navi-support/images/howtoenablesubtitles/en/subtitles-03-en-dark.jpg"
+                },
+                {
+                    "id": 1,
+                    "title": "Different images in the dark",
+                    "subtitle": "Switch your device to dark mode to see a different image",
+                    "imageURL": "https://jordibruin.github.io/navi-support/images/howtoenablesubtitles/en/subtitles-03-en.jpg",
+                    "darkImageURL": "https://jordibruin.github.io/navi-support/images/howtoenablesubtitles/en/subtitles-03-en-dark.jpg"
+                },
+                {
+                    "id": 2,
+                    "title": "Video Support",
+                    "subtitle": "Supporter supports inline videos, so you can show your users exactly how to use your app.",
+                    "videoURL": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "title": "Multiple Headers",
+            "imageName": "rectangle.stack",
+            "color": 2,
+            "supportPages": [{
+                    "id": 0,
+                    "title": "Show, don't tell",
+                    "subtitle": "Make your support pages extra clear by adding supporting images.",
+                    "imageURL": "https://jordibruin.github.io/navi-support/images/howtoenablesubtitles/en/subtitles-03-en.jpg",
+                    "darkImageURL": "https://jordibruin.github.io/navi-support/images/howtoenablesubtitles/en/subtitles-03-en-dark.jpg"
+                },
+                {
+                    "id": 1,
+                    "title": "Different images in the dark",
+                    "subtitle": "Switch your device to dark mode to see a different image",
+                    "imageURL": "https://jordibruin.github.io/navi-support/images/howtoenablesubtitles/en/subtitles-03-en.jpg",
+                    "darkImageURL": "https://jordibruin.github.io/navi-support/images/howtoenablesubtitles/en/subtitles-03-en-dark.jpg"
+                },
+                {
+                    "id": 2,
+                    "title": "Video Support",
+                    "subtitle": "Supporter supports inline videos, so you can show your users exactly how to use your app.",
+                    "videoURL": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                }
+            ]
+        }
+    ],
+    "highlightedSections": [{
+            "id": 0,
+            "title": "Section 1",
+            "items": [{
+                    "id": 0,
+                    "title": "Change accent colors",
+                    "subtitle": "",
+                    "imageName": "icloud.circle.fill",
+                    "emoji": "🎨",
+                    "color": 1,
+                    "supportPages": [{
+                            "id": 0,
+                            "title": "SupportColors",
+                            "subtitle": "Set your apps colors in SupportColors and use the Int associated with the color in your JSON to customize what icons and headers look like.",
+                            "imageURL": "https://jordibruin.github.io/navi-support/images/howtoenablesubtitles/en/subtitles-03-en.jpg",
+                            "darkImageURL": "https://jordibruin.github.io/navi-support/images/howtoenablesubtitles/en/subtitles-03-en-dark.jpg"
+                        },
+                        {
+                            "id": 0,
+                            "title": "SupportColors",
+                            "subtitle": "Set your apps colors in SupportColors and use the Int associated with the color in your JSON to customize what icons and headers look like.",
+                            "imageURL": "https://jordibruin.github.io/navi-support/images/howtoenablesubtitles/en/subtitles-03-en.jpg",
+                            "darkImageURL": "https://jordibruin.github.io/navi-support/images/howtoenablesubtitles/en/subtitles-03-en-dark.jpg"
+                        }
+                    ]
+                },
+                {
+                    "id": 1,
+                    "title": "List and cell background",
+                    "subtitle": "",
+                    "imageName": "arrow.up.heart.fill",
+                    "emoji": "🥳",
+                    "color": 0,
+                    "supportPages": [{
+                        "id": 0,
+                        "title": "Page 1",
+                        "subtitle": "Open the Design file and change the colors however you like. Changing the background requires you to uncomment the init in SupportScreen, which might have issues for other parts of your app if they use Lists as well.",
+                        "imageURL": "https://jordibruin.github.io/navi-support/images/howtoenablesubtitles/en/subtitles-03-en.jpg",
+                        "darkImageURL": "https://jordibruin.github.io/navi-support/images/howtoenablesubtitles/en/subtitles-03-en-dark.jpg"
+                    }]
+                },
+                {
+                    "id": 2,
+                    "title": "Titles and subtitles",
+                    "subtitle": "",
+                    "imageName": "moon.circle.fill",
+                    "emoji": "🚌",
+                    "color": 2,
+                    "supportPages": [{
+                        "id": 0,
+                        "title": "Page 1",
+                        "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                        "imageURL": "https://jordibruin.github.io/navi-support/images/howtoenablesubtitles/en/subtitles-03-en.jpg",
+                        "darkImageURL": "https://jordibruin.github.io/navi-support/images/howtoenablesubtitles/en/subtitles-03-en-dark.jpg"
+                    }]
+                },
+                {
+                    "id": 3,
+                    "title": "Highlighted items have detail pages",
+                    "subtitle": "",
+                    "imageName": "arrow.counterclockwise.icloud.fill",
+                    "emoji": "🗳",
+                    "color": 0,
+                    "supportPages": [{
+                        "id": 0,
+                        "title": "Page 1",
+                        "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                        "imageURL": "https://jordibruin.github.io/navi-support/images/howtoenablesubtitles/en/subtitles-03-en.jpg",
+                        "darkImageURL": "https://jordibruin.github.io/navi-support/images/howtoenablesubtitles/en/subtitles-03-en-dark.jpg"
+                    }]
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "title": "Emoji",
+            "items": [{
+                    "id": 0,
+                    "title": "Change accent colors",
+                    "subtitle": "",
+                    "imageName": "icloud.circle.fill",
+                    "color": 1,
+                    "supportPages": [{
+                            "id": 0,
+                            "title": "SupportColors",
+                            "subtitle": "Set your apps colors in SupportColors and use the Int associated with the color in your JSON to customize what icons and headers look like.",
+                            "imageURL": "https://jordibruin.github.io/navi-support/images/howtoenablesubtitles/en/subtitles-03-en.jpg",
+                            "darkImageURL": "https://jordibruin.github.io/navi-support/images/howtoenablesubtitles/en/subtitles-03-en-dark.jpg"
+                        },
+                        {
+                            "id": 0,
+                            "title": "SupportColors",
+                            "subtitle": "Set your apps colors in SupportColors and use the Int associated with the color in your JSON to customize what icons and headers look like.",
+                            "imageURL": "https://jordibruin.github.io/navi-support/images/howtoenablesubtitles/en/subtitles-03-en.jpg",
+                            "darkImageURL": "https://jordibruin.github.io/navi-support/images/howtoenablesubtitles/en/subtitles-03-en-dark.jpg"
+                        }
+                    ]
+                },
+                {
+                    "id": 1,
+                    "title": "List and cell background",
+                    "subtitle": "",
+                    "imageName": "arrow.up.heart.fill",
+                    "color": 0,
+                    "supportPages": [{
+                        "id": 0,
+                        "title": "Page 1",
+                        "subtitle": "Open the Design file and change the colors however you like. Changing the background requires you to uncomment the init in SupportScreen, which might have issues for other parts of your app if they use Lists as well.",
+                        "imageURL": "https://jordibruin.github.io/navi-support/images/howtoenablesubtitles/en/subtitles-03-en.jpg",
+                        "darkImageURL": "https://jordibruin.github.io/navi-support/images/howtoenablesubtitles/en/subtitles-03-en-dark.jpg"
+                    }]
+                },
+                {
+                    "id": 2,
+                    "title": "Titles and subtitles",
+                    "subtitle": "",
+                    "imageName": "moon.circle.fill",
+                    "color": 2,
+                    "supportPages": [{
+                        "id": 0,
+                        "title": "Page 1",
+                        "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                        "imageURL": "https://jordibruin.github.io/navi-support/images/howtoenablesubtitles/en/subtitles-03-en.jpg",
+                        "darkImageURL": "https://jordibruin.github.io/navi-support/images/howtoenablesubtitles/en/subtitles-03-en-dark.jpg"
+                    }]
+                },
+                {
+                    "id": 3,
+                    "title": "Highlighted items have detail pages",
+                    "subtitle": "",
+                    "imageName": "arrow.counterclockwise.icloud.fill",
+                    "color": 0,
+                    "supportPages": [{
+                        "id": 0,
+                        "title": "Page 1",
+                        "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                        "imageURL": "https://jordibruin.github.io/navi-support/images/howtoenablesubtitles/en/subtitles-03-en.jpg",
+                        "darkImageURL": "https://jordibruin.github.io/navi-support/images/howtoenablesubtitles/en/subtitles-03-en-dark.jpg"
+                    }]
+                }
+            ]
+        }
+    ],
+    "faqSections": [{
+            "id": 0,
+            "title": "Frequently Asked Questions",
+            "hasDetailPage": true,
+            "items": [{
+                    "id": 0,
+                    "title": "Add questions with short answers directly on the page",
+                    "text": "Users can quickly toggle the answers they want to read."
+                },
+                {
+                    "id": 6,
+                    "title": "Local JSON or load it remotely",
+                    "text": "Fallback to a local JSON file in your project, or load localized support data from the web."
+                },
+                {
+                    "id": 7,
+                    "title": "How many questions can go on a page?",
+                    "text": "Fallback to a local JSON file in your project, or load localized support data from the web."
+                },
+                {
+                    "id": 8,
+                    "title": "Can I have multiple pages?",
+                    "text": "Fallback to a local JSON file in your project, or load localized support data from the web."
+                },
+                {
+                    "id": 9,
+                    "title": "How did you come up with the name 'Supporter'?",
+                    "text": "Fallback to a local JSON file in your project, or load localized support data from the web."
+                },
+                {
+                    "id": 10,
+                    "title": "What is the meaning of life?",
+                    "text": "Fallback to a local JSON file in your project, or load localized support data from the web."
+                },
+                {
+                    "id": 11,
+                    "title": "Are lifetime updates really included for Supporter?",
+                    "text": "Fallback to a local JSON file in your project, or load localized support data from the web."
+                },
+                {
+                    "id": 12,
+                    "title": "How many reviews is too many reviews?",
+                    "text": "Fallback to a local JSON file in your project, or load localized support data from the web."
+                },
+                {
+                    "id": 13,
+                    "title": "How many questions is too many questions?",
+                    "text": "Fallback to a local JSON file in your project, or load localized support data from the web."
+                },
+                {
+                    "id": 14,
+                    "title": "Where should I go on holiday this year?",
+                    "text": "Fallback to a local JSON file in your project, or load localized support data from the web."
+                },
+                {
+                    "id": 15,
+                    "title": "Do you know a good work location in Amsterdam?",
+                    "text": "Fallback to a local JSON file in your project, or load localized support data from the web."
+                },
+                {
+                    "id": 16,
+                    "title": "Should I go to bed?",
+                    "text": "Fallback to a local JSON file in your project, or load localized support data from the web."
+                }
+
+
+
+
+            ]
+        },
+        {
+            "id": 1,
+            "title": "Markdown",
+            "items": [{
+                "id": 1,
+                "title": "With support for Markdown on iOS 15",
+                "text": "You can use **markdown** to make your ~sentences~ copy shine. You can even add [links](https://goodsnooze.gumroad.com/l/Supporter) inline."
+            }]
+        }
+    ],
+    "contactSections": [{
+            "id": 0,
+            "title": "Feedback",
+            "items": [{
+                    "id": 0,
+                    "title": "Contact Jordi on Twitter",
+                    "url": "https://www.twitter.com/jordibruin",
+                    "imageName": "message.fill",
+                    "color": 0
+                },
+                {
+                    "id": 1,
+                    "title": "Contact us",
+                    "url": "mailto:jordi@goodsnooze.com",
+                    "imageName": "message.fill",
+                    "color": 0
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "title": "Feedback 2",
+            "items": [{
+                    "id": 0,
+                    "title": "Contact Jordi on Twitter",
+                    "url": "https://www.twitter.com/jordibruin",
+                    "imageName": "message.fill",
+                    "color": 0
+                },
+                {
+                    "id": 1,
+                    "title": "Contact us",
+                    "url": "mailto:jordi@goodsnooze.com",
+                    "imageName": "message.fill",
+                    "color": 0
+                }
+            ]
+        }
+    ],
+    "changelogItems": [{
+            "id": 0,
+            "version": "Version 1.0",
+            "date": "31 December 2021",
+            "notes": [{
+                    "id": 0,
+                    "releaseNote": "Initial Release of Supporter"
+                },
+                {
+                    "id": 1,
+                    "releaseNote": "Headers, highlighted items and FAQ toggles"
+                },
+                {
+                    "id": 2,
+                    "releaseNote": "Contact Items"
+                },
+                {
+                    "id": 3,
+                    "releaseNote": "Detail pages with images and videos"
+                },
+                {
+                    "id": 4,
+                    "releaseNote": "Support for Light and Dark Mode"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "version": "Version 1.1",
+            "date": "31 December 2021",
+            "notes": [{
+                "id": 0,
+                "releaseNote": "Updated the name from Hooligan to Supporter"
+            }]
+        },
+        {
+            "id": 2,
+            "version": "Version 1.2",
+            "date": "2 January 2022",
+            "notes": [{
+                    "id": 0,
+                    "releaseNote": "Added changelog to Supporter"
+                },
+                {
+                    "id": 1,
+                    "releaseNote": "Added extra comments"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "version": "Version 1.3",
+            "date": "5 January 2022",
+            "notes": [{
+                    "id": 0,
+                    "releaseNote": "Added changelog to Supporter"
+                },
+                {
+                    "id": 1,
+                    "releaseNote": "Added extra comments"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "version": "Version 1.4",
+            "date": "5 January 2022",
+            "notes": [{
+                    "id": 0,
+                    "releaseNote": "Added changelog to Supporter"
+                },
+                {
+                    "id": 1,
+                    "releaseNote": "Added extra comments"
+                }
+            ]
+        }
+    ]
+}

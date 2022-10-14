@@ -54,7 +54,7 @@ struct ExampleData {
     }
     
     static var teamResult: TeamResult {
-        TeamResult(score: 3, teamInfo: TeamInfo(team: team, stats: nil), players: [], winner: false)
+        TeamResult(score: 3, teamInfo: TeamInfo(team: team, stats: nil), players: [], winner: false, matchWinner: false)
     }
     
     static var statsObject: StatsObject {
@@ -63,6 +63,10 @@ struct ExampleData {
     
     static var players: PlayersResponse {
         fromJson(name: "Players")
+    }
+    
+    static var game: GameResult {
+        fromJson(name: "Game")
     }
 }
 

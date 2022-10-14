@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIcons</key>
 	<dict>
 		<key>CFBundleAlternateIcons</key>
@@ -15,56 +19,11 @@
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
-			<key>Vitality</key>
+			<key>Dignitas</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>Vitality</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>Ghost</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>Ghost</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>Envy</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>Envy</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>Guild</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>Guild</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>Xset</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>Xset</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>eUnited</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>eUnited</string>
+					<string>Dignitas</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
@@ -78,29 +37,47 @@
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
-			<key>Dignitas</key>
+			<key>Envy</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>Dignitas</string>
+					<string>Envy</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
-			<key>NRG (The General)</key>
+			<key>FC Barcelona</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>NRG (The General)</string>
+					<string>FC Barcelona</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
-			<key>SMPR</key>
+			<key>Faze</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>SMPR</string>
+					<string>Faze</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>G2</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>G2</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Ghost</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Ghost</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
@@ -110,6 +87,24 @@
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>Giants</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Ground Zero</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Ground Zero</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Guild</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Guild</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
@@ -141,110 +136,11 @@
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
-			<key>FC Barcelona</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>FC Barcelona</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>Rogue</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>Rogue</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>Faze</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>Faze</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>Version1</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>Version1</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>G2</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>G2</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>Singularity</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>Singularity</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>SK</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>SK</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
 			<key>Liquid</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>Liquid</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>Soniqs</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>Soniqs</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>Rebellion</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>Rebellion</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>Ground Zero</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>Ground Zero</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>Spacestation</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>Spacestation</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
@@ -258,29 +154,127 @@
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
+			<key>NRG (The General)</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>NRG (The General)</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Rebellion</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Rebellion</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Rogue</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Rogue</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>SK</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>SK</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>SMPR</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>SMPR</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Singularity</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Singularity</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Soniqs</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Soniqs</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Spacestation</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Spacestation</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Version1</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Version1</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Vitality</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Vitality</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Xset</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Xset</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>eUnited</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>eUnited</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
 		</dict>
 		<key>CFBundlePrimaryIcon</key>
 		<dict>
-			<key>CFBundleIconName</key>
-			<string></string>
 			<key>CFBundleIconFiles</key>
 			<array>
 				<string></string>
 			</array>
+			<key>CFBundleIconName</key>
+			<string></string>
 			<key>UIPrerenderedIcon</key>
 			<false/>
 		</dict>
 	</dict>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>googlechrome</string>
-		<string>ddgQuickLink</string>
-		<string>firefox</string>
-	</array>
-	<key>CFBundleDevelopmentRegion</key>
-	<string>$(DEVELOPMENT_LANGUAGE)</string>
-	<key>CFBundleExecutable</key>
-	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -293,6 +287,12 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>googlechrome</string>
+		<string>ddgQuickLink</string>
+		<string>firefox</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIApplicationSceneManifest</key>
@@ -311,8 +311,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
