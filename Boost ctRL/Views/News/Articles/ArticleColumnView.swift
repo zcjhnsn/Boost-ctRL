@@ -16,20 +16,13 @@ struct ArticleColumnView: View {
         ScrollView(.vertical, showsIndicators: false) {
             LazyVGrid(columns: cols, alignment: .leading, spacing: 8) {
                 ForEach(viewModel.articles) { article in
-                    switch article.newsSource {
-                    case .octane:
-                        ArticleCardView(article: article)
-//                        ArticleItemView(article: article)
-                            .padding(.horizontal)
-                            .redacted(when: viewModel.isOctaneLoading)
-                            .animation(.easeInOut, value: viewModel.isOctaneLoading)
-                    case .shift:
+                    
                         ArticleCardView(article: article)
                             .padding(.horizontal)
                             .redacted(when: viewModel.isShiftLoading)
                             .animation(.easeInOut, value: viewModel.isShiftLoading)
                             
-                    }
+                    
                 }
             }
         }

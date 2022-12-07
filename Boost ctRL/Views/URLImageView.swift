@@ -9,7 +9,7 @@ import SwiftUI
 
 enum ImageType: Equatable {
     case logo
-    case news(Article.Site)
+    case news
 }
 
 struct UrlImageView: View {
@@ -31,7 +31,7 @@ struct UrlImageView: View {
         } else {
             Image(uiImage: urlImageModel.image!)
                 .resizable()
-                .aspectRatio(contentMode: imageType == .news(.shift) ? .fill : .fit)
+                .aspectRatio(contentMode: .fill)
                 .frame(alignment: .center)
         }
     }

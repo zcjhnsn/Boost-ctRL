@@ -1,9 +1,9 @@
 {
     "releaseNotes": {
         "id": 1,
-        "version": "3.0",
-        "title": "Back like we never left",
-        "description": "It's been too long. Thanks to the people at octane.gg, we're now powered by an API so this dev doesn't need to manually update game results 🙌 Hope you like it and tweet me with feedback!"
+        "version": "3.1",
+        "title": "Money Moves 👀",
+        "description": "The folks at Shiftrle.gg have been busy. They bought Octane.gg a couple months ago so I needed to make some changes to how news articles were added to the app."
     },
     "faqSections": [{
             "id": 0,
@@ -12,17 +12,17 @@
             "items": [{
                     "id": 1,
                     "title": "Where do you get your data?",
-                    "text": "Boost Control is powered by [Octane.gg](https://octane.gg). Additional news articles are provided by [Shift RLE](https://shiftrle.gg)."
+                    "text": "Boost Control is powered by [Shiftrle.gg](https://shiftrle.gg). Shift bought Octane.gg, so they are one and the same now!"
                 },
                 {
                     "id": 2,
                     "title": "Nothing seems to be loading. What gives?",
-                    "text": "Our service is dependent on Octane.gg's API. Their servers tend to get overloaded on competition weekends."
+                    "text": "Our service is dependent on Shiftrle.gg's API. Their servers tend to get overloaded on competition weekends."
                 },
                 {
                     "id": 3,
                     "title": "Why can't I find player/team/event?",
-                    "text": "If it isn't on Octane.gg, it won't be listed here."
+                    "text": "If it isn't on Shiftrle.gg, it won't be listed here."
                 },
                 {
                     "id": 4,
@@ -73,6 +73,15 @@
                 {
                     "id": 4,
                     "releaseNote": "Support for basic statistics"
+                }
+            ]
+        }, {
+            "id": 1,
+            "version": "Version 3.1",
+            "date": "December 2022",
+            "notes": [{
+                    "id": 0,
+                    "releaseNote": "Updated news sources to reflect ShiftRLE's acquisition of Octane.gg"
                 }
             ]
         }

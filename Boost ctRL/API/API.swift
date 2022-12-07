@@ -104,51 +104,23 @@ enum API {
             if let date = formatter.date(from: dateStr) {
                 return date
             }
+            formatter.dateFormat = "YYYY-MM-dd'T'HH:mm:ss.SSSZ"
+            if let date = formatter.date(from: dateStr) {
+                return date
+            }
             throw DateError.invalidDate
         })
-        
-        
-        switch decodingArticleType {
-        case .octaneNews:
-            decoder.userInfo[.newsSite] = Article.Site.octane
-        case .shiftNews:
-            decoder.userInfo[.newsSite] = Article.Site.shift
-        case .notAnArticle:
-            break
-        }
         
         return agent.run(request, decoder)
             .map(\.value)
             .eraseToAnyPublisher()
     }
     
-    
-//    static func getRocketeersArticles() -> AnyPublisher<[Article], Error> {
-//        var components = URLComponents(string: rocketeersBase.appendingPathComponent(Endpoint.newsRocketeers.path).absoluteString)!
-//        components.queryItems = [
-//            URLQueryItem(name: "per_page", value: "10"),
-//            URLQueryItem(name: "_embed", value: nil)
-//        ]
-//
-//        let request = URLRequest(url: components.url!)
-//        return run(request, decodingArticleType: .rocketeersNews)
-//    }
-    
-    static func getOctaneArticles() -> AnyPublisher<[Article], Error> {
-        var components = URLComponents(string: octaneNewsBase.appendingPathComponent(Endpoint.newsOctane.path).absoluteString)!
+    static func getShiftArticles() -> AnyPublisher<[Article], Error> {
+        var components = URLComponents(string: octaneNewsBase.appendingPathComponent(Endpoint.newsShift.path).absoluteString)!
         components.queryItems = [
             URLQueryItem(name: "_sort", value: "published_at:desc"),
             URLQueryItem(name: "_limit", value: "20")
-        ]
-        
-        let request = URLRequest(url: components.url!)
-        return run(request, decodingArticleType: .octaneNews)
-    }
-    
-    static func getShiftArticles() -> AnyPublisher<[Article], Error> {
-        var components = URLComponents(string: shiftBase.appendingPathComponent(Endpoint.newsShift.path).absoluteString)!
-        components.queryItems = [
-            URLQueryItem(name: "format", value: "json-pretty")
         ]
         let request = URLRequest(url: components.url!)
         return run(request, decodingArticleType: .shiftNews)

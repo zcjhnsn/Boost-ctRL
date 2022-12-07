@@ -37,32 +37,23 @@ struct ArticleCard: View {
             VStack {
                 HStack {
                     Label {
-                        Text(article.newsSource == .octane ? "Octane" : "Shift")
+                        Text("Shift")
                             .font(.system(.footnote).smallCaps())
                     } icon: {
-                        Image(article.newsSource == .octane ? "octane-glyph" : "shift-glyph")
+                        Image("shift-glyph")
                             .frame(width: 10, height: 15, alignment: .center)
                             .imageScale(.large)
                             .padding(.vertical, 8)
                             .padding(.leading, 15)
                     }
-                    .foregroundColor(article.newsSource == .octane ? .octaneGreen : .shiftOrange)
+                    .foregroundColor(.shiftOrange)
 
                     
                     Spacer()
                 }
                 .background {
-//                    LinearGradient(colors: [.gray, .gray2, .gray3, .gray4, .gray5, .gray6, .secondaryGroupedBackground], startPoint: .leading, endPoint: .center)
-//                        .opacity(0.4)
-                    switch article.newsSource {
-                    case .octane:
-                        LinearGradient(colors: [.octaneGreen, .secondaryGroupedBackground], startPoint: .leading, endPoint: .center)
-                            .opacity(0.4)
-                    case .shift:
-                        LinearGradient(colors: [.shiftOrange, .secondaryGroupedBackground], startPoint: .leading, endPoint: .center)
-                            .opacity(0.4)
-                    }
-                        
+                    LinearGradient(colors: [.shiftOrange, .secondaryGroupedBackground], startPoint: .leading, endPoint: .center)
+                        .opacity(0.4)
                 }
                 
                 HStack {
@@ -75,9 +66,9 @@ struct ArticleCard: View {
                     
                 }
                 
-                if article.description != nil {
+                if !article.articleDescription.isEmpty {
                     HStack(alignment: .top) {
-                        Text(article.description!)
+                        Text(article.articleDescription)
                             .font(Font.system(.subheadline))
                             .frame(alignment: .topLeading)
                             .padding(.leading)
@@ -95,7 +86,7 @@ struct ArticleCard: View {
             HStack {
                 Spacer()
                 
-                UrlImageView(urlString: article.image, type: .news(.shift))
+                UrlImageView(urlString: article.image.url.absoluteString, type: .news)
                     .frame(width: 120, height: 120, alignment: .center)
                     .scaledToFit()
                     .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
@@ -129,16 +120,16 @@ struct ArticleCardMetaDataView: View {
     var body: some View {
         HStack {
             HStack {
-                Text("\(article.date.timeAgo())")
+                Text("\(article.publishedAt.timeAgo())")
                     .padding(.leading)
                     .padding(.vertical, 6)
                     .font(Font.system(.caption).bold())
                 
-                if article.author != nil {
+                if !article.authors.isEmpty {
                     Text(verbatim: "\u{2022}")
                         .font(Font.system(.caption).bold())
                     
-                    Text(article.author!)
+                    Text(String(article.authors.map { $0.name }.joined(separator: ", ")))
                         .font(Font.system(.caption).bold())
                 }
                 
@@ -170,11 +161,11 @@ struct ArticleCardMetaDataView: View {
                         if linkDestination == 0 {
                             openInAppBrowser = true
                         } else {
-                            openURL(LinkHelper.processLinkForDestination(article.baseURL, destination: linkDestination))
+                            openURL(LinkHelper.processLinkForDestination("https://shiftRLE.gg", destination: linkDestination))
                         }
                     } label: {
-                        Text("Go to \(article.newsSource.rawValue)")
-                        Image(article.newsSource == .shift ? "shift-glyph" : "octane-glyph")
+                        Text("Go to ShiftRLE")
+                        Image("shift-glyph")
                             .imageScale(.large)
                     }
                 }
@@ -193,11 +184,10 @@ struct ArticleCardMetaDataView: View {
             genericLink = false
         }, content: {
             if genericLink {
-                SafariView(url: LinkHelper.processLinkForDestination(article.baseURL, destination: linkDestination))
+                SafariView(url: LinkHelper.processLinkForDestination("https://shiftRLE.gg", destination: linkDestination))
                     .edgesIgnoringSafeArea(.all)
             } else {
-                
-                SafariView(url: LinkHelper.processLinkForDestination(genericLink ? article.baseURL : article.link, destination: linkDestination))
+                SafariView(url: LinkHelper.processLinkForDestination(genericLink ? "https://shiftRLE.gg" : article.link, destination: linkDestination))
                     .edgesIgnoringSafeArea(.all)
             }
                 
@@ -215,10 +205,27 @@ struct ArticleCardMetaDataView: View {
 }
 
 struct ArticleCardView_Previews: PreviewProvider {
+    static var article = try! Article(
+        json: """
+            {"title": "Shift 16: Ranking the Fall Major teams",
+              "description": "The Shift staff ranked the Fall Major teams and talked about how they got here.",
+              "published_at": "2022-12-06T18:22:54.732Z",
+              "slug": "shift-16-ranking-the-fall-major-teams",
+              "image": {
+                  "url": "https://octane-content.s3.amazonaws.com/Vatira_Spring_Major_2021_22_Psyonix_ee732addf6.jpg"
+              },
+              "authors": [{
+                  "name": "Travis Messall",
+                  "id": "6362f1a2b73aac00195a3cbb"
+              }],
+              "id": "638ea39cb73aac00195a3cf8"
+            }
+        """
+    )
     static var previews: some View {
-        ArticleCardView(article: Article(id: "5fb2c33fc2ec7c1910d4d030", image: "https://images.squarespace-cdn.com/content/v1/5fb2c33fc2ec7c1910d4d030/1654815417578-I2WLHSO5PM3TC9E1N69A/SUPER-16-REGIONAL-PREVIEW_Web.png", link: "https://shiftrle.gg/articles/super-16-preview", title: "Super 16 Preview", description: nil, date: Date(timeIntervalSince1970: Double(1654873140465) / 1000.0), author: "Travis Messall"))
+        ArticleCardView(article: article)
             .preferredColorScheme(.light)
-        ArticleCardView(article: Article(id: "61f18ff211e0480019db841b", image: "https://octane-content.s3.amazonaws.com/01_monkey_d3116bd68b.jpg", link: "https://octane.gg/news/top-20-players-of-2021-m0nkey-m00n-1", title: "Top 20 Players of 2021: M0nkey M00n (#1)", description: "The catalyst of Team BDS earns the highest honours on our list after an outstanding year of stellar performances.", date: Date(timeIntervalSince1970: Double(1654873140465) / 1000.0), author: "Travis Messall"))
+        ArticleCardView(article: article)
             .preferredColorScheme(.dark)
     }
 }

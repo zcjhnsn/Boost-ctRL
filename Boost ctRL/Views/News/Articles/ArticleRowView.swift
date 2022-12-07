@@ -31,9 +31,27 @@ struct ArticleRowView: View {
 }
 
 struct ArticleRowView_Previews: PreviewProvider {
+    static var article = try! Article(
+        json: """
+            {"title": "Shift 16: Ranking the Fall Major teams",
+              "description": "The Shift staff ranked the Fall Major teams and talked about how they got here.",
+              "published_at": "2022-12-06T18:22:54.732Z",
+              "slug": "shift-16-ranking-the-fall-major-teams",
+              "image": {
+                  "url": "https://octane-content.s3.amazonaws.com/Vatira_Spring_Major_2021_22_Psyonix_ee732addf6.jpg"
+              },
+              "authors": [{
+                  "name": "Travis Messall",
+                  "id": "6362f1a2b73aac00195a3cbb"
+              }],
+              "id": "638ea39cb73aac00195a3cf8"
+            }
+        """
+    )
+    
     static var previews: some View {
         ArticleRowView(publisherName: "Rocketeers.gg",
-                       articles: [Article(id: "0", image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FSmiley&psig=AOvVaw3yRcOU40mPK8Oxs4Fm1w56&ust=1615786137316000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKjUlciGr-8CFQAAAAAdAAAAABAD", link: "https://google.com", title: "Article 1 is really good,Article 1 is really good,Article 1 is really good,Article 1 is really good,Article 1 is really good,Article 1 is really good"), Article(id: "1", image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FSmiley&psig=AOvVaw3yRcOU40mPK8Oxs4Fm1w56&ust=1615786137316000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKjUlciGr-8CFQAAAAAdAAAAABAD", link: "https://google.com", title: "Article 2 is really good"), Article(id: "2", image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FSmiley&psig=AOvVaw3yRcOU40mPK8Oxs4Fm1w56&ust=1615786137316000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKjUlciGr-8CFQAAAAAdAAAAABAD", link: "https://google.com", title: "Article 3 is really good"), Article(id: "3", image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FSmiley&psig=AOvVaw3yRcOU40mPK8Oxs4Fm1w56&ust=1615786137316000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKjUlciGr-8CFQAAAAAdAAAAABAD", link: "https://google.com", title: "Article 4 is really good")]
+                       articles: [article]
         )
     }
 }
